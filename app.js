@@ -7,6 +7,9 @@ const userRouter = require('./routes/user');
 const app = express();
 let port = 3000;
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 
