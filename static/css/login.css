@@ -15,9 +15,6 @@ body {
     :fixed ;
   }
 }
-#particles-js {
-  height: 100%;
-}
 .loginBox {
   position: absolute;
   top: 50%;
@@ -30,12 +27,13 @@ body {
   padding: 40px;
   box-sizing: border-box;
 }
-.user {
+.loginBox .icon {
   margin: 0 auto;
   display: block;
   margin-bottom: 20px;
+  border-radius: 50%;
 }
-h3 {
+.loginBox h3 {
   margin: 0;
   padding: 0 0 20px;
   color: #59238f;
@@ -94,7 +92,7 @@ h3 {
   text-align: center;
   display: block;
 }
-a:hover {
+.loginBox a:hover {
   color: #00ffff;
 }
 p {
