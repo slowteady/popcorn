@@ -6,7 +6,7 @@ const createIndexDOM = () => {
         <div class="iconBox">
             <img class="icon" src="../img/popcorn_Icon.jpg" height="100px" width="100px">
         </div>
-        <h3>Sign in here</h3>
+        <div class="title" id="title"></div>
         <form action="" method="post">
             <div class="inputBox">
                 <input id="uname" type="text" name="Username" placeholder="Username"> 
@@ -14,9 +14,11 @@ const createIndexDOM = () => {
             </div>
             <input type="submit" name="" value="Login">
         </form> 
-        <a href="#">Forget Password<br></a>
+        <div class="pwBox">
+            <span class="pw"></span>
+        </div>
         <div class="text-center">
-            <p style="color: #59238F;">Sign-Up</p>
+            <span class="tc"></span>
         </div>
     </div>
     `;
@@ -24,4 +26,18 @@ const createIndexDOM = () => {
   document.body.innerHTML = template;
 };
 
+const textSet = () => {
+    const span = document.createElement('span');
+
+    const title = document.getElementById('title');
+    title.innerText = 'POPCORN!';
+
+    const pw = document.querySelector('.pw');
+    pw.innerText = 'Forget Password?';
+
+    const tc = document.querySelector('.tc');
+    tc.innerText = 'Sign-Up';
+}
+
 createIndexDOM();
+textSet();
