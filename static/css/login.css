@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: rgb(255, 255, 255, 0);
+  background: #000000;
   height: 100vh;
   font-family: sans-serif;
   background-size: cover;
@@ -12,7 +12,6 @@ body {
 @media screen and (max-width: 600px;) {
   body {
     background-size: cover;
-    :fixed ;
   }
 }
 .loginBox {
@@ -33,10 +32,11 @@ body {
   margin-bottom: 20px;
   border-radius: 50%;
 }
-.loginBox h3 {
+.loginBox .title {
   margin: 0;
-  padding: 0 0 20px;
-  color: #59238f;
+  padding: 0 0 40px;
+  font-size: 25px;
+  color: #dddd2a;
   text-align: center;
 }
 .loginBox input {
@@ -55,18 +55,12 @@ body {
   padding-left: 20px;
   box-sizing: border-box;
 }
-.loginBox input[type="text"]:hover,
-.loginBox input[type="password"]:hover {
-  color: #42f3fa;
-  border: 1px solid #42f3fa;
-  box-shadow: 0 0 5px rgba(0, 255, 0, 0.3), 0 0 10px rgba(0, 255, 0, 0.2),
-    0 0 15px rgba(0, 255, 0, 0.1), 0 2px 0 black;
-}
 .loginBox input[type="text"]:focus,
 .loginBox input[type="password"]:focus {
-  border-bottom: 2px solid #42f3fa;
+  border-bottom: 1px solid #42f3fa;
 }
 .inputBox {
+  padding: 0 0 5px 0;
   position: relative;
 }
 .inputBox span {
@@ -79,22 +73,27 @@ body {
   outline: none;
   height: 40px;
   font-size: 16px;
-  background: #59238f;
+  background: #b45461;
   color: #fff;
   border-radius: 20px;
   cursor: pointer;
 }
-.loginBox a {
-  color: #262626;
+.loginBox .pwBox {
+  color: #c4be8e9d;
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
   display: block;
 }
-.loginBox a:hover {
-  color: #00ffff;
+.loginBox .pw:hover {
+  color: #cde2e2de;
+  cursor: pointer;
 }
-p {
-  color: #0000ff;
+.text-center {
+  margin: 3px 0 0 0;
+}
+.text-center span {
+  cursor: pointer;
+  color: #4dee83;
 }
