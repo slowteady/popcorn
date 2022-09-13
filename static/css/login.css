@@ -97,3 +97,6 @@ body {
   cursor: pointer;
   color: #4dee83;
 }
+.text-center span:hover {
+  color: rgba(255, 255, 255);
+}
