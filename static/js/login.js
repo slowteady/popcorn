@@ -34,9 +34,15 @@ const textSet = () => {
 
     const pw = document.querySelector('.pw');
     pw.innerText = 'Forget Password?';
+    pw.addEventListener('click', () => {
+        alert('서비스 준비중입니다');
+    });
 
     const tc = document.querySelector('.tc');
     tc.innerText = 'Sign-Up';
+    tc.addEventListener('click', () => {
+        
+    });
 }
 
 createIndexDOM();
