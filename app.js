@@ -10,6 +10,7 @@ let port = 3000;
 app.use('/', indexRouter);
 // app.use('/user', userRouter);
 app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/client'));
 
 app.use((req, res, next) => {
     res.status(404).send('Not Found');
