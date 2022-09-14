@@ -31,7 +31,7 @@ const createloginDOM = () => {
 const createSignUpModal = () => {
     let array = [];
     let signUpTemplate = `
-        <div class="signUpBox">
+        <div class="signUpBox" id="signUpBox">
             <div class="wrapBox">
                 <form action="" method="post">
                     <div class="inputBox">
@@ -43,6 +43,9 @@ const createSignUpModal = () => {
                             <input id="username" type="text" placeholder="Username">
                     </div>
                     <input class="signup_btn" type="submit" value="Sign Up">
+                    <div class="btnBox">
+                        <span class="backBtn" id="backBtn"></span>
+                    </div>
                 </form>    
             </div>      
         </div>
@@ -66,13 +69,21 @@ const textSet = () => {
 
     // 회원가입
     const tc = document.querySelector('.tc');
+    const loginBox = document.querySelector('.loginBox');
     tc.innerText = 'Sign-Up';
     tc.addEventListener('click', () => {
-        const loginBox = document.querySelector('.loginBox');
         loginBox.classList.add('hidden');
         createSignUpModal();
+        const backBtn = document.getElementById('backBtn');
+        backBtn.innerText = 'Back';
+        backBtn.addEventListener('click', () => {
+            createloginDOM();
+            textSet();
+        });
     });
 }
 
 createloginDOM();
 textSet();
+
+
