@@ -1,33 +1,5 @@
-/* 로그인 페이지 */
-// 로그인 DOM
-const createloginDOM = () => {
-  let array = [];
-
-  let loginTemplate = `
-    <div class="loginBox">
-        <div class="iconBox">
-            <img class="icon" src="../img/popcorn_Icon.jpg" height="100px" width="100px">
-        </div>
-        <div class="title" id="title"></div>
-        <form action="" method="post">
-            <div class="inputBox">
-                <input id="uname" type="text" name="Id" placeholder="Email or Username"> 
-                <input id="pass" type="password" name="Password" placeholder="Password"> 
-            </div>
-            <input type="submit" value="Login">
-        </form> 
-        <div class="pwBox">
-            <span class="pw"></span>
-        </div>
-        <div class="text-center">
-            <span class="tc"></span>
-        </div>
-    </div>
-    `;
-
-  document.body.innerHTML = loginTemplate;
-};
-
+/* 회원가입 페이지 */
+// import * as common from "./login.js";
 // 회원가입 모달 창
 const createSignUpModal = () => {
     let array = [];
@@ -52,21 +24,6 @@ const createSignUpModal = () => {
         </div>
     `;
     document.body.innerHTML = signUpTemplate;
-}
-
-// Text SetValue
-const textSet = () => {
-    const span = document.createElement('span');
-
-    const title = document.getElementById('title');
-    title.innerText = 'POPCORN!';
-
-    // 비밀번호 찾기
-    const pw = document.querySelector('.pw');
-    pw.innerText = 'Forget Password?';
-    pw.addEventListener('click', () => {
-        alert('서비스 준비중입니다');
-    });
 
     // 회원가입
     const tc = document.querySelector('.tc');
@@ -78,13 +35,9 @@ const textSet = () => {
         const backBtn = document.getElementById('backBtn');
         backBtn.innerText = 'Back';
         backBtn.addEventListener('click', () => {
-            createloginDOM();
-            textSet();
+            common.createloginDOM();
         });
     });
 }
 
-createloginDOM();
-textSet();
-
-
+// export default createSignUpModal();
