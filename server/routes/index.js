@@ -4,7 +4,7 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../../static/html/index.html'));
+    res.render('index');
 });
 
 module.exports = router;
