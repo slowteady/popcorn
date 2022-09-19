@@ -14,14 +14,24 @@ const login = () => {
         id: id.value,
         password: password.value
     };
-    console.log(req);
+    
     fetch('/login', {
         method: 'POST',
         headers: {
             "content-type": "application/json"
         },
         body: JSON.stringify(req)
-    });
+    }).then((res) => res.json())
+      .then((res) => {
+        if(res.success) {
+            location.href = "/";
+        } else {
+            alert(res.msg);
+        }
+      })
+      .catch((err) => {
+        console.error(new Error('에러 발생'));
+      });
 };
 
 const loginBtn = document.querySelector('.loginBtn');
