@@ -3,14 +3,13 @@ const path = require('path');
 const nunjucks = require('nunjucks');
 const morgan = require('morgan');
 
-const indexRouter = require('./server/routes');
+const indexRouter = require('./src/server/routes');
 // const userRouter = require('./server/routes/user');
 
 const app = express();
 
-
 app.set('view engine', 'html');
-nunjucks.configure('views', {
+nunjucks.configure('./src/views', {
     express: app,
     watch: true
 });
@@ -18,7 +17,7 @@ nunjucks.configure('views', {
 app.use('/', indexRouter);
 // app.use('/user', userRouter);
 app.use(morgan('dev'));
-app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/src/static'));
 
 app.use((req, res, next) => {
     res.status(404).send('Not Found');
