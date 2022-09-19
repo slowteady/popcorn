@@ -6,7 +6,7 @@ pw.addEventListener('click', () => {
 
 const signUpText = document.querySelector('.signUpText');
 signUpText.addEventListener('click', () => {
-    
+    // 회원가입 페이지 구현 
 });
 
 const login = () => {
@@ -15,7 +15,15 @@ const login = () => {
         password: password.value
     };
     console.log(req);
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(req)
+    });
 };
 
 const loginBtn = document.querySelector('.loginBtn');
 loginBtn.addEventListener('click', login);
+
