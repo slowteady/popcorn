@@ -7,7 +7,7 @@ const indexRouter = require('./server/routes');
 // const userRouter = require('./server/routes/user');
 
 const app = express();
-let port = 3000;
+
 
 app.set('view engine', 'html');
 nunjucks.configure('views', {
@@ -24,6 +24,7 @@ app.use((req, res, next) => {
     res.status(404).send('Not Found');
 });
 
-app.listen(port, () => {
-    console.log(`${port} port is on!!`);
-});
+
+
+
+module.exports = app;
