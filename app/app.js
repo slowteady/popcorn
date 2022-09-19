@@ -9,7 +9,7 @@ const indexRouter = require('./src/server/routes');
 const app = express();
 
 app.set('view engine', 'html');
-nunjucks.configure('./src/views', {
+nunjucks.configure('./app/src/views', {
     express: app,
     watch: true
 });
