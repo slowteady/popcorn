@@ -4,11 +4,13 @@ pw.addEventListener('click', () => {
     alert('서비스 준비중입니다');
 });
 
+// 회원가입
 const signUpText = document.querySelector('.signUpText');
 signUpText.addEventListener('click', () => {
-    // 회원가입 페이지 구현 
+    location.href = "/register";
 });
 
+// 로그인 처리 로직
 const login = () => {
     const req = {
         id: id.value,
