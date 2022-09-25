@@ -1,19 +1,19 @@
 {% extends 'layout.html' %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="css/register.css">
 <div class="signUpBox" id="signUpBox">
     <div class="wrapBox">
         <form action="" method="post">
             <div class="inputBox">
-                <div class="label" id="idLabel">Email</div>
-                    <input id="email" type="text" placeholder="Email">
-                <div class="label" id="emailLabel">Phone</div>
-                    <input id="phone" type="text" placeholder="Phone">
-                <div class="label" id="emailLabel">Username</div>
-                    <input id="username" type="text" placeholder="Username">
+                <input id="email" type="email" placeholder="Email">
+                <input id="username" type="text" placeholder="Username">
+                <input id="phone" maxlength="13" type="tel" placeholder="Phone">
+                <input id="password" type="password" placeholder="Password">
+                <input id="confirm" type="password" placeholder="Confirm Password">
             </div>
-            <input class="signup_btn" type="submit" value="Sign Up">
+            <p class="signup-btn" id="signUpBtn">Sign Up</p>
             <div class="btnBox">
-                <span class="backBtn" id="backBtn"></span>
+                <span class="backBtn" id="backBtn">Back</span>
             </div>
         </form>    
     </div>      
