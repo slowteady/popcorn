@@ -1,6 +1,6 @@
 class UserStorage {
     static #users = {
-        id: ["lym", "ace"],
+        id: ["lym@naver.com", "ace@naver.com"],
         password: ["123", "1234"],
         name: ["이용민", "안채은"]
     };
@@ -25,6 +25,14 @@ class UserStorage {
         }, {});
 
         return userInfo;
+    }
+
+    static save(userInfo) {
+        const users = this.#users;
+        users.id.push(userInfo.id);
+        users.name.push(userInfo.name);
+        users.password.push(userInfo.password);
+        console.log(users);
     }
 }
 

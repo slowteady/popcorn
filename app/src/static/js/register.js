@@ -4,16 +4,6 @@ const email = document.querySelector('#email'),
     password = document.querySelector('#password'),
     pwConfirm = document.querySelector('#confirm');
 
-// SignUp
-const signUpBtn = document.querySelector('#signUpBtn');
-signUpBtn.addEventListener('click', register);
-
-// Back 
-const backBtn = document.querySelector('#backBtn');
-backBtn.addEventListener('click', () => {
-    location.href = "/";
-});
-
 // Sign Up
 function register() {
     const req = {
@@ -43,5 +33,16 @@ function register() {
         console.error("회원가입 중 오류 발생");
     });
 }
+
+// SignUp
+const signUpBtn = document.querySelector('#signUpBtn');
+signUpBtn.addEventListener('click', register);
+
+// Back 
+const backBtn = document.querySelector('#backBtn');
+backBtn.addEventListener('click', () => {
+    location.href = "/";
+});
+
 
     
