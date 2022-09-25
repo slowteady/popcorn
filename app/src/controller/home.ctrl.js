@@ -1,4 +1,3 @@
-const UserStorage = require("../model/UserStorage");
 const User = require('../model/User');
 
 const output = {
