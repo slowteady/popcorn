@@ -22,7 +22,8 @@ class User {
 	// 회원가입 
     register() {
         const client = this.body;
-        UserStorage.save(this.body);
+        const response = UserStorage.save(this.body);
+        return response;
     }
 }
 

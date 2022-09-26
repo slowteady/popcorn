@@ -32,6 +32,7 @@ class UserStorage {
         users.id.push(userInfo.id);
         users.name.push(userInfo.name);
         users.password.push(userInfo.password);
+        return { success: true };
     }
 }
 

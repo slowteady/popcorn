@@ -2,16 +2,21 @@ const email = document.querySelector('#email'),
     username = document.querySelector('#username'),
     phone = document.querySelector('#phone'),
     password = document.querySelector('#password'),
-    pwConfirm = document.querySelector('#confirm');
+    confirmPw = document.querySelector('#confirm');
 
 // 회원가입 등록 함수
 function register() {
+    if(!email.value) return alert("이메일을 입력해주세요");
+    if(password !== confirmPw.value) {
+        return alert("비밀번호가 같지 않습니다");
+    }
+
     const req = {
         email: email.value,
         username: username.value,
         phone: phone.value,
         password: password.value,
-        pwConfirm: pwConfirm.value
+        confirmPw: confirmPw.value
     };
 
     // 서버로 데이터 송신
