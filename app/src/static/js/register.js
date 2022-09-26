@@ -4,7 +4,7 @@ const email = document.querySelector('#email'),
     password = document.querySelector('#password'),
     pwConfirm = document.querySelector('#confirm');
 
-// Sign Up
+// 회원가입 등록 함수
 function register() {
     const req = {
         email: email.value,
@@ -14,11 +14,11 @@ function register() {
         pwConfirm: pwConfirm.value
     };
 
-    // fetch
+    // 서버로 데이터 송신
     fetch('/register', {
         method: 'POST',
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type":"application/json"
         },
         body: JSON.stringify(req)
     }).then((res) => res.json())
