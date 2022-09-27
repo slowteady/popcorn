@@ -30,8 +30,7 @@ body {
 .signUpBox .icon {
   display: block;
   border-radius: 50%;
-  height: 50px;
-  cursor: pointer;
+  height: 55px;
 }
 .signUpBox .inputBox {
     display: flex;

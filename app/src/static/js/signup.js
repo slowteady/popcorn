@@ -43,12 +43,6 @@ function signup() {
 const signUpBtn = document.querySelector('#signUpBtn');
 signUpBtn.addEventListener('click', signup);
 
-// 이미지 클릭
-const img = document.querySelector('#img');
-img.addEventListener('click', () => {
-	location.href = "/"
-});
-
 // 뒤로가기 
 const backBtn = document.querySelector('#backBtn');
 backBtn.addEventListener('click', () => {
