@@ -1,6 +1,17 @@
 const fs = require("fs").promises;
 
 class UserStorage {
+  static #getUserInfo(data, id) {
+    const users = JSON.parse(data);
+    const idx = users.id.indexOf(id);
+    const userInfo = Object.keys(users).reduce((newUser, info) => {
+      newUser[info] = users[info][idx];
+      return newUser;
+    }, {});
+
+    return userInfo;
+  }
+  
   static getUsers(...fields) {
     const users = JSON.parse(data);
     const newUsers = fields.reduce((newUsers, field) => {
@@ -19,17 +30,6 @@ class UserStorage {
         return this.#getUserInfo(data, id);
       })
       .catch(console.error);
-  }
-
-  static #getUserInfo(data, id) {
-    const users = JSON.parse(data);
-    const idx = users.id.indexOf(id);
-    const userInfo = Object.keys(users).reduce((newUser, info) => {
-      newUser[info] = users[info][idx];
-      return newUser;
-    }, {});
-
-    return userInfo;
   }
 
   static save(userInfo) {
