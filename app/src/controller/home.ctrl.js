@@ -7,8 +7,8 @@ const output = {
     login: (req, res) => {
         res.render('login');
     },
-    register: (req, res) => {
-        res.render('register');
+    signup: (req, res) => {
+        res.render('signup');
     }
 };
 
@@ -18,9 +18,9 @@ const process = {
         const response = user.login();
         return res.json(response);
     },
-    register: (req, res) => {
+    signup: (req, res) => {
         const user = new User(req.body);
-        const response = user.register();
+        const response = user.signup();
         return res.json(response);
     }
 };

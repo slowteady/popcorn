@@ -20,7 +20,7 @@ class User {
     }
 
 	// 회원가입 
-    register() {
+    signup() {
         const client = this.body;
         const response = UserStorage.save(this.body);
         return response;

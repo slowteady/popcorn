@@ -7,7 +7,7 @@ pw.addEventListener('click', () => {
 // 회원가입
 const signUpText = document.querySelector('.signUpText');
 signUpText.addEventListener('click', () => {
-    location.href = "/register";
+    location.href = "/signup";
 });
 
 // 로그인 처리 로직
