@@ -27,6 +27,8 @@ body {
   box-sizing: border-box;
 }
 .loginBox .icon {
+  height: 100px;
+  width: 100px;
   margin: 0 auto;
   display: block;
   margin-bottom: 20px;
@@ -98,14 +100,14 @@ body {
   color: #cde2e2de;
   cursor: pointer;
 }
-.signUpDiv {
+.loginBox .signUpDiv {
   margin: 3px 0 0 0;
   text-align: center;
 }
-.signUpDiv .signUpText {
+.loginBox .signUpDiv .signUpText {
   cursor: pointer;
   color: #4dee83;
 }
-.signUpDiv .signUpText:hover {
+.loginBox .signUpDiv .signUpText:hover {
   color: rgba(255, 255, 255);
 }
