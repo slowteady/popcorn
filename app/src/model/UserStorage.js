@@ -13,18 +13,23 @@ class UserStorage {
   }
 
   static getUserInfo(id) {
-    return fs.readFile('./app/src/databases/users.json')
+    return fs
+      .readFile("./app/src/databases/users.json")
       .then((data) => {
-        const users = JSON.parse(data);
-        const idx = users.id.indexOf(id);
-        const userInfo = Object.keys(users).reduce((newUser, info) => {
-          newUser[info] = users[info][idx];
-          return newUser;
-        }, {});
-
-        return userInfo;
+        return this.#getUserInfo(data, id);
       })
       .catch(console.error);
+  }
+
+  static #getUserInfo(data, id) {
+    const users = JSON.parse(data);
+    const idx = users.id.indexOf(id);
+    const userInfo = Object.keys(users).reduce((newUser, info) => {
+      newUser[info] = users[info][idx];
+      return newUser;
+    }, {});
+
+    return userInfo;
   }
 
   static save(userInfo) {
