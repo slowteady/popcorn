@@ -20,10 +20,14 @@ class User {
     }
 
 	// 회원가입 
-    signup() {
+    async signup() {
         const client = this.body;
-        const response = UserStorage.save(this.body);
-        return response;
+        try {
+            const response = await UserStorage.save(client);
+            return response;
+        } catch (err) {
+            console.error(err);
+        }
     }
 }
 

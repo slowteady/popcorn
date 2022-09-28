@@ -18,9 +18,9 @@ const process = {
         const response = await user.login();
         return res.json(response);
     },
-    signup: (req, res) => {
+    signup: async (req, res) => {
         const user = new User(req.body);
-        const response = user.signup();
+        const response = await user.signup();
         return res.json(response);
     }
 };

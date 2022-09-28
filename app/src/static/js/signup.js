@@ -7,7 +7,7 @@ const email = document.querySelector('#email'),
 // 회원가입 등록 함수
 function signup() {
     if(!email.value) return alert("이메일을 입력해주세요");
-    if(password !== confirmPw.value) {
+    if(password.value !== confirmPw.value) {
         return alert("비밀번호가 같지 않습니다");
     }
 
