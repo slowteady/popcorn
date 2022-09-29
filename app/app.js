@@ -3,8 +3,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const nunjucks = require('nunjucks');
 const morgan = require('morgan');
+const mongoose = require('./src/dbutils/connect');
 
 const indexRouter = require('./src/server/routes');
+
+// DB 연결
+mongoose();
 
 const app = express();
 
