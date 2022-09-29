@@ -9,7 +9,10 @@ const output = {
     },
     signup: (req, res) => {
         res.render('signup');
-    }
+    },
+	list: (req, res) => {
+		res.render('list');
+	}
 };
 
 const process = {
