@@ -16,7 +16,6 @@ function signup() {
         username: username.value,
         phone: phone.value,
         password: password.value,
-        confirmPw: confirmPw.value
     };
 
     // 서버로 데이터 송신
@@ -25,11 +24,11 @@ function signup() {
         headers: {
             "Content-Type":"application/json"
         },
-        body: JSON.stringify(req)
+        body: JSON.stringify(req),
     }).then((res) => res.json())
     .then((res) => {
         if(res.success) {
-            location.href = "/login";
+            // location.href = "/login";
         } else {
             alert(res.msg);
         }

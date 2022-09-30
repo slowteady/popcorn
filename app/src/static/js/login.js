@@ -14,7 +14,7 @@ signUpText.addEventListener('click', () => {
 const login = () => {
     const req = {
         id: id.value,
-        password: password.value
+        password: password.value,
     };
     
     fetch('/login', {
@@ -22,17 +22,17 @@ const login = () => {
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify(req)
+        body: JSON.stringify(req),
     }).then((res) => res.json())
       .then((res) => {
         if(res.success) {
-            location.href = "/";
+            // location.href = "/";
         } else {
             alert(res.msg);
         }
       })
       .catch((err) => {
-        console.error(new Error('에러 발생'));
+        console.error('에러 발생', err);
       });
 };
 

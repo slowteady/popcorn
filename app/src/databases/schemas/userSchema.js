@@ -7,7 +7,7 @@ const userSchema = new Schema({
 		required: true,
 		unique: true,
 	},
-	userName: {
+	username: {
 		type: String,
 		required: true,
 	},
@@ -16,10 +16,10 @@ const userSchema = new Schema({
 		required: true,
 	},
 	phone: {
-		type: Number,
+		type: String,
 		required: true,
 		unique: true,
 	},
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema, 'users');
