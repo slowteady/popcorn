@@ -1,5 +1,5 @@
 const express = require('express');
-const ctrl = require('../../controller/home.ctrl');
+const ctrl = require('../../controller/user.ctrl');
 
 const router = express.Router();
 
