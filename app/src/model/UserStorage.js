@@ -2,17 +2,6 @@
 const userSchema = require('../databases/schemas/userSchema');
 
 class UserStorage {
-  static save(client) {
-    try {
-      const user = new userSchema(client);
-      user.save((err, result) => {
-        if(err) return { error: err }
-        return { success: true };
-      });
-    } catch (err) {
-      // return { error: err };
-    }
-  } 
 //   static #getUserInfo(data, id) {
 //     const users = JSON.parse(data);
 //     const idx = users.id.indexOf(id);

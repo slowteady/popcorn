@@ -1,4 +1,5 @@
 const UserStorage = require('./UserStorage');
+const userSchema = require('../databases/schemas/userSchema');
 
 // User 클래스
 class User {
@@ -20,15 +21,10 @@ class User {
     }
 
 	// 회원가입 
-    async signup() {
+   async signup() {
         const client = this.body;
-        try {
-            const response = await UserStorage.save(client);
-            console.log(response);
-            // return response;
-        } catch (err) {
-            console.error(err);
-        }
+        const user = new userSchema(client);
+        await user.save();
     }
 }
 

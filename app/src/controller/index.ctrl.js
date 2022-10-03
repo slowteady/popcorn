@@ -21,10 +21,15 @@ const process = {
         const response = await user.login();
         // return res.json(response);
     },
-    signup: async (req, res) => {
-        const user = new User(req.body);
-        const response = await user.signup();
-        // return res.json(response);
+    signup: (req, res) => {
+        try {
+            const data = req.body;
+            const user = new User(data);
+            user.signup();
+            // return res.json({ success: true });
+        } catch(err) {
+            if(err) return new Error(err);
+        }
     }
 };
 
