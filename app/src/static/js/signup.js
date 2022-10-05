@@ -3,8 +3,8 @@ const id = document.querySelector("#id"),
   username = document.querySelector("#username"),
   phone = document.querySelector("#phone"),
   password = document.querySelector("#password"),
-  confirmPw = document.querySelector("#confirm");
-
+  confirmPw = document.querySelector("#confirm"),
+  checkedId = document.querySelector("#checkedId");
 
 // ID 중복확인
 const doubleChk = document.querySelector("#doubleChk");
@@ -12,7 +12,7 @@ doubleChk.addEventListener("click", idCheck);
 
 function idCheck() {
   let val = id.value;
-  let minlength = id.getAttribute('minlength');
+  let minlength = id.getAttribute("minlength");
   let length = val.length;
   let text;
   if (length > minlength) {
@@ -27,19 +27,18 @@ function idCheck() {
       .then((res) => {
         let result = res.success;
         if (result) {
-          text = "※ 사용중인 아이디입니다";
-          checkText(text);
+          checkText("※ 사용중인 아이디입니다");
+          checkedId.value = "N";
         } else {
-          text = "※ 사용가능한 아이디입니다";
-          checkText(text);
+          checkText("※ 사용가능한 아이디입니다");
+          checkedId.value = "Y";
         }
       })
       .catch((err) => {
         console.error(err);
       });
   } else {
-    text = "※ 아이디를 6글자 이상 작성해주세요";
-    checkText(text);
+    checkText("※ 아이디를 6글자 이상 작성해주세요");
   }
 }
 
@@ -72,31 +71,35 @@ function signup() {
   };
 
   if (validate(req)) {
-    const obj = {
-      id: req.id.value,
-      username: req.username.value,
-      phone: req.phone.value,
-      password: req.password.value,
-    };
-    // 서버로 데이터 송신
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.success) {
-          // location.href = "/login";
-        } else {
-          alert(res.msg);
-        }
+    if (checkedId.value === "Y") {
+      const obj = {
+        id: req.id.value,
+        username: req.username.value,
+        phone: req.phone.value,
+        password: req.password.value,
+      };
+      // 서버로 데이터 송신
+      fetch("/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
       })
-      .catch((err) => {
-        console.error("회원가입 중 오류 발생");
-      });
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.success) {
+            // location.href = "/login";
+          } else {
+            alert(res.msg);
+          }
+        })
+        .catch((err) => {
+          console.error("회원가입 중 오류 발생");
+        });
+    } else {
+      checkText("※ 아이디 중복확인을 해주세요");
+    }
   }
 }
 
