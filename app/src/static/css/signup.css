@@ -1,31 +1,31 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: #000000;
-    height: 100vh;
-    font-family: sans-serif;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow: hidden;
-  }
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  height: 100vh;
+  font-family: "CookieRunRegular", sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
 .signUpBox {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
 .signUpBox .wrapBox {
-    display: inline-flex;
-	flex-direction:column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    height: 450px;
-    width: 370px;
-    background: #f6f8fa;
-    border-radius: 6px;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 450px;
+  width: 370px;
+  background: #f6f8fa;
+  border-radius: 6px;
 }
 .signUpBox .icon {
   display: block;
@@ -33,57 +33,62 @@ body {
   height: 55px;
 }
 .signUpBox .inputBox {
-    display: flex;
-    flex-direction: column;
-    max-height: 500px;
-    width: 270px;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  width: 270px;
 }
 .signUpBox .label {
-    margin: 8px 0 8px 0;
+  margin: 8px 0 8px 0;
 }
 .signUpBox .signup-btn {
-    margin: 15px 0 0 0;
-    width: 100%;
-    border-radius: 6px;
-    border: 1px solid;
-    padding: 5px 16px;
-    font-size: 15px;
-    font-weight: bold;
-    color: rgba(255, 255, 255);
-    background: #b45461;
-    text-align: center;
-    cursor: pointer;
+  margin: 15px 0 0 0;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid;
+  padding: 5px 16px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(255, 255, 255);
+  background: #b45461;
+  text-align: center;
+  cursor: pointer;
 }
 .signUpBox .signup-btn:hover {
-    color:#000000;
+  color: #000000;
 }
 .signUpBox .btnBox {
-    text-align: center;
-    margin: 5px 0 0 0;
+  text-align: center;
+  margin: 5px 0 0 0;
 }
 .signUpBox .backBtn {
-    color: #2c2c279d;
-    font-size: 16px;
-    font-weight: bold;
-    opacity: 0.7;
+  color: #2c2c279d;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0.7;
 }
 .signUpBox .backBtn:hover {
-    cursor: pointer;
-    opacity: 1;
+  cursor: pointer;
+  opacity: 1;
 }
 .signUpBox .hidden {
-    display: none;  
+  display: none;
 }
 .signUpBox .inputBox {
-    padding: 0 0 5px 0;
-    position: relative;
+  padding: 0 0 5px 0;
+  position: relative;
 }
 .signUpBox .inputBox span {
-    position: absolute;
-    top: 10px;
-    color: #262626;
+  position: absolute;
+  top: 10px;
+  color: #262626;
 }
 .signUpBox .inputBox input {
   margin: 15px 0 0 0;
   height: 40px;
+}
+.signUpBox .inputBox button {
+  position: absolute;
+  right: 5px;
+  top: 20px;
 }
