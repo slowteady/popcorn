@@ -5,12 +5,40 @@ const id = document.querySelector("#id"),
   password = document.querySelector("#password"),
   confirmPw = document.querySelector("#confirm");
 
+// 유효성 검사 문구
+function checkText(text) {
+  const guideTxt = document.querySelector("#guideTxt");
+  guideTxt.innerText = text;
+}
+
 // 특수문자 체크
 function characterCheck(obj) {
-  const regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
-  if(regExp.test(obj.value)) {
-    obj.value = obj.value.substring(0 , obj.value.length - 1);
- }
+  let attr = obj.getAttribute('id');
+  const regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
+  if (regExp.test(obj.value)) {
+    obj.value = obj.value.substring(0, obj.value.length - 1);
+    let id;
+    if(attr === 'id') {
+      id = "ID";
+    } else if(attr === 'phone') {
+      id = "PHONE";
+    } else if(attr === 'username') {
+      id = "USERNAME";
+    }
+    let text = `※ ${id}에 특수문자는 사용하실 수 없어요`;
+    checkText(text);
+  } 
+}
+
+// 전화번호 길이 체크
+function lengthCheck(obj) {
+  let val = obj.value;
+  const regex = /^[0-9\b -]{0,13}$/;
+  if(!regex.test(val)) {
+    obj.value = obj.value.substring(0, obj.value.length - 1);
+    let text = "※ PHONE에는 숫자만 입력해주세요";
+    checkText(text);
+  }
 }
 
 // 중복확인
@@ -19,25 +47,35 @@ doubleChk.addEventListener("click", idCheck);
 
 function idCheck() {
   let val = id.value;
-  fetch('/signup/idCheck', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({val}),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      let result = res.success;
-      if(result) {
-        alert('사용중인 아이디입니다');
-      } else {
-        alert('사용가능한 아이디입니다');
-      }
+  let minlength = id.getAttribute('minlength');
+  let length = val.length;
+  let text;
+  if (length > minlength) {
+    fetch("/signup/idCheck", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ val }),
     })
-    .catch((err) => {
-      console.error(err);
-    });
+      .then((res) => res.json())
+      .then((res) => {
+        let result = res.success;
+        if (result) {
+          text = "※ 사용중인 ID입니다";
+          checkText(text);
+        } else {
+          text = "※ 사용가능한 ID입니다";
+          checkText(text);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    text = "※ ID를 6글자 이상 작성해주세요";
+    checkText(text);
+  }
 }
 
 // 회원가입
@@ -76,7 +114,7 @@ function signup() {
       password: req.password.value,
     };
     // 서버로 데이터 송신
-    fetch('/signup', {
+    fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

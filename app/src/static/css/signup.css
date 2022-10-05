@@ -99,3 +99,7 @@ body {
   font-size: 20px;
   font-weight: bold;
 }
+.signUpBox .guideTxt {
+  margin: 0;
+  color: #ff7f50;
+}
