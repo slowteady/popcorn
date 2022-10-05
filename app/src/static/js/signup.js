@@ -5,43 +5,8 @@ const id = document.querySelector("#id"),
   password = document.querySelector("#password"),
   confirmPw = document.querySelector("#confirm");
 
-// 유효성 검사 문구
-function checkText(text) {
-  const guideTxt = document.querySelector("#guideTxt");
-  guideTxt.innerText = text;
-}
 
-// 특수문자 체크
-function characterCheck(obj) {
-  let attr = obj.getAttribute('id');
-  const regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
-  if (regExp.test(obj.value)) {
-    obj.value = obj.value.substring(0, obj.value.length - 1);
-    let id;
-    if(attr === 'id') {
-      id = "ID";
-    } else if(attr === 'phone') {
-      id = "PHONE";
-    } else if(attr === 'username') {
-      id = "USERNAME";
-    }
-    let text = `※ ${id}에 특수문자는 사용하실 수 없어요`;
-    checkText(text);
-  } 
-}
-// 
-// 전화번호 길이 체크
-function lengthCheck(obj) {
-  let val = obj.value;
-  const regex = /^[0-9\b -]{0,13}$/;
-  if(!regex.test(val)) {
-    obj.value = obj.value.substring(0, obj.value.length - 1);
-    let text = "※ PHONE에는 숫자만 입력해주세요";
-    checkText(text);
-  }
-}
-
-// 중복확인
+// ID 중복확인
 const doubleChk = document.querySelector("#doubleChk");
 doubleChk.addEventListener("click", idCheck);
 
@@ -62,10 +27,10 @@ function idCheck() {
       .then((res) => {
         let result = res.success;
         if (result) {
-          text = "※ 사용중인 ID입니다";
+          text = "※ 사용중인 아이디입니다";
           checkText(text);
         } else {
-          text = "※ 사용가능한 ID입니다";
+          text = "※ 사용가능한 아이디입니다";
           checkText(text);
         }
       })
@@ -73,7 +38,7 @@ function idCheck() {
         console.error(err);
       });
   } else {
-    text = "※ ID를 6글자 이상 작성해주세요";
+    text = "※ 아이디를 6글자 이상 작성해주세요";
     checkText(text);
   }
 }
@@ -90,11 +55,11 @@ function signup() {
     },
     username: {
       value: username.value,
-      name: "사용자 이름",
+      name: "유저네임",
     },
     phone: {
       value: phone.value,
-      name: "핸드폰 번호",
+      name: "전화번호",
     },
     password: {
       value: password.value,
