@@ -22,14 +22,14 @@ const process = {
         const response = await user.login();
         // return res.json(response);
     },
-    signup: (req, res) => {
+    signup: (req, res, next) => {
         try {
             const data = req.body;
             const user = new User(data);
-            user.signup();
-            // return res.json({ success: true });
+            let isSuccess = user.signup();
+            res.json(isSuccess ? { success: true } : { success: false });
         } catch(err) {
-            if(err) return new Error(err);
+            next(err);
         }
     },
     idCheck: async (req, res, next) => {

@@ -14,7 +14,6 @@ function idCheck() {
   let val = id.value;
   let minlength = id.getAttribute("minlength");
   let length = val.length;
-  let text;
   if (length > minlength) {
     fetch("/signup/idCheck", {
       method: "POST",
