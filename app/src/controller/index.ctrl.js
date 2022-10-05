@@ -1,4 +1,5 @@
 const User = require('../model/User');
+const userSchema = require('../databases/schemas/userSchema');
 
 const output = {
     index: (req, res) => {
@@ -29,6 +30,15 @@ const process = {
             // return res.json({ success: true });
         } catch(err) {
             if(err) return new Error(err);
+        }
+    },
+    idCheck: async (req, res, next) => {
+        try {
+            const data = req.body;
+            const result = await userSchema.findOne({id: data.val});
+            res.json(result ? { success: true } : { success: false });
+        } catch(err) {
+            next(err);
         }
     }
 };

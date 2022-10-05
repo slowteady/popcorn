@@ -8,9 +8,36 @@ const id = document.querySelector("#id"),
 // 특수문자 체크
 function characterCheck(obj) {
   const regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
-  if( regExp.test(obj.value) ){
-    obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+  if(regExp.test(obj.value)) {
+    obj.value = obj.value.substring(0 , obj.value.length - 1);
  }
+}
+
+// 중복확인
+const doubleChk = document.querySelector("#doubleChk");
+doubleChk.addEventListener("click", idCheck);
+
+function idCheck() {
+  let val = id.value;
+  fetch('/signup/idCheck', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({val}),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      let result = res.success;
+      if(result) {
+        alert('사용중인 아이디입니다');
+      } else {
+        alert('사용가능한 아이디입니다');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 // 회원가입
@@ -49,7 +76,7 @@ function signup() {
       password: req.password.value,
     };
     // 서버로 데이터 송신
-    fetch("/signup", {
+    fetch('/signup', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,14 +95,6 @@ function signup() {
         console.error("회원가입 중 오류 발생");
       });
   }
-}
-
-// 중복확인
-const doubleChk = document.querySelector("#doubleChk");
-doubleChk.addEventListener("click", doubleCheck);
-
-function doubleCheck() {
-  
 }
 
 // 뒤로가기
