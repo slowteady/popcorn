@@ -1,20 +1,22 @@
+// input
 const id = document.querySelector("#id"),
   username = document.querySelector("#username"),
   phone = document.querySelector("#phone"),
   password = document.querySelector("#password"),
   confirmPw = document.querySelector("#confirm");
 
+// 특수문자 체크
+function characterCheck(obj) {
+  const regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
+  if( regExp.test(obj.value) ){
+    obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+ }
+}
+
 // 회원가입
 const signUpBtn = document.querySelector("#signUpBtn");
 signUpBtn.addEventListener("click", signup);
 
-// 뒤로가기
-const backBtn = document.querySelector("#backBtn");
-backBtn.addEventListener("click", () => {
-  location.href = "/";
-});
-
-// 회원가입 등록 
 function signup() {
   const req = {
     id: {
@@ -67,3 +69,17 @@ function signup() {
       });
   }
 }
+
+// 중복확인
+const doubleChk = document.querySelector("#doubleChk");
+doubleChk.addEventListener("click", doubleCheck);
+
+function doubleCheck() {
+  
+}
+
+// 뒤로가기
+const backBtn = document.querySelector("#backBtn");
+backBtn.addEventListener("click", () => {
+  location.href = "/";
+});
