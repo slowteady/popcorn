@@ -95,3 +95,7 @@ body {
 .signUpBox .inputBox button:hover {
   color: rgb(186, 191, 191);
 }
+.signUpBox .txt {
+  font-size: 20px;
+  font-weight: bold;
+}
