@@ -29,7 +29,7 @@ function characterCheck(obj) {
     checkText(text);
   } 
 }
-
+// 
 // 전화번호 길이 체크
 function lengthCheck(obj) {
   let val = obj.value;

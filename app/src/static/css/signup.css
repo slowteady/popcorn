@@ -61,14 +61,13 @@ body {
   margin: 5px 0 0 0;
 }
 .signUpBox .backBtn {
-  color: #2c2c279d;
+  color: #000000;
   font-size: 16px;
   font-weight: bold;
-  opacity: 0.7;
 }
 .signUpBox .backBtn:hover {
   cursor: pointer;
-  opacity: 1;
+  color:#e0c8dc;
 }
 .signUpBox .hidden {
   display: none;
