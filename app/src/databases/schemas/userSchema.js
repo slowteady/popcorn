@@ -14,7 +14,6 @@ const userSchema = new Schema({
 	},
 	phone: {
 		type: String,
-		unique: true,
 	},
 }, { collection: 'users' });
 
