@@ -22,7 +22,7 @@ function validate(obj) {
     return checkText("※ 패스워드가 일치하지 않아요");
   }
 
-  if(obj.password.value.length < 9) {
+  if(obj.password.value.length < 8) {
     return checkText("※ 패스워드를 8글자 이상 입력해주세요");
   } 
   return true;
