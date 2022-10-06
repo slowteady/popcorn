@@ -37,7 +37,7 @@ function idCheck() {
         console.error(err);
       });
   } else {
-    checkText("※ 아이디를 6글자 이상 작성해주세요");
+    checkText(`※ 아이디를 ${parseInt(minlength) + 1}글자 이상 작성해주세요`);
   }
 }
 
@@ -88,9 +88,16 @@ function signup() {
         .then((res) => res.json())
         .then((res) => {
           if (res.success) {
-            // location.href = "/login";
+            Swal.fire({
+              icon: "success",
+              title: "환영합니다!",
+              text: "회원가입이 완료되었어요 ₍๐•ᴗ•๐₎"
+            });
           } else {
-            alert(res.msg);
+            Swal.fire({
+              icon: "error",
+              title: "오류가 발생했어요",
+            });
           }
         })
         .catch((err) => {
