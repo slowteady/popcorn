@@ -91,7 +91,10 @@ function signup() {
             Swal.fire({
               icon: "success",
               title: "환영합니다!",
-              text: "회원가입이 완료되었어요 ₍๐•ᴗ•๐₎"
+              text: "회원가입이 완료되었어요 ₍๐•ᴗ•๐₎",
+              closeOnClickOutside : false
+            }).then(() => {
+              location.href = "/";
             })
           } else {
             Swal.fire({
