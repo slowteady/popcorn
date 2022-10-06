@@ -19,9 +19,12 @@ function validate(obj) {
   }
 
   if (obj.password.value !== obj.confirmPw.value) {
-    return checkText("※ 패스워드가 일치하지 않습니다");
+    return checkText("※ 패스워드가 일치하지 않아요");
   }
 
+  if(obj.password.value.length < 9) {
+    return checkText("※ 패스워드를 8글자 이상 입력해주세요");
+  } 
   return true;
 }
 

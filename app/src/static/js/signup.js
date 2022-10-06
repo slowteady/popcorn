@@ -37,7 +37,7 @@ function idCheck() {
         console.error(err);
       });
   } else {
-    checkText(`※ 아이디를 ${parseInt(minlength) + 1}글자 이상 작성해주세요`);
+    checkText(`※ 아이디를 ${parseInt(minlength) + 1}글자 이상 입력해주세요`);
   }
 }
 
