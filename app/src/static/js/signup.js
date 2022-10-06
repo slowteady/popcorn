@@ -92,7 +92,7 @@ function signup() {
               icon: "success",
               title: "환영합니다!",
               text: "회원가입이 완료되었어요 ₍๐•ᴗ•๐₎"
-            });
+            })
           } else {
             Swal.fire({
               icon: "error",
