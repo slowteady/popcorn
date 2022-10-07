@@ -17,11 +17,14 @@ const output = {
 };
 
 const process = {
-    login: async (req, res) => {
-        const user = new User(req.body);
-        const response = await user.login();
-        // console.log(response);
-        // return res.json(response);
+    login: async (req, res, next) => {
+        try {
+            const user = new User(req.body);
+            const response = await user.login();
+            res.json(response ? { success: true } : { msg: "아이디 혹은 비밀번호가 일치하지 않아요" });
+        } catch(err) {
+            next(err);
+        }
     },
     signup: (req, res, next) => {
         try {
