@@ -7,8 +7,15 @@ class User {
     this.body = body;
   }
   // 로그인
-  async login() {
-    const client = this.body;
+  login() {
+    const { id, password } = this.body;
+    try {
+      let user = userSchema.findOne({ id, password }).exec((err, result) => {
+        
+      });
+    } catch (err) {
+      console.error(err);
+    }
     //     const { id, password } = await UserStorage.getUserInfo(client.id);
 
     //     if(id) {

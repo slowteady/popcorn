@@ -26,7 +26,7 @@ const login = () => {
     }).then((res) => res.json())
       .then((res) => {
         if(res.success) {
-            // location.href = "/";
+            // location.href = "/list";
         } else {
             alert(res.msg);
         }
