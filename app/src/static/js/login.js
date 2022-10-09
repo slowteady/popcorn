@@ -43,3 +43,11 @@ const login = () => {
 
 const loginBtn = document.querySelector(".loginBtn");
 loginBtn.addEventListener("click", login);
+
+const inputBox = document.querySelector(".inputBox");
+inputBox.addEventListener("keyup", (e) => {
+  if(e.keyCode === 13) {
+    login();
+  }
+});
+
