@@ -11286,3 +11286,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* Custom */
+#main .container .header_btn {
+  height: 30px;
+}
+.container .header_btn .img {
+  height: inherit;
+}
+.container .navbar-brand {
+  cursor: pointer;
+}
