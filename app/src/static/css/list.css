@@ -11289,9 +11289,11 @@ textarea.form-control-lg {
 /* Custom */
 #main .container .header_btn {
   height: 30px;
+  margin: 0 20px 0 0;
 }
-.container .header_btn .img {
+.container .img {
   height: inherit;
+  cursor: pointer;
 }
 .container .navbar-brand {
   cursor: pointer;
