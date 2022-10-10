@@ -4035,6 +4035,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  height: 80px;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -11291,10 +11292,16 @@ textarea.form-control-lg {
   height: 30px;
   margin: 0 20px 0 0;
 }
-.container .img {
+.navbar .container .img {
   height: inherit;
   cursor: pointer;
 }
-.container .navbar-brand {
+.navbar .container .navbar-brand {
   cursor: pointer;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+.footer.bg-dark {
+  padding: 20px 0;
 }
