@@ -44,6 +44,10 @@ const process = {
         } catch(err) {
             next(err);
         }
+    },
+    callApi: (req, res, next) => {
+        // 일별 : http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?row=8&targetDt=20221013&key=4ec6acd6fa9e588ee928df8034cc6e25
+        // 주간 :  http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?itemPerPage=8&targetDt=20221012&weekGb=0&key=4ec6acd6fa9e588ee928df8034cc6e25
     }
 };
 
