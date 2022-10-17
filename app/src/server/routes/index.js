@@ -11,6 +11,6 @@ router.get('/list', ctrl.output.list);
 router.post('/login', ctrl.process.login);
 router.post('/signup', ctrl.process.signup);
 router.post('/signup/idCheck', ctrl.process.idCheck);
-router.post('/list', ctrl.process.callApi);
+// router.post('/list', ctrl.process.callApi);
 
 module.exports = router;
