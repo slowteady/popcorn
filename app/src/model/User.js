@@ -1,4 +1,3 @@
-const UserStorage = require("./UserStorage");
 const userSchema = require("../databases/schemas/userSchema");
 
 // User 클래스

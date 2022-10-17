@@ -17,6 +17,3 @@ officeTxt.addEventListener('click', () => {
 const myPageBtn = document.querySelector('#mypage');
 iconOver(myPageBtn);
 
-const boxOfficeBtn = document.querySelector('#officeTxt');
-menuOver(boxOfficeBtn);
-
