@@ -13,15 +13,19 @@ const output = {
   signup: (req, res) => {
     res.render("signup");
   },
-  list: async (req, res) => {
+  list: (req, res) => {
     res.render("list");
+  },
+  callApi: async (req, res) => {
     await axios({
-        method: "GET",
-        url: options.boxOffice.uri,
-        params: options.boxOffice.qs,
-      }).then((res) => {
-        console.log(res.data);
-      })
+      method: "GET",
+      url: options.boxOffice.uri,
+      params: options.boxOffice.qs,
+    }).then((value) => {
+      let data = JSON.stringify(value.data.boxOfficeResult.weeklyBoxOfficeList);
+      let val = JSON.parse(data);
+      res.json(val);
+    })
   },
 };
 
