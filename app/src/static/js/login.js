@@ -27,7 +27,7 @@ const login = () => {
     .then((res) => res.json())
     .then((res) => {
       if (res.success) {
-        location.href = "/list";
+        location.replace('/list');
       } else {
         Swal.fire({
           icon: "error",
