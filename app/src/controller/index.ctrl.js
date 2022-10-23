@@ -1,5 +1,6 @@
 const User = require("../model/User");
 const userSchema = require("../databases/schemas/userSchema");
+const BoxOffice = require("../model/api/BoxOffice");
 
 const output = {
   index: (req, res) => {
@@ -12,6 +13,8 @@ const output = {
     res.render("signup");
   },
   list: (req, res) => {
+    const boxOff = new BoxOffice();
+    boxOff.getData();
     res.render("list");
   },
 };
@@ -48,9 +51,6 @@ const process = {
     } catch (err) {
       next(err);
     }
-  },
-  callApi: (req, res, next) => {
-
   },
 };
 
