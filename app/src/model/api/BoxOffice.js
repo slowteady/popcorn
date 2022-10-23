@@ -64,6 +64,8 @@ class BoxOffice {
       query: "어벤져스",
     };
     const promise = axios.get(url, param, header);
+
+    return promise;
   }
 }
 
