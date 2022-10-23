@@ -1,7 +1,5 @@
 const User = require("../model/User");
 const userSchema = require("../databases/schemas/userSchema");
-const axios = require("axios");
-const options = require('../model/api/callApi');
 
 const output = {
   index: (req, res) => {
@@ -15,17 +13,6 @@ const output = {
   },
   list: (req, res) => {
     res.render("list");
-  },
-  callApi: async (req, res) => {
-    await axios({
-      method: "GET",
-      url: options.boxOffice.uri,
-      params: options.boxOffice.qs,
-    }).then((value) => {
-      let data = JSON.stringify(value.data.boxOfficeResult.weeklyBoxOfficeList);
-      let val = JSON.parse(data);
-      res.json(val);
-    })
   },
 };
 
