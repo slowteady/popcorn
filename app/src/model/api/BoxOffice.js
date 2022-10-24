@@ -3,9 +3,14 @@ const axios = require("axios");
 // API 호출하여 데이터 가공
 class BoxOffice {
   async getData() {
+    // 박스오피스 API 호출
     let boxOffData = await this.boxOffApi();
     const bxData = boxOffData.data.boxOfficeResult;
     const bxList = bxData.weeklyBoxOfficeList;
+
+    // 네이버 영화 API 호출
+    let movieData = await this.movieApi();
+    const mvData = movieData.data.items;
 
     // JSON배열 재생성
     const arr = new Array();
@@ -21,7 +26,8 @@ class BoxOffice {
     }
 
     const response = JSON.stringify(arr);
-    return response;
+    
+    // return response;
   }
 
   // 주간 박스오피스 API 호출
@@ -52,19 +58,19 @@ class BoxOffice {
   // 영화 API 호출
   movieApi() {
     const url = "https://openapi.naver.com/v1/search/movie.json";
-    const clientId = "7ySJaDi3l9q6z1Jg_NVH";
-    const secret = "NAgJHAIq40";
-    const header = {
+    const clientId = 'NTBqClUaZFMYahJjFa6B';
+    const secret = 'cn0smudzqa';
+    const data = {
+      params : {
+        query: "nope",
+      },
       headers: {
-        "X-Naver-Client-Id": clientId,
-        "X-Naver-Client-Secret": secret,
+        'X-Naver-Client-Id': clientId,
+        'X-Naver-Client-Secret': secret,
       },
     };
-    const param = {
-      query: "어벤져스",
-    };
-    const promise = axios.get(url, param, header);
-
+    const promise = axios.get(url, data);
+    
     return promise;
   }
 }
