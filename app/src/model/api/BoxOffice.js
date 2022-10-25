@@ -8,26 +8,36 @@ class BoxOffice {
     const bxData = boxOffData.data.boxOfficeResult;
     const bxList = bxData.weeklyBoxOfficeList;
 
-    // 네이버 영화 API 호출
-    let movieData = await this.movieApi();
-    const mvData = movieData.data.items;
-
     // JSON배열 재생성
     const arr = new Array();
-    const jsonArr = new Object();
-    jsonArr.type = bxData.boxofficeType;
-    jsonArr.range = bxData.showRange;
 
-    for(let i = 0; i < bxList.length; i++) {
-      jsonArr.name = bxList[i].movieNm;
+    for (let i = 0; i < bxList.length; i++) {
+      const jsonArr = new Object();
+
+      let name = bxList[i].movieNm;
+      jsonArr.name = name;
+
+      // 네이버 영화 API 호출
+      let movieData = await this.movieApi(name);
+      const mvData = movieData.data.items[0];
+
+      jsonArr.image = mvData.image;
+      jsonArr.director = mvData.director;
+      jsonArr.actor = mvData.actor;
       jsonArr.rank = bxList[i].rank;
 
       arr.push(jsonArr);
     }
 
+    const info = {
+      type: bxData.boxofficeType,
+      date: bxData.showRange,
+    }
+    arr.push(info);
+
     const response = JSON.stringify(arr);
     
-    // return response;
+    return response;
   }
 
   // 주간 박스오피스 API 호출
@@ -56,21 +66,21 @@ class BoxOffice {
   }
 
   // 영화 API 호출
-  movieApi() {
+  movieApi(name) {
     const url = "https://openapi.naver.com/v1/search/movie.json";
-    const clientId = 'NTBqClUaZFMYahJjFa6B';
-    const secret = 'cn0smudzqa';
+    const clientId = "NTBqClUaZFMYahJjFa6B";
+    const secret = "cn0smudzqa";
     const data = {
-      params : {
-        query: "nope",
+      params: {
+        query: name,
       },
       headers: {
-        'X-Naver-Client-Id': clientId,
-        'X-Naver-Client-Secret': secret,
+        "X-Naver-Client-Id": clientId,
+        "X-Naver-Client-Secret": secret,
       },
     };
     const promise = axios.get(url, data);
-    
+
     return promise;
   }
 }

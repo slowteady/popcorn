@@ -12,8 +12,9 @@ const output = {
   signup: (req, res) => {
     res.render("signup");
   },
-  list: (req, res) => {
+  list: async (req, res) => {
     const boxOff = new BoxOffice();
+    // console.log(await boxOff.getData());
     boxOff.getData();
     res.render("list");
   },
