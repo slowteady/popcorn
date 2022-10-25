@@ -12,32 +12,30 @@ class BoxOffice {
     const arr = new Array();
 
     for (let i = 0; i < bxList.length; i++) {
-      const jsonArr = new Object();
+      const subArr = new Object();
 
       let name = bxList[i].movieNm;
-      jsonArr.name = name;
+      subArr.name = name;
 
       // 네이버 영화 API 호출
       let movieData = await this.movieApi(name);
       const mvData = movieData.data.items[0];
 
-      jsonArr.image = mvData.image;
-      jsonArr.director = mvData.director;
-      jsonArr.actor = mvData.actor;
-      jsonArr.rank = bxList[i].rank;
+      subArr.image = mvData.image;
+      subArr.director = mvData.director;
+      subArr.actor = mvData.actor;
+      subArr.rank = bxList[i].rank;
 
-      arr.push(jsonArr);
+      arr.push(subArr);
     }
 
     const info = {
       type: bxData.boxofficeType,
       date: bxData.showRange,
     }
-    arr.push(info);
-
-    const response = JSON.stringify(arr);
     
-    return response;
+    arr['info'] = info;
+    return arr;
   }
 
   // 주간 박스오피스 API 호출

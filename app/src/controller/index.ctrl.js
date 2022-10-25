@@ -14,8 +14,8 @@ const output = {
   },
   list: async (req, res) => {
     const boxOff = new BoxOffice();
-    // console.log(await boxOff.getData());
-    boxOff.getData();
+    const data = await boxOff.getData();
+    
     res.render("list");
   },
 };
