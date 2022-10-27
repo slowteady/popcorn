@@ -25,8 +25,25 @@
       </div>
     </div>
   </nav>
-  <!-- Header-->
   {% set mData = data | safe %}
+  <script>
+    doRender({{mData}});
+    
+    function doRender(data) {
+      const info = data.info;
+      const movie = data.movie;
+      let template = `
+        <header class="bg-dark py-5">
+          <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+              <h1 class="display-4 fw-bolder">BOX OFFICE ${info.type}</h1>
+            </div>
+          </div>
+        </header>
+      `;
+    }
+  </script>
+  <!-- Header-->
   <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
       <div class="text-center text-white">
@@ -34,6 +51,7 @@
       </div>
     </div>
   </header>
+  <!-- section -->
   <section>
     <div class="album py-5 bg-light">
       <div class="container">
