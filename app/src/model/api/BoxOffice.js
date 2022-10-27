@@ -10,6 +10,7 @@ class BoxOffice {
 
     // JSON배열 재생성
     const arr = new Array();
+    const obj = new Object();
 
     for (let i = 0; i < bxList.length; i++) {
       const subArr = new Object();
@@ -28,14 +29,17 @@ class BoxOffice {
 
       arr.push(subArr);
     }
+    obj.movie = arr;
 
     const info = {
       type: bxData.boxofficeType,
       date: bxData.showRange,
     }
+    obj.info = info;
     
-    arr['info'] = info;
-    return arr;
+    const response = JSON.stringify(obj);
+    
+    return response;
   }
 
   // 주간 박스오피스 API 호출

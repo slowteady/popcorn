@@ -16,7 +16,7 @@ const output = {
     const boxOff = new BoxOffice();
     const data = await boxOff.getData();
     
-    res.render("list", data);
+    res.render("list", { data });
   },
 };
 
