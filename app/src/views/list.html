@@ -32,15 +32,39 @@
     function doRender(data) {
       const info = data.info;
       const movie = data.movie;
-      let template = `
+      let listTemplate = `
         <header class="bg-dark py-5">
           <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-              <h1 class="display-4 fw-bolder">BOX OFFICE ${info.type}</h1>
+              <h1 class="display-4 fw-bolder">BOX OFFICE</h1>
+              <span>${info.type}</span>
             </div>
           </div>
         </header>
+        <section>
+          <div class="album py-5 bg-light">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">이미지</text></svg>
+                    <div class="card-body">
+                      <p class="card-text">제목, 감독, 배우 등등</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">좋아요</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       `;
+      // document.body.innerHTML = listTemplate;
     }
   </script>
   <!-- Header-->
