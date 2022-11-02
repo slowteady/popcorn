@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', callApi);
+
+async function callApi() {
+  const boxOff = new BoxOffice();
+  const data = await boxOff.getData();
+}
+
 const homeBtn = document.querySelector("#homeBtn");
 homeBtn.addEventListener("click", () => {
   location.href = "/list";
@@ -16,3 +23,4 @@ officeBtn.addEventListener("click", () => {
 
 const myPageBtn = document.querySelector("#mypage");
 iconOver(myPageBtn);
+

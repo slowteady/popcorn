@@ -1,6 +1,6 @@
 const User = require("../model/User");
 const userSchema = require("../databases/schemas/userSchema");
-const BoxOffice = require("../model/api/BoxOffice");
+const movieAPI = require("../model/api/movieAPI");
 
 const output = {
   index: (req, res) => {
@@ -13,10 +13,10 @@ const output = {
     res.render("signup");
   },
   list: async (req, res) => {
-    const boxOff = new BoxOffice();
-    const data = await boxOff.getData();
+    // const boxOff = new BoxOffice();
+    // const data = await boxOff.getData();
     
-    res.render("list", { data });
+    res.render("list");
   },
 };
 
@@ -52,6 +52,12 @@ const process = {
     } catch (err) {
       next(err);
     }
+  },
+  list: async (req, res) => {
+    const data = req.body;
+    const movie = new movieAPI(data);
+    // const mData = await movie.getData();
+    
   },
 };
 
