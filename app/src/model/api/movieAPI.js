@@ -5,7 +5,7 @@ class movieAPI {
   constructor(data) {
     const value = this.data;
   }
-  
+   
   // 영화 API 호출
   callApi() {
     const url = "https://openapi.naver.com/v1/search/movie.json";
