@@ -1,7 +1,6 @@
 const User = require("../model/User");
 const userSchema = require("../databases/schemas/userSchema");
-const movieAPI = require("../model/api/movieAPI");
-
+const movieApi = require("../model/api/movieAPI")
 const output = {
   index: (req, res) => {
     res.render("login");
@@ -55,7 +54,7 @@ const process = {
   },
   list: async (req, res) => {
     const data = req.body;
-    const movie = new movieAPI(data);
+    const movie = movieApi(data);
     // const mData = await movie.getData();
     
   },

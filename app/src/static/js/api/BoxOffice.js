@@ -36,8 +36,7 @@ class BoxOffice {
 
   // 영화 API 호출
   movieApi(name) {
-    const data = JSON.stringify(name);
-    const promise = axios.post('/list', data);
+    const promise = axios.post('/list', name);
 
     return promise;
   }
