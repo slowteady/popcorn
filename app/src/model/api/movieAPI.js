@@ -9,24 +9,26 @@ async function movieApi(data) {
     let name = data[i].movieNm;
     jsonArr.name = name;
 
-    let movieData = await callApi(name);
-    // const mvData = movieData.data.items[0];
+    const movieData = await callApi(name);
+    const mvData = movieData.data.items[0];
 
-    // jsonArr.image = mvData.image;
-    // jsonArr.director = mvData.director;
-    // jsonArr.actor = mvData.actor;
-    // jsonArr.rank = data[i].rank;
+    jsonArr.title = mvData.title;
+    jsonArr.image = mvData.image;
+    jsonArr.director = mvData.director;
+    jsonArr.actor = mvData.actor;
+    jsonArr.rank = data[i].rank;
 
-    // arr.push(jsonArr);
+    arr.push(jsonArr);
   }
 
-  // console.log(arr);
-  let name = "";
-  callApi(name);
+  return arr;
 }
 
 // 영화 API 호출
 function callApi(name) {
+  if (!name) {
+    return false;
+  }
   const url = "https://openapi.naver.com/v1/search/movie.json";
   const clientId = "NTBqClUaZFMYahJjFa6B";
   const secret = "cn0smudzqa";
@@ -40,7 +42,7 @@ function callApi(name) {
     },
   };
   const promise = axios.get(url, data);
-
+  
   return promise;
 }
 

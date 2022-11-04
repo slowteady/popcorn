@@ -12,9 +12,6 @@ const output = {
     res.render("signup");
   },
   list: async (req, res) => {
-    // const boxOff = new BoxOffice();
-    // const data = await boxOff.getData();
-    
     res.render("list");
   },
 };
@@ -54,8 +51,7 @@ const process = {
   },
   list: async (req, res) => {
     const data = req.body;
-    const movie = movieApi(data);
-    // const mData = await movie.getData();
+    const movie = await movieApi(data);
     
   },
 };
