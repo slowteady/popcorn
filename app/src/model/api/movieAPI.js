@@ -7,21 +7,40 @@ async function movieApi(data) {
   for (let i = 0; i < data.length; i++) {
     const jsonArr = new Object();
 
+    // 이름
     let name = data[i].movieNm;
+    jsonArr.name = name;
+
+    // 개봉일자
     let releaseDate = data[i].openDt;
+    jsonArr.releaseDate = releaseDate;
+
+    // 날짜 변환 후 파라미터 보내 API 호출
     const date = new DateFormat();
     let opnDate = date.changeFormat(releaseDate);
-    // jsonArr.name = name;
-
     const movieData = await callApi(name, opnDate);
     const mvData = movieData.data.Data[0].Result[0];
     
-    // jsonArr.title = mvData.title;
-    // jsonArr.image = mvData.image;
-    // jsonArr.director = mvData.director;
-    // jsonArr.actor = mvData.actor;
-    // jsonArr.rank = data[i].rank;
+    // 포스터 정보
+    const posters = mvData.posters;
+    const image = posters.split('|')[0];
+    jsonArr.image = image;
 
+    // 감독
+    const director = mvData.directors.director[0].directorNm;
+    jsonArr.director = director;
+
+    // 배우
+    const actorArr = new Array();
+    const actorList = mvData.actors.actor;
+    for(let i = 0; i <= (actorList.length > 4 ? 4 : actorList.length); i++) {
+      actorArr.push(actorList[i].actorNm);
+    }
+    jsonArr.actor = actorArr;
+
+    // 순위 
+    jsonArr.rank = data[i].rank;
+    
     arr.push(jsonArr);
   }
 
