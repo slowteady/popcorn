@@ -1,4 +1,5 @@
 const axios = require("axios");
+const DateFormat = require('../classes/DateFormat');
 
 // API 호출하여 데이터 가공
 async function movieApi(data) {
@@ -8,9 +9,9 @@ async function movieApi(data) {
 
     let name = data[i].movieNm;
     let releaseDate = data[i].openDt;
-    let opnDate = dateFormat(new Date(releaseDate));
-    
-    jsonArr.name = name;
+    const date = new DateFormat();
+    let opnDate = date.changeFormat(releaseDate);
+    // jsonArr.name = name;
 
     const movieData = await callApi(name, opnDate);
     const mvData = movieData.data.Data[0].Result[0];
@@ -46,17 +47,6 @@ function callApi(name, opnDate) {
   const promise = axios.get(url, data);
   
   return promise;
-}
-
-// date 포맷
-function dateFormat(date) {
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-
-  month = month >= 10 ? month : '0' + month;
-  day = day >= 10 ? day : '0' + day;
-
-  return `${date.getFullYear()}${month}${day}`;
 }
 
 module.exports = movieApi;

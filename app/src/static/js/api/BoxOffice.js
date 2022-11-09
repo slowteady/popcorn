@@ -15,8 +15,8 @@ class BoxOffice {
     today.setDate(today.getDate() - 7);
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
-    const day = today.getDate();
-
+    const d = today.getDate();
+    const day = d >= 10 ? d : "0" + d;
     const date = `${year}${month}${day}`;
 
     const url =
@@ -36,9 +36,8 @@ class BoxOffice {
 
   // 영화 API 호출
   movieApi(name) {
-    const promise = axios.post('/list', name);
+    const promise = axios.post("/list", name);
 
     return promise;
   }
 }
-
