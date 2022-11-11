@@ -33,7 +33,6 @@ iconOver(myPageBtn);
 
 function doRender(data) {
   const colMain = document.querySelector("#colMain");
-  console.log(data);
   let img = data.image;
   let name = data.name;
   let releaseDate = data.releaseDate;
@@ -52,7 +51,7 @@ function doRender(data) {
             <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
             <button type="button" class="btn btn-sm btn-outline-secondary">평가하기</button>
           </div>
-          <div class="grade-group">
+          <div class="grade-group" id="gradeBox">
             <div class="circle"></div>
             <div class="grade">${rank}</div>
           </div>
@@ -61,4 +60,13 @@ function doRender(data) {
     </div>
   </div>`;
   colMain.insertAdjacentHTML("beforeend", template);
+
+  if(rank == 1) {
+    const gradeBox = document.querySelector("#gradeBox");
+    let template = `
+      <img src="img/crown_icon.png" id="crownIcon">
+    `;
+    gradeBox.insertAdjacentHTML("beforeend", template);
+  }
+  
 }

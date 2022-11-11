@@ -11310,7 +11310,7 @@ textarea.form-control-lg {
   align-items: center;
 }
 .grade-group .circle {
-  border: 14px solid rgb(227 229 212);
+  border: 14px solid rgba(0, 0, 0);
   border-radius: 50%;
   z-index: 1;
 }
@@ -11319,6 +11319,13 @@ textarea.form-control-lg {
 }
 .grade-group .grade {
   position: absolute;
-  color: black;
+  color: white;
   z-index: 2;
+}
+.grade-group #crownIcon {
+  width: 35px;
+  position: absolute;
+  height: 30px;
+  z-index: 3;
+  margin-bottom: 40px;
 }
