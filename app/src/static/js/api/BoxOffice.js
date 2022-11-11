@@ -28,7 +28,7 @@ class BoxOffice {
       "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
     const params = {
       params: {
-        itemPerPage: 8,
+        itemPerPage: 9,
         weekGb: 0,
         key: "4ec6acd6fa9e588ee928df8034cc6e25",
         targetDt: date,
