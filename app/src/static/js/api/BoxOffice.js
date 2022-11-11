@@ -2,11 +2,16 @@
 class BoxOffice {
   async getData() {
     // 박스오피스 API 호출
-    let boxOffData = await this.boxOffApi();
-    const bxData = boxOffData.data.boxOfficeResult;
-    const bxList = bxData.weeklyBoxOfficeList;
-
-    let data = await this.movieApi(bxList);
+    try {
+      let boxOffData = await this.boxOffApi();
+      const bxData = boxOffData.data.boxOfficeResult;
+      const bxList = bxData.weeklyBoxOfficeList;
+  
+      let data = await this.movieApi(bxList);
+      return data.data;
+    } catch(err) {
+      console.error(err);
+    }
   }
 
   // 주간 박스오피스 API 호출

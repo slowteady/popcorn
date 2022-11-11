@@ -52,7 +52,7 @@ const process = {
   list: async (req, res) => {
     const data = req.body;
     const movie = await movieApi(data);
-    
+    res.json(movie);
   },
 };
 
