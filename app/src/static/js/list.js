@@ -35,17 +35,26 @@ function doRender(data) {
   const colMain = document.querySelector("#colMain");
   console.log(data);
   let img = data.image;
-  // img width: 100%, height: 225px
+  let name = data.name;
+  let releaseDate = data.releaseDate;
+  let director = data.director;
+  let actor = data.actor;
+  let rank = data.rank;
+
   let template = `
   <div class="col">
     <div class="card shadow-sm">
-      <img class="bd-placeholder-img card-img-top" max-width="100%" height="auto" src="${img}"></img>
+      <img class="bd-placeholder-img card-img-top" max-width="auto" height="350" src="${img}"></img>
       <div class="card-body">
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <span class="justify-content-between align-items-center">
+        <span class="justify-content-between align-items-center box">
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">평가하기</button>
+          </div>
+          <div class="grade-group">
+            <div class="circle"></div>
+            <div class="grade">${rank}</div>
           </div>
         </span>
       </div>

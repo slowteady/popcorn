@@ -652,17 +652,12 @@ progress {
 }
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
-    max-width: 960px;
+    max-width: 800px;
   }
 }
 @media (min-width: 1200px) {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1140px;
-  }
-}
-@media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1320px;
+    max-width: 960px;
   }
 }
 .row {
@@ -11307,4 +11302,23 @@ textarea.form-control-lg {
 }
 .container .nav-item .nav-link {
   cursor: pointer;
+}
+.grade-group {
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.grade-group .circle {
+  border: 14px solid rgb(227 229 212);
+  border-radius: 50%;
+  z-index: 1;
+}
+.align-items-center.box {
+  display: flex;
+}
+.grade-group .grade {
+  position: absolute;
+  color: black;
+  z-index: 2;
 }
