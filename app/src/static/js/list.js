@@ -45,7 +45,9 @@ function doRender(data) {
     <div class="card shadow-sm">
       <img class="bd-placeholder-img card-img-top" max-width="auto" height="350" src="${img}"></img>
       <div class="card-body">
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div class="info movieNm" title="${name}">${name}</div>
+        <div class="info movieDate" title="${releaseDate}">${releaseDate} 개봉</div>
+        <div class="info movieDirec" title="${director}">${director} 감독</div>
         <span class="justify-content-between align-items-center box">
           <div class="btn-group">
             <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
@@ -68,5 +70,4 @@ function doRender(data) {
     `;
     gradeBox.insertAdjacentHTML("beforeend", template);
   }
-  
 }
