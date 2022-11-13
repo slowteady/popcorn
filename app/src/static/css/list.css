@@ -4539,7 +4539,7 @@ textarea.form-control-lg {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1rem 1rem;
+  padding: 0.7rem 0.7rem;
 }
 
 .card-title {
@@ -11305,9 +11305,10 @@ textarea.form-control-lg {
 }
 .grade-group {
   display: inline-flex;
-  position: relative;
+  position: absolute;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10px;
 }
 .grade-group .circle {
   border: 14px solid rgba(0, 0, 0);
@@ -11340,4 +11341,19 @@ textarea.form-control-lg {
 .card-body .info.movieNm {
   color: black;
   font-size: 16px;
+}
+.col .card-img-top {
+  cursor: pointer;
+}
+.card-body .movieInfo {
+  width: 210px;
+  margin-right: 10px;
+}
+.card-body .movieWrap {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.movieWrap .screen {
+  width: 53px;
 }

@@ -46,20 +46,21 @@ function doRender(data) {
     <div class="card shadow-sm">
       <img class="bd-placeholder-img card-img-top" max-width="auto" height="350" src="${img}"></img>
       <div class="card-body">
-        <div class="info movieNm" title="${name}">${name}</div>
-        <div class="info movieDate" title="${releaseDate}">${releaseDate} 개봉</div>
-        <div class="info movieDirec" title="${director}">${director} 감독</div>
-        <div class="info movieActor" title="${actor}">${actor}</div>
-        <span class="justify-content-between align-items-center box">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">평가하기</button>
+        <div class="movieWrap">
+          <div class="movieInfo">
+            <div class="info movieNm" title="${name}">${name}</div>
+            <div class="info movieDate" title="${releaseDate}">${releaseDate} 개봉</div>
+            <div class="info movieDirec" title="${director}">${director} 감독</div>
+            <div class="info movieActor" title="${actor}">${actor}</div>
           </div>
-          <div class="grade-group" id="gradeBox">
-            <div class="circle"></div>
-            <div class="grade">${rank}</div>
+          <div class="justify-content-center align-items-center box">
+            <img class="screen" src="img/screen_icon.png"></img>
+            <div class="grade-group" id="gradeBox">
+              <div class="circle"></div>
+              <div class="grade">${rank}</div>
+            </div>
           </div>
-        </span>
+        </div>
       </div>
     </div>
   </div>`;
