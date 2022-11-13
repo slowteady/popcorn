@@ -11334,4 +11334,10 @@ textarea.form-control-lg {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  color: #74747b;
+  font-size: 14px;
+}
+.card-body .info.movieNm {
+  color: black;
+  font-size: 16px;
 }

@@ -37,9 +37,10 @@ function doRender(data) {
   let name = data.name;
   let releaseDate = data.releaseDate;
   let director = data.director;
-  let actor = data.actor;
+  let actorList = data.actor;
+  let actor = `${actorList[0]}, ${actorList[1]}, ${actorList[2]}`;
   let rank = data.rank;
-
+  
   let template = `
   <div class="col">
     <div class="card shadow-sm">
@@ -48,6 +49,7 @@ function doRender(data) {
         <div class="info movieNm" title="${name}">${name}</div>
         <div class="info movieDate" title="${releaseDate}">${releaseDate} 개봉</div>
         <div class="info movieDirec" title="${director}">${director} 감독</div>
+        <div class="info movieActor" title="${actor}">${actor}</div>
         <span class="justify-content-between align-items-center box">
           <div class="btn-group">
             <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
