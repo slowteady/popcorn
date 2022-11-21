@@ -4541,6 +4541,7 @@ textarea.form-control-lg {
   height: 110px;
   flex: 1 1 auto;
   padding: 0.7rem 0.7rem;
+  cursor: pointer;
 }
 
 .card-title {
