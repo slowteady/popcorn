@@ -21,7 +21,6 @@ async function movieApi(data) {
     const movieData = await callApi(name, opnDate);
     const noData = {
       posters: 'img/nophoto_icon.png',
-      content: '데이터 준비중입니다'
     }
     const mvData = movieData.data.Data[0].Result ? movieData.data.Data[0].Result[0] : noData;
     const jsonData = mvData ? mvData : noData;
@@ -32,12 +31,12 @@ async function movieApi(data) {
     jsonArr.image = image;
 
     // 감독
-    const director = mvData.directors ? mvData.directors.director[0].directorNm : mvData.content;
+    const director = mvData.directors ? mvData.directors.director[0].directorNm : '';
     jsonArr.director = director;
 
     // 배우
     const actorArr = new Array();
-    const actorList = mvData.actors ? mvData.actors.actor : mvData.content;
+    const actorList = mvData.actors ? mvData.actors.actor : '';
     if(actorList) {
       for(let i = 0; i <= (actorList.length > 4 ? 4 : actorList.length); i++) {
         actorArr.push(actorList[i].actorNm);

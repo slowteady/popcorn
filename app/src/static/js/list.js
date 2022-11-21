@@ -36,7 +36,7 @@ function doRender(data) {
   let img = data.image;
   let name = data.name;
   let releaseDate = data.releaseDate;
-  let director = data.director;
+  let director = data.director != '' ? data.director + ' 감독': '데이터 준비중입니다';
   let actorList = data.actor;
   let actor;
   if(actorList[0] != null && actorList.length > 0) {
@@ -50,6 +50,10 @@ function doRender(data) {
   <div class="col">
     <div class="card shadow-sm">
       <img class="bd-placeholder-img card-img-top" max-width="auto" height="350" src="${img}"></img>
+      <div class="grade-group" id="gradeBox">
+        <div class="circle"></div>
+        <div class="grade">${rank}</div>
+      </div>
       <div class="card-body">
         <div class="movieWrap">
           <div class="movieInfo">
@@ -57,13 +61,6 @@ function doRender(data) {
             <div class="info movieDate" title="${releaseDate}">${releaseDate} 개봉</div>
             <div class="info movieDirec" title="${director}">${director}</div>
             <div class="info movieActor" title="${actor}">${actor}</div>
-          </div>
-          <div class="justify-content-center align-items-center box">
-            <img class="screen" src="img/screen_icon.png"></img>
-            <div class="grade-group" id="gradeBox">
-              <div class="circle"></div>
-              <div class="grade">${rank}</div>
-            </div>
           </div>
         </div>
       </div>

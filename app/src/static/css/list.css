@@ -11309,10 +11309,11 @@ textarea.form-control-lg {
   position: absolute;
   justify-content: center;
   align-items: center;
-  padding-bottom: 10px;
+  top: 15px;
+  left: 10px;
 }
 .grade-group .circle {
-  border: 14px solid rgba(0, 0, 0);
+  border: 14px solid #a6e941;
   border-radius: 50%;
   z-index: 1;
 }
@@ -11354,7 +11355,4 @@ textarea.form-control-lg {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-}
-.movieWrap .screen {
-  width: 53px;
 }
