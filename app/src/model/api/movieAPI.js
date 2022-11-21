@@ -19,25 +19,32 @@ async function movieApi(data) {
     const date = new DateFormat();
     let opnDate = date.changeFormat(releaseDate);
     const movieData = await callApi(name, opnDate);
-    const mvData = movieData.data.Data[0].Result[0];
+    const noData = {
+      posters: 'img/nophoto_icon.png',
+      content: '데이터 준비중입니다'
+    }
+    const mvData = movieData.data.Data[0].Result ? movieData.data.Data[0].Result[0] : noData;
+    const jsonData = mvData ? mvData : noData;
     
     // 포스터 정보
-    const posters = mvData.posters;
-    const image = posters.split('|')[0];
+    const posters = jsonData.posters;
+    const image = posters.includes('|') || posters.includes('http') ? posters.split('|')[0] : posters;
     jsonArr.image = image;
 
     // 감독
-    const director = mvData.directors.director[0].directorNm;
+    const director = mvData.directors ? mvData.directors.director[0].directorNm : mvData.content;
     jsonArr.director = director;
 
     // 배우
     const actorArr = new Array();
-    const actorList = mvData.actors.actor;
-    for(let i = 0; i <= (actorList.length > 4 ? 4 : actorList.length); i++) {
-      actorArr.push(actorList[i].actorNm);
+    const actorList = mvData.actors ? mvData.actors.actor : mvData.content;
+    if(actorList) {
+      for(let i = 0; i <= (actorList.length > 4 ? 4 : actorList.length); i++) {
+        actorArr.push(actorList[i].actorNm);
+      }
     }
     jsonArr.actor = actorArr;
-
+    
     // 순위 
     jsonArr.rank = data[i].rank;
     

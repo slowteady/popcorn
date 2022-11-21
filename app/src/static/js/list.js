@@ -38,7 +38,12 @@ function doRender(data) {
   let releaseDate = data.releaseDate;
   let director = data.director;
   let actorList = data.actor;
-  let actor = `${actorList[0]}, ${actorList[1]}, ${actorList[2]}`;
+  let actor;
+  if(actorList[0] != null && actorList.length > 0) {
+    actor = `${actorList[0]}, ${actorList[1]}, ${actorList[2]}`;
+  } else {
+    actor = '데이터 준비중입니다';
+  }
   let rank = data.rank;
   
   let template = `
@@ -50,7 +55,7 @@ function doRender(data) {
           <div class="movieInfo">
             <div class="info movieNm" title="${name}">${name}</div>
             <div class="info movieDate" title="${releaseDate}">${releaseDate} 개봉</div>
-            <div class="info movieDirec" title="${director}">${director} 감독</div>
+            <div class="info movieDirec" title="${director}">${director}</div>
             <div class="info movieActor" title="${actor}">${actor}</div>
           </div>
           <div class="justify-content-center align-items-center box">
