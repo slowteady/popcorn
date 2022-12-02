@@ -46,6 +46,22 @@ async function movieApi(data) {
     
     // 순위 
     jsonArr.rank = data[i].rank;
+
+    // 영어 이름
+    jsonArr.titleEng = jsonData.titleEng;
+
+    // 연령대 
+    jsonArr.rating = jsonData.rating;
+
+    // 장르
+    jsonArr.genre = jsonData.genre;
+
+    // 국가
+    jsonArr.nation = jsonData.nation;
+
+    // 줄거리
+    const plot = jsonData.plots.plot[0].plotText;
+    jsonArr.plot = plot;
     
     arr.push(jsonArr);
   }

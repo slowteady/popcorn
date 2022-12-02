@@ -1,6 +1,6 @@
 const User = require("../model/User");
 const userSchema = require("../databases/schemas/userSchema");
-const movieApi = require("../model/api/movieAPI")
+const movieApi = require("../model/api/movieAPI");
 const output = {
   index: (req, res) => {
     res.render("login");
