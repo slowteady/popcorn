@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", callApi);
 
+// API 호출
 async function callApi() {
   try {
     const boxOff = new BoxOffice();
     const data = await boxOff.getData();
+
     for (let i = 0; i < data.length; i++) {
-      doRender(data[i]);
+      doRender(data[i], i);
+      // setModal(data[i]);
     }
   } catch (err) {
     console.error(err);
@@ -46,9 +49,10 @@ function doRender(data) {
   }
   let rank = data.rank;
   
+  // 기본 템플릿
   let template = `
   <div class="col">
-    <div class="card shadow-sm">
+    <div class="card shadow-sm" id="movieFrame${rank}">
       <img class="bd-placeholder-img card-img-top" max-width="auto" height="350" src="${img}"></img>
       <div class="grade-group" id="gradeBox">
         <div class="circle"></div>
@@ -68,11 +72,26 @@ function doRender(data) {
   </div>`;
   colMain.insertAdjacentHTML("beforeend", template);
 
+  // 박스오피스 1위 왕관 이미지
   if(rank == 1) {
     const gradeBox = document.querySelector("#gradeBox");
     let template = `
       <img src="img/crown_icon.png" id="crownIcon">
     `;
     gradeBox.insertAdjacentHTML("beforeend", template);
+  }
+
+  setModal(data, rank);
+}
+
+
+// 모달창 생성 함수
+function setModal(data, rank) {
+  const movieFrame = document.querySelector("#movieFrame" + rank);
+  movieFrame.addEventListener("click", (data) => modalOn());
+
+  // 모달 창
+  function modalOn() {
+    
   }
 }
