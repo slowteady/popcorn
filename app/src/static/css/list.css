@@ -11356,3 +11356,12 @@ textarea.form-control-lg {
   flex-direction: row;
   overflow: hidden;
 }
+.modalContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  box-sizing: border-box;
+  z-index: 5;
+}

@@ -8,7 +8,6 @@ async function callApi() {
 
     for (let i = 0; i < data.length; i++) {
       doRender(data[i], i);
-      // setModal(data[i]);
     }
   } catch (err) {
     console.error(err);
@@ -81,17 +80,29 @@ function doRender(data) {
     gradeBox.insertAdjacentHTML("beforeend", template);
   }
 
+  // 모달 설정
   setModal(data, rank);
 }
-
 
 // 모달창 생성 함수
 function setModal(data, rank) {
   const movieFrame = document.querySelector("#movieFrame" + rank);
-  movieFrame.addEventListener("click", (data) => modalOn());
+  movieFrame.addEventListener("click", () => {
+    modalOn(data);
+  });
 
   // 모달 창
-  function modalOn() {
+  function modalOn(data) {
+    const height = document.body.scrollHeight;
+    let template = `
+    <div class="modalContainer" style="height: ${height}px">
+      <div class="col">
+
+      </div>
+    </div>
+    `;
     
+    document.body.insertAdjacentHTML("beforeend", template);
+
   }
 }
