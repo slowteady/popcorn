@@ -102,7 +102,15 @@ function setModal(data, rank) {
     </div>
     `;
     
+    // 모달 on
     document.body.insertAdjacentHTML("beforeend", template);
 
+    // 모달 off
+    const modalContainer = document.querySelector('.modalContainer');
+    modalContainer.addEventListener("click", function() {
+      modalContainer.remove();
+    });
   }
 }
+
+
