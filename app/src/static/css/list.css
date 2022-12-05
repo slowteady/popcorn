@@ -11366,7 +11366,7 @@ textarea.form-control-lg {
   z-index: 5;
 }
 .modalBox {
-  position: relative;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
