@@ -40,14 +40,16 @@ function doRender(data) {
   let releaseDate = data.releaseDate;
   let director = data.director != '' ? data.director + ' 감독': '데이터 준비중입니다';
   let actorList = data.actor;
-  let actor;
+  let actor = "";
   if(actorList[0] != null && actorList.length > 0) {
-    actor = `${actorList[0]}, ${actorList[1]}, ${actorList[2]}`;
+    for(let i = 0; i < actorList.length; i++) {
+      actor += ` ${actorList[i]} / `;
+    }
   } else {
-    actor = '데이터 준비중입니다';
+    actor = "";
   }
   let rank = data.rank;
-  
+ 
   // 기본 템플릿
   let template = `
   <div class="col">

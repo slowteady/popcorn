@@ -37,9 +37,12 @@ async function movieApi(data) {
     // 배우
     const actorArr = new Array();
     const actorList = mvData.actors ? mvData.actors.actor : '';
+
     if(actorList) {
-      for(let i = 0; i <= (actorList.length > 4 ? 4 : actorList.length); i++) {
-        actorArr.push(actorList[i].actorNm);
+      for(let i = 0; i <= 2; i++) {
+        if(actorList[i]) {
+          actorArr.push(actorList[i].actorNm);
+        } 
       }
     }
     jsonArr.actor = actorArr;
