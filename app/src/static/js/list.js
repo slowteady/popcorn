@@ -98,7 +98,7 @@ function setModal(data, rank) {
     const height = document.body.scrollHeight;
     let template = `
     <div class="modalContainer" style="height: ${height}px">
-      <div class="col">
+      <div class="modalBox">
 
       </div>
     </div>
