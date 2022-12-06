@@ -99,7 +99,9 @@ function setModal(data, rank) {
     let template = `
     <div class="modalContainer" style="height: ${height}px">
       <div class="modalBox">
-
+        <div class="imgBox" id="imgBox">
+        
+        </div>
       </div>
     </div>
     `;
@@ -107,10 +109,21 @@ function setModal(data, rank) {
     // 모달 on
     document.body.insertAdjacentHTML("beforeend", template);
 
+    const imgBox = document.querySelector("#imgBox");
+
+
+
+
+
+
+
+
     // 모달 off
     const modalContainer = document.querySelector('.modalContainer');
-    modalContainer.addEventListener("click", function() {
-      modalContainer.remove();
+    modalContainer.addEventListener("click", function(e) {
+      if(e.target == modalContainer) {
+        modalContainer.remove();
+      };
     });
   }
 }
