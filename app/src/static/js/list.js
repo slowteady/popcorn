@@ -103,6 +103,9 @@ function setModal(data, rank) {
         <div class="imgBox" id="imgBox">
           <img class="img" id="img" src=${data.image}></img>
         </div>
+        <div class="titleBox" id="titleBox">
+          <span class="title" id="title">[${data.name}]</div>
+        </div>
       </div>
     </div>
     `;

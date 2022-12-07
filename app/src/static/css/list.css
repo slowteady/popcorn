@@ -11382,3 +11382,19 @@ textarea.form-control-lg {
   width: 250px;
   height: 350px;
 }
+.modalBox .titleBox {
+  margin: 0 0 0 20px;
+  font-weight: bold;
+  height: 90px;
+  width: 250px;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+}
+.modalBox .title {
+  font-weight: bold;
+  font-size: 20px;
+}
