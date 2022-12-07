@@ -11376,3 +11376,9 @@ textarea.form-control-lg {
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.9);
 }
+.modalBox .img {
+  margin: 20px;
+  border-radius: 20px;
+  width: 250px;
+  height: 350px;
+}

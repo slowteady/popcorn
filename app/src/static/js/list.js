@@ -95,12 +95,13 @@ function setModal(data, rank) {
 
   // 모달 창
   function modalOn(data) {
+    console.log(data);
     const height = document.body.scrollHeight;
     let template = `
     <div class="modalContainer" style="height: ${height}px">
       <div class="modalBox">
         <div class="imgBox" id="imgBox">
-        
+          <img class="img" id="img" src=${data.image}></img>
         </div>
       </div>
     </div>
