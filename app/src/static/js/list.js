@@ -103,8 +103,34 @@ function setModal(data, rank) {
         <div class="imgBox" id="imgBox">
           <img class="img" id="img" src=${data.image}></img>
         </div>
-        <div class="titleBox" id="titleBox">
-          <span class="title" id="title">[${data.name}]</div>
+        <div class="dataBox">
+          <div class="box">
+            <div class="rank">순위: ${data.rank}위</div>
+          </div>
+          <div class="box">
+            <div class="nation">국가: ${data.nation}</div>
+          </div>
+          <div class="box">
+            <div class="genre">장르: ${data.genre}</div>
+          </div>
+          <div class="box">
+            <div class="rating">등급: ${data.rating}</div>
+          </div>
+          <div class="box">
+            <div class="release">개봉일: ${data.releaseDate}</div>
+          </div>
+          <div class="box">
+            <div class="actor">배우: ${data.actor}</div>
+          </div>
+          <div class="box">
+            <div class="director">감독: ${data.director}</div>
+          </div>
+          <div class="box">
+            <div class="plot">줄거리: ${data.plot}</div>
+          </div>
+        </div>
+        <div class="titleBox">
+          <div class="title">[${data.name}]</div>
         </div>
       </div>
     </div>

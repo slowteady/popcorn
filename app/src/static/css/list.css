@@ -11401,3 +11401,15 @@ textarea.form-control-lg {
   font-weight: bold;
   font-size: 20px;
 }
+.modalBox .dataBox {
+  display: inline-block;
+  position: absolute;
+  width: 400px;
+  height: 460px;
+  top: 20px;
+  z-index: 6;
+  overflow: auto;
+}
+.dataBox .box {
+  margin: 0 0 5px 0;
+}
