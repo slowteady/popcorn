@@ -10,7 +10,7 @@ signUpText.addEventListener("click", () => {
   location.href = "/signup";
 });
 
-// 로그인 처리 로직
+// 로그인 처리 
 const login = () => {
   const req = {
     id: id.value,
@@ -44,6 +44,7 @@ const login = () => {
 const loginBtn = document.querySelector(".loginBtn");
 loginBtn.addEventListener("click", login);
 
+// 엔터 눌렀을 시 이벤트 처리 
 const inputBox = document.querySelector(".inputBox");
 inputBox.addEventListener("keyup", (e) => {
   if(e.keyCode === 13) {

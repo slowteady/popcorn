@@ -5,9 +5,9 @@ const uri = 'mongodb+srv://admin:admin@cluster0.kntf4.mongodb.net/?retryWrites=t
 const connectToMongo = async () => {
     try {
         await mongoose.connect(uri, { dbName: 'popcorn' });
-        console.log('MongoDB 연결 완료');
+        console.log('CONNECT TO MONGODB');
     } catch (err) {
-        console.error('MongoDB 연결 오류', err);
+        console.error('ERROR TO MONGODB: ', err);
     }
 };
 

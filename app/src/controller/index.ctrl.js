@@ -17,6 +17,7 @@ const output = {
 };
 
 const process = {
+  // 로그인
   login: async (req, res, next) => {
     try {
       const user = new User(req.body);
@@ -30,6 +31,7 @@ const process = {
       next(err);
     }
   },
+  // 회원가입
   signup: (req, res, next) => {
     try {
       const data = req.body;
@@ -40,6 +42,7 @@ const process = {
       next(err);
     }
   },
+  // ID 검증
   idCheck: async (req, res, next) => {
     try {
       const data = req.body;
@@ -49,6 +52,7 @@ const process = {
       next(err);
     }
   },
+  // API 호출
   list: async (req, res) => {
     const data = req.body;
     const movie = await movieApi(data);

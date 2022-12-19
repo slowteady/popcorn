@@ -1,3 +1,4 @@
+// DATE 형식 관련 클래스
 class DateFormat {
     changeFormat(string) {
         let date = new Date(string);
