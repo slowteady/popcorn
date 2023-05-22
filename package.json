@@ -2,6 +2,10 @@
   "name": "popcorn",
   "license": "ISC",
   "packageManager": "yarn@3.3.1",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon ./server/index.js",
+    "prod": "NODE_ENV=production node ./server/index.js"
+  },
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
