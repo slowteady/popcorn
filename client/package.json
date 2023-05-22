@@ -1,4 +1,19 @@
 {
   "name": "client",
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.3.1",
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.1",
+    "http-proxy-middleware": "^2.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/material-ui": "^0.21.12",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4"
+  }
 }
