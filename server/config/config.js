@@ -9,8 +9,14 @@ const rootPath = path.resolve(__dirname, "../.."); // 절대경로
 
 let envFile = ".env.development";
 if (process.env.NODE_ENV === "production") {
-    envFile = ".env.production";
+  envFile = ".env.production";
 }
 
 const envPath = path.join(rootPath, envFile);
-dotenv.config({ path: envPath });
+const init = () => {
+  dotenv.config({ path: envPath });
+};
+
+module.exports = {
+  init,
+};
