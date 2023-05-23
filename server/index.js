@@ -1,9 +1,22 @@
 const express = require("express");
 const config = require("./config/config");
-const app = express();
 
 // config 설정 파일 초기화
-config.init(); 
+config.init();
+
+// DB 연결
+const mongoose = require("mongoose");
+const connect = mongoose.connect(process.env.MONGO_URI);
+connect
+  .then((res) =>
+    console.log(`========MongoDB Connect [${res.connections[0].name}]========`)
+  )
+  .catch((err) => console.log(err));
+
+// Body 파싱 미들웨어 등록
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // 포트번호 설정
 const port = process.env.SERVER_PORT || 8080;
