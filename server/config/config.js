@@ -2,6 +2,7 @@
 .env 파일 설정 값
 1. NODE_ENV=환경 => package.json/scripts에 설정
 2. SERVER_PORT=포트번호
+3. MONGO_URI=MongoDB 커넥트 연결 정보
 */
 const dotenv = require("dotenv");
 const path = require("path");
