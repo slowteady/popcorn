@@ -2,7 +2,7 @@
   "name": "client",
   "packageManager": "yarn@3.3.1",
   "scripts": {
-    "dev": "",
+    "dev": "webpack-dev-server --mode development",
     "prod": ""
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "@types/react-dom": "^18.2.4",
     "@types/react-router-dom": "^5.3.3",
     "ts-loader": "^9.4.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "webpack-build-notifier": "^2.3.0"
   }
 }
