@@ -2,7 +2,7 @@
   "name": "client",
   "packageManager": "yarn@3.3.1",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
+    "dev": "webpack-dev-server --hot --mode development",
     "prod": ""
   },
   "dependencies": {
