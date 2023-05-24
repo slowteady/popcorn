@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const connect = mongoose.connect(process.env.MONGO_URI);
 connect
   .then((res) =>
-    console.log(`========MongoDB Connect [${res.connections[0].name}]========`)
+    console.log(`========MongoDB Connect To [${res.connections[0].name}]========`)
   )
   .catch((err) => console.error(err));
 
