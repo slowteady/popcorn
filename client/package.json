@@ -1,6 +1,10 @@
 {
   "name": "client",
   "packageManager": "yarn@3.3.1",
+  "scripts": {
+    "dev": "",
+    "prod": ""
+  },
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -8,7 +12,10 @@
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "5"
+    "react-router-dom": "5",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   },
   "devDependencies": {
     "@types/material-ui": "^0.21.12",
