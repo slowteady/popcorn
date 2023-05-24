@@ -11,12 +11,15 @@ connect
   .then((res) =>
     console.log(`========MongoDB Connect [${res.connections[0].name}]========`)
   )
-  .catch((err) => console.log(err));
+  .catch((err) => console.error(err));
 
 // Body 파싱 미들웨어 등록
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// 로그인 라우터
+app.use('/', require('./routes/login'));
 
 // 포트번호 설정
 const port = process.env.SERVER_PORT || 8080;
