@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Avatar,
   Button,
   Checkbox,
   FormControlLabel,
@@ -8,19 +9,18 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
-const Copyright = () => {
-  return (
-    <Typography variant="body2" color="text">
-      asds
-    </Typography>
-  );
-};
+import { LockOutlined } from "@mui/icons-material";
 
 // 로그인 페이지
 const LoginPage = () => {
   return (
     <div>
+      <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <LockOutlined />
+      </Avatar>
+      <Typography component="h1" variant="h5">
+        로그인
+      </Typography>
       <TextField
         label="이메일"
         margin="normal"
