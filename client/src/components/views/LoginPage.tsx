@@ -9,15 +9,17 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { LockOutlined } from "@mui/icons-material";
+import PopcornIcon from '../../img/popcorn_icon.jpeg';
 
 // 로그인 페이지
 const LoginPage = () => {
   return (
     <div>
-      <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-        <LockOutlined />
-      </Avatar>
+      <Avatar
+        sx={{ m: 1, bgcolor: "secondary.main" }}
+        src={PopcornIcon}
+        alt="popcorn_icon"
+      ></Avatar>
       <Typography component="h1" variant="h5">
         로그인
       </Typography>
