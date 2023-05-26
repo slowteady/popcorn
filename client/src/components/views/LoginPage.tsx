@@ -35,7 +35,7 @@ const LoginPage = () => {
           sx={{ m: 1, bgcolor: "secondary.main" }}
           src={PopcornIcon}
           alt="popcorn_icon"
-        ></Avatar>
+        />
         <Typography component="h1" variant="h5">
           로그인
         </Typography>
