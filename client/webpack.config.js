@@ -5,6 +5,7 @@ module.exports = {
   mode: "development",
   devServer: {
     port: 3000,
+    historyApiFallback: true,
   },
   entry: {
     app: "./src/index.tsx", // 처음 시작할 파일
