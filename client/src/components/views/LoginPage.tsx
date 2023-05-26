@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -15,6 +16,11 @@ import PopcornIcon from "../../img/popcorn_icon.jpeg";
 
 // 로그인 페이지
 const LoginPage = () => {
+  const history = useHistory();
+  const onClickSignUp = () => {
+    history.push("/signup");
+  };
+
   return (
     <Container component="main" maxWidth="sm">
       <Box
@@ -83,6 +89,7 @@ const LoginPage = () => {
             },
           }}
           fullWidth
+          onClick={onClickSignUp}
         >
           회원가입
         </Button>
