@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
 
-// 로그인 페이지
+// 로그인 컴포넌트
 const LoginPage = () => {
   const history = useHistory();
   const onClickSignUp = () => {
