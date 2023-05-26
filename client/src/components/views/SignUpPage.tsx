@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Avatar,
@@ -10,8 +10,30 @@ import {
 } from "@mui/material";
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
 
-const SignUpPage = () => {
+interface Form {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+// 회원가입 컴포넌트
+const SignupPage = () => {
   const history = useHistory();
+  const [formData, setFormData] = useState<Form>({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
   const onClickCancel = () => {
     history.push("/");
   };
@@ -34,50 +56,58 @@ const SignUpPage = () => {
         <Typography component="h1" variant="h5">
           회원가입
         </Typography>
-        <TextField
-          label="이름"
-          margin="normal"
-          name="name"
-          required
-          fullWidth
-        />
-        <TextField
-          label="이메일"
-          margin="normal"
-          autoComplete="email"
-          name="email"
-          required
-          fullWidth
-        />
-        <TextField
-          label="패스워드"
-          margin="normal"
-          type="password"
-          name="password"
-          autoComplete="current-password"
-          required
-          fullWidth
-        />
-        <TextField
-          label="패스워드 확인"
-          margin="normal"
-          type="password"
-          name="confirmPassword"
-          autoComplete="current-password"
-          required
-          fullWidth
-        />
+        <form onSubmit={onSubmit}>
+          <TextField
+            label="이름"
+            margin="normal"
+            name="name"
+            required
+            fullWidth
+            onChange={onChangeHandler}
+            value={formData.name}
+          />
+          <TextField
+            label="이메일"
+            margin="normal"
+            autoComplete="email"
+            name="email"
+            required
+            fullWidth
+            onChange={onChangeHandler}
+            value={formData.email}
+          />
+          <TextField
+            label="패스워드"
+            margin="normal"
+            type="password"
+            name="password"
+            autoComplete="current-password"
+            required
+            fullWidth
+            onChange={onChangeHandler}
+            value={formData.password}
+          />
+          <TextField
+            label="패스워드 확인"
+            margin="normal"
+            type="password"
+            name="confirmPassword"
+            required
+            fullWidth
+            onChange={onChangeHandler}
+            value={formData.confirmPassword}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            sx={{ mt: 2, mb: 2 }}
+            fullWidth
+          >
+            회원가입
+          </Button>
+        </form>
         <Button
-          type="submit"
-          variant="contained"
-          size="large"
-          sx={{ mt: 2, mb: 2 }}
-          fullWidth
-        >
-          회원가입
-        </Button>
-        <Button
-          type="submit"
           variant="contained"
           size="large"
           sx={{
@@ -96,4 +126,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignupPage;
