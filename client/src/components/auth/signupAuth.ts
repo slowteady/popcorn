@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { Form } from "../views/SignupPage";
+import { strCheck } from "../../utils/check";
 
 export const validate = ({ Email, Name, Password, ConfirmPassword }: Form) => {
   // 비밀번호, 비밀번호 확인 일치 검증
@@ -13,10 +14,10 @@ export const validate = ({ Email, Name, Password, ConfirmPassword }: Form) => {
 
   // 비어 있는 값 검증
   if (
-    Email.trim() === "" ||
-    Name.trim() === "" ||
-    Password.trim() === "" ||
-    ConfirmPassword.trim() === ""
+    strCheck.isEmpty(Email) ||
+    strCheck.isEmpty(Name) ||
+    strCheck.isEmpty(Password) ||
+    strCheck.isEmpty(ConfirmPassword)
   ) {
     Swal.fire({
       icon: "error",
