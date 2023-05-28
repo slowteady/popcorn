@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
-import Swal from "sweetalert2";
+import { validatePassword } from "../auth/signupAuth";
 
 interface Form {
   Name: string;
@@ -36,13 +36,11 @@ const SignupPage = () => {
     const { Email, Name, Password, ConfirmPassword } = FormData;
     e.preventDefault();
 
-    if (Password !== ConfirmPassword) {
-      Swal.fire({
-        icon: "error",
-        title: "비밀번호가 일치하지 않아요",
-      });
+    // 비밀번호, 비밀번호 확인 일치 검증
+    if (!validatePassword(Password, ConfirmPassword)) {
+      return;
     }
-
+    
     let body = {
       email: Email,
       name: Name,
