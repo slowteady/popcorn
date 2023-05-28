@@ -9,9 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
-import { validatePassword } from "../auth/signupAuth";
+import { validate } from "../auth/signupAuth";
 
-interface Form {
+export interface Form {
   Name: string;
   Email: string;
   Password: string;
@@ -33,14 +33,12 @@ const SignupPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    const { Email, Name, Password, ConfirmPassword } = FormData;
+    const { Email, Name, Password } = FormData;
     e.preventDefault();
 
-    // 비밀번호, 비밀번호 확인 일치 검증
-    if (!validatePassword(Password, ConfirmPassword)) {
-      return;
-    }
-    
+    // 데이터 검증
+    validate(FormData);
+
     let body = {
       email: Email,
       name: Name,
