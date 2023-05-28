@@ -1,36 +1,13 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { FormEvent, memo } from "react";
 import { useHistory } from "react-router-dom";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Button, Container, Typography } from "@mui/material";
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
-
-interface Form {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import SignupInput from "./SignupInput";
 
 // 회원가입 컴포넌트
 const SignupPage = () => {
   const history = useHistory();
-  const [formData, setFormData] = useState<Form>({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
 
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -57,46 +34,7 @@ const SignupPage = () => {
           회원가입
         </Typography>
         <form onSubmit={onSubmit}>
-          <TextField
-            label="이름"
-            margin="normal"
-            name="name"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={formData.name}
-          />
-          <TextField
-            label="이메일"
-            margin="normal"
-            autoComplete="email"
-            name="email"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={formData.email}
-          />
-          <TextField
-            label="패스워드"
-            margin="normal"
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={formData.password}
-          />
-          <TextField
-            label="패스워드 확인"
-            margin="normal"
-            type="password"
-            name="confirmPassword"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={formData.confirmPassword}
-          />
+          <SignupInput />
           <Button
             type="submit"
             variant="contained"
@@ -126,4 +64,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default memo(SignupPage);
