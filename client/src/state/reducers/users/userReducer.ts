@@ -1,14 +1,12 @@
 import { Form } from "../../../components/views/SignupPage";
 
 export interface Action {
-  type: "REGISTER_USER" | "ERROR";
-  payload: { isSuccess: boolean; msg?: unknown };
+  type?: "ERROR";
+  payload: { isSuccess: boolean; msg?: unknown, code?: any };
 }
 
 export const userReducer = (state: Form, action: Action) => {
   switch (action.type) {
-    case "REGISTER_USER":
-      return { ...state, payload: action.payload };
     case "ERROR":
       return { ...state, payload: action.payload };
     default:

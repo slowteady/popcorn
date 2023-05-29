@@ -7,7 +7,7 @@ const registerUser = async (req, res) => {
     res.status(200).json({ isSuccess: true });
   } catch (err) {
     console.error(err);
-    res.json({ isSuccess: false, msg: err });
+    res.json({ isSuccess: false, msg: err, code: err.code });
   }
 };
 
