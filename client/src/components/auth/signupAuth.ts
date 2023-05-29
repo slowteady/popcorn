@@ -50,3 +50,12 @@ export const validate = ({ Email, Name, Password, ConfirmPassword }: Form) => {
 
   return true;
 };
+
+// 에러 발생 시 
+export const onError = () => {
+  Swal.fire({
+    icon: "error",
+    title: "오류가 발생했어요",
+  });
+  return false;
+};
