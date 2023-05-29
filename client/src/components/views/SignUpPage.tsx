@@ -1,4 +1,11 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  Reducer,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { useHistory } from "react-router-dom";
 import {
   Avatar,
@@ -9,30 +16,44 @@ import {
   Typography,
 } from "@mui/material";
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
-import { validate } from "../auth/signupAuth";
+import { onError, validate } from "../auth/signupAuth";
+import { Action, userReducer } from "../../state/reducers/users/userReducer";
+import { registerUser } from "../../state/reducers/actions/userAction";
+import Swal from "sweetalert2";
 
 export interface Form {
   Name: string;
   Email: string;
   Password: string;
   ConfirmPassword: string;
+  payload?: { isSuccess: boolean; msg?: unknown };
 }
+
+const initialState: Form = {
+  Email: "vbn0213@naver.com",
+  Name: "이용민",
+  Password: "Skaksdkfdk4!",
+  ConfirmPassword: "Skaksdkfdk4!",
+};
 
 // 회원가입 컴포넌트
 const SignupPage = () => {
   const history = useHistory();
-  const [FormData, setFormData] = useState<Form>({
-    Email: "",
-    Name: "",
-    Password: "",
-    ConfirmPassword: "",
-  });
+  const [FormData, setFormData] = useState<Form>(initialState);
+  const [state, dispatch] = useReducer<Reducer<Form, Action>>(
+    userReducer,
+    initialState
+  );
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     const { Email, Name, Password } = FormData;
     e.preventDefault();
 
@@ -44,6 +65,20 @@ const SignupPage = () => {
       name: Name,
       password: Password,
     };
+
+    // 상태 업데이트
+    dispatch(await registerUser(body));
+
+    // 회원가입 성공 시
+    if (state.payload && state.payload.isSuccess) {
+      Swal.fire({
+        icon: "success",
+        title: "회원가입이 완료되었어요",
+      });
+      history.push("/");
+    } else {
+      onError();
+    }
   };
   const onClickCancel = () => {
     history.push("/");

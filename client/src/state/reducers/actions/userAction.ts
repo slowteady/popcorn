@@ -8,13 +8,18 @@ interface Body {
 }
 
 // 서버에 요청
-export const registerUser = (body: Body): Action => {
-  const request = axios
-    .post("/api/users/register", body)
-    .then((response) => response.data);
-
-  return {
-    type: "REGISTER_USER",
-    payload: request,
-  };
+export const registerUser = async (body: Body): Promise<Action> => {
+  try {
+    const response = await axios.post("/api/users/register", body);
+    return {
+      type: "REGISTER_USER",
+      payload: response.data,
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      type: "ERROR",
+      payload: { isSuccess: false, msg: err },
+    };
+  }
 };
