@@ -18,8 +18,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 로그인 라우터
-app.use('/', require('./routes/login'));
+// 유저 라우터
+app.use('/api/users', require('./routes/users'));
 
 // 포트번호 설정
 const port = process.env.SERVER_PORT || 8080;
