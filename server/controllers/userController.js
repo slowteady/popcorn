@@ -1,12 +1,13 @@
-const User = require('../models/User');
+const User = require("../databases/models/Users");
 
 const registerUser = async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
-    res.status(200).json({ success: true });
+    res.status(200).json({ isSuccess: true });
   } catch (err) {
-    res.json({ success: false, msg: err });
+    console.error(err);
+    res.json({ isSuccess: false, msg: err });
   }
 };
 
