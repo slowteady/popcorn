@@ -6,6 +6,12 @@ module.exports = {
   devServer: {
     port: 3000,
     historyApiFallback: true,
+    proxy: { // dev 환경 프록시 설정
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    },
   },
   entry: {
     app: "./src/index.tsx", // 처음 시작할 파일
