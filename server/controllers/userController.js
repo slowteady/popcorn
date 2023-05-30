@@ -1,5 +1,6 @@
 const User = require("../databases/models/Users");
 
+// 회원가입
 const registerUser = async (req, res) => {
   try {
     const user = new User(req.body);
@@ -11,6 +12,11 @@ const registerUser = async (req, res) => {
   }
 };
 
+const loginUser = (req, res) => {
+  
+};
+
 module.exports = {
   registerUser,
+  loginUser,
 };
