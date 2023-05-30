@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Action } from "../users/userReducer";
+import { Action } from "../../../types/users/userTypes";
 
 interface Body {
   email: string;

@@ -11,14 +11,7 @@ import {
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
 import { inputValidate, signupValidate } from "../auth/signupAuth";
 import { registerUser } from "../../state/reducers/actions/userAction";
-
-export interface Form {
-  Name: string;
-  Email: string;
-  Password: string;
-  ConfirmPassword: string;
-  payload?: { isSuccess: boolean; msg?: unknown };
-}
+import { Form } from "../../types/users/userTypes";
 
 const initialState: Form = {
   Email: "",
