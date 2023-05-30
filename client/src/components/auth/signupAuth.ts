@@ -1,7 +1,7 @@
-import { Form } from "../views/SignupPage";
+import { Form } from "../../types/users/userTypes";
 import { strCheck } from "../../utils/check";
 import { msg } from "../../utils/msg";
-import { Action } from "../../state/reducers/users/userReducer";
+import { Action } from "../../types/users/userTypes"; 
 
 export const inputValidate = ({
   Email,
