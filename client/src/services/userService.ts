@@ -1,14 +1,8 @@
 import axios from "axios";
-import { Action } from "../../../types/users/userTypes";
+import { Action, SignupBody } from "../types/users/userTypes";
 
-interface Body {
-  email: string;
-  name: string;
-  password: string;
-}
-
-// 서버에 요청
-export const registerUser = async (body: Body): Promise<Action> => {
+// 회원가입 요청
+export const registerUser = async (body: SignupBody): Promise<Action> => {
   try {
     const response = await axios.post("/api/users/register", body);
     const obj = { payload: response.data };

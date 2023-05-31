@@ -8,9 +8,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import PopcornIcon from "../../img/popcorn_icon.jpeg";
+import PopcornIcon from "../img/popcorn_icon.jpeg";
 import { inputValidate, signupValidate } from "../auth/signupAuth";
-import { registerUser } from "../../state/reducers/actions/userAction";
+import { registerUser } from "../../services/userService"; 
 import { SignupForm } from "../../types/users/userTypes";
 
 const initialState: SignupForm = {
@@ -30,8 +30,8 @@ const SignupPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    const { Email, Name, Password } = FormData;
     e.preventDefault();
+    const { Email, Name, Password } = FormData;
 
     // 데이터 검증
     const isValid = inputValidate(FormData);
