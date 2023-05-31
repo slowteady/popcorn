@@ -57,7 +57,7 @@ export const signupValidate = (result: Signup) => {
     msg("error", "이미 존재하는 이메일이에요");
     return false;
   } else {
-    msg("error", "오류가 발생했어요");
+    msg("error", payload.msg as string);
     return false;
   }
 };

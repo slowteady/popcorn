@@ -14,7 +14,7 @@ export const registerUser = async (body: SignupBody): Promise<Signup> => {
   } catch (err) {
     console.error(err);
     return {
-      payload: { isSuccess: false, msg: err },
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
     };
   }
 };
@@ -27,7 +27,7 @@ export const loginUser = async (body: LoginBody): Promise<Login> => {
   } catch (err) {
     console.error(err);
     return {
-      payload: { isSuccess: false, msg: err },
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
     };
   }
 };
