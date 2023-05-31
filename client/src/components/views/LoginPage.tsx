@@ -99,11 +99,6 @@ const LoginPage = () => {
                 label="기억하기"
               />
             </Grid>
-            <Grid item container xs={6} justifyContent="flex-end">
-              <Link href="#" variant="body2">
-                {"비밀번호 찾기"}
-              </Link>
-            </Grid>
           </Grid>
           <Button
             type="submit"
