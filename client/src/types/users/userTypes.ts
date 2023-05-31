@@ -1,7 +1,10 @@
-export interface Form {
+export interface loginForm {
+  Email: string;
+  Password: string;
+}
+
+export interface SignupForm extends loginForm {
     Name: string;
-    Email: string;
-    Password: string;
     ConfirmPassword: string;
     payload?: { isSuccess: boolean; msg?: unknown };
   }

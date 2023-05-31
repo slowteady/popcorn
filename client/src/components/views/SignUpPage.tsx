@@ -11,9 +11,9 @@ import {
 import PopcornIcon from "../../img/popcorn_icon.jpeg";
 import { inputValidate, signupValidate } from "../auth/signupAuth";
 import { registerUser } from "../../state/reducers/actions/userAction";
-import { Form } from "../../types/users/userTypes";
+import { SignupForm } from "../../types/users/userTypes";
 
-const initialState: Form = {
+const initialState: SignupForm = {
   Email: "",
   Name: "",
   Password: "",
@@ -23,7 +23,7 @@ const initialState: Form = {
 // 회원가입 컴포넌트
 const SignupPage = () => {
   const history = useHistory();
-  const [FormData, setFormData] = useState<Form>(initialState);
+  const [FormData, setFormData] = useState<SignupForm>(initialState);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

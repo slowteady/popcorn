@@ -1,4 +1,4 @@
-import { Form } from "../../types/users/userTypes";
+import { SignupForm } from "../../types/users/userTypes";
 import { strCheck } from "../../utils/check";
 import { msg } from "../../utils/msg";
 import { Action } from "../../types/users/userTypes"; 
@@ -8,7 +8,7 @@ export const inputValidate = ({
   Name,
   Password,
   ConfirmPassword,
-}: Form) => {
+}: SignupForm) => {
   // 비밀번호, 비밀번호 확인 일치 검증
   if (Password !== ConfirmPassword) {
     msg("error", "비밀번호가 일치하지 않아요");
