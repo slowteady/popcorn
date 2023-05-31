@@ -14,7 +14,11 @@ export interface LoginBody {
 export interface SignupBody extends LoginBody {
   name: string;
 }
-export interface Action {
+export interface Signup {
   type?: "ERROR";
   payload: { isSuccess: boolean; msg?: unknown; code?: any };
+}
+
+export interface Login {
+  payload: { isSuccess: boolean; msg: string | unknown };
 }
