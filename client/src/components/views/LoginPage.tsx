@@ -15,6 +15,7 @@ import {
 import PopcornIcon from "../img/popcorn_icon.jpeg";
 import { LoginForm } from "../../types/users/userTypes";
 import { loginUser } from "../../services/userService";
+import { loginValidate } from "../auth/userAuth";
 
 const initialState: LoginForm = {
   Email: "",
@@ -40,7 +41,11 @@ const LoginPage = () => {
     };
 
     const loginResult = await loginUser(body);
-    
+    // 로그인 검증
+    const isComplete = loginValidate(loginResult);
+    if(isComplete) {
+      history.push("/main");
+    }
   };
 
   const onClickSignUp = () => {
@@ -70,7 +75,7 @@ const LoginPage = () => {
             label="이메일"
             margin="normal"
             autoComplete="email"
-            name="email"
+            name="Email"
             required
             fullWidth
             onChange={onChangeHandler}
@@ -80,7 +85,7 @@ const LoginPage = () => {
             label="패스워드"
             margin="normal"
             type="password"
-            name="password"
+            name="Password"
             autoComplete="current-password"
             required
             fullWidth
