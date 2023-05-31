@@ -46,7 +46,7 @@ userSchema.pre("save", function (next) {
 });
 
 // 비밀번호 비교
-userSchema.methods.comparePassword = (plainPassword) => {
+userSchema.methods.comparePassword = function (plainPassword) {
   return new Promise((resolve, reject) => {
     bcrypt.compare(plainPassword, this.password, (err, isMatch) => {
       if (err) {
