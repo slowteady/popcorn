@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Avatar,
@@ -12,18 +12,39 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import PopcornIcon from "../../img/popcorn_icon.jpeg";
+import PopcornIcon from "../img/popcorn_icon.jpeg";
+import { LoginForm } from "../../types/users/userTypes";
+import { loginUser } from "../../services/userService";
+
+const initialState: LoginForm = {
+  Email: "",
+  Password: "",
+};
 
 // 로그인 컴포넌트
 const LoginPage = () => {
   const history = useHistory();
+  const [FormData, setFormData] = useState<LoginForm>(initialState);
+
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { Email, Password } = FormData;
+
+    let body = {
+      email: Email,
+      password: Password,
+    };
+
+    const loginResult = await loginUser(body);
+    
+  };
 
   const onClickSignUp = () => {
     history.push("/signup");
-  };
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
   };
 
   return (
@@ -52,6 +73,8 @@ const LoginPage = () => {
             name="email"
             required
             fullWidth
+            onChange={onChangeHandler}
+            value={FormData.Email}
           />
           <TextField
             label="패스워드"
@@ -61,6 +84,8 @@ const LoginPage = () => {
             autoComplete="current-password"
             required
             fullWidth
+            onChange={onChangeHandler}
+            value={FormData.Password}
           />
           <Grid container alignItems="center">
             <Grid item xs={6}>
