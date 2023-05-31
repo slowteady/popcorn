@@ -1,8 +1,8 @@
 import axios from "axios";
-import { Action, LoginBody, SignupBody } from "../types/users/userTypes";
+import { Signup, LoginBody, SignupBody, Login } from "../types/users/userTypes";
 
 // 회원가입 요청
-export const registerUser = async (body: SignupBody): Promise<Action> => {
+export const registerUser = async (body: SignupBody): Promise<Signup> => {
   try {
     const response = await axios.post("/api/users/register", body);
     const obj = { payload: response.data };
@@ -19,11 +19,10 @@ export const registerUser = async (body: SignupBody): Promise<Action> => {
   }
 };
 // 로그인 요청
-export const loginUser = async (body: LoginBody): Promise<Action> => {
+export const loginUser = async (body: LoginBody): Promise<Login> => {
   try {
     const response = await axios.post("/api/users/login", body);
     const obj = { payload: response.data };
-
     return obj;
   } catch (err) {
     console.error(err);

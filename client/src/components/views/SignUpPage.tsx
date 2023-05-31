@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import PopcornIcon from "../img/popcorn_icon.jpeg";
-import { inputValidate, signupValidate } from "../auth/signupAuth";
+import { inputValidate, signupValidate } from "../auth/userAuth";
 import { registerUser } from "../../services/userService"; 
 import { SignupForm } from "../../types/users/userTypes";
 
