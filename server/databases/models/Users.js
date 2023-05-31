@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const brcypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -32,8 +32,8 @@ userSchema.pre("save", function (next) {
   if (user.isModified("password")) {
     try {
       // 비밀번호 암호화
-      brcypt.genSalt(saltRounds, async (err, salt) => {
-        const hash = await brcypt.hash(user.password, salt);
+      bcrypt.genSalt(saltRounds, async (err, salt) => {
+        const hash = await bcrypt.hash(user.password, salt);
         user.password = hash;
         next();
       });
@@ -44,6 +44,19 @@ userSchema.pre("save", function (next) {
     next();
   }
 });
+
+// 비밀번호 비교
+userSchema.methods.comparePassword = (plainPassword) => {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(plainPassword, this.password, (err, isMatch) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(isMatch);
+      }
+    });
+  });
+};
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
