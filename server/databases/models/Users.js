@@ -20,9 +20,6 @@ const userSchema = new Schema({
   token: {
     type: String,
   },
-  tokenExp: {
-    type: Number,
-  },
 });
 
 // 회원가입 이전 이벤트
@@ -63,12 +60,14 @@ userSchema.methods.comparePassword = function (plainPassword) {
 // JWT 토큰 생성
 userSchema.methods.generateToken = async function () {
   const user = this;
-  const token = jwt.sign(user._id.toHexString(), "secretToken");
+  const token = jwt.sign({ _id: user._id.toHexString() }, "secretToken", {
+    expiresIn: "4h",
+  });
   user.token = token;
-  
+
   await user.save();
   return user;
-}
+};
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
