@@ -8,7 +8,6 @@ import {
   Container,
   FormControlLabel,
   Grid,
-  Link,
   TextField,
   Typography,
 } from "@mui/material";
@@ -43,7 +42,7 @@ const LoginPage = () => {
     const loginResult = await loginUser(body);
     // 로그인 검증
     const isComplete = loginValidate(loginResult);
-    if(isComplete) {
+    if (isComplete) {
       history.push("/main");
     }
   };
