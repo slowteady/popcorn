@@ -24,7 +24,13 @@ const loginUser = async (req, res) => {
     if (!isMatch) {
       return res.json({ isSuccess: false, msg: "비밀번호가 일치하지 않아요" });
     }
-    res.status(200).json({ isSuccess: true });
+
+    // 토큰 생성
+    const token = await user.generateToken();
+    res
+      .cookie("token", token)
+      .status(200)
+      .json({ isSuccess: true, userId: user._id });
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
