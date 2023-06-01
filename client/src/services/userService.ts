@@ -1,5 +1,10 @@
 import axios from "axios";
-import { Signup, LoginBody, SignupBody, Login } from "../types/users/userTypes";
+import {
+  Signup,
+  LoginBody,
+  SignupBody,
+  Payload,
+} from "../types/users/userTypes";
 
 // 회원가입 요청
 export const registerUser = async (body: SignupBody): Promise<Signup> => {
@@ -18,10 +23,25 @@ export const registerUser = async (body: SignupBody): Promise<Signup> => {
     };
   }
 };
+
 // 로그인 요청
-export const loginUser = async (body: LoginBody): Promise<Login> => {
+export const loginUser = async (body: LoginBody): Promise<Payload> => {
   try {
     const response = await axios.post("/api/users/login", body);
+    const obj = { payload: response.data };
+    return obj;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
+
+// 로그아웃 요청
+export const logoutUser = async (): Promise<Payload> => {
+  try {
+    const response = await axios.post("/api/users/logout");
     const obj = { payload: response.data };
     return obj;
   } catch (err) {
