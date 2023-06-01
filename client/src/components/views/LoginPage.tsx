@@ -21,7 +21,7 @@ const initialState: LoginForm = {
   Password: "",
 };
 
-// 로그인 컴포넌트
+// 로그인 페이지
 const LoginPage = () => {
   const history = useHistory();
   const [FormData, setFormData] = useState<LoginForm>(initialState);
