@@ -14,7 +14,7 @@ import {
 import PopcornIcon from "../img/popcorn_icon.jpeg";
 import { LoginForm } from "../../types/users/userTypes";
 import { loginUser } from "../../services/userService";
-import { loginValidate } from "../auth/userAuth";
+import { loginAndOutValidate } from "../auth/userAuth";
 
 const initialState: LoginForm = {
   Email: "",
@@ -41,7 +41,7 @@ const LoginPage = () => {
 
     const loginResult = await loginUser(body);
     // 로그인 검증
-    const isComplete = loginValidate(loginResult);
+    const isComplete = loginAndOutValidate(loginResult);
     if (isComplete) {
       history.push("/main");
     }

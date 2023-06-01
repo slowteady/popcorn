@@ -19,6 +19,6 @@ export interface Signup {
   payload: { isSuccess: boolean; msg?: unknown; code?: any };
 }
 
-export interface Login {
+export interface Payload {
   payload: { isSuccess: boolean; msg: string | unknown };
 }

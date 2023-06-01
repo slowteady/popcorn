@@ -1,4 +1,4 @@
-import { Login, SignupForm } from "../../types/users/userTypes";
+import { Payload, SignupForm } from "../../types/users/userTypes";
 import { strCheck } from "../../utils/check";
 import { msg } from "../../utils/msg";
 import { Signup } from "../../types/users/userTypes";
@@ -63,7 +63,7 @@ export const signupValidate = (result: Signup) => {
 };
 
 // 로그인 검증
-export const loginValidate = (result: Login) => {
+export const loginAndOutValidate = (result: Payload) => {
   const { payload } = result;
   
   if (payload && payload.isSuccess) {
