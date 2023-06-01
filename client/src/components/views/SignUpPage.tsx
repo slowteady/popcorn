@@ -20,7 +20,7 @@ const initialState: SignupForm = {
   ConfirmPassword: "",
 };
 
-// 회원가입 컴포넌트
+// 회원가입 페이지
 const SignupPage = () => {
   const history = useHistory();
   const [FormData, setFormData] = useState<SignupForm>(initialState);
