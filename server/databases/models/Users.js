@@ -69,5 +69,18 @@ userSchema.methods.generateToken = async function () {
   return user;
 };
 
+// 토큰 검증
+userSchema.statics.findByToken = async function (cookieToken) {
+  const user = this;
+  try {
+    const token = cookieToken.token;
+    const decodedToken = jwt.verify(token, "secretToken");
+    const foundUser = await user.findOne({ _id: decodedToken._id, token: token });
+    return foundUser;
+  } catch (err) {
+    throw err;
+  }
+};
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;
