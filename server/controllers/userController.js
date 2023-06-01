@@ -36,7 +36,34 @@ const loginUser = async (req, res) => {
   }
 };
 
+// 로그아웃
+const logoutUser = async (req, res) => {
+  const token = req.cookies.AUTH_TOKEN;
+  try {
+    // 토큰 검증
+    const foundUser = await User.findByToken(token);
+
+    if (foundUser) {
+      // 토큰 정보 빈 값처리
+      await User.findOneAndUpdate({ _id: foundUser._id }, { token: "" });
+      res.clearCookie("AUTH_TOKEN");
+      return res.status(200).json({ isSuccess: true });
+    } else {
+      res.clearCookie("AUTH_TOKEN");
+      res.json({
+        isSuccess: false,
+        msg: "사용자 정보가 없어요. 재로그인 해주세요",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    res.clearCookie("AUTH_TOKEN");
+    res.json({ isSuccess: false, msg: "오류가 발생했어요. 재로그인 해주세요" });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
+  logoutUser,
 };
