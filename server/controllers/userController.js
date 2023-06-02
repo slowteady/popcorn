@@ -30,6 +30,7 @@ const loginUser = async (req, res) => {
 
     // 쿠키에 토큰 저장
     res.cookie("AUTH_TOKEN", token).status(200).json({ isSuccess: true });
+    
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
