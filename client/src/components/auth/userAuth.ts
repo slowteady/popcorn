@@ -62,7 +62,7 @@ export const signupValidate = (result: Signup) => {
   }
 };
 
-// 로그인 검증
+// 로그인, 로그아웃 검증
 export const loginAndOutValidate = (result: Payload) => {
   const { payload } = result;
   
