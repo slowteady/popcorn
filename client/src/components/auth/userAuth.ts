@@ -1,6 +1,6 @@
 import { Payload, SignupForm } from "../../types/users/userTypes";
-import { strCheck } from "../../utils/check";
-import { msg } from "../../utils/msg";
+import { strCheck } from "../../utils/validationUtils";
+import { msg } from "../../utils/msgUtils";
 import { Signup } from "../../types/users/userTypes";
 
 export const inputValidate = ({
