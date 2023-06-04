@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Avatar,
@@ -15,6 +15,7 @@ import PopcornIcon from "../img/popcorn_icon.jpeg";
 import { LoginForm } from "../../types/users/userTypes";
 import { loginUser } from "../../services/userService";
 import { loginAndOutValidate } from "../auth/userAuth";
+import { getCookie, setCookie } from "../../utils/cookieUtils";
 
 const initialState: LoginForm = {
   Email: "",
@@ -25,11 +26,27 @@ const initialState: LoginForm = {
 const LoginPage = () => {
   const history = useHistory();
   const [FormData, setFormData] = useState<LoginForm>(initialState);
+  const [isRemember, setRemember] = useState(false);
+
+  // 기억하기
+  useEffect(() => {
+    const isRememberCookie = getCookie("isRemember");
+    if (isRememberCookie) {
+      const saveEmail = localStorage.getItem("email");
+      setFormData((prevData) => ({ ...prevData, Email: saveEmail || "" }));
+      setRemember(true);
+    }
+  }, []);
+
+  const onChangeCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
+    setRemember(e.currentTarget.checked);
+  };
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { Email, Password } = FormData;
@@ -40,9 +57,18 @@ const LoginPage = () => {
     };
 
     const loginResult = await loginUser(body);
+
     // 로그인 검증
     const isComplete = loginAndOutValidate(loginResult);
     if (isComplete) {
+      // 기억하기 기능
+      if (isRemember) {
+        setCookie("isRemember", true, { path: "/" });
+        localStorage.setItem("email", FormData.Email);
+      } else {
+        setCookie("isRemember", false, { path: "/", expires: new Date(0) });
+        localStorage.removeItem("email");
+      }
       history.push("/main");
     }
   };
@@ -94,7 +120,14 @@ const LoginPage = () => {
           <Grid container alignItems="center">
             <Grid item xs={6}>
               <FormControlLabel
-                control={<Checkbox value="remember" color="info" />}
+                control={
+                  <Checkbox
+                    value="remember"
+                    checked={isRemember}
+                    onChange={onChangeCheckBox}
+                    color="info"
+                  />
+                }
                 label="기억하기"
               />
             </Grid>
