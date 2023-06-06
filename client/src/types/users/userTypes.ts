@@ -20,5 +20,5 @@ export interface Signup {
 }
 
 export interface Payload {
-  payload: { isSuccess: boolean; msg: string | unknown };
+  payload: { isSuccess: boolean; msg: string | unknown; user?: {} | boolean };
 }
