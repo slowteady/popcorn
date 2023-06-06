@@ -73,9 +73,15 @@ userSchema.methods.generateToken = async function () {
 userSchema.statics.findByToken = async function (cookieToken) {
   const user = this;
   try {
+    if (!cookieToken) {
+      return false;
+    }
     const token = cookieToken.token;
     const decodedToken = jwt.verify(token, "secretToken");
-    const foundUser = await user.findOne({ _id: decodedToken._id, token: token });
+    const foundUser = await user.findOne({
+      _id: decodedToken._id,
+      token: token,
+    });
     return foundUser;
   } catch (err) {
     throw err;
