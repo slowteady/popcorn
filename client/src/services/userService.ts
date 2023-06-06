@@ -41,7 +41,21 @@ export const loginUser = async (body: LoginBody): Promise<Payload> => {
 // 로그아웃 요청
 export const logoutUser = async (): Promise<Payload> => {
   try {
-    const response = await axios.post("/api/users/logout");
+    const response = await axios.get("/api/users/logout");
+    const obj = { payload: response.data };
+    return obj;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
+
+// 사용자 검증 요청
+export const auth = async (): Promise<Payload> => {
+  try {
+    const response = await axios.get("/api/users/auth");
     const obj = { payload: response.data };
     return obj;
   } catch (err) {
