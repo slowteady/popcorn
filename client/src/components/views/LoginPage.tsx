@@ -14,7 +14,7 @@ import {
 import PopcornIcon from "../img/popcorn_icon.jpeg";
 import { LoginForm } from "../../types/users/userTypes";
 import { loginUser } from "../../services/userService";
-import { loginAndOutValidate } from "../auth/userAuth";
+import { loginAndOutValidate } from "../auth/userValidate";
 import { getCookie, setCookie } from "../../utils/cookieUtils";
 
 const initialState: LoginForm = {

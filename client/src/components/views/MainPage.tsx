@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { logoutUser } from "../../services/userService";
-import { loginAndOutValidate } from "../auth/userAuth";
+import { loginAndOutValidate } from "../auth/userValidate";
 
 // 메인 페이지
 const MainPage = () => {
