@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/views/LoginPage";
-import SignupPage from "./components/views/SignupPage";
 import MainPage from "./components/views/MainPage";
+import SignupPage from "./components/views/SignupPage";
 import Auth from "./hoc/Auth";
 
 const App = () => {
