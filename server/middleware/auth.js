@@ -4,10 +4,13 @@ const User = require("../databases/models/Users");
 const auth = async (req, res, next) => {
   let token = req.cookies.AUTH_TOKEN;
   try {
-    const user = await User.findByToken(token);
-    
-    req.token = token;
-    req.user = user;
+    const result = await User.findByToken(token);
+    if (result === "TokenExpiredError") {
+      req.isExpire = true;
+    } else {
+      req.token = token;
+      req.user = result;
+    }
     next();
   } catch (err) {
     throw err;
