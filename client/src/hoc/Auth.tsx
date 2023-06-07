@@ -18,8 +18,16 @@ const Auth = <P extends {}>(
         .then((response) => {
           const isSuccess = response.payload.isSuccess;
           const isUser = response.payload.user;
-          // 사용자 검증 실패 시
-          if (!isSuccess || !isUser) {
+          const isExpire = response.payload.isExpire;
+
+          // 토큰 만료 시
+          if (isExpire) {
+            history.push({
+              pathname: "/",
+              search: `?expired=true`,
+            });
+          } else if (!isSuccess || !isUser) {
+            // 사용자 검증 실패 시
             fail();
           }
         })
