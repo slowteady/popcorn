@@ -1,6 +1,7 @@
 import React, { ComponentType, FunctionComponent, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { auth } from "../services/userService";
+import { removeCookie } from "../utils/cookieUtils";
 import { msg } from "../utils/msgUtils";
 
 const Auth = <P extends {}>(
@@ -19,9 +20,10 @@ const Auth = <P extends {}>(
           const isSuccess = response.payload.isSuccess;
           const isUser = response.payload.user;
           const isExpire = response.payload.isExpire;
-
+          
           // 토큰 만료 시
           if (isExpire) {
+            removeCookie("AUTH_TOKEN");
             history.push({
               pathname: "/",
               search: `?expired=true`,
