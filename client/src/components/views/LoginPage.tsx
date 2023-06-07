@@ -1,5 +1,3 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -11,11 +9,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import PopcornIcon from "../img/popcorn_icon.jpeg";
-import { LoginForm } from "../../types/users/userTypes";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { loginUser } from "../../services/userService";
-import { loginAndOutValidate } from "../auth/userValidate";
+import { LoginForm } from "../../types/users/userTypes";
 import { getCookie, setCookie } from "../../utils/cookieUtils";
+import { loginAndOutValidate } from "../auth/userValidate";
+import PopcornIcon from "../img/popcorn_icon.jpeg";
 
 const initialState: LoginForm = {
   Email: "",
@@ -25,6 +25,8 @@ const initialState: LoginForm = {
 // 로그인 페이지
 const LoginPage = () => {
   const history = useHistory();
+
+  // state
   const [FormData, setFormData] = useState<LoginForm>(initialState);
   const [isRemember, setRemember] = useState(false);
 
@@ -49,6 +51,10 @@ const LoginPage = () => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const queryParams = new URLSearchParams(location.search);
+    const expired = queryParams.get("expired");
+
     const { Email, Password } = FormData;
 
     let body = {
@@ -69,7 +75,12 @@ const LoginPage = () => {
         setCookie("isRemember", false, { path: "/", expires: new Date(0) });
         localStorage.removeItem("email");
       }
-      history.push("/main");
+
+      if (expired) {
+        history.goBack();
+      } else {
+        history.push("/main");
+      }
     }
   };
 
