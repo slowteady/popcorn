@@ -64,10 +64,16 @@ const logoutUser = async (req, res) => {
 
 // 사용자 검증
 const authUser = (req, res) => {
-  res.status(200).json({
-    isSuccess: true,
-    user: req.user,
-  });
+  const { user, token, isExpire } = req;
+  const obj = { isSuccess: true, user };
+
+  if (isExpire) {
+    obj.isSuccess = false;
+    obj.user = false;
+    obj.isExpire = true;
+  }
+
+  res.status(200).json(obj);
 };
 
 module.exports = {
