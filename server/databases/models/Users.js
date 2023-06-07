@@ -84,7 +84,12 @@ userSchema.statics.findByToken = async function (cookieToken) {
     });
     return foundUser;
   } catch (err) {
-    throw err;
+    // 토큰 만료 시
+    if (err.name === "TokenExpiredError") {
+      return err.name;
+    } else {
+      throw err;
+    }
   }
 };
 
