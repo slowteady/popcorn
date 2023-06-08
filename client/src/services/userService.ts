@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import {
   Signup,
   LoginBody,
@@ -53,9 +53,20 @@ export const logoutUser = async (): Promise<Payload> => {
 };
 
 // 사용자 검증 요청
-export const auth = async (): Promise<Payload> => {
+export const auth = async (
+  token?: AxiosRequestConfig<any>
+): Promise<Payload> => {
   try {
-    const response = await axios.get("/api/users/auth");
+    let response;
+    if (token) {
+      const body = {
+        token,
+      };
+      response = await axios.post("/api/users/auth", body);
+    } else {
+      response = await axios.get("/api/users/auth");
+    }
+
     const obj = { payload: response.data };
     return obj;
   } catch (err) {
