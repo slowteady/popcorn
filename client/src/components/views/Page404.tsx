@@ -1,7 +1,8 @@
-import React from "react";
-import { Link as RouterLink } from 'react-router-dom';
+import { Box, Button, Container, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Container, Typography, Box, Button } from "@mui/material";
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import { Link as RouterLink } from "react-router-dom";
 import img404 from "../img/illustration_404.svg";
 
 // -------------------------------------------------------------
@@ -21,10 +22,9 @@ const StyledContent = styled("div")(({ theme }) => ({
 const Page404 = () => {
   return (
     <>
-      <h2>
+      <Helmet>
         <title> 404 Page not Found | POPCORN! </title>
-      </h2>
-
+      </Helmet>
       <Container>
         <StyledContent sx={{ textAlign: "center", alignItems: "center" }}>
           <Typography variant="h3" paragraph>
@@ -38,7 +38,12 @@ const Page404 = () => {
             sx={{ height: 260, mx: "auto", my: { xs: 5, sm: 10 } }}
             src={img404}
           />
-          <Button to="/" size="large" variant="contained" component={RouterLink}>
+          <Button
+            to="/"
+            size="large"
+            variant="contained"
+            component={RouterLink}
+          >
             메인으로
           </Button>
         </StyledContent>
