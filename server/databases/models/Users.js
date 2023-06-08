@@ -61,7 +61,7 @@ userSchema.methods.comparePassword = function (plainPassword) {
 userSchema.methods.generateToken = async function () {
   const user = this;
   const token = jwt.sign({ _id: user._id.toHexString() }, "secretToken", {
-    expiresIn: "8h",
+    expiresIn: "2h",
   });
   user.token = token;
 
