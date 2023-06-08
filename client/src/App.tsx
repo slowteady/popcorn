@@ -2,9 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginPage from "./components/views/LoginPage";
 import MainPage from "./components/views/MainPage";
-import SignupPage from "./components/views/SignupPage";
-import Auth from "./hoc/Auth";
 import Page404 from "./components/views/Page404";
+import SignupPage from "./components/views/SignupPage";
 
 const App = () => {
   return (
