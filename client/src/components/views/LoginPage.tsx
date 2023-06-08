@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { loginUser } from "../../services/userService";
+import { auth, loginUser } from "../../services/userService";
 import { LoginForm } from "../../types/users/userTypes";
-import { getCookie, setCookie } from "../../utils/cookieUtils";
+import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
 import { loginAndOutValidate } from "../auth/userValidate";
 import PopcornIcon from "../img/popcorn_icon.jpeg";
 
@@ -30,9 +30,26 @@ const LoginPage = () => {
   const [FormData, setFormData] = useState<LoginForm>(initialState);
   const [isRemember, setRemember] = useState(false);
 
-  // 기억하기
   useEffect(() => {
     const isRememberCookie = getCookie("isRemember");
+    const authToken = getCookie("AUTH_TOKEN");
+
+    // 로그인 페이지 요청 시 쿠키에 로그인 토큰 있는 경우
+    if (authToken) {
+      auth(authToken).then((response) => {
+        const isSuccess = response.payload.isSuccess;
+        const isUser = response.payload.user;
+        const isExpire = response.payload.isExpire;
+
+        // 토큰 만료 시
+        if (isExpire) {
+          removeCookie("AUTH_TOKEN");
+        } else if (isSuccess && isUser) {
+          history.push("/main");
+        }
+      });
+    }
+
     if (isRememberCookie) {
       const saveEmail = localStorage.getItem("email");
       setFormData((prevData) => ({ ...prevData, Email: saveEmail || "" }));
