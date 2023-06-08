@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import img404 from "../img/illustration_404.svg";
+import { Helmet } from "react-helmet-async";
 
 // -------------------------------------------------------------
 
@@ -21,6 +22,10 @@ const StyledContent = styled("div")(({ theme }) => ({
 const Page404 = () => {
   return (
     <>
+      <Helmet>
+        <title> 404 Page Not Found | POPCORN! </title>
+      </Helmet>
+      
       <Container>
         <StyledContent sx={{ textAlign: "center", alignItems: "center" }}>
           <Typography variant="h4" paragraph>

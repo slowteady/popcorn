@@ -16,6 +16,7 @@ import { LoginForm } from "../../types/users/userTypes";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
 import { loginAndOutValidate } from "../auth/userValidate";
 import PopcornIcon from "../img/popcorn_icon.jpeg";
+import { Helmet } from "react-helmet-async";
 
 const initialState: LoginForm = {
   Email: "",
@@ -106,86 +107,92 @@ const LoginPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="sm">
-      <Box
-        sx={{
-          mt: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar
-          sx={{ m: 1, bgcolor: "secondary.main" }}
-          src={PopcornIcon}
-          alt="popcorn_icon"
-        />
-        <Typography component="h1" variant="h5">
-          로그인
-        </Typography>
-        <form onSubmit={onSubmit} style={{ width: "100%" }}>
-          <TextField
-            label="이메일"
-            margin="normal"
-            autoComplete="email"
-            name="Email"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={FormData.Email}
+    <>
+      <Helmet>
+        <title> Login | POPCORN! </title>
+      </Helmet>
+
+      <Container component="main" maxWidth="sm">
+        <Box
+          sx={{
+            mt: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar
+            sx={{ m: 1, bgcolor: "secondary.main" }}
+            src={PopcornIcon}
+            alt="popcorn_icon"
           />
-          <TextField
-            label="패스워드"
-            margin="normal"
-            type="password"
-            name="Password"
-            autoComplete="current-password"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={FormData.Password}
-          />
-          <Grid container alignItems="center">
-            <Grid item xs={6}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value="remember"
-                    checked={isRemember}
-                    onChange={onChangeCheckBox}
-                    color="info"
-                  />
-                }
-                label="기억하기"
-              />
+          <Typography component="h1" variant="h5">
+            로그인
+          </Typography>
+          <form onSubmit={onSubmit} style={{ width: "100%" }}>
+            <TextField
+              label="이메일"
+              margin="normal"
+              autoComplete="email"
+              name="Email"
+              required
+              fullWidth
+              onChange={onChangeHandler}
+              value={FormData.Email}
+            />
+            <TextField
+              label="패스워드"
+              margin="normal"
+              type="password"
+              name="Password"
+              autoComplete="current-password"
+              required
+              fullWidth
+              onChange={onChangeHandler}
+              value={FormData.Password}
+            />
+            <Grid container alignItems="center">
+              <Grid item xs={6}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      value="remember"
+                      checked={isRemember}
+                      onChange={onChangeCheckBox}
+                      color="info"
+                    />
+                  }
+                  label="기억하기"
+                />
+              </Grid>
             </Grid>
-          </Grid>
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{ mt: 2, mb: 2 }}
+              fullWidth
+            >
+              로그인
+            </Button>
+          </form>
           <Button
-            type="submit"
             variant="contained"
             size="large"
-            sx={{ mt: 2, mb: 2 }}
+            sx={{
+              backgroundColor: "#435c77",
+              "&:hover": {
+                backgroundColor: "#454468",
+              },
+            }}
             fullWidth
+            onClick={onClickSignUp}
           >
-            로그인
+            회원가입
           </Button>
-        </form>
-        <Button
-          variant="contained"
-          size="large"
-          sx={{
-            backgroundColor: "#435c77",
-            "&:hover": {
-              backgroundColor: "#454468",
-            },
-          }}
-          fullWidth
-          onClick={onClickSignUp}
-        >
-          회원가입
-        </Button>
-      </Box>
-    </Container>
+        </Box>
+      </Container>
+    </>
   );
 };
 

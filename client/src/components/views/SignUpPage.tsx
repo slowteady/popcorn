@@ -10,8 +10,9 @@ import {
 } from "@mui/material";
 import PopcornIcon from "../img/popcorn_icon.jpeg";
 import { inputValidate, signupValidate } from "../auth/userValidate";
-import { registerUser } from "../../services/userService"; 
+import { registerUser } from "../../services/userService";
 import { SignupForm } from "../../types/users/userTypes";
+import { Helmet } from "react-helmet-async";
 
 const initialState: SignupForm = {
   Email: "",
@@ -56,90 +57,96 @@ const SignupPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="sm">
-      <Box
-        sx={{
-          mt: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar
-          sx={{ m: 1, bgcolor: "secondary.main" }}
-          src={PopcornIcon}
-          alt="popcorn_icon"
-        />
-        <Typography component="h1" variant="h5">
-          회원가입
-        </Typography>
-        <form onSubmit={onSubmit}>
-          <TextField
-            label="이메일"
-            margin="normal"
-            autoComplete="email"
-            name="Email"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={FormData.Email}
+    <>
+      <Helmet>
+        <title> SignUp | POPCORN! </title>
+      </Helmet>
+
+      <Container component="main" maxWidth="sm">
+        <Box
+          sx={{
+            mt: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar
+            sx={{ m: 1, bgcolor: "secondary.main" }}
+            src={PopcornIcon}
+            alt="popcorn_icon"
           />
-          <TextField
-            label="이름"
-            margin="normal"
-            name="Name"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={FormData.Name}
-          />
-          <TextField
-            label="패스워드"
-            margin="normal"
-            type="password"
-            name="Password"
-            autoComplete="current-password"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={FormData.Password}
-          />
-          <TextField
-            label="패스워드 확인"
-            margin="normal"
-            type="password"
-            name="ConfirmPassword"
-            required
-            fullWidth
-            onChange={onChangeHandler}
-            value={FormData.ConfirmPassword}
-          />
+          <Typography component="h1" variant="h5">
+            회원가입
+          </Typography>
+          <form onSubmit={onSubmit}>
+            <TextField
+              label="이메일"
+              margin="normal"
+              autoComplete="email"
+              name="Email"
+              required
+              fullWidth
+              onChange={onChangeHandler}
+              value={FormData.Email}
+            />
+            <TextField
+              label="이름"
+              margin="normal"
+              name="Name"
+              required
+              fullWidth
+              onChange={onChangeHandler}
+              value={FormData.Name}
+            />
+            <TextField
+              label="패스워드"
+              margin="normal"
+              type="password"
+              name="Password"
+              autoComplete="current-password"
+              required
+              fullWidth
+              onChange={onChangeHandler}
+              value={FormData.Password}
+            />
+            <TextField
+              label="패스워드 확인"
+              margin="normal"
+              type="password"
+              name="ConfirmPassword"
+              required
+              fullWidth
+              onChange={onChangeHandler}
+              value={FormData.ConfirmPassword}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{ mt: 2, mb: 2 }}
+              fullWidth
+            >
+              회원가입
+            </Button>
+          </form>
           <Button
-            type="submit"
             variant="contained"
             size="large"
-            sx={{ mt: 2, mb: 2 }}
+            sx={{
+              backgroundColor: "#c97c63",
+              "&:hover": {
+                backgroundColor: "#ab6e59",
+              },
+            }}
             fullWidth
+            onClick={onClickCancel}
           >
-            회원가입
+            취소
           </Button>
-        </form>
-        <Button
-          variant="contained"
-          size="large"
-          sx={{
-            backgroundColor: "#c97c63",
-            "&:hover": {
-              backgroundColor: "#ab6e59",
-            },
-          }}
-          fullWidth
-          onClick={onClickCancel}
-        >
-          취소
-        </Button>
-      </Box>
-    </Container>
+        </Box>
+      </Container>
+    </>
   );
 };
 
