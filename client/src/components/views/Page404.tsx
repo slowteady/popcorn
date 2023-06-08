@@ -24,7 +24,7 @@ const Page404 = () => {
       <Container>
         <StyledContent sx={{ textAlign: "center", alignItems: "center" }}>
           <Typography variant="h4" paragraph>
-            죄송해요, 페이지를 찾지 못했어요!
+            페이지를 찾지 못했어요!
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
             유효한 페이지로 요청해주세요.
