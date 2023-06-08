@@ -1,6 +1,7 @@
 {
   "name": "client",
   "packageManager": "yarn@3.3.1",
+  "license": "ISC",
   "scripts": {
     "dev": "webpack-dev-server --hot --mode development",
     "prod": ""
