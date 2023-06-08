@@ -25,7 +25,7 @@ module.exports = {
         exclude: /node_modules/, // 제외할 폴더
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
             loader: "file-loader",
