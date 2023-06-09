@@ -1,8 +1,8 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../services/userService";
 import { loginAndOutValidate } from "../auth/userValidate";
-import { Helmet } from "react-helmet-async";
 
 // 메인 페이지
 const MainPage = () => {

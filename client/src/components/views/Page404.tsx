@@ -1,9 +1,9 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link as RouterLink } from "react-router-dom";
 import img404 from "../img/illustration_404.svg";
-import { Helmet } from "react-helmet-async";
 
 // -------------------------------------------------------------
 
@@ -25,13 +25,13 @@ const Page404 = () => {
       <Helmet>
         <title> 404 Page Not Found | POPCORN! </title>
       </Helmet>
-      
+
       <Container>
         <StyledContent sx={{ textAlign: "center", alignItems: "center" }}>
           <Typography variant="h4" paragraph>
             페이지를 찾지 못했어요!
           </Typography>
-          
+
           <Typography sx={{ color: "text.secondary" }}>
             유효한 페이지로 요청해주세요.
           </Typography>

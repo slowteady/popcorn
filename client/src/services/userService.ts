@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import {
-  Signup,
   LoginBody,
-  SignupBody,
   Payload,
+  Signup,
+  SignupBody,
 } from "../types/users/userTypes";
 
 // 회원가입 요청

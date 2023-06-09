@@ -1,7 +1,6 @@
-import { Payload, SignupForm } from "../../types/users/userTypes";
-import { strCheck } from "../../utils/validationUtils";
+import { Payload, Signup, SignupForm } from "../../types/users/userTypes";
 import { msg } from "../../utils/msgUtils";
-import { Signup } from "../../types/users/userTypes";
+import { strCheck } from "../../utils/validationUtils";
 
 export const inputValidate = ({
   Email,
@@ -65,7 +64,7 @@ export const signupValidate = (result: Signup) => {
 // 로그인, 로그아웃 검증
 export const loginAndOutValidate = (result: Payload) => {
   const { payload } = result;
-  
+
   if (payload && payload.isSuccess) {
     // 성공
     return true;

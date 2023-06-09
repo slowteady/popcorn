@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import LoginPage from "./components/views/LoginPage";
-import SignupPage from "./components/views/SignupPage";
 import MainPage from "./components/views/MainPage";
 import Page404 from "./components/views/Page404";
+import SignupPage from "./components/views/SignupPage";
 import FrameLayout from "./layouts/FrameLayout";
 
 const Router = () => {

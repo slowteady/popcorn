@@ -1,18 +1,11 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  TextField,
-  Typography,
-} from "@mui/material";
 import FaceIcon from "@mui/icons-material/Face";
-import { inputValidate, signupValidate } from "../auth/userValidate";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/userService";
 import { SignupForm } from "../../types/users/userTypes";
-import { Helmet } from "react-helmet-async";
+import { inputValidate, signupValidate } from "../auth/userValidate";
 
 const initialState: SignupForm = {
   Email: "",

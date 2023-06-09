@@ -7,5 +7,4 @@ export const strCheck = {
   isNotEmpty: (str: string | boolean) => {
     return !strCheck.isEmpty(str);
   },
-}
-
+};

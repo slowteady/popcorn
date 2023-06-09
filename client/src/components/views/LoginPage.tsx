@@ -1,3 +1,4 @@
+import FaceIcon from "@mui/icons-material/Face";
 import {
   Box,
   Button,
@@ -8,14 +9,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import FaceIcon from "@mui/icons-material/Face";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { auth, loginUser } from "../../services/userService";
 import { LoginForm } from "../../types/users/userTypes";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
 import { loginAndOutValidate } from "../auth/userValidate";
-import { Helmet } from "react-helmet-async";
 
 const initialState: LoginForm = {
   Email: "",
