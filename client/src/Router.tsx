@@ -4,6 +4,7 @@ import LoginPage from "./components/views/LoginPage";
 import SignupPage from "./components/views/SignupPage";
 import MainPage from "./components/views/MainPage";
 import Page404 from "./components/views/Page404";
+import FrameLayout from "./layouts/FrameLayout";
 
 const Router = () => {
   const routes = useRoutes([
@@ -20,8 +21,11 @@ const Router = () => {
       element: <MainPage />,
     },
     {
-      path: "/404",
-      element: <Page404 />,
+      element: <FrameLayout />,
+      children: [
+        { path: "/404", element: <Page404 /> },
+        { path: "*", element: <Navigate to="/404" /> },
+      ],
     },
     {
       path: "*",
