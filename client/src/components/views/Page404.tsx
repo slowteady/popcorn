@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet-async";
 const StyledContent = styled("div")(({ theme }) => ({
   maxWidth: 480,
   margin: "auto",
-  minHeight: "100vh",
+  minHeight: "75vh",
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
@@ -31,9 +31,11 @@ const Page404 = () => {
           <Typography variant="h4" paragraph>
             페이지를 찾지 못했어요!
           </Typography>
+          
           <Typography sx={{ color: "text.secondary" }}>
             유효한 페이지로 요청해주세요.
           </Typography>
+
           <Box
             component="img"
             sx={{ height: 260, mx: "auto", my: { xs: 5, sm: 10 } }}
