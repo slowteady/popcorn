@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import PopcornIcon from "../img/popcorn_icon.jpeg";
+import FaceIcon from "@mui/icons-material/Face";
 import { inputValidate, signupValidate } from "../auth/userValidate";
 import { registerUser } from "../../services/userService";
 import { SignupForm } from "../../types/users/userTypes";
@@ -71,11 +71,7 @@ const SignupPage = () => {
             alignItems: "center",
           }}
         >
-          <Avatar
-            sx={{ m: 1, bgcolor: "secondary.main" }}
-            src={PopcornIcon}
-            alt="popcorn_icon"
-          />
+          <FaceIcon fontSize="large" sx={{ m: 1 }} />
           <Typography component="h1" variant="h5">
             회원가입
           </Typography>

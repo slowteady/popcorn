@@ -9,13 +9,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import FaceIcon from "@mui/icons-material/Face";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, loginUser } from "../../services/userService";
 import { LoginForm } from "../../types/users/userTypes";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
 import { loginAndOutValidate } from "../auth/userValidate";
-import PopcornIcon from "../img/popcorn_icon.jpeg";
 import { Helmet } from "react-helmet-async";
 
 const initialState: LoginForm = {
@@ -121,11 +121,7 @@ const LoginPage = () => {
             alignItems: "center",
           }}
         >
-          <Avatar
-            sx={{ m: 1, bgcolor: "secondary.main" }}
-            src={PopcornIcon}
-            alt="popcorn_icon"
-          />
+          <FaceIcon fontSize="large" sx={{ m: 1 }} />
           <Typography component="h1" variant="h5">
             로그인
           </Typography>
