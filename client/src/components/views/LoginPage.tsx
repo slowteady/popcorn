@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, loginUser } from "../../services/userService";
 import { LoginForm } from "../../types/users/userTypes";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
@@ -25,7 +25,7 @@ const initialState: LoginForm = {
 
 // 로그인 페이지
 const LoginPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // state
   const [FormData, setFormData] = useState<LoginForm>(initialState);
@@ -46,7 +46,7 @@ const LoginPage = () => {
         if (isExpire) {
           removeCookie("AUTH_TOKEN");
         } else if (isSuccess && isUser) {
-          history.push("/main");
+          navigate("/main");
         }
       });
     }
@@ -95,15 +95,15 @@ const LoginPage = () => {
       }
 
       if (expired) {
-        history.goBack();
+        navigate(-1);
       } else {
-        history.push("/main");
+        navigate("/main");
       }
     }
   };
 
   const onClickSignUp = () => {
-    history.push("/signup");
+    navigate("/signup");
   };
 
   return (

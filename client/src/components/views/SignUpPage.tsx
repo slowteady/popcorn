@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -23,7 +23,7 @@ const initialState: SignupForm = {
 
 // 회원가입 페이지
 const SignupPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [FormData, setFormData] = useState<SignupForm>(initialState);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -49,11 +49,11 @@ const SignupPage = () => {
     const signupResult = await registerUser(body);
     const isComplete = signupValidate(signupResult);
     if (isComplete) {
-      history.push("/");
+      navigate("/");
     }
   };
   const onClickCancel = () => {
-    history.push("/");
+    navigate("/");
   };
 
   return (

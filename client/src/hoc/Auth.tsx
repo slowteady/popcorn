@@ -1,5 +1,5 @@
 import React, { ComponentType, FunctionComponent, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../services/userService";
 import { removeCookie } from "../utils/cookieUtils";
 
@@ -7,7 +7,7 @@ const Auth = <P extends {}>(
   SpecificComponent: ComponentType<P>
 ): FunctionComponent<P> => {
   const AuthCheck: FunctionComponent<P> = (props) => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
       auth()
@@ -19,17 +19,17 @@ const Auth = <P extends {}>(
           // 토큰 만료 시
           if (isExpire) {
             removeCookie("AUTH_TOKEN");
-            history.push({
+            navigate({
               pathname: "/",
               search: `?expired=true`,
             });
           } else if (!isSuccess || !isUser) {
             // 사용자 검증 실패 시
-            history.push("/");
+            navigate("/");
           }
         })
         .catch((err) => {
-          history.push("/");
+          navigate("/");
         });
     }, []);
 
