@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import FrameLayout from "./components/layouts/FrameLayout";
+import MainLayout from "./components/layouts/MainLayout";
 import LoginPage from "./components/views/LoginPage";
 import MainPage from "./components/views/MainPage";
 import Page404 from "./components/views/Page404";
@@ -18,7 +19,11 @@ const Router = () => {
     },
     {
       path: "/main",
-      element: <MainPage />,
+      element: <MainLayout />,
+      children: [
+        { element: <Navigate to="/main/index" />, index: true },
+        { path: "index", element: <MainPage /> },
+      ],
     },
     {
       element: <FrameLayout />,

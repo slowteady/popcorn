@@ -17,7 +17,7 @@ const MainPage = () => {
       <Helmet>
         <title> Main | POPCORN! </title>
       </Helmet>
-      <button onClick={onclickLogout}>logout</button>;
+      <button onClick={onclickLogout}>logout</button>
     </>
   );
 };
