@@ -1,5 +1,9 @@
 import { Cookies } from "react-cookie";
 
+// ----------------------------------------------------------------------
+// 쿠키 사용 유틸
+// ----------------------------------------------------------------------
+
 const cookies = new Cookies();
 
 export const setCookie = (name: string, value: any, options?: any) => {

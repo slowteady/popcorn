@@ -7,6 +7,10 @@ import MainPage from "./components/views/MainPage";
 import Page404 from "./components/views/Page404";
 import SignupPage from "./components/views/SignupPage";
 
+// ----------------------------------------------------------------------
+// 라우터
+// ----------------------------------------------------------------------
+
 const Router = () => {
   const routes = useRoutes([
     {

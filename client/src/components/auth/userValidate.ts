@@ -2,6 +2,10 @@ import { Payload, Signup, SignupForm } from "../../types/users/userTypes";
 import { msg } from "../../utils/msgUtils";
 import { strCheck } from "../../utils/validationUtils";
 
+// ----------------------------------------------------------------------
+// 사용자 유효성 검사 관련 로직
+// ----------------------------------------------------------------------
+
 export const inputValidate = ({
   Email,
   Name,

@@ -6,6 +6,10 @@ import {
   SignupBody,
 } from "../types/users/userTypes";
 
+// ----------------------------------------------------------------------
+// 로그인, 회원가입 관련 서비스 로직
+// ----------------------------------------------------------------------
+
 // 회원가입 요청
 export const registerUser = async (body: SignupBody): Promise<Signup> => {
   try {

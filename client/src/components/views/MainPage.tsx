@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../services/userService";
 import { loginAndOutValidate } from "../auth/userValidate";
 
+// ----------------------------------------------------------------------
 // 메인 페이지
+// ----------------------------------------------------------------------
+
 const MainPage = () => {
   const navigate = useNavigate();
   const onclickLogout = async () => {

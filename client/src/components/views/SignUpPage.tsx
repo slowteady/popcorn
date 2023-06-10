@@ -7,6 +7,10 @@ import { registerUser } from "../../services/userService";
 import { SignupForm } from "../../types/users/userTypes";
 import { inputValidate, signupValidate } from "../auth/userValidate";
 
+// ----------------------------------------------------------------------
+// 회원가입 페이지
+// ----------------------------------------------------------------------
+
 const initialState: SignupForm = {
   Email: "",
   Name: "",
@@ -14,7 +18,6 @@ const initialState: SignupForm = {
   ConfirmPassword: "",
 };
 
-// 회원가입 페이지
 const SignupPage = () => {
   const navigate = useNavigate();
   const [FormData, setFormData] = useState<SignupForm>(initialState);

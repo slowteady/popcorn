@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../services/userService";
 import { removeCookie } from "../utils/cookieUtils";
 
+// ----------------------------------------------------------------------
+// 사용자 검증 로직
+// ----------------------------------------------------------------------
+
 const Auth = <P extends {}>(
   SpecificComponent: ComponentType<P>
 ): FunctionComponent<P> => {

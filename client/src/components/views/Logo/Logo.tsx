@@ -4,6 +4,10 @@ import React, { FunctionComponent } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import logoImg from "../../img/popcorn_icon.png";
 
+// ----------------------------------------------------------------------
+// 로고
+// ----------------------------------------------------------------------
+
 interface LogoProps {
   sx?: SxProps;
 }

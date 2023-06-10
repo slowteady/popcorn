@@ -17,12 +17,15 @@ import { LoginForm } from "../../types/users/userTypes";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
 import { loginAndOutValidate } from "../auth/userValidate";
 
+// ----------------------------------------------------------------------
+// 로그인 페이지
+// ----------------------------------------------------------------------
+
 const initialState: LoginForm = {
   Email: "",
   Password: "",
 };
 
-// 로그인 페이지
 const LoginPage = () => {
   const navigate = useNavigate();
 
