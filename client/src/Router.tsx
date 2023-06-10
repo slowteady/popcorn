@@ -25,14 +25,14 @@ const Router = () => {
       path: "/main",
       element: <MainLayout />,
       children: [
-        { element: <Navigate to="/main/index" />, index: true },
-        { path: "index", element: <MainPage /> },
+        { element: <Navigate to="/main/app" />, index: true },
+        { path: "app", element: <MainPage /> },
       ],
     },
     {
       element: <FrameLayout />,
       children: [
-        { path: "/404", element: <Page404 /> },
+        { path: "404", element: <Page404 /> },
         { path: "*", element: <Navigate to="/404" /> },
       ],
     },
