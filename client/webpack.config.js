@@ -6,9 +6,10 @@ module.exports = {
   devServer: {
     port: 3000,
     historyApiFallback: true,
-    proxy: { // dev 환경 프록시 설정
-      '/api': {
-        target: 'http://localhost:8000',
+    proxy: {
+      // dev 환경 프록시 설정
+      "/api": {
+        target: "http://localhost:8000",
         changeOrigin: true,
       },
     },
@@ -43,6 +44,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"), // 빌드하면 만들어질 경로
     filename: "bundle.js", // 파일 이름
+    publicPath: "/",
   },
   plugins: [
     new HTMLWebpackPlugin({
