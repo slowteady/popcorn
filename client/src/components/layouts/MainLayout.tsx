@@ -1,9 +1,11 @@
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 
-// -------------------------------------------------------------
+// ----------------------------------------------------------------------
+// 메인 페이지 레이아웃
+// ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
