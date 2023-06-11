@@ -32,8 +32,9 @@ const SignupPage = () => {
 
     // 데이터 검증
     const isValid = inputValidate(FormData);
+    // 검증 실패 시 프로세스 중단
     if (!isValid) {
-      return; // 로직 중단
+      return; 
     }
 
     let body = {
@@ -42,6 +43,7 @@ const SignupPage = () => {
       password: Password,
     };
 
+    // 회원 가입
     const signupResult = await registerUser(body);
     const isComplete = signupValidate(signupResult);
     if (isComplete) {

@@ -29,7 +29,6 @@ const initialState: LoginForm = {
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  // state
   const [FormData, setFormData] = useState<LoginForm>(initialState);
   const [isRemember, setRemember] = useState(false);
 
@@ -53,6 +52,7 @@ const LoginPage = () => {
       });
     }
 
+    // 기억하기 체크 true 인 경우
     if (isRememberCookie) {
       const saveEmail = localStorage.getItem("email");
       setFormData((prevData) => ({ ...prevData, Email: saveEmail || "" }));
