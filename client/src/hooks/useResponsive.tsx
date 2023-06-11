@@ -38,7 +38,7 @@ export const useResponsive = ({ query, start, end }: useResponsiveProps) => {
 
 // ----------------------------------------------------------------------
 
-export function useWidth() {
+export const useWidth = () => {
   const theme = useTheme();
 
   const keys = [...theme.breakpoints.keys].reverse();
@@ -50,4 +50,4 @@ export function useWidth() {
       return !output && matches ? key : output;
     }, null) || "xs"
   );
-}
+};
