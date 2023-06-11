@@ -2,6 +2,7 @@ import { styled } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
+import Menu from "./menu/Menu";
 
 // ----------------------------------------------------------------------
 // 메인 페이지 레이아웃
@@ -35,6 +36,7 @@ const MainLayout = () => {
   return (
     <StyledRoot>
       <Header />
+      <Menu />
       <Main>
         <Outlet />
       </Main>
