@@ -56,11 +56,7 @@ const Menu = ({ openNav, onCloseNav }: MenuProps) => {
         <Box sx={{ mb: 5, mx: 2.5 }}>
           <Link underline="none">
             <StyledAccount>
-              <Avatar
-                src={mock.photoURL}
-                alt="photoURL"
-                sx={{ bgcolor: (theme) => (mock.userImg ? null : "#a39595") }}
-              />
+              <Avatar src={mock.photoURL} alt="photoURL" />
 
               <Box sx={{ ml: 2 }}>
                 <Typography variant="body1" sx={{ color: "text.primary" }}>

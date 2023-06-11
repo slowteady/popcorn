@@ -48,7 +48,6 @@ const UserPopover = () => {
         onClick={handleOpen}
         sx={{
           p: 0,
-          bgcolor: (theme) => (mock.userImg ? null : "#a39595"),
           "&:hover": {
             bgcolor: "#b6d4b6",
           },
