@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
