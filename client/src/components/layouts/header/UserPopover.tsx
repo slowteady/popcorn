@@ -11,19 +11,12 @@ import {
 import React, { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../../services/userService";
+import { mock } from "../../../state/_mock/mock";
 import { loginAndOutValidate } from "../../auth/userValidate";
-import defaultUserImg from "../../img/default_user.png";
 
 // ----------------------------------------------------------------------
 // 헤더 사용자
 // ----------------------------------------------------------------------
-
-const mock = {
-  displayName: "이용민",
-  email: "vbn0213@naver.com",
-  photoURL: defaultUserImg,
-  userImg: "",
-};
 
 const UserPopover = () => {
   const navigate = useNavigate();
@@ -45,7 +38,7 @@ const UserPopover = () => {
     setElement(null);
     const logout = await logoutUser();
     loginAndOutValidate(logout);
-    
+
     navigate("/");
   };
 
