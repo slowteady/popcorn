@@ -2,7 +2,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Box, IconButton, Stack, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { bgBlur } from "../../../utils/cssStyles";
+import { bgBlur } from "../../../utils/styleUtils";
 import UserPopover from "./UserPopover";
 
 // ----------------------------------------------------------------------
