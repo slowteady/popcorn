@@ -1,4 +1,5 @@
-import { AppBar, Box, Stack, Toolbar } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Box, IconButton, Stack, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 import { bgBlur } from "../../../utils/cssStyles";
@@ -32,10 +33,25 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const Header = () => {
+interface HeaderProps {
+  onOpenNav: () => void;
+}
+
+const Header = ({ onOpenNav }: HeaderProps) => {
   return (
     <StyledRoot>
       <StyledToolbar>
+        <IconButton
+          onClick={onOpenNav}
+          sx={{
+            mr: 1,
+            color: "text.primary",
+            display: { lg: "none" },
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+
         <Box sx={{ flexGrow: 1 }} />
         <Stack
           direction="row"

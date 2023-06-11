@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import Menu from "./menu/Menu";
@@ -33,10 +33,14 @@ const Main = styled("div")(({ theme }) => ({
 // -------------------------------------------------------------
 
 const MainLayout = () => {
+  const [open, setOpen] = useState(false);
+  
   return (
     <StyledRoot>
-      <Header />
-      <Menu />
+      <Header onOpenNav={() => setOpen(true)} />
+
+      <Menu openNav={open} onCloseNav={() => setOpen(false)}/>
+      
       <Main>
         <Outlet />
       </Main>
