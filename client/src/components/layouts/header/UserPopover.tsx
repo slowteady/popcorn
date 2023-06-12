@@ -33,13 +33,17 @@ const UserPopover = () => {
     setElement(null);
   };
 
-  const onclickLogout = async () => {
-    setOpen(false);
-    setElement(null);
+  const onClickLogout = async () => {
+    handleClose();
     const logout = await logoutUser();
     loginAndOutValidate(logout);
 
     navigate("/");
+  };
+
+  const onClickProfile = () => {
+    handleClose();
+    navigate("/main/users/profile");
   };
 
   return (
@@ -96,7 +100,13 @@ const UserPopover = () => {
 
           <Divider sx={{ borderStyle: "dashed" }} />
 
-          <MenuItem onClick={onclickLogout} sx={{ m: 1 }}>
+          <MenuItem onClick={onClickProfile} sx={{ m: 1 }}>
+            Profile
+          </MenuItem>
+
+          <Divider sx={{ borderStyle: "dashed" }} />
+
+          <MenuItem onClick={onClickLogout} sx={{ m: 1 }}>
             Logout
           </MenuItem>
         </Popover>
