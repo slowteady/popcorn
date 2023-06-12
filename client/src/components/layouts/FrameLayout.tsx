@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Logo from "../views/Logo/Logo";
+import Logo from "../pages/Logo/Logo";
 
 // -------------------------------------------------------------
 

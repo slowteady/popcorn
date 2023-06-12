@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useResponsive } from "../../../hooks/useResponsive";
 import { mock } from "../../../state/_mock/mock";
-import Logo from "../../views/Logo/Logo";
+import Logo from "../../pages/Logo/Logo";
 import List from "./List";
 import listConfig from "./config";
 
