@@ -57,7 +57,7 @@ const SignupPage = () => {
   return (
     <>
       <Helmet>
-        <title> SignUp | POPCORN! </title>
+        <title> Signup | POPCORN! </title>
       </Helmet>
 
       <Container component="main" maxWidth="sm">
