@@ -85,7 +85,7 @@ export const auth = async (
 // 사용자 프로파일 업데이트 요청
 export const updateProfile = async (body: ProfileBody) => {
   try {
-    const response = await axios.post("/api/users/profile", body);
+    const response = await axios.post("/api/users/updateprofile", body);
   } catch (err) {
     console.error(err);
     return {
