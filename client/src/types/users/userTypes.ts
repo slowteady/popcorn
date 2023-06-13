@@ -21,7 +21,6 @@ export interface Signup {
   type?: "ERROR";
   payload: { isSuccess: boolean; msg?: unknown; code?: any };
 }
-
 export interface Payload {
   payload: {
     isSuccess: boolean;
@@ -29,4 +28,11 @@ export interface Payload {
     user?: {} | boolean;
     isExpire?: boolean;
   };
+}
+export interface ProfileFormProps {
+  avatarImg: string;
+}
+export interface ProfileBody {
+  avatarImg: string;
+  selfIntro: string;
 }
