@@ -30,9 +30,9 @@ export interface Payload {
   };
 }
 export interface ProfileFormProps {
-  avatarImg: string;
+  avatarImg: File | undefined;
 }
 export interface ProfileBody {
-  avatarImg: string;
+  avatarImg: File | undefined;
   selfIntro: string;
 }
