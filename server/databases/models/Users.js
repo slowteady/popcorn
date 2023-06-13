@@ -20,6 +20,10 @@ const userSchema = new Schema({
   token: {
     type: String,
   },
+  intro: {
+    type: String,
+    maxlength: 100,
+  },
 });
 
 // 회원가입 이전 이벤트
