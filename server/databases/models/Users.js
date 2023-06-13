@@ -24,6 +24,9 @@ const userSchema = new Schema({
     type: String,
     maxlength: 100,
   },
+  image: {
+    path: String,
+  },
 });
 
 // 회원가입 이전 이벤트
