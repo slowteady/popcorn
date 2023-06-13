@@ -83,9 +83,17 @@ export const auth = async (
 };
 
 // 사용자 프로파일 업데이트 요청
-export const updateProfile = async (body: ProfileBody) => {
+export const updateProfile = async (data: ProfileBody) => {
+  const body = {
+    intro: data.selfIntro,
+    userImg: data.avatarImg,
+  };
+
   try {
-    const response = await axios.post("/api/users/updateprofile", body);
+    const response = await axios.patch(
+      "/api/users/update/:6478838d1e75dd1dc3ac98cd",
+      body
+    );
   } catch (err) {
     console.error(err);
     return {
