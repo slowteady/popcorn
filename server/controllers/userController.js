@@ -16,10 +16,10 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-
     if (!user) {
       return res.json({ isSuccess: false, msg: "일치하는 사용자가 없어요" });
     }
+
     const isMatch = await user.comparePassword(req.body.password);
     if (!isMatch) {
       return res.json({ isSuccess: false, msg: "비밀번호가 일치하지 않아요" });
@@ -76,9 +76,15 @@ const authUser = (req, res) => {
   res.status(200).json(obj);
 };
 
+// 사용자 프로파일 업데이트
+const updateProfile = (req, res) => {
+
+}
+
 module.exports = {
   registerUser,
   loginUser,
   logoutUser,
   authUser,
+  updateProfile
 };
