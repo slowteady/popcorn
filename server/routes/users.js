@@ -5,9 +5,10 @@ const {
   loginUser,
   logoutUser,
   authUser,
-  updateProfile
+  updateProfile,
 } = require("../controllers/userController");
 const { auth } = require("../middleware/auth");
+const upload = require("../middleware/uploadFiles");
 const router = express.Router();
 
 // 회원가입
@@ -24,6 +25,6 @@ router.get("/auth", auth, authUser);
 router.post("/auth", auth, authUser);
 
 // 사용자 프로파일 업데이트
-router.patch("/update/:id", updateProfile);
+router.patch("/update/:userId", upload.single("userImg"), updateProfile);
 
 module.exports = router;
