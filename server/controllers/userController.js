@@ -78,13 +78,15 @@ const authUser = (req, res) => {
 
 // 사용자 프로파일 업데이트
 const updateProfile = (req, res) => {
+  const userId = req.params.id;
+  const { intro, userImg } = req.body;
 
-}
+};
 
 module.exports = {
   registerUser,
   loginUser,
   logoutUser,
   authUser,
-  updateProfile
+  updateProfile,
 };

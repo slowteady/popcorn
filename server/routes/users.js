@@ -5,6 +5,7 @@ const {
   loginUser,
   logoutUser,
   authUser,
+  updateProfile
 } = require("../controllers/userController");
 const { auth } = require("../middleware/auth");
 const router = express.Router();
@@ -23,6 +24,6 @@ router.get("/auth", auth, authUser);
 router.post("/auth", auth, authUser);
 
 // 사용자 프로파일 업데이트
-router.post("/updateprofile");
+router.patch("/update/:id", updateProfile);
 
 module.exports = router;
