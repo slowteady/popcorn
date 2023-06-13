@@ -22,4 +22,7 @@ router.get("/logout", logoutUser);
 router.get("/auth", auth, authUser);
 router.post("/auth", auth, authUser);
 
+// 사용자 프로파일 업데이트
+router.post("/updateprofile");
+
 module.exports = router;
