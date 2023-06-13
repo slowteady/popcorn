@@ -1,5 +1,5 @@
 import { Avatar, Box, Container, FormControl, Typography } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { mock } from "../../../state/_mock/mock";
 
@@ -9,6 +9,7 @@ import { mock } from "../../../state/_mock/mock";
 
 const ProfilePage = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [avatarImg, setAvatarImg] = useState(mock.photoURL);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleMouseEnter = () => {
@@ -20,14 +21,24 @@ const ProfilePage = () => {
   };
 
   const handleImgBox = () => {
-    if(fileInputRef.current) {
+    if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   };
 
-  const handleFileChange = (event: any) => {
-    const file = event.target.files[0];
-    console.log(file);
+  // 파일 삽입
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if(event.target.files) {
+      const file = event.target.files[0];
+      console.log(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target) {
+          setAvatarImg(e.target.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -51,7 +62,7 @@ const ProfilePage = () => {
             onMouseLeave={handleMouseLeave}
           >
             <Avatar
-              src={mock.photoURL}
+              src={avatarImg}
               alt="photoURL"
               sx={{ width: 72, height: 72 }}
             />
@@ -77,7 +88,7 @@ const ProfilePage = () => {
                   onChange={handleFileChange}
                   style={{ display: "none" }}
                 />
-                <Typography color="white" fontSize={14}>
+                <Typography color="white" fontSize={12}>
                   이미지 추가
                 </Typography>
               </Box>
