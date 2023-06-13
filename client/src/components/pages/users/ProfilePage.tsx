@@ -1,6 +1,7 @@
-import { Avatar, Box, Container, FormControl, Typography } from "@mui/material";
+import { Avatar, Box, Container, Typography } from "@mui/material";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import ProfileForm from "../../utils/ProfileForm";
 import { mock } from "../../../state/_mock/mock";
 
 // ----------------------------------------------------------------------
@@ -28,9 +29,9 @@ const ProfilePage = () => {
 
   // 파일 삽입
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if(event.target.files) {
+    if (event.target.files) {
       const file = event.target.files[0];
-      console.log(file);
+
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target) {
@@ -94,7 +95,7 @@ const ProfilePage = () => {
               </Box>
             )}
           </Box>
-          <FormControl></FormControl>
+          <ProfileForm avatarImg={avatarImg} />
         </Box>
       </Container>
     </>
