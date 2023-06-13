@@ -1,8 +1,8 @@
 import { Avatar, Box, Container, Typography } from "@mui/material";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import ProfileForm from "../../utils/ProfileForm";
 import { mock } from "../../../state/_mock/mock";
+import ProfileForm from "../../utils/ProfileForm";
 
 // ----------------------------------------------------------------------
 // 프로파일 수정 페이지
@@ -10,7 +10,8 @@ import { mock } from "../../../state/_mock/mock";
 
 const ProfilePage = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [avatarImg, setAvatarImg] = useState(mock.photoURL);
+  const [avatarImg, setAvatarImg] = useState<File>();
+  const [imgUrl, setImgUrl] = useState<string>(mock.photoURL);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleMouseEnter = () => {
@@ -31,11 +32,12 @@ const ProfilePage = () => {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const file = event.target.files[0];
+      setAvatarImg(file);
 
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target) {
-          setAvatarImg(e.target.result as string);
+          setImgUrl(e.target.result as string);
         }
       };
       reader.readAsDataURL(file);
@@ -63,7 +65,7 @@ const ProfilePage = () => {
             onMouseLeave={handleMouseLeave}
           >
             <Avatar
-              src={avatarImg}
+              src={imgUrl}
               alt="photoURL"
               sx={{ width: 72, height: 72 }}
             />
