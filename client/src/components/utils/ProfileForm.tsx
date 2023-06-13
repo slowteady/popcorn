@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { FormEvent, useState } from "react";
-import { mock } from "../../state/_mock/mock";
 import { updateProfile } from "../../services/userService";
+import { mock } from "../../state/_mock/mock";
 import { ProfileFormProps } from "../../types/users/userTypes";
 
 // ----------------------------------------------------------------------
@@ -15,7 +15,6 @@ const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
     e.preventDefault();
 
     const data = { selfIntro, avatarImg };
-
     const updateResult = await updateProfile(data);
   };
   return (
