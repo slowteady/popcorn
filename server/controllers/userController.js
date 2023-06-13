@@ -78,8 +78,9 @@ const authUser = (req, res) => {
 
 // 사용자 프로파일 업데이트
 const updateProfile = (req, res) => {
-  const userId = req.params.id;
-  const { intro, userImg } = req.body;
+  const userId = req.params.userId;
+  const intro = req.body.intro;
+  const userImg = req.file;
 
 };
 
