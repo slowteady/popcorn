@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import {
   LoginBody,
   Payload,
+  ProfileBody,
   Signup,
   SignupBody,
 } from "../types/users/userTypes";
@@ -73,6 +74,18 @@ export const auth = async (
 
     const obj = { payload: response.data };
     return obj;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
+
+// 사용자 프로파일 업데이트 요청
+export const updateProfile = async (body: ProfileBody) => {
+  try {
+    const response = await axios.post("/api/users/profile", body);
   } catch (err) {
     console.error(err);
     return {
