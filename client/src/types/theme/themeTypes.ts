@@ -1,6 +1,6 @@
 import { Palette, Theme } from "@mui/material";
-import customShadows from "../../theme/customShadows";
 import { ReactNode } from "react";
+import customShadows from "../../theme/customShadows";
 
 // ----------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ export interface ThemeProviderProps {
 
 interface CustomPalette extends Palette {
   background: Palette['background'] & {
-    neutral: string;
+    neutral?: string;
   };
 }
 
