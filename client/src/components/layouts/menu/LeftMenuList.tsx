@@ -53,6 +53,7 @@ interface ItemProps {
 
 const ListItem: FunctionComponent<ItemProps> = ({ item }) => {
   const { title, path, Icon } = item;
+  
   return (
     <StyledListItem
       component={NavLink}
