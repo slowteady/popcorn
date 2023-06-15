@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import { useResponsive } from "../../../hooks/useResponsive";
 import { mock } from "../../../state/_mock/mock";
 import Logo from "../../pages/Logo/Logo";
-import List from "./List";
+import LeftMenuList from "./LeftMenuList";
 import listConfig from "./config";
 
 // ----------------------------------------------------------------------
@@ -36,7 +36,7 @@ interface MenuProps {
   onCloseNav: () => void;
 }
 
-const Menu = ({ openNav, onCloseNav }: MenuProps) => {
+const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
   const { pathname } = useLocation();
 
   const isDesktop = useResponsive({ query: "up", start: "lg" });
@@ -67,7 +67,7 @@ const Menu = ({ openNav, onCloseNav }: MenuProps) => {
           </Link>
         </Box>
 
-        <List data={listConfig} />
+        <LeftMenuList data={listConfig} />
       </>
     );
   };
@@ -112,4 +112,4 @@ const Menu = ({ openNav, onCloseNav }: MenuProps) => {
   );
 };
 
-export default Menu;
+export default LeftMenu;

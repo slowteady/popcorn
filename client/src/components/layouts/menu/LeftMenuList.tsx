@@ -6,7 +6,7 @@ import {
   ListItemButtonProps,
   ListItemIcon,
   ListItemText,
-  styled
+  styled,
 } from "@mui/material";
 import React, { FunctionComponent } from "react";
 import { NavLink } from "react-router-dom";
@@ -73,7 +73,10 @@ const ListItem: FunctionComponent<ItemProps> = ({ item }) => {
   );
 };
 
-const List: FunctionComponent<ListProps> = ({ data = [], ...other }) => {
+const LeftMenuList: FunctionComponent<ListProps> = ({
+  data = [],
+  ...other
+}) => {
   return (
     <Box {...other}>
       <BoxList disablePadding sx={{ p: 1 }}>
@@ -85,4 +88,4 @@ const List: FunctionComponent<ListProps> = ({ data = [], ...other }) => {
   );
 };
 
-export default List;
+export default LeftMenuList;

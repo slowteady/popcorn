@@ -2,7 +2,7 @@ import { styled } from "@mui/material";
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
-import Menu from "./menu/Menu";
+import LeftMenu from "./menu/LeftMenu";
 
 // ----------------------------------------------------------------------
 // 메인 페이지 레이아웃
@@ -34,13 +34,13 @@ const Main = styled("div")(({ theme }) => ({
 
 const MainLayout = () => {
   const [open, setOpen] = useState(false);
-  
+
   return (
     <StyledRoot>
       <Header onOpenNav={() => setOpen(true)} />
 
-      <Menu openNav={open} onCloseNav={() => setOpen(false)}/>
-      
+      <LeftMenu openNav={open} onCloseNav={() => setOpen(false)} />
+
       <Main>
         <Outlet />
       </Main>
