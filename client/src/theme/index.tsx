@@ -1,17 +1,17 @@
-import React, { useMemo } from "react";
-import palette from "./palette";
-import typography from "./typography";
-import customShadows from "./customShadows";
-import shadows from "./shadows";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, Shadows } from "@mui/material";
 import {
   ThemeProvider as MUIThemeProvider,
-  createTheme,
   StyledEngineProvider,
+  createTheme,
 } from "@mui/material/styles";
-import GlobalStyles from "./globalStyles";
+import React, { useMemo } from "react";
 import { ThemeProviderProps } from "../types/theme/themeTypes";
+import customShadows from "./customShadows";
+import GlobalStyles from "./globalStyles";
 import ComponentsOverrides from "./overrides";
+import palette from "./palette";
+import shadows from "./shadows";
+import typography from "./typography";
 
 // ----------------------------------------------------------------------
 // 테마
@@ -23,8 +23,8 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
       palette,
       shape: { borderRadius: 6 },
       typography,
-      shadows: shadows(),
       customShadows: customShadows(),
+      shadows: shadows() as Shadows,
     }),
     []
   );
