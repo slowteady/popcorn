@@ -1,7 +1,6 @@
 import { Avatar, Box, Container, Typography } from "@mui/material";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { mock } from "../../../state/_mock/mock";
 import ProfileForm from "../../utils/ProfileForm";
 
 // ----------------------------------------------------------------------
@@ -11,7 +10,7 @@ import ProfileForm from "../../utils/ProfileForm";
 const ProfilePage = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [avatarImg, setAvatarImg] = useState<File>();
-  const [imgUrl, setImgUrl] = useState<string>(mock.photoURL);
+  const [imgUrl, setImgUrl] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleMouseEnter = () => {
