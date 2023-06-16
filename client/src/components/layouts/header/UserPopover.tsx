@@ -68,7 +68,7 @@ const UserPopover = () => {
           }),
         }}
       >
-        <Avatar src={mock.photoURL} alt="photoURL" />
+        <Avatar />
       </IconButton>
 
       {element && (
