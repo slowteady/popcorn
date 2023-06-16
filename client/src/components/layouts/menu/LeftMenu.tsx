@@ -53,11 +53,11 @@ const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
         <Box sx={{ px: 2.5, py: 3, display: "inline-flex" }}>
           <Logo />
         </Box>
-        
+
         <Box sx={{ mb: 5, mx: 2.5 }}>
           <Link underline="none">
             <StyledAccount>
-              <Avatar src={mock.photoURL} alt="photoURL" />
+              <Avatar />
 
               <Box sx={{ ml: 2 }}>
                 <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
