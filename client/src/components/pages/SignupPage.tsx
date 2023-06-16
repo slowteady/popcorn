@@ -34,7 +34,7 @@ const SignupPage = () => {
     const isValid = inputValidate(FormData);
     // 검증 실패 시 프로세스 중단
     if (!isValid) {
-      return; 
+      return;
     }
 
     let body = {
