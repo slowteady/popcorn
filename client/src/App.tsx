@@ -1,6 +1,7 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import Router from "./Router";
 import ThemeProvider from "./theme";
 
@@ -9,7 +10,9 @@ const App = () => {
     <HelmetProvider>
       <BrowserRouter>
         <ThemeProvider>
-          <Router />
+          <RecoilRoot>
+            <Router />
+          </RecoilRoot>
         </ThemeProvider>
       </BrowserRouter>
     </HelmetProvider>
