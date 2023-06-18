@@ -6,6 +6,7 @@ import {
   Signup,
   SignupBody,
 } from "../types/users/userTypes";
+import { getId } from "../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
 // 로그인, 회원가입 관련 서비스 로직
@@ -86,20 +87,18 @@ export const auth = async (
 export const updateProfile = async (data: ProfileBody) => {
   const formData = new FormData();
   formData.append("intro", data.selfIntro);
+
   if (data.avatarImg) {
     formData.append("userImg", data.avatarImg);
   }
 
   try {
-    const response = await axios.patch(
-      "/api/users/update/:6478838d1e75dd1dc3ac98cd",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const id = getId("AUTH_TOKEN");
+    const response = await axios.patch(`/api/users/update/${id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   } catch (err) {
     console.error(err);
     return {
