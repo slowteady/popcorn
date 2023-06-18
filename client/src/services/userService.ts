@@ -6,7 +6,7 @@ import {
   Signup,
   SignupBody,
 } from "../types/users/userTypes";
-import { getId } from "../utils/cookieUtils";
+import { getCookie } from "../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
 // 로그인, 회원가입 관련 서비스 로직
@@ -93,7 +93,9 @@ export const updateProfile = async (data: ProfileBody) => {
   }
 
   try {
-    const id = getId("AUTH_TOKEN");
+    const cookie = getCookie("AUTH_TOKEN");
+    const id = cookie._id;
+    
     const response = await axios.patch(`/api/users/update/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
