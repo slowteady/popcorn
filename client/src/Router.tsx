@@ -7,6 +7,7 @@ import Page404 from "./components/pages/Page404";
 import SignupPage from "./components/pages/SignupPage";
 import MainPage from "./components/pages/main/MainPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
+import Auth from "./hoc/Auth";
 
 // ----------------------------------------------------------------------
 // 라우터
@@ -27,10 +28,26 @@ const Router = () => {
       element: <MainLayout />,
       children: [
         { element: <Navigate to="/main/app" />, index: true },
-        { path: "app", element: <MainPage /> },
+        {
+          path: "app",
+          element: (
+            <Auth>
+              <MainPage />
+            </Auth>
+          ),
+        },
         {
           path: "users",
-          children: [{ path: "profile", element: <ProfilePage /> }],
+          children: [
+            {
+              path: "profile",
+              element: (
+                <Auth>
+                  <ProfilePage />
+                </Auth>
+              ),
+            },
+          ],
         },
       ],
     },
