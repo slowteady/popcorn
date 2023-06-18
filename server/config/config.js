@@ -21,6 +21,8 @@ const init = () => {
   dotenv.config({ path: envPath });
 };
 
+init();
+
 // 운영체제에 따른 repository path 설정, 배포 후 window 분기 처리 제거 예정
 let repo = process.env.UPLOAD_PATH;
 if (os.platform() === "win32") {

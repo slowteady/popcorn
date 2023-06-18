@@ -1,9 +1,9 @@
 const express = require("express");
-const config = require("./config/config");
+
 const cookieParser = require("cookie-parser");
 
 // config 설정 파일 초기화
-config.init();
+require("./config/config");
 
 // DB 연결
 const mongoose = require("mongoose");
