@@ -77,11 +77,12 @@ const authUser = (req, res) => {
 };
 
 // 사용자 프로파일 업데이트
-const updateProfile = (req, res) => {
+const updateProfile = async (req, res) => {
   const userId = req.params.userId;
   const intro = req.body.intro;
-  const userImg = req.file;
+  const userImg = req.file.path;
 
+  const user = await User.findOneAndUpdate({ _id: userId }, { intro, image: userImg });
 };
 
 module.exports = {
