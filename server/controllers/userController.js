@@ -93,7 +93,15 @@ const updateProfile = async (req, res) => {
       { intro, image: filePath },
       { new: true }
     );
-    const obj = { isSuccess: true, user };
+    const obj = {
+      isSuccess: true,
+      user: {
+        email: user.email,
+        image: user.image,
+        intro: user.intro,
+        name: user.name,
+      },
+    };
 
     res.status(200).json(obj);
   } catch (err) {
