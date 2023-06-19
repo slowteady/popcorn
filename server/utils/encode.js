@@ -1,6 +1,6 @@
 const path = require("path");
 
-const fileEncode = (file) => {
+const PathEncode = (file) => {
   const filePath = file.path;
   const fileName = path.basename(filePath);
 
@@ -11,6 +11,11 @@ const fileEncode = (file) => {
   return resultPath;
 };
 
+const fileEncode = () => {
+
+}
+
 module.exports = {
-  fileEncode,
+  PathEncode,
+  fileEncode
 };
