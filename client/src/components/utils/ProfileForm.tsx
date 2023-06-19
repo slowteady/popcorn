@@ -1,9 +1,8 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { FormEvent, useState } from "react";
-import { useRecoilState } from "recoil";
+import React, { FormEvent, memo, useEffect, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { updateProfile } from "../../services/userService";
-import { mock } from "../../state/_mock/mock";
-import { userData } from "../../state/userState";
+import { userData, userDataType } from "../../state/userState";
 import { ProfileFormProps } from "../../types/users/userTypes";
 
 // ----------------------------------------------------------------------
@@ -11,9 +10,15 @@ import { ProfileFormProps } from "../../types/users/userTypes";
 // ----------------------------------------------------------------------
 
 const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
+  const usrData = useRecoilValue(userData);
+  const setData = useSetRecoilState(userData);
+  const { intro, name, email } = usrData as userDataType;
   const [selfIntro, setSelfIntro] = useState("");
-  const [data, setData] = useRecoilState(userData);
 
+  useEffect(() => {
+    setSelfIntro(intro);
+  }, [intro]);
+  
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -23,6 +28,7 @@ const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
     const { isSuccess, user } = payload;
 
     if (isSuccess) {
+      // 전역 유저 객체 업데이트
       setData(user);
     }
   };
@@ -41,10 +47,10 @@ const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
         onSubmit={handleSubmit}
       >
         <Typography color="black" fontSize={18}>
-          {mock.displayName}
+          {name}
         </Typography>
         <Typography color="black" fontSize={18}>
-          {mock.email}
+          {email}
         </Typography>
         <TextField
           label="자기소개"
@@ -68,4 +74,4 @@ const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
   );
 };
 
-export default ProfileForm;
+export default memo(ProfileForm);
