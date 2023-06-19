@@ -1,7 +1,9 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { FormEvent, useState } from "react";
+import { useRecoilState } from "recoil";
 import { updateProfile } from "../../services/userService";
 import { mock } from "../../state/_mock/mock";
+import { userData } from "../../state/userState";
 import { ProfileFormProps } from "../../types/users/userTypes";
 
 // ----------------------------------------------------------------------
@@ -10,13 +12,21 @@ import { ProfileFormProps } from "../../types/users/userTypes";
 
 const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
   const [selfIntro, setSelfIntro] = useState("");
+  const [data, setData] = useRecoilState(userData);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const data = { selfIntro, avatarImg };
-    const updateResult = await updateProfile(data);
+    const updateData = { selfIntro, avatarImg };
+    const updateResult = await updateProfile(updateData);
+    const payload = updateResult.payload;
+    const { isSuccess, user } = payload;
+
+    if (isSuccess) {
+      setData(user);
+    }
   };
+
   return (
     <>
       <Box
