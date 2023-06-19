@@ -1,7 +1,6 @@
 const multer = require("multer");
 const fs = require("fs");
 const { repo } = require("../config/config");
-const { fileEncode } = require("../utils/encode");
 
 if (!fs.existsSync(repo)) {
   fs.mkdirSync(repo, { recursive: true });
@@ -12,7 +11,7 @@ const storage = multer.diskStorage({
     cb(null, repo);
   },
   filename: function (req, file, cb) {
-    cb(null, fileEncode(file.originalname));
+    cb(null, file.originalname);
   },
 });
 
