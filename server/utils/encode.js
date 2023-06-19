@@ -11,11 +11,11 @@ const PathEncode = (file) => {
   return resultPath;
 };
 
-const fileEncode = () => {
-
-}
+const fileEncode = (fileName) => {
+  return encodeURIComponent(fileName);
+};
 
 module.exports = {
   PathEncode,
-  fileEncode
+  fileEncode,
 };
