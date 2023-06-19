@@ -10,8 +10,10 @@ import {
 } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { logoutUser } from "../../../services/userService";
 import { mock } from "../../../state/_mock/mock";
+import { userData, userDataType } from "../../../state/userState";
 import { loginAndOutValidate } from "../../auth/userValidate";
 
 // ----------------------------------------------------------------------
@@ -19,6 +21,9 @@ import { loginAndOutValidate } from "../../auth/userValidate";
 // ----------------------------------------------------------------------
 
 const UserPopover = () => {
+  const usrData = useRecoilValue(userData);
+  const { image } = usrData as userDataType;
+
   const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
   const [element, setElement] = useState<HTMLElement | null>();
@@ -68,7 +73,7 @@ const UserPopover = () => {
           }),
         }}
       >
-        <Avatar />
+        <Avatar src={image} />
       </IconButton>
 
       {element && (
