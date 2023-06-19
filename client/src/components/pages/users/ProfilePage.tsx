@@ -1,6 +1,8 @@
 import { Avatar, Box, Container, Typography } from "@mui/material";
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, memo, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useRecoilValue } from "recoil";
+import { userData, userDataType } from "../../../state/userState";
 import ProfileForm from "../../utils/ProfileForm";
 
 // ----------------------------------------------------------------------
@@ -8,10 +10,17 @@ import ProfileForm from "../../utils/ProfileForm";
 // ----------------------------------------------------------------------
 
 const ProfilePage = () => {
+  const usrData = useRecoilValue(userData);
+  const { image } = usrData as userDataType;
   const [isHovered, setIsHovered] = useState(false);
   const [avatarImg, setAvatarImg] = useState<File>();
   const [imgUrl, setImgUrl] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // 이미지 초기값을 위한 useEffect
+  useEffect(() => {
+    setImgUrl(image);
+  }, [image]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -103,4 +112,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default memo(ProfilePage);
