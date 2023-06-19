@@ -3,7 +3,7 @@
 1. NODE_ENV=환경 => package.json/scripts에 설정
 2. SERVER_PORT=포트번호
 3. MONGO_URI=MongoDB 커넥트 연결 정보
-4. 
+4. UPLOAD_PATH=저장소 PATH
 */
 const dotenv = require("dotenv");
 const os = require("os");
