@@ -1,5 +1,4 @@
 const User = require("../databases/models/Users");
-const { PathEncode } = require("../utils/encode");
 
 // 회원가입
 const registerUser = async (req, res) => {
@@ -81,20 +80,21 @@ const authUser = (req, res) => {
 const updateProfile = async (req, res) => {
   const userId = req.params.userId;
   const intro = req.body.intro;
-  let userImg;
+  let filePath;
 
   if (req.file && req.file.path) {
-    userImg = PathEncode(req.file);
+    const file = req.file;
+    filePath = file.path;
   }
-  
+
   try {
     const user = await User.findOneAndUpdate(
       { _id: userId },
-      { intro, image: userImg },
+      { intro, image: filePath },
       { new: true }
     );
     const obj = { isSuccess: true, user };
-    
+
     res.status(200).json(obj);
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
