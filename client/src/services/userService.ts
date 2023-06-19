@@ -95,12 +95,15 @@ export const updateProfile = async (data: ProfileBody) => {
   try {
     const cookie = getCookie("AUTH_TOKEN");
     const id = cookie._id;
-    
+
     const response = await axios.patch(`/api/users/update/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
+
+    const obj = { payload: response.data };
+    return obj;
   } catch (err) {
     console.error(err);
     return {
