@@ -65,7 +65,15 @@ const logoutUser = async (req, res) => {
 // 사용자 검증
 const authUser = (req, res) => {
   const { user, token, isExpire } = req;
-  const obj = { isSuccess: true, user };
+  const obj = {
+    isSuccess: true,
+    user: {
+      email: user.email,
+      image: user.image,
+      intro: user.intro,
+      name: user.name,
+    },
+  };
 
   if (isExpire) {
     obj.isSuccess = false;
