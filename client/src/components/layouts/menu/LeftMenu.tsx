@@ -9,8 +9,9 @@ import {
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { useResponsive } from "../../../hooks/useResponsive";
-import { mock } from "../../../state/_mock/mock";
+import { userData, userDataType } from "../../../state/userState";
 import Logo from "../../pages/Logo/Logo";
 import LeftMenuList from "./LeftMenuList";
 import listConfig from "./config";
@@ -37,8 +38,9 @@ interface MenuProps {
 }
 
 const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
+  const usrData = useRecoilValue(userData);
+  const { image, name } = usrData as userDataType;
   const { pathname } = useLocation();
-
   const isDesktop = useResponsive({ query: "up", start: "lg" });
 
   useEffect(() => {
@@ -57,11 +59,11 @@ const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
         <Box sx={{ mb: 5, mx: 2.5 }}>
           <Link underline="none">
             <StyledAccount>
-              <Avatar />
+              <Avatar src={image}/>
 
               <Box sx={{ ml: 2 }}>
                 <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
-                  {mock.displayName}
+                  {name}
                 </Typography>
               </Box>
             </StyledAccount>
