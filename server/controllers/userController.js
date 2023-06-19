@@ -92,7 +92,7 @@ const updateProfile = async (req, res) => {
 
   if (req.file && req.file.path) {
     const file = req.file;
-    filePath = file.path;
+    filePath = `/image/${file.filename}`;
   }
 
   try {
