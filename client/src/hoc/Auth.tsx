@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { auth } from "../services/userService";
 import { userData, userDataType } from "../state/userState";
 import { removeCookie } from "../utils/cookieUtils";
@@ -13,7 +13,7 @@ interface AuthProps {
   children: ReactNode;
 }
 const Auth: FunctionComponent<AuthProps> = ({ children }) => {
-  const [data, setData] = useRecoilState(userData);
+  const setData = useSetRecoilState(userData);
   const navigate = useNavigate();
 
   useEffect(() => {
