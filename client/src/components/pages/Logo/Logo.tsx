@@ -27,7 +27,7 @@ const Logo: FunctionComponent<LogoProps> = ({ sx }) => {
   );
 
   return (
-    <Link to="/" component={RouterLink} sx={{ display: "contents" }}>
+    <Link to="/main" component={RouterLink} sx={{ display: "contents" }}>
       {logo}
     </Link>
   );
