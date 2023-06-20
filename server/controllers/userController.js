@@ -64,24 +64,29 @@ const logoutUser = async (req, res) => {
 
 // 사용자 검증
 const authUser = (req, res) => {
-  const { user, token, isExpire } = req;
-  const obj = {
-    isSuccess: true,
-    user: {
-      email: user.email,
-      image: user.image,
-      intro: user.intro,
-      name: user.name,
-    },
-  };
+  try {
+    const { user, token, isExpire } = req;
+    const obj = {
+      isSuccess: true,
+      user: {
+        email: user.email,
+        image: user.image,
+        intro: user.intro,
+        name: user.name,
+      },
+    };
 
-  if (isExpire) {
-    obj.isSuccess = false;
-    obj.user = false;
-    obj.isExpire = true;
+    if (isExpire) {
+      obj.isSuccess = false;
+      obj.user = false;
+      obj.isExpire = true;
+    }
+
+    res.status(200).json(obj);
+  } catch (err) {
+    console.error("err: ", err, "code: ", err.code);
+    res.json({ isSuccess: false, msg: "오류가 발생했어요" });
   }
-
-  res.status(200).json(obj);
 };
 
 // 사용자 프로파일 업데이트
