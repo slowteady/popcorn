@@ -5,15 +5,15 @@ import { Helmet } from "react-helmet-async";
 // 메인 페이지
 // ----------------------------------------------------------------------
 
-const MainPage = () => {
+const MoviesPage = () => {
 
   return (
     <>
       <Helmet>
-        <title> Main | POPCORN! </title>
+        <title> Movies | POPCORN! </title>
       </Helmet>
     </>
   );
 };
 
-export default MainPage;
+export default MoviesPage;
