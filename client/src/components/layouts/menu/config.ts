@@ -1,5 +1,5 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import MovieIcon from '@mui/icons-material/Movie';
 
 // ----------------------------------------------------------------------
 // 좌측 메뉴 리스트 설정
@@ -7,9 +7,9 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 const listConfig = [
   {
-    title: "Most Popular",
+    title: "Movies",
     path: "/menu/popular",
-    Icon: ThumbUpIcon,
+    Icon: MovieIcon,
   },
   {
     title: "My Like",
