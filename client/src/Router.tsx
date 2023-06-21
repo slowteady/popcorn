@@ -5,8 +5,8 @@ import MainLayout from "./components/layouts/MainLayout";
 import LoginPage from "./components/pages/LoginPage";
 import Page404 from "./components/pages/Page404";
 import SignupPage from "./components/pages/SignupPage";
-import MainPage from "./components/pages/main/MainPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
+import MoviesPage from "./components/pages/main/movies/MoviesPage";
 import Auth from "./hoc/Auth";
 
 // ----------------------------------------------------------------------
@@ -27,12 +27,12 @@ const Router = () => {
       path: "/main",
       element: <MainLayout />,
       children: [
-        { element: <Navigate to="/main/app" />, index: true },
+        { element: <Navigate to="/main/movies" />, index: true },
         {
-          path: "app",
+          path: "movies",
           element: (
             <Auth>
-              <MainPage />
+              <MoviesPage />
             </Auth>
           ),
         },
