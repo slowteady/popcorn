@@ -16,7 +16,7 @@ import { getCookie } from "../utils/cookieUtils";
 export const registerUser = async (body: SignupBody): Promise<Signup> => {
   try {
     const response = await axios.post("/api/users/register", body);
-    const obj = { payload: response.data };
+    const obj = { isSuccess: true, payload: response.data };
     if (response.data.msg && response.data.msg.code) {
       // 에러 코드 있을 시
       obj.payload.code = response.data.msg.code;
@@ -34,7 +34,7 @@ export const registerUser = async (body: SignupBody): Promise<Signup> => {
 export const loginUser = async (body: LoginBody): Promise<Payload> => {
   try {
     const response = await axios.post("/api/users/login", body);
-    const obj = { payload: response.data };
+    const obj = { isSuccess: true, payload: response.data };
     return obj;
   } catch (err) {
     console.error(err);
@@ -48,7 +48,7 @@ export const loginUser = async (body: LoginBody): Promise<Payload> => {
 export const logoutUser = async (): Promise<Payload> => {
   try {
     const response = await axios.get("/api/users/logout");
-    const obj = { payload: response.data };
+    const obj = { isSuccess: true, payload: response.data };
     return obj;
   } catch (err) {
     console.error(err);
@@ -73,7 +73,7 @@ export const auth = async (
       response = await axios.get("/api/users/auth");
     }
 
-    const obj = { payload: response.data };
+    const obj = { isSuccess: true, payload: response.data };
     return obj;
   } catch (err) {
     console.error(err);
@@ -102,7 +102,7 @@ export const updateProfile = async (data: ProfileBody) => {
       },
     });
 
-    const obj = { payload: response.data };
+    const obj = { isSuccess: true, payload: response.data };
     return obj;
   } catch (err) {
     console.error(err);
