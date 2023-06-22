@@ -1,8 +1,8 @@
 import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
-import Iconify from "../../../iconify/Iconify";
 import { useRecoilState } from "recoil";
-import { movieListType } from "../../../../state/userState";
+import { movieListType } from "../../../../state/movieState";
+import Iconify from "../../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
 // MovieType 지정
