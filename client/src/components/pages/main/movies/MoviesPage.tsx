@@ -2,6 +2,7 @@ import { Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import MovieType from "./MovieType";
+import MovieList from "./MovieList";
 
 // ----------------------------------------------------------------------
 // Movies 페이지
@@ -29,6 +30,8 @@ const MoviesPage = () => {
             <MovieType />
           </Stack>
         </Stack>
+
+        <MovieList />
       </Container>
     </>
   );
