@@ -1,14 +1,34 @@
 import { Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import MovieType from "./MovieType";
+import { useRecoilValue } from "recoil";
+import { API } from "../../../../Config";
+import { movieListType } from "../../../../state/userState";
 import MovieList from "./MovieList";
+import MovieType from "./MovieType";
 
 // ----------------------------------------------------------------------
 // Movies 페이지
 // ----------------------------------------------------------------------
 
 const MoviesPage = () => {
+  const type = useRecoilValue(movieListType);
+
+  let url = API.BASE_URL;
+  switch (type.value) {
+    case "POPULAR":
+      url += API.POPULAR_PATH;
+      break;
+    case "NOWPLAYING":
+      url += API.NOWPLAYING_PATH;
+      break;
+    case "UPCOMING":
+      url += API.UPCOMING;
+      break;
+    default:
+      url += API.POPULAR_PATH;
+  }
+
   return (
     <>
       <Helmet>
