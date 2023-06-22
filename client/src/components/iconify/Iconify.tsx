@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react";
 import { Box, SxProps } from "@mui/material";
-import { Icon } from "@iconify/react";
+import { Icon, IconifyIcon } from "@iconify/react";
 
 // ----------------------------------------------------------------------
 // 아이콘
 // ----------------------------------------------------------------------
 
 interface IconifyProps {
-  icon: string | number;
+  icon: string | IconifyIcon;
   width?: number;
   sx?: SxProps;
 }
@@ -19,7 +19,12 @@ const Iconify: FunctionComponent<IconifyProps> = ({
   ...other
 }) => {
   return (
-    <Box component={Icon} sx={{ width, height: width, ...sx }} {...other} />
+    <Box
+      component={Icon}
+      icon={icon}
+      sx={{ width, height: width, ...sx }}
+      {...other}
+    />
   );
 };
 
