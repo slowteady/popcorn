@@ -12,7 +12,6 @@ import React, { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { logoutUser } from "../../../services/userService";
-import { mock } from "../../../state/_mock/mock";
 import { userData, userDataType } from "../../../state/userState";
 import { loginAndOutValidate } from "../../auth/userValidate";
 
@@ -22,7 +21,7 @@ import { loginAndOutValidate } from "../../auth/userValidate";
 
 const UserPopover = () => {
   const usrData = useRecoilValue(userData);
-  const { image } = usrData as userDataType;
+  const { name, image, email } = usrData as userDataType;
 
   const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
@@ -96,10 +95,10 @@ const UserPopover = () => {
         >
           <Box sx={{ my: 1.5, px: 2.5 }}>
             <Typography variant="subtitle2" noWrap>
-              {mock.displayName}
+              {name}
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-              {mock.email}
+              {email}
             </Typography>
           </Box>
 
