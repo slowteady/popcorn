@@ -1,9 +1,10 @@
 import { Container, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useRecoilValue } from "recoil";
 import { API } from "../../../../Config";
-import { movieListType } from "../../../../state/userState";
+import { getPopularMovies } from "../../../../services/movieService";
+import { movieListType } from "../../../../state/movieState";
 import MovieList from "./MovieList";
 import MovieType from "./MovieType";
 
@@ -28,6 +29,14 @@ const MoviesPage = () => {
     default:
       url += API.POPULAR_PATH;
   }
+  
+  useEffect(() => {
+    const movies = async () => {
+      // 서비스 로직에 url 전달
+      const result = await getPopularMovies(url);
+    };
+    movies();
+  }, [type]);
 
   return (
     <>
