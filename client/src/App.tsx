@@ -12,6 +12,8 @@ const queryClient = new QueryClient({
     queries: {
       // 앱이 다시 포커싱 받을 시 재요청 할지 여부
       refetchOnWindowFocus: false,
+      // 실패시 재요청 횟수
+      retry: 1,
     },
   },
 });
