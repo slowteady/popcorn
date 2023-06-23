@@ -1,20 +1,21 @@
 import { Container, Stack, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { API } from "../../../../Config";
 import { getPopularMovies } from "../../../../services/movieService";
 import { movieListType } from "../../../../state/movieState";
+import { MovieListProps } from "../../../../types/movies/movieTypes";
 import MovieList from "./MovieList";
 import MovieType from "./MovieType";
-import { useQuery } from "react-query";
 
 // ----------------------------------------------------------------------
 // Movies 페이지
 // ----------------------------------------------------------------------
 
 const MoviesPage = () => {
-  console.log(1);
+  const [movie, setMovie] = useState<MovieListProps>();
   const type = useRecoilValue(movieListType);
 
   let url = API.BASE_URL;
@@ -32,20 +33,17 @@ const MoviesPage = () => {
       url += API.POPULAR_PATH;
   }
 
-  // id, poster_path, release_date, title, genre_ids
-  const { data } = useQuery(["movieData"], () => getPopularMovies(url));
-  if (data && data.payload.isSuccess) {
-    const { id, poster_path, release_date, title, genre_ids } = data.payload;
-    console.log(id, poster_path, release_date, title, genre_ids);
-  }
+  // API 데이터 호출 및 캐싱
+  const { status, data } = useQuery(["movieData", url], () =>
+    getPopularMovies(url)
+  );
 
-  // useEffect(() => {
-  //   const movies = async () => {
-  //     // 서비스 로직에 url 전달
-  //     const result = await getPopularMovies(url);
-  //   };
-  //   movies();
-  // }, [type]);
+  // 무한루프 방지를 위한 useEffect
+  useEffect(() => {
+    if (status === "success") {
+      setMovie(data.payload);
+    }
+  }, [status, data]);
 
   return (
     <>
@@ -69,7 +67,7 @@ const MoviesPage = () => {
           </Stack>
         </Stack>
 
-        <MovieList />
+        <MovieList movies={movie} />
       </Container>
     </>
   );
