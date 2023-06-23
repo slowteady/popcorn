@@ -1,7 +1,21 @@
 export interface MovieListProps {
-  id: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  genre_ids: [number];
+  movies: [
+    {
+      id: number;
+      poster_path: string;
+      release_date: string;
+      title: string;
+      genre_ids: [number];
+    }
+  ];
+}
+
+export interface MovieCardProps {
+  movie: {
+    id: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    genre_ids: [number];
+  };
 }
