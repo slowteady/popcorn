@@ -4,7 +4,7 @@ import { MovieListProps } from "../../../../types/movies/movieTypes";
 import MovieCard from "./MovieCard";
 
 // ----------------------------------------------------------------------
-// Movie 리스트 페이지
+// Movie 리스트
 // ----------------------------------------------------------------------
 
 const MovieList = ({ movies }: MovieListProps) => {
