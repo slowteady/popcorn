@@ -66,15 +66,18 @@ const logoutUser = async (req, res) => {
 const authUser = (req, res) => {
   try {
     const { user, token, isExpire } = req;
-    const obj = {
-      isSuccess: true,
-      user: {
-        email: user.email,
-        image: user.image,
-        intro: user.intro,
-        name: user.name,
-      },
-    };
+    let obj = {};
+    if (user) {
+      obj = {
+        isSuccess: true,
+        user: {
+          email: user.email,
+          image: user.image,
+          intro: user.intro,
+          name: user.name,
+        },
+      };
+    }
 
     if (isExpire) {
       obj.isSuccess = false;
