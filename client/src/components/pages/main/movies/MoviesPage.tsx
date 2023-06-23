@@ -6,7 +6,6 @@ import { useRecoilValue } from "recoil";
 import { API } from "../../../../Config";
 import { getPopularMovies } from "../../../../services/movieService";
 import { movieListType } from "../../../../state/movieState";
-import { MovieListProps } from "../../../../types/movies/movieTypes";
 import MovieList from "./MovieList";
 import MovieType from "./MovieType";
 
@@ -15,7 +14,7 @@ import MovieType from "./MovieType";
 // ----------------------------------------------------------------------
 
 const MoviesPage = () => {
-  const [movie, setMovie] = useState<MovieListProps>();
+  const [movie, setMovie] = useState();
   const type = useRecoilValue(movieListType);
 
   let url = API.BASE_URL;
@@ -38,7 +37,7 @@ const MoviesPage = () => {
     getPopularMovies(url)
   );
 
-  // 무한루프 방지를 위한 useEffect
+  // 무한루프 방지
   useEffect(() => {
     if (status === "success") {
       setMovie(data.payload);
@@ -67,7 +66,7 @@ const MoviesPage = () => {
           </Stack>
         </Stack>
 
-        <MovieList movies={movie} />
+        {movie ? <MovieList movies={movie} /> : null}
       </Container>
     </>
   );
