@@ -6,7 +6,9 @@ export const API = {
   LANGUAGE: "ko-KR",
   BASE_URL: "https://api.themoviedb.org/3/",
   IMAGE_BASE_URL: "http://image.tmdb.org/t/p/",
+  IMAGE_SIZE_300: "w300",
+  IMAGE_SIZE_500: "w500",
   POPULAR_PATH: "movie/popular/",
   NOWPLAYING_PATH: "movie/now_playing",
-  UPCOMING: "movie/upcoming",
+  TOP_RATED: "movie/top_rated",
 };
