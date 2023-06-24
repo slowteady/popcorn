@@ -11,7 +11,7 @@ import Iconify from "../../../iconify/Iconify";
 const TYPE_OPTION = [
   { value: "POPULAR", label: "Popular" },
   { value: "NOWPLAYING", label: "Now Playing" },
-  { value: "UPCOMING", label: "Upcoming" },
+  { value: "TOPRATED", label: "Top Rated" },
 ];
 
 const MovieType = () => {
