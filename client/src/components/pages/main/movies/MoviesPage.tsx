@@ -25,16 +25,19 @@ const MoviesPage = () => {
     case "NOWPLAYING":
       url += API.NOWPLAYING_PATH;
       break;
-    case "UPCOMING":
-      url += API.UPCOMING;
+    case "TOPRATED":
+      url += API.TOP_RATED;
       break;
     default:
       url += API.POPULAR_PATH;
   }
 
   // API 데이터 호출 및 캐싱
-  const { status, data } = useQuery(["movieData", url], () =>
-    getPopularMovies(url)
+  const { status, data } = useQuery(
+    ["movieData", url],
+    () => getPopularMovies(url),
+    // 캐싱 유효시간 4시간
+    { staleTime: 1000 * 60 * 240 }
   );
 
   // 무한루프 방지
@@ -66,7 +69,7 @@ const MoviesPage = () => {
           </Stack>
         </Stack>
 
-        {movie ? <MovieList movies={movie} /> : null}
+        {movie && <MovieList movies={movie} />}
       </Container>
     </>
   );
