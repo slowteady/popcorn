@@ -1,8 +1,8 @@
 import axios from "axios";
 import { API } from "../Config";
 
-// popular movie api 요청
-export const getPopularMovies = async (url: string, page: number) => {
+// movie api 요청
+export const getMovieData = async (url: string, page: number) => {
   try {
     const response = await axios.get(url, {
       params: {
