@@ -72,7 +72,7 @@ const UserPopover = () => {
           }),
         }}
       >
-        <Avatar src={image} />
+        {image && <Avatar src={image} />}
       </IconButton>
 
       {element && (
