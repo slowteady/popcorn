@@ -8,7 +8,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 const listConfig = [
   {
     title: "Movies",
-    path: "/menu/popular",
+    path: "/main/movies",
     Icon: MovieIcon,
   },
   {
