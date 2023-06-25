@@ -21,7 +21,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
 
   return (
     <Card>
-      <Box sx={{ minHeight: "300px", position: "relative" }}>
+      <Box sx={{ minHeight: "405px", position: "relative" }}>
         {poster_path && <StyledMovieImg alt={title} src={posterUrl} />}
       </Box>
       <Stack spacing={2} sx={{ p: 3 }}>
