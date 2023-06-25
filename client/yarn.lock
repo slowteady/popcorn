@@ -1577,6 +1577,7 @@ __metadata:
     react-cookie: ^4.1.1
     react-dom: ^18.2.0
     react-helmet-async: ^1.3.0
+    react-intersection-observer: ^9.5.1
     react-query: ^3.39.3
     react-router-dom: ^6.12.1
     recoil: ^0.7.7
@@ -3890,6 +3891,15 @@ __metadata:
     react: ^16.6.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0
   checksum: 7ca7e47f8af14ea186688b512a87ab912bf6041312b297f92516341b140b3f0f8aedf5a44d226d99e69ed067b0cc106e38aeb9c9b738ffcc63d10721c844db90
+  languageName: node
+  linkType: hard
+
+"react-intersection-observer@npm:^9.5.1":
+  version: 9.5.1
+  resolution: "react-intersection-observer@npm:9.5.1"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 862d531757a9eea1f0eff072be21e6c11d8d9f78c5918609ac8164899365484ce983a50f9ed45c861753d407d2066b3198cf6444506d0c6e4212a4a361995643
   languageName: node
   linkType: hard
 
