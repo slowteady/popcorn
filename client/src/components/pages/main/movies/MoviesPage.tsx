@@ -1,11 +1,14 @@
-import { Container, Stack, Typography } from "@mui/material";
+import PendingIcon from "@mui/icons-material/Pending";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { API } from "../../../../Config";
-import { getPopularMovies } from "../../../../services/movieService";
+import { getMovieData } from "../../../../services/movieService";
 import { movieListType } from "../../../../state/movieState";
+import { MovieListProps } from "../../../../types/movies/movieTypes";
 import MovieList from "./MovieList";
 import MovieType from "./MovieType";
 
@@ -14,11 +17,14 @@ import MovieType from "./MovieType";
 // ----------------------------------------------------------------------
 
 const MoviesPage = () => {
-  const [movie, setMovie] = useState();
-  const type = useRecoilValue(movieListType);
+  const [movie, setMovie] = useState<MovieListProps["movies"]>([]);
+  const [page, setPage] = useState(1);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const movieType = useRecoilValue(movieListType);
+  const [prevType, setPrevType] = useState(movieType.value);
 
   let url = API.BASE_URL;
-  switch (type.value) {
+  switch (movieType.value) {
     case "POPULAR":
       url += API.POPULAR_PATH;
       break;
@@ -34,18 +40,42 @@ const MoviesPage = () => {
 
   // API 데이터 호출 및 캐싱
   const { status, data } = useQuery(
-    ["movieData", url],
-    () => getPopularMovies(url),
+    ["movieData", url, page],
+    () => getMovieData(url, page),
     // 캐싱 유효시간 4시간
     { staleTime: 1000 * 60 * 240 }
   );
 
-  // 무한루프 방지
+  // 초기화
+  const reset = () => {
+    setPage(1);
+    setMovie([]);
+    setIsFirstLoad(true);
+  };
+
+  // sort 타입 변경 시
   useEffect(() => {
-    if (status === "success") {
-      setMovie(data.payload);
+    setPrevType(movieType.value);
+  }, [movieType]);
+
+  useEffect(() => {
+    if (status === "success" && movieType.value === prevType) {
+      setMovie((prevMovie) => [...prevMovie, ...data.payload]);
+    } else if (movieType.value !== prevType) {
+      reset();
     }
-  }, [status, data]);
+  }, [data]);
+
+  const handleView = (inView: boolean) => {
+    // 초기 렌더링 시 로직 두번 타는 거 방지
+    if (isFirstLoad) {
+      setIsFirstLoad(false);
+      return;
+    }
+    if (inView && page < 10) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
 
   return (
     <>
@@ -70,6 +100,19 @@ const MoviesPage = () => {
         </Stack>
 
         {movie && <MovieList movies={movie} />}
+        <InView onChange={handleView}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "50px",
+              mt: "20px",
+            }}
+          >
+            {status === "loading" && <PendingIcon fontSize="large" />}
+          </Box>
+        </InView>
       </Container>
     </>
   );
