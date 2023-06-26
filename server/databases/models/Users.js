@@ -23,9 +23,10 @@ const userSchema = new Schema({
   intro: {
     type: String,
     maxlength: 100,
+    default: "",
   },
   image: {
-    path: String,
+    path: { type: String, default: "" },
   },
 });
 
