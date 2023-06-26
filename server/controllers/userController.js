@@ -72,7 +72,7 @@ const authUser = (req, res) => {
         isSuccess: true,
         user: {
           email: user.email,
-          image: user.image,
+          image: user.image.path,
           intro: user.intro,
           name: user.name,
         },
