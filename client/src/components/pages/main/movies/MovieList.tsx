@@ -10,8 +10,8 @@ import MovieCard from "./MovieCard";
 const MovieList = ({ movies }: MovieListProps) => {
   return (
     <Grid container spacing={3}>
-      {movies.map((movie) => (
-        <Grid key={movie.id} item xs={12} sm={6} md={3}>
+      {movies.map((movie, index) => (
+        <Grid key={index} item xs={12} sm={6} md={3}>
           <MovieCard movie={movie} />
         </Grid>
       ))}
