@@ -20,8 +20,8 @@ const MoviesPage = () => {
   const [movie, setMovie] = useState<MovieListProps["movies"]>([]);
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [enabled, setEnabled] = useState(false);
   const movieType = useRecoilValue(movieListType);
-  const [prevType, setPrevType] = useState(movieType.value);
 
   let url = API.BASE_URL;
   switch (movieType.value) {
@@ -42,27 +42,23 @@ const MoviesPage = () => {
   const { status, data } = useQuery(
     ["movieData", url, page],
     () => getMovieData(url, page),
-    // 캐싱 유효시간 4시간
-    { staleTime: 1000 * 60 * 240 }
+    { enabled }
   );
 
   // 초기화
-  const reset = () => {
+  const handleMovieTypeChange = () => {
     setPage(1);
     setMovie([]);
     setIsFirstLoad(true);
   };
 
-  // sort 타입 변경 시
   useEffect(() => {
-    setPrevType(movieType.value);
-  }, [movieType]);
+    setEnabled(true);
+  }, [page]);
 
   useEffect(() => {
-    if (status === "success" && movieType.value === prevType) {
+    if (status === "success") {
       setMovie((prevMovie) => [...prevMovie, ...data.payload]);
-    } else if (movieType.value !== prevType) {
-      reset();
     }
   }, [data]);
 
@@ -95,7 +91,7 @@ const MoviesPage = () => {
           sx={{ mb: 5 }}
         >
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            <MovieType />
+            <MovieType onChange={handleMovieTypeChange} />
           </Stack>
         </Stack>
 
