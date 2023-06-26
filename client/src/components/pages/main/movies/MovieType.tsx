@@ -8,13 +8,17 @@ import Iconify from "../../../iconify/Iconify";
 // MovieType 지정
 // ----------------------------------------------------------------------
 
+interface MovieTypeProps {
+  onChange: () => void;
+}
+
 const TYPE_OPTION = [
   { value: "POPULAR", label: "Popular" },
   { value: "NOWPLAYING", label: "Now Playing" },
   { value: "TOPRATED", label: "Top Rated" },
 ];
 
-const MovieType = () => {
+const MovieType = ({ onChange }: MovieTypeProps) => {
   const [open, setOpen] = useState(false);
   const [movieType, setMovieType] = useRecoilState(movieListType);
 
@@ -34,6 +38,7 @@ const MovieType = () => {
   const handleMenu = (value: string, label: string) => {
     setOpen(false);
     setMovieType({ value, label });
+    onChange();
   };
 
   return (
