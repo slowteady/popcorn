@@ -1,7 +1,8 @@
 import { Box, Card, Stack, Typography, styled } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { API } from "../../../../Config";
 import { MovieCardProps } from "../../../../types/movies/movieTypes";
+import MovieModal from "./MovieModal";
 
 // ----------------------------------------------------------------------
 // Movie 카드
@@ -16,45 +17,62 @@ const StyledMovieImg = styled("img")({
 });
 
 const MovieCard = ({ movie }: MovieCardProps) => {
-  const { id, poster_path, release_date, title, genre_ids, vote_average } = movie;
+  const [open, setOpen] = useState(false);
+  const { id, poster_path, release_date, title, genre_ids, vote_average } =
+    movie;
   const posterUrl = `${API.IMAGE_BASE_URL}${API.IMAGE_SIZE_500}${poster_path}`;
 
-  return (
-    <Card sx={{ cursor: "pointer" }}>
-      <Box sx={{ minHeight: "405px", position: "relative" }}>
-        {poster_path && <StyledMovieImg alt={title} src={posterUrl} />}
-      </Box>
-      <Stack spacing={2} sx={{ p: 3 }}>
-        <Box color="inherit">
-          <Typography component="div" title={title} variant="subtitle2" noWrap>
-            {title}
-          </Typography>
-        </Box>
+  const handleModalOpen = () => setOpen(true);
+  const handleModalClose = () => setOpen(false);
 
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Typography variant="subtitle1">{release_date}</Typography>
-          <Box
-            sx={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "50%",
-              bgcolor: "rgb(0,0,0,0.9)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography fontSize={15} fontWeight={800} sx={{ color: "white" }}>
-              {vote_average}
+  return (
+    <>
+      <Card sx={{ cursor: "pointer" }} onClick={handleModalOpen}>
+        <Box sx={{ minHeight: "405px", position: "relative" }}>
+          {poster_path && <StyledMovieImg alt={title} src={posterUrl} />}
+        </Box>
+        <Stack spacing={2} sx={{ p: 3 }}>
+          <Box color="inherit">
+            <Typography
+              component="div"
+              title={title}
+              variant="subtitle2"
+              noWrap
+            >
+              {title}
             </Typography>
           </Box>
+
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Typography variant="subtitle1">{release_date}</Typography>
+            <Box
+              sx={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                bgcolor: "rgb(0,0,0,0.9)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                fontSize={15}
+                fontWeight={800}
+                sx={{ color: "white" }}
+              >
+                {vote_average}
+              </Typography>
+            </Box>
+          </Stack>
         </Stack>
-      </Stack>
-    </Card>
+      </Card>
+      <MovieModal open={open} onClose={handleModalClose} />
+    </>
   );
 };
 
