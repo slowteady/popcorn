@@ -16,7 +16,7 @@ const StyledMovieImg = styled("img")({
 });
 
 const MovieCard = ({ movie }: MovieCardProps) => {
-  const { id, poster_path, release_date, title, genre_ids } = movie;
+  const { id, poster_path, release_date, title, genre_ids, vote_average } = movie;
   const posterUrl = `${API.IMAGE_BASE_URL}${API.IMAGE_SIZE_500}${poster_path}`;
 
   return (
@@ -37,6 +37,21 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           justifyContent="space-between"
         >
           <Typography variant="subtitle1">{release_date}</Typography>
+          <Box
+            sx={{
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+              bgcolor: "rgb(0,0,0,0.9)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography fontSize={15} fontWeight={800} sx={{ color: "white" }}>
+              {vote_average}
+            </Typography>
+          </Box>
         </Stack>
       </Stack>
     </Card>
