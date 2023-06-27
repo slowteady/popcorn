@@ -4,7 +4,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   devServer: {
-    port: 3000,
+    port: 4000,
     historyApiFallback: true,
     proxy: {
       // dev 환경 프록시 설정
