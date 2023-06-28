@@ -1,8 +1,8 @@
 // 1. popular 호출 https://api.themoviedb.org/3/movie/popular?api_key=50bce08bd7644cf283922a7b984a50ee&language=ko-KR
-// 2. 영화 세부조회 https://api.themoviedb.org/3/movie/343611?api_key=50bce08bd7644cf283922a7b984a50ee
+// 2. 영화 세부조회 https://api.themoviedb.org/3/movie/343611?api_key=50bce08bd7644cf283922a7b984a50ee&language=ko
 // 3. 이미지 https://api.themoviedb.org/3/movie/385687/images?api_key=50bce08bd7644cf283922a7b984a50ee
 // 4. 영화 검색 https://api.themoviedb.org/3/search/movie?api_key=50bce08bd7644cf283922a7b984a50ee&query=harry&language=ko-KR
-// 5. 영화 상세 https://api.themoviedb.org/3/movie/385687?api_key=50bce08bd7644cf283922a7b984a50ee&language=ko
+
 export const API = {
   API_KEY: "50bce08bd7644cf283922a7b984a50ee",
   LANGUAGE: "ko-KR",
@@ -13,4 +13,5 @@ export const API = {
   POPULAR_PATH: "movie/popular/",
   NOWPLAYING_PATH: "movie/now_playing",
   TOP_RATED: "movie/top_rated",
+  SEARCH_PATH: "search/movie",
 };
