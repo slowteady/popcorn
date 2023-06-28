@@ -1,6 +1,7 @@
 import { Box, Modal } from "@mui/material";
 import React from "react";
 import { MovieCardProps } from "../../../../types/movies/movieTypes";
+import ModalPage from "./ModalPage";
 
 // ----------------------------------------------------------------------
 // Movie 모달
@@ -32,7 +33,9 @@ const MovieModal = ({ movie, open, handleClose }: MovieModalProps) => {
               md: "600px",
             },
           }}
-        ></Box>
+        >
+          <ModalPage movie={movie} />
+        </Box>
       </Modal>
     </>
   );
