@@ -71,7 +71,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           </Stack>
         </Stack>
       </Card>
-      <MovieModal movie={movie} open={open} handleClose={handleModalClose} />
+      <MovieModal id={id} open={open} handleClose={handleModalClose} />
     </>
   );
 };

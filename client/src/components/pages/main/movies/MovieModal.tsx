@@ -1,18 +1,18 @@
 import { Box, Modal } from "@mui/material";
 import React from "react";
-import { MovieCardProps } from "../../../../types/movies/movieTypes";
 import ModalPage from "./ModalPage";
 
 // ----------------------------------------------------------------------
 // Movie 모달
 // ----------------------------------------------------------------------
 
-interface MovieModalProps extends MovieCardProps {
+interface MovieModalProps {
   open: boolean;
   handleClose: () => void;
+  id: number;
 }
 
-const MovieModal = ({ movie, open, handleClose }: MovieModalProps) => {
+const MovieModal = ({ id, open, handleClose }: MovieModalProps) => {
   return (
     <>
       <Modal open={open} onClose={handleClose}>
@@ -34,7 +34,7 @@ const MovieModal = ({ movie, open, handleClose }: MovieModalProps) => {
             },
           }}
         >
-          <ModalPage movie={movie} />
+          <ModalPage id={id} />
         </Box>
       </Modal>
     </>
