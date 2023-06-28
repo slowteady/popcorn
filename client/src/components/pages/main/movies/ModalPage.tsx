@@ -1,8 +1,26 @@
-import React from "react";
-import { MovieCardProps } from "../../../../types/movies/movieTypes";
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { API } from "../../../../Config";
+import { getMovieDetailData } from "../../../../services/movieService";
 
-const ModalPage = ({ movie }: MovieCardProps) => {
-  const { id, poster_path, release_date, title, vote_average } = movie;
+// ----------------------------------------------------------------------
+// 모달 페이지
+// ----------------------------------------------------------------------
+
+interface ModalPageProps {
+  id: number;
+}
+
+const ModalPage = ({ id }: ModalPageProps) => {
+  const [enabled, setEnabled] = useState(false);
+
+  const url = `${API.BASE_URL}movie/${id}`;
+  const { status, data } = useQuery(
+    ["movieDetailData", url],
+    () => getMovieDetailData(url),
+    { enabled: true }
+  );
+
   return <div>ModalPage</div>;
 };
 
