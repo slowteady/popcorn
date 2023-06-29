@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Modal, Typography } from "@mui/material";
+import { Container, Modal } from "@mui/material";
 import React from "react";
 import ModalPage from "./ModalPage";
 
@@ -30,8 +30,9 @@ const MovieModal = ({ id, open, handleClose }: MovieModalProps) => {
             alignItems: "center",
             justifyContent: "center",
             height: "60%",
-            bgcolor: "background.paper",
-            border: "2px solid #000",
+            bgcolor: "#f9f6f6",
+            border: "1px solid rgb(0, 0, 0, 0.8)",
+            borderRadius: "2%",
             boxShadow: 24,
             p: 4,
             maxWidth: {
