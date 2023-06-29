@@ -43,15 +43,17 @@ export const getMovieDetailData = async (url: string) => {
     } = response.data;
 
     const obj = {
-      isSuccess: true,
       payload: {
-        genres,
-        overview,
-        poster_path,
-        release_date,
-        runtime,
-        title,
-        vote_average,
+        isSuccess: true,
+        movie: {
+          genres,
+          overview,
+          poster_path,
+          release_date,
+          runtime,
+          title,
+          vote_average,
+        },
       },
     };
     return obj;
