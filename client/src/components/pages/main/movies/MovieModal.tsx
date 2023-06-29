@@ -1,4 +1,4 @@
-import { Box, Modal } from "@mui/material";
+import { Box, Container, Grid, Modal, Typography } from "@mui/material";
 import React from "react";
 import ModalPage from "./ModalPage";
 
@@ -15,27 +15,35 @@ interface MovieModalProps {
 const MovieModal = ({ id, open, handleClose }: MovieModalProps) => {
   return (
     <>
-      <Modal open={open} onClose={handleClose}>
-        <Box
+      <Modal
+        open={open}
+        onClose={handleClose}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Container
           sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            minWidth: {
-              xs: "200px",
-              sm: "400px",
-              md: "600px",
-            },
-            minHeight: {
-              xs: "300px",
-              sm: "500px",
-              md: "600px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "60%",
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+            maxWidth: {
+              xs: 444,
+              sm: 600,
             },
           }}
         >
-          <ModalPage id={id} />
-        </Box>
+          <Typography variant="h6" color="primary">
+            Fluid
+          </Typography>
+        </Container>
       </Modal>
     </>
   );
