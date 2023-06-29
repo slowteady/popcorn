@@ -40,9 +40,7 @@ const MovieModal = ({ id, open, handleClose }: MovieModalProps) => {
             },
           }}
         >
-          <Typography variant="h6" color="primary">
-            Fluid
-          </Typography>
+          <ModalPage id={id} />
         </Container>
       </Modal>
     </>
