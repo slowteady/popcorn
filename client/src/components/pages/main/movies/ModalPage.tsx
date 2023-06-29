@@ -1,35 +1,64 @@
+import { Box, Grid, Typography, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { API } from "../../../../Config";
 import { getMovieDetailData } from "../../../../services/movieService";
-import { Grid } from "@mui/material";
+import { ModalMovieProps } from "../../../../types/movies/movieTypes";
 
 // ----------------------------------------------------------------------
 // 모달 페이지
 // ----------------------------------------------------------------------
+
+const StyledMovieImg = styled("img")({
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  position: "absolute",
+  borderRadius: "3%",
+});
 
 interface ModalPageProps {
   id: number;
 }
 
 const ModalPage = ({ id }: ModalPageProps) => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState<ModalMovieProps["movie"]>();
 
   const url = `${API.BASE_URL}movie/${id}`;
-  const { status, data } = useQuery(
-    ["movieDetailData", url],
-    () => getMovieDetailData(url),
+  const { status, data } = useQuery(["movieDetailData", url], () =>
+    getMovieDetailData(url)
   );
 
   useEffect(() => {
-    if (status === "success") {
-      setMovie({ ...data.payload });
+    if (
+      status === "success" &&
+      data.payload.isSuccess &&
+      "movie" in data.payload
+    ) {
+      setMovie({ ...data.payload.movie });
     }
   }, [data]);
 
+  let posterUrl = "";
+  if (movie) {
+    posterUrl = `${API.IMAGE_BASE_URL}${API.IMAGE_SIZE_300}${movie.poster_path}`;
+  }
+
   return (
     <>
-      <Grid container spacing={1}></Grid>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={6}>
+          <Box sx={{ minHeight: 400, position: "relative" }}>
+            {movie && movie.poster_path && (
+              <StyledMovieImg alt={movie.title} src={posterUrl} />
+            )}
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography variant="subtitle2" noWrap>
+          </Typography>
+        </Grid>
+      </Grid>
     </>
   );
 };
