@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { API } from "../../../../Config";
 import { getMovieDetailData } from "../../../../services/movieService";
@@ -12,6 +12,7 @@ interface ModalPageProps {
 }
 
 const ModalPage = ({ id }: ModalPageProps) => {
+  const [movie, setMovie] = useState({});
   const [enabled, setEnabled] = useState(false);
 
   const url = `${API.BASE_URL}movie/${id}`;
@@ -21,7 +22,13 @@ const ModalPage = ({ id }: ModalPageProps) => {
     { enabled: true }
   );
 
-  return <div>ModalPage</div>;
+  useEffect(() => {
+    if (status === "success") {
+      setMovie({ ...data.payload });
+    }
+  }, [data]);
+
+  return <></>;
 };
 
 export default ModalPage;
