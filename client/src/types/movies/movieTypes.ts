@@ -24,7 +24,7 @@ export interface ModalMovieProps {
   movie: {
     title: string;
     poster_path: string;
-    overview: string;
+    tagline: string;
     release_date: string;
     vote_average: number;
     runtime: number;
