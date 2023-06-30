@@ -15,4 +15,5 @@ export const API = {
   NOWPLAYING_PATH: "movie/now_playing",
   TOP_RATED: "movie/top_rated",
   SEARCH_PATH: "search/movie",
+  CREDITS_PATH: "credits",
 };
