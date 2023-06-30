@@ -24,8 +24,10 @@ const Auth: FunctionComponent<AuthProps> = ({ children }) => {
         const isExpire = response.payload.isExpire;
 
         // 유저 객체 전역으로 띄우기
-        setData(user);
-        
+        if (user) {
+          setData(user);
+        }
+
         // 토큰 만료 시
         if (isExpire) {
           removeCookie("AUTH_TOKEN");
