@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API } from "../Config";
+import { ModalMovieProps } from "../types/movies/movieTypes";
 
 // movie api 요청
 export const getMovieData = async (url: string, page: number) => {
@@ -41,6 +42,7 @@ export const getMovieDetailData = async (url: string) => {
       title,
       vote_average,
     } = response.data;
+    transformMovieData(response.data);
 
     const obj = {
       payload: {
@@ -63,4 +65,23 @@ export const getMovieDetailData = async (url: string) => {
       payload: { isSuccess: false, msg: "오류가 발생했어요" },
     };
   }
+};
+
+const transformMovieData = (data: ModalMovieProps['movie']) => {
+  const initData = {
+    genres: "-",
+    tagline: "-",
+    poster_path: "-",
+    release_date: "-",
+    runtime: "-",
+    title: "-",
+    vote_average: "-",
+  };
+  const obj = initData;
+
+  if(data.genres) {
+
+  }
+
+  return obj;
 };
