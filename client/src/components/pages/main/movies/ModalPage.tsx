@@ -55,7 +55,30 @@ const ModalPage = ({ id }: ModalPageProps) => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Typography variant="subtitle2" noWrap>
+          {/* 영화, 감독, 배우, 릴리즈 날짜, 장르, 상영시간, 평점, 태그 */}
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
+          </Typography>
+          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
+            asd
           </Typography>
         </Grid>
       </Grid>
