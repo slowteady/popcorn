@@ -34,7 +34,7 @@ export const getMovieDetailData = async (url: string) => {
 
     const {
       genres,
-      overview,
+      tagline,
       poster_path,
       release_date,
       runtime,
@@ -47,7 +47,7 @@ export const getMovieDetailData = async (url: string) => {
         isSuccess: true,
         movie: {
           genres,
-          overview,
+          tagline,
           poster_path,
           release_date,
           runtime,
