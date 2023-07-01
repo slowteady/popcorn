@@ -1,6 +1,6 @@
 import { Container, Modal } from "@mui/material";
 import React from "react";
-import ModalPage from "./ModalPage";
+import MovieModalPage from "./MovieModalPage";
 
 // ----------------------------------------------------------------------
 // Movie 모달
@@ -41,7 +41,7 @@ const MovieModal = ({ id, open, handleClose }: MovieModalProps) => {
             },
           }}
         >
-          <ModalPage id={id} />
+          <MovieModalPage id={id} />
         </Container>
       </Modal>
     </>
