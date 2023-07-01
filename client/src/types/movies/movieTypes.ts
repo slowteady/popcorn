@@ -56,3 +56,7 @@ export interface MovieDetailProps {
     director: string[];
   };
 }
+
+export interface MovieCreditsMember {
+  [key: string]: any;
+}

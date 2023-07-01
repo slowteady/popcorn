@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API } from "../Config";
-import { MovieCreditsProps, MovieModalProps } from "../types/movies/movieTypes";
+import { MovieCreditsMember, MovieCreditsProps, MovieModalProps } from "../types/movies/movieTypes";
 
 // movie api 요청
 export const getMovieData = async (url: string, page: number) => {
@@ -129,16 +129,16 @@ const transformMovieData = (
 
   // 배우: 최대 3명
   if (cast) {
-    const arr = cast.filter((casts: any) => [0, 1, 2].includes(casts.order));
-    obj.actor = arr.map((casts: any) => casts.name);
+    const arr = cast.filter((casts: MovieCreditsMember) => [0, 1, 2].includes(casts.order));
+    obj.actor = arr.map((casts: MovieCreditsMember) => casts.name);
   }
 
   // 감독: 최대 3명
   if (crew) {
     const arr = crew
-      .filter((crews: any) => "Director".includes(crews.job))
+      .filter((crews: MovieCreditsMember) => "Director".includes(crews.job))
       .slice(0, 2);
-    obj.director = arr.map((crews: any) => crews.name);
+    obj.director = arr.map((crews: MovieCreditsMember) => crews.name);
   }
 
   return obj;
