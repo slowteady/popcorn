@@ -21,7 +21,7 @@ interface ModalPageProps {
   id: number;
 }
 
-const ModalPage = ({ id }: ModalPageProps) => {
+const MovieModalPage = ({ id }: ModalPageProps) => {
   const [movie, setMovie] = useState<ModalMovieProps["movie"]>();
 
   const url = `${API.BASE_URL}movie/${id}`;
@@ -86,4 +86,4 @@ const ModalPage = ({ id }: ModalPageProps) => {
   );
 };
 
-export default ModalPage;
+export default MovieModalPage;
