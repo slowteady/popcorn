@@ -5,8 +5,9 @@ import MainLayout from "./components/layouts/MainLayout";
 import LoginPage from "./components/pages/LoginPage";
 import Page404 from "./components/pages/Page404";
 import SignupPage from "./components/pages/SignupPage";
-import ProfilePage from "./components/pages/users/ProfilePage";
 import MoviesPage from "./components/pages/main/movies/MoviesPage";
+import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
+import ProfilePage from "./components/pages/users/ProfilePage";
 import Auth from "./hoc/Auth";
 
 // ----------------------------------------------------------------------
@@ -48,6 +49,14 @@ const Router = () => {
               ),
             },
           ],
+        },
+        {
+          path: "search",
+          element: (
+            <Auth>
+              <MovieSearchPage />
+            </Auth>
+          ),
         },
       ],
     },
