@@ -3,7 +3,7 @@ import React from "react";
 import MovieModalPage from "./MovieModalPage";
 
 // ----------------------------------------------------------------------
-// Movie 모달
+// 세부영화 모달 레이아웃
 // ----------------------------------------------------------------------
 
 interface MovieModalProps {
