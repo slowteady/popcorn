@@ -3,6 +3,7 @@ import { AppBar, Box, IconButton, Stack, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 import { bgBlur } from "../../../utils/styleUtils";
+import Searchbar from "./Searchbar";
 import UserPopover from "./UserPopover";
 
 // ----------------------------------------------------------------------
@@ -52,6 +53,7 @@ const Header = ({ onOpenNav }: HeaderProps) => {
           <MenuIcon />
         </IconButton>
 
+        <Searchbar />
         <Box sx={{ flexGrow: 1 }} />
         <Stack
           direction="row"
