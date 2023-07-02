@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { API } from "../../../../Config";
 import { getMovieDetailData } from "../../../../services/movieService";
+import { MovieDetailTypography } from "../../../../theme/typography";
 import { MovieDetailProps } from "../../../../types/movies/movieTypes";
 
 // ----------------------------------------------------------------------
-// 모달 페이지
+// 세부영화 모달 페이지
 // ----------------------------------------------------------------------
 
 const StyledMovieImg = styled("img")({
@@ -47,7 +48,7 @@ const MovieModalPage = ({ id }: ModalPageProps) => {
     <>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
-          <Box sx={{ minHeight: 400, position: "relative" }}>
+          <Box sx={{ minHeight: 475, position: "relative" }}>
             {movie && movie.poster_path && (
               <StyledMovieImg alt={movie.title} src={posterUrl} />
             )}
@@ -55,30 +56,71 @@ const MovieModalPage = ({ id }: ModalPageProps) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           {/* 영화, 감독, 배우, 릴리즈 날짜, 장르, 상영시간, 평점, 태그 */}
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
+          <Typography variant="h6" noWrap>
+            제목
           </Typography>
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
+          {movie && movie.title && (
+            <MovieDetailTypography title={movie.title}>
+              {movie.title}
+            </MovieDetailTypography>
+          )}
+          <Typography variant="h6" noWrap>
+            감독
           </Typography>
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
+          {movie &&
+            movie.director &&
+            movie.director.map((director, index) => (
+              <MovieDetailTypography key={index}>
+                {director}
+              </MovieDetailTypography>
+            ))}
+          <Typography variant="h6" noWrap>
+            배우
           </Typography>
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
+          {movie &&
+            movie.actor &&
+            movie.actor.map((actor, index) => (
+              <MovieDetailTypography key={index}>{actor}</MovieDetailTypography>
+            ))}
+          <Typography variant="h6" noWrap>
+            릴리즈
           </Typography>
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
+          {movie && movie.release_date && (
+            <MovieDetailTypography>{movie.release_date}</MovieDetailTypography>
+          )}
+          <Typography variant="h6" noWrap>
+            장르
           </Typography>
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
+          {movie &&
+            movie.genres &&
+            movie.genres.map((genre, index) => (
+              <MovieDetailTypography key={index}>{genre}</MovieDetailTypography>
+            ))}
+          <Typography variant="h6" noWrap>
+            상영시간
           </Typography>
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
+          {movie && movie.runtime && (
+            <MovieDetailTypography>{movie.runtime} 분</MovieDetailTypography>
+          )}
+          <Typography variant="h6" noWrap>
+            태그
           </Typography>
-          <Typography variant="h6" noWrap sx={{ mb: "10px" }}>
-            asd
-          </Typography>
+          {movie && movie.tagline && (
+            <Typography
+              sx={{
+                mb: "2px",
+                mt: "2px",
+                display: "-webkit-box",
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}
+              fontSize={14}
+              title={movie.tagline}
+            >
+              {movie.tagline}
+            </Typography>
+          )}
         </Grid>
       </Grid>
     </>
