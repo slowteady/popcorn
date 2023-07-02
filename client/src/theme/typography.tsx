@@ -1,3 +1,6 @@
+import { Typography, TypographyProps } from "@mui/material";
+import React from "react";
+
 // ----------------------------------------------------------------------
 
 interface responsiveFontSizesProps {
@@ -5,6 +8,11 @@ interface responsiveFontSizesProps {
   md: number;
   lg: number;
 }
+
+interface MovieDetailTypographyProps extends TypographyProps {
+  children: React.ReactNode;
+}
+
 export const remToPx = (value: string) => {
   return Math.round(parseFloat(value) * 16);
 };
@@ -36,7 +44,7 @@ export const responsiveFontSizes = ({
 const FONT_PRIMARY = "Public Sans, sans-serif"; // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
-const typography = {
+export const typography = {
   fontFamily: FONT_PRIMARY,
   fontWeightRegular: 400,
   fontWeightMedium: 600,
@@ -113,4 +121,14 @@ const typography = {
   },
 };
 
-export default typography;
+// 영화 디테일 페이지 전용 Typography 커스텀 컴포넌트
+export const MovieDetailTypography = ({
+  children,
+  ...props
+}: MovieDetailTypographyProps) => {
+  return (
+    <Typography sx={{ mb: "2px", mt: "2px" }} fontSize={14} noWrap {...props}>
+      {children}
+    </Typography>
+  );
+};

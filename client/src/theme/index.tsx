@@ -11,7 +11,7 @@ import GlobalStyles from "./globalStyles";
 import ComponentsOverrides from "./overrides";
 import palette from "./palette";
 import shadows from "./shadows";
-import typography from "./typography";
+import { typography } from "./typography";
 
 // ----------------------------------------------------------------------
 // 테마
