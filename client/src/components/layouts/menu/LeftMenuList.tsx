@@ -1,4 +1,3 @@
-import { SvgIconComponent } from "@mui/icons-material";
 import {
   Box,
   List as BoxList,
@@ -10,6 +9,7 @@ import {
 } from "@mui/material";
 import React, { FunctionComponent } from "react";
 import { NavLink } from "react-router-dom";
+import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
 // 좌측 메뉴 리스트
@@ -40,7 +40,7 @@ const StyledListItemIcon = styled(ListItemIcon)({
 interface Item {
   title: string;
   path: string;
-  Icon: SvgIconComponent;
+  icon: string;
 }
 
 interface ListProps {
@@ -52,8 +52,8 @@ interface ItemProps {
 }
 
 const ListItem: FunctionComponent<ItemProps> = ({ item }) => {
-  const { title, path, Icon } = item;
-  
+  const { title, path, icon } = item;
+
   return (
     <StyledListItem
       component={NavLink}
@@ -67,7 +67,7 @@ const ListItem: FunctionComponent<ItemProps> = ({ item }) => {
       }}
     >
       <StyledListItemIcon>
-        <Icon />
+        <Iconify icon={icon} />
       </StyledListItemIcon>
       <ListItemText disableTypography primary={title} />
     </StyledListItem>
