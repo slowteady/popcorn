@@ -91,9 +91,9 @@ const transformMovieData = (
   };
   const obj = initData;
 
-  // 장르: 최대 3개
+  // 장르: 최대 2개
   if (genres) {
-    const arr = genres.slice(0, 3);
+    const arr = genres.slice(0, 2);
     obj.genres = arr.map((genre) => genre.name);
   }
 
@@ -133,7 +133,7 @@ const transformMovieData = (
     obj.actor = arr.map((casts: MovieCreditsMember) => casts.name);
   }
 
-  // 감독: 최대 3명
+  // 감독: 최대 2명
   if (crew) {
     const arr = crew
       .filter((crews: MovieCreditsMember) => "Director".includes(crews.job))
