@@ -15,13 +15,15 @@ import React, {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { searchKeyword } from "../../../state/searchState";
 import { CustomTheme } from "../../../types/theme/themeTypes";
 import { bgBlur } from "../../../utils/styleUtils";
 import { strCheck } from "../../../utils/validationUtils";
 import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
-// 서치 바 컴포넌트
+// 헤더 서치 바
 // ----------------------------------------------------------------------
 
 const HEADER_MOBILE = 64;
@@ -50,7 +52,7 @@ const StyledSearchbar = styled("div")(({ theme }: { theme: CustomTheme }) => ({
 const Searchbar = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
+  const setSearchKeyword = useSetRecoilState(searchKeyword);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleOpen = () => {
@@ -72,9 +74,9 @@ const Searchbar = () => {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       const input = e.target as HTMLInputElement;
-      setQuery(input.value);
-      goSearch(input.value);
+      setSearchKeyword(input.value);
       setOpen(false);
+      navigate("/main/search");
     }
   };
 
@@ -82,17 +84,10 @@ const Searchbar = () => {
   const handleClick = (e: MouseEvent) => {
     const input = inputRef.current;
     if (input && strCheck.isNotEmpty(input.value)) {
-      setQuery(input.value);
-      goSearch(input.value);
+      setSearchKeyword(input.value);
+      navigate("/main/search");
     }
     setOpen(false);
-  };
-
-  const goSearch = (value: string) => {
-    navigate({
-      pathname: "/main/search",
-      search: `q=${query}`,
-    });
   };
 
   return (
