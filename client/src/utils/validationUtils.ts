@@ -1,19 +1,19 @@
 // ----------------------------------------------------------------------
-// 문자 유효성 검사 유틸
+// 값 유효 검사 유틸
 // ----------------------------------------------------------------------
 export const strCheck = {
-  // 문자 있는지 검증
-  isEmpty: (str: string) => {
+  // 값이 무효한지 검증
+  isEmpty: (str: string | boolean) => {
     return (
       str === "" ||
       str === undefined ||
       str === null ||
       str === "null" ||
-      str.trim() === ""
+      (typeof str === "string" && str.trim() === "")
     );
   },
-  // 문자 없는지 검증
-  isNotEmpty: (str: string) => {
+  // 값이 유효한지 검증
+  isNotEmpty: (str: string | boolean) => {
     return !strCheck.isEmpty(str);
   },
 };
