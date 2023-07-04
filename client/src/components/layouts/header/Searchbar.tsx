@@ -23,7 +23,7 @@ import { strCheck } from "../../../utils/validationUtils";
 import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
-// 헤더 서치 바
+// 헤더 영화 검색 창
 // ----------------------------------------------------------------------
 
 const HEADER_MOBILE = 64;
@@ -76,7 +76,7 @@ const Searchbar = () => {
       const input = e.target as HTMLInputElement;
       setSearchKeyword(input.value);
       setOpen(false);
-      navigate("/main/search");
+      navigate("/main/search", { state: { search: true} });
     }
   };
 
@@ -85,7 +85,7 @@ const Searchbar = () => {
     const input = inputRef.current;
     if (input && strCheck.isNotEmpty(input.value)) {
       setSearchKeyword(input.value);
-      navigate("/main/search");
+      navigate("/main/search", { state: { search: true } });
     }
     setOpen(false);
   };
