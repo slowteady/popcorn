@@ -28,6 +28,7 @@ const MovieSearch = () => {
     setKeyword(newValue);
   };
 
+  // search 파라미터 존재하지 않을 시, keyword 초기화
   useEffect(() => {
     if (strCheck.isEmpty(location.state?.search)) {
       setKeyword("");
