@@ -66,16 +66,19 @@ export const getMovieDetailData = async (url: string) => {
 };
 
 // 영화 검색 데이터 요청
-export const getSearchMovieData = async (keyword: string) => {
+export const getSearchMovieData = async (query: string) => {
   try {
     const url = `${API.BASE_URL}${API.SEARCH_PATH}`;
     const response = await axios.get(url, {
       params: {
         api_key: API.API_KEY,
         language: API.LANGUAGE,
-        query: keyword,
+        query,
       },
     });
+
+    const obj = { isSuccess: true, payload: response.data.results };
+    return obj;
   } catch (err) {
     console.error(err);
     return {
