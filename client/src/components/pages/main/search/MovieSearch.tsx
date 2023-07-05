@@ -23,11 +23,12 @@ const MovieSearch = () => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword);
   const inputRef = useRef<HTMLInputElement>(null);
   const [enabled, setEnabled] = useState(false);
+  const [query, setQuery] = useState("");
   const location = useLocation();
 
   const { status, data } = useQuery(
-    ["searchMovieData", keyword],
-    () => getSearchMovieData(keyword),
+    ["searchMovieData", query],
+    () => getSearchMovieData(query),
     { enabled }
   );
 
@@ -42,21 +43,34 @@ const MovieSearch = () => {
   useEffect(() => {
     if (strCheck.isEmpty(location.state?.search)) {
       setKeyword("");
+      setQuery("");
+    } else if (strCheck.isNotEmpty(location.state?.search)) {
+      setQuery(keyword);
+      setEnabled(true);
     }
   }, [location.key, location.state?.search]);
+
+  // API 요청을 위해 필요한 state를 업데이트 하는 함수
+  const onRequest = () => {
+    const input = inputRef.current;
+    if (input) {
+      setQuery(input.value);
+    }
+    setEnabled(true);
+  };
 
   // 엔터 키 입력 시
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter" && strCheck.isNotEmpty(keyword)) {
-      setEnabled(true);
-    } else if (strCheck.isEmpty(keyword)) {
-      return false;
+      onRequest();
     }
   };
 
   // 버튼 클릭 시
   const handleClick = (e: MouseEvent) => {
-    setKeyword("");
+    if (strCheck.isNotEmpty(keyword)) {
+      onRequest();
+    }
   };
 
   return (
