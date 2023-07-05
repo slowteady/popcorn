@@ -1,6 +1,10 @@
 import axios from "axios";
 import { API } from "../Config";
-import { MovieCreditsMember, MovieCreditsProps, MovieModalProps } from "../types/movies/movieTypes";
+import {
+  MovieCreditsMember,
+  MovieCreditsProps,
+  MovieModalProps,
+} from "../types/movies/movieTypes";
 
 // movie api 요청
 export const getMovieData = async (url: string, page: number) => {
@@ -53,6 +57,25 @@ export const getMovieDetailData = async (url: string) => {
       },
     };
     return obj;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
+
+// 영화 검색 데이터 요청
+export const getSearchMovieData = async (keyword: string) => {
+  try {
+    const url = `${API.BASE_URL}${API.SEARCH_PATH}`;
+    const response = await axios.get(url, {
+      params: {
+        api_key: API.API_KEY,
+        language: API.LANGUAGE,
+        query: keyword,
+      },
+    });
   } catch (err) {
     console.error(err);
     return {
@@ -129,7 +152,9 @@ const transformMovieData = (
 
   // 배우: 최대 3명
   if (cast) {
-    const arr = cast.filter((casts: MovieCreditsMember) => [0, 1, 2].includes(casts.order));
+    const arr = cast.filter((casts: MovieCreditsMember) =>
+      [0, 1, 2].includes(casts.order)
+    );
     obj.actor = arr.map((casts: MovieCreditsMember) => casts.name);
   }
 
