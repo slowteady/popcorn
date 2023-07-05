@@ -5,9 +5,12 @@ import React, {
   MouseEvent,
   useEffect,
   useRef,
+  useState,
 } from "react";
+import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import { getSearchMovieData } from "../../../../services/movieService";
 import { searchKeyword } from "../../../../state/searchState";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
@@ -19,7 +22,14 @@ import Iconify from "../../../iconify/Iconify";
 const MovieSearch = () => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [enabled, setEnabled] = useState(false);
   const location = useLocation();
+
+  const { status, data } = useQuery(
+    ["searchMovieData", keyword],
+    () => getSearchMovieData(keyword),
+    { enabled }
+  );
 
   // 특수문자 방지
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,12 +43,14 @@ const MovieSearch = () => {
     if (strCheck.isEmpty(location.state?.search)) {
       setKeyword("");
     }
-  }, [location.state?.search]);
+  }, [location.key, location.state?.search]);
 
   // 엔터 키 입력 시
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Enter") {
-      setKeyword("");
+    if (e.key === "Enter" && strCheck.isNotEmpty(keyword)) {
+      setEnabled(true);
+    } else if (strCheck.isEmpty(keyword)) {
+      return false;
     }
   };
 
