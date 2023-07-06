@@ -14,6 +14,7 @@ import { getSearchMovieData } from "../../../../services/movieService";
 import { searchKeyword } from "../../../../state/searchState";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
+import { moviesSearchList } from "../../../../state/movieState";
 
 // ----------------------------------------------------------------------
 // 영화 검색 창
@@ -21,9 +22,11 @@ import Iconify from "../../../iconify/Iconify";
 
 const MovieSearch = () => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword);
+  const [movie, setMovie] = useRecoilState(moviesSearchList);
   const inputRef = useRef<HTMLInputElement>(null);
   const [enabled, setEnabled] = useState(false);
   const [query, setQuery] = useState("");
+  const [preValue, setPreValue] = useState("");
   const location = useLocation();
 
   const { status, data } = useQuery(
@@ -44,17 +47,36 @@ const MovieSearch = () => {
     if (strCheck.isEmpty(location.state?.search)) {
       setKeyword("");
       setQuery("");
+      setMovie([]);
     } else if (strCheck.isNotEmpty(location.state?.search)) {
       setQuery(keyword);
       setEnabled(true);
+      setPreValue(keyword);
     }
   }, [location.key, location.state?.search]);
+
+  useEffect(() => {
+    if (status === "success") {
+      setMovie((prevMovie) => [...prevMovie, ...data.payload]);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    console.log(movie);
+  }, [movie]);
 
   // API 요청을 위해 필요한 state를 업데이트 하는 함수
   const onRequest = () => {
     const input = inputRef.current;
+
     if (input) {
-      setQuery(input.value);
+      const value = input.value;
+      console.log(value, preValue);
+      if (value !== preValue) {
+        setMovie([]);
+      }
+      setQuery(value);
+      setPreValue(value);
     }
     setEnabled(true);
   };
