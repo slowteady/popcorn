@@ -29,7 +29,6 @@ const MovieModal = ({ id, open, handleClose }: MovieModalProps) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "60%",
             bgcolor: "#f9f6f6",
             border: "1px solid rgb(0, 0, 0, 0.8)",
             borderRadius: "2%",
