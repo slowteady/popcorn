@@ -14,6 +14,7 @@ import { moviesSearchList } from "../../../../state/movieState";
 import { searchKeyword } from "../../../../state/searchState";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
+import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
 // 영화 검색 창
@@ -98,6 +99,7 @@ const MovieSearch = () => {
       <Button variant="contained" sx={{ margin: "10px" }} onClick={handleClick}>
         Search
       </Button>
+      {movie && <MovieList movies={movie} />}
     </Container>
   );
 };
