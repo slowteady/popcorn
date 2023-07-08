@@ -66,7 +66,7 @@ export const getMovieDetailData = async (url: string) => {
 };
 
 // 영화 검색 데이터 요청
-export const getSearchMovieData = async (query: string) => {
+export const getSearchMovieData = async (query: string, page: number) => {
   try {
     const url = `${API.BASE_URL}${API.SEARCH_PATH}`;
     const response = await axios.get(url, {
@@ -74,6 +74,7 @@ export const getSearchMovieData = async (query: string) => {
         api_key: API.API_KEY,
         language: API.LANGUAGE,
         query,
+        page,
       },
     });
 
