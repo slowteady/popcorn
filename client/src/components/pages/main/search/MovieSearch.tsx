@@ -1,4 +1,10 @@
-import { Button, Container, InputAdornment, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
 import React, {
   ChangeEvent,
   KeyboardEvent,
@@ -17,7 +23,7 @@ import Iconify from "../../../iconify/Iconify";
 import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
-// 영화 검색 창
+// 영화 검색 창 / 리스트
 // ----------------------------------------------------------------------
 
 const MovieSearch = () => {
@@ -99,7 +105,7 @@ const MovieSearch = () => {
       <Button variant="contained" sx={{ margin: "10px" }} onClick={handleClick}>
         Search
       </Button>
-      {movie && <MovieList movies={movie} />}
+      <Box sx={{ mt: 6 }}>{movie && <MovieList movies={movie} />}</Box>
     </Container>
   );
 };
