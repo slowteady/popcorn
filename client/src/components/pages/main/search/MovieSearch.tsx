@@ -27,10 +27,14 @@ import MovieList from "../movies/MovieList";
 // ----------------------------------------------------------------------
 // 영화 검색 창 / 리스트
 // ----------------------------------------------------------------------
+// 1. 상단 헤더 바에서 검색 후 무비 리스트 페이지에서 다른 키워드로 검색할 경우
+// 2. 좌측 메뉴로 들어와서 무비 리스트 페이지로 검색 두번 하는 경우
+// 3. 상단 헤더 바에서 검색 두번 하는 경우
 
 const MovieSearch = () => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword);
   const [inputValue, setInputValue] = useState(keyword);
+  const [prevValue, setPrevValue] = useState<string>();
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [query, setQuery] = useState("");
@@ -45,9 +49,9 @@ const MovieSearch = () => {
     { enabled }
   );
 
-  // useEffect(() => {
-  //   setEnabled(true);
-  // }, [page]);
+  useEffect(() => {
+    setEnabled(true);
+  }, [page]);
 
   useEffect(() => {
     // 좌측 메뉴를 통해 들어온 경우
@@ -56,6 +60,7 @@ const MovieSearch = () => {
     } else {
       setEnabled(true);
       setQuery(inputValue);
+      setPrevValue(inputValue);
     }
   }, [location]);
 
@@ -78,16 +83,21 @@ const MovieSearch = () => {
   // 엔터 키 입력 시
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter" && strCheck.isNotEmpty(inputValue)) {
-      setQuery(inputValue);
+      if(prevValue !== inputValue) {
+        init();
+      }
       setEnabled(true);
+      setPrevValue(inputValue);
+      setQuery(inputValue);
     }
   };
 
   // 버튼 클릭 시
   const handleClick = (e: MouseEvent) => {
     if (strCheck.isNotEmpty(inputValue)) {
-      setQuery(inputValue);
       setEnabled(true);
+      setPrevValue(inputValue);
+      setQuery(inputValue);
     }
   };
 
