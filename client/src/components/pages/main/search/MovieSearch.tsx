@@ -54,6 +54,11 @@ const MovieSearch = () => {
   }, [page]);
 
   useEffect(() => {
+    setPage(1);
+    setMovie([]);
+  }, [query]);
+
+  useEffect(() => {
     // 좌측 메뉴를 통해 들어온 경우
     if (!location.state || !location.state.search) {
       init();
@@ -83,7 +88,7 @@ const MovieSearch = () => {
   // 엔터 키 입력 시
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter" && strCheck.isNotEmpty(inputValue)) {
-      if(prevValue !== inputValue) {
+      if (prevValue !== inputValue) {
         init();
       }
       setEnabled(true);
