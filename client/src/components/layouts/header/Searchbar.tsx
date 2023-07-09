@@ -15,7 +15,7 @@ import React, {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { searchKeyword } from "../../../state/searchState";
 import { CustomTheme } from "../../../types/theme/themeTypes";
 import { bgBlur } from "../../../utils/styleUtils";
@@ -52,7 +52,7 @@ const StyledSearchbar = styled("div")(({ theme }: { theme: CustomTheme }) => ({
 const Searchbar = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [keyword, setKeyword] = useRecoilState(searchKeyword);
+  const setKeyword = useSetRecoilState(searchKeyword);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleOpen = () => {
