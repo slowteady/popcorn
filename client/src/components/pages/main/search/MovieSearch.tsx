@@ -1,3 +1,4 @@
+import PendingIcon from "@mui/icons-material/Pending";
 import {
   Box,
   Button,
@@ -12,6 +13,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -29,6 +31,8 @@ import MovieList from "../movies/MovieList";
 const MovieSearch = () => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword);
   const [inputValue, setInputValue] = useState(keyword);
+  const [page, setPage] = useState(1);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [query, setQuery] = useState("");
   const [enabled, setEnabled] = useState(false);
   const [movie, setMovie] = useRecoilState(moviesSearchList);
@@ -36,15 +40,19 @@ const MovieSearch = () => {
 
   // 검색 결과 API 요청
   const { status, data } = useQuery(
-    ["searchMovieData", query],
-    () => getSearchMovieData(query),
+    ["searchMovieData", query, page],
+    () => getSearchMovieData(query, page),
     { enabled }
   );
+
+  // useEffect(() => {
+  //   setEnabled(true);
+  // }, [page]);
 
   useEffect(() => {
     // 좌측 메뉴를 통해 들어온 경우
     if (!location.state || !location.state.search) {
-      setKeyword("");
+      init();
     } else {
       setEnabled(true);
       setQuery(inputValue);
@@ -83,6 +91,26 @@ const MovieSearch = () => {
     }
   };
 
+  const handleView = (inView: boolean) => {
+    // 초기 렌더링 시 로직 두번 타는 거 방지
+    if (isFirstLoad) {
+      setIsFirstLoad(false);
+      return;
+    }
+    if (inView && page < 10) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  // 초기화
+  const init = () => {
+    setKeyword("");
+    setInputValue("");
+    setPage(1);
+    setMovie([]);
+    setIsFirstLoad(true);
+  };
+
   return (
     <Container>
       <TextField
@@ -106,6 +134,19 @@ const MovieSearch = () => {
         Search
       </Button>
       <Box sx={{ mt: 6 }}>{movie && <MovieList movies={movie} />}</Box>
+      <InView onChange={handleView}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "50px",
+            mt: "20px",
+          }}
+        >
+          {status === "loading" && <PendingIcon fontSize="large" />}
+        </Box>
+      </InView>
     </Container>
   );
 };
