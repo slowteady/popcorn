@@ -19,6 +19,7 @@ const StyledMovieImg = styled("img")({
 const MovieCard = ({ movie }: MovieCardProps) => {
   const [open, setOpen] = useState(false);
   const { id, poster_path, release_date, title, vote_average } = movie;
+  const voteAverage = (Math.round(vote_average * 10) / 10).toFixed(1);
   const posterUrl = `${API.IMAGE_BASE_URL}${API.IMAGE_SIZE_500}${poster_path}`;
 
   const handleModalOpen = () => setOpen(true);
@@ -64,7 +65,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
                 fontWeight={800}
                 sx={{ color: "white" }}
               >
-                {vote_average}
+                {voteAverage}
               </Typography>
             </Box>
           </Stack>
