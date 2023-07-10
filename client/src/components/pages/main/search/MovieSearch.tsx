@@ -27,19 +27,16 @@ import MovieList from "../movies/MovieList";
 // ----------------------------------------------------------------------
 // 영화 검색 창 / 리스트
 // ----------------------------------------------------------------------
-// 1. 상단 헤더 바에서 검색 후 무비 리스트 페이지에서 다른 키워드로 검색할 경우
-// 2. 좌측 메뉴로 들어와서 무비 리스트 페이지로 검색 두번 하는 경우
-// 3. 상단 헤더 바에서 검색 두번 하는 경우
 
 const MovieSearch = () => {
-  const [keyword, setKeyword] = useRecoilState(searchKeyword);
+  const [keyword, setKeyword] = useRecoilState(searchKeyword); // 상단 검색 키워드
+  const [movie, setMovie] = useRecoilState(moviesSearchList); // 영화 리스트
   const [inputValue, setInputValue] = useState(keyword);
-  const [prevValue, setPrevValue] = useState<string>();
+  const [prevValue, setPrevValue] = useState<string>(keyword); // 이전 값
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [query, setQuery] = useState("");
   const [enabled, setEnabled] = useState(false);
-  const [movie, setMovie] = useRecoilState(moviesSearchList);
   const location = useLocation();
 
   // 검색 결과 API 요청
@@ -50,8 +47,8 @@ const MovieSearch = () => {
   );
 
   useEffect(() => {
-    setEnabled(true);
-  }, [page]);
+    setInputValue(keyword);
+  }, [keyword]);
 
   useEffect(() => {
     setPage(1);
@@ -65,13 +62,8 @@ const MovieSearch = () => {
     } else {
       setEnabled(true);
       setQuery(inputValue);
-      setPrevValue(inputValue);
     }
   }, [location]);
-
-  useEffect(() => {
-    setInputValue(keyword);
-  }, [keyword]);
 
   useEffect(() => {
     if (data && status === "success") {
@@ -112,6 +104,11 @@ const MovieSearch = () => {
       setIsFirstLoad(false);
       return;
     }
+
+    if (inView) {
+      setEnabled(true);
+    }
+
     if (inView && page < 10) {
       setPage((prevPage) => prevPage + 1);
     }
