@@ -81,10 +81,12 @@ const MovieSearch = () => {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter" && strCheck.isNotEmpty(inputValue)) {
       if (prevValue !== inputValue) {
-        init();
+        setPage(1);
+        setMovie([]);
+        setIsFirstLoad(true);
       }
-      setEnabled(true);
       setPrevValue(inputValue);
+      setEnabled(true);
       setQuery(inputValue);
     }
   };
