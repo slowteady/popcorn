@@ -4,10 +4,11 @@ import Iconify from "../iconify/Iconify";
 import { IconifyIcon } from "@iconify/react";
 
 interface NodataProps {
-  msg: string;
+  msg?: string;
   icon: string | IconifyIcon;
   width?: number;
   sx?: SxProps;
+  containerSx?: SxProps;
 }
 
 const Nodata: FunctionComponent<NodataProps> = ({
@@ -15,15 +16,18 @@ const Nodata: FunctionComponent<NodataProps> = ({
   width = 20,
   sx,
   icon,
+  containerSx,
   ...other
 }) => {
   return (
-    <>
-      <Iconify icon={icon} />
+    <Box sx={{ ...containerSx }}>
+      <Box sx={{ width, height: width, ...sx }} {...other}>
+        <Iconify icon={icon} />
+      </Box>
       <Box sx={{ width, height: width, ...sx }} {...other}>
         {msg}
       </Box>
-    </>
+    </Box>
   );
 };
 
