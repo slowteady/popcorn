@@ -66,7 +66,7 @@ const MovieSearch = () => {
   }, [location]);
 
   useEffect(() => {
-    if (data && status === "success") {
+    if (data && data.payload.length > 0 && status === "success") {
       setMovie((prevMovie) => [...prevMovie, ...data.payload]);
     }
   }, [data]);
@@ -120,6 +120,7 @@ const MovieSearch = () => {
   const init = () => {
     setKeyword("");
     setInputValue("");
+    setQuery("");
     setPage(1);
     setMovie([]);
     setIsFirstLoad(true);
@@ -147,7 +148,7 @@ const MovieSearch = () => {
       <Button variant="contained" sx={{ margin: "10px" }} onClick={handleClick}>
         Search
       </Button>
-      <Box sx={{ mt: 6 }}>{movie && <MovieList movies={movie} />}</Box>
+      <Box sx={{ mt: 6 }}>{movie && query && <MovieList movies={movie} />}</Box>
       <InView onChange={handleView}>
         <Box
           sx={{
