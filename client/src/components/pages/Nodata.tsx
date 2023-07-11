@@ -23,7 +23,6 @@ const Nodata: FunctionComponent<NodataProps> = ({
       <Box sx={{ width, height: width, ...sx }} {...other}>
         {msg}
       </Box>
-      ;
     </>
   );
 };
