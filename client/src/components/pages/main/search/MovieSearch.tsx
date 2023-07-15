@@ -16,9 +16,12 @@ import React, {
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { getSearchMovieData } from "../../../../services/movieService";
-import { moviesSearchList } from "../../../../state/movieState";
+import {
+  isCollectionPage,
+  moviesSearchList,
+} from "../../../../state/movieState";
 import { searchKeyword } from "../../../../state/searchState";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
@@ -31,10 +34,11 @@ import MovieList from "../movies/MovieList";
 const MovieSearch = () => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword); // 상단 검색 키워드
   const [movie, setMovie] = useRecoilState(moviesSearchList); // 영화 리스트
-  const [inputValue, setInputValue] = useState(keyword);
+  const isCollection = useRecoilValue(isCollectionPage); // 컬렉션 페이지 여부
+  const [inputValue, setInputValue] = useState(keyword); // 현재 값
   const [prevValue, setPrevValue] = useState<string>(keyword); // 이전 값
+  const [isFirstLoad, setIsFirstLoad] = useState(true); // 초기 렌더링 여부
   const [page, setPage] = useState(1);
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [query, setQuery] = useState("");
   const [enabled, setEnabled] = useState(false);
   const location = useLocation();
