@@ -13,6 +13,11 @@ const listConfig = [
     path: "/main/search",
     icon: "eva:search-fill",
   },
+  {
+    title: "Collection",
+    path: "/main/collection",
+    icon: "wpf:books",
+  },
 ];
 
 export default listConfig;
