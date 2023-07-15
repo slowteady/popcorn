@@ -60,3 +60,8 @@ export interface MovieDetailProps {
 export interface MovieCreditsMember {
   [key: string]: any;
 }
+
+export interface AddMovieModalProps {
+  open: boolean;
+  handleClose: () => void;
+}
