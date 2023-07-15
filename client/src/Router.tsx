@@ -9,6 +9,7 @@ import MoviesPage from "./components/pages/main/movies/MoviesPage";
 import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
 import Auth from "./hoc/Auth";
+import CollectionPage from "./components/pages/main/collection/CollectionPage";
 
 // ----------------------------------------------------------------------
 // 라우터
@@ -55,6 +56,14 @@ const Router = () => {
           element: (
             <Auth>
               <MovieSearchPage />
+            </Auth>
+          ),
+        },
+        {
+          path: "collection",
+          element: (
+            <Auth>
+              <CollectionPage />
             </Auth>
           ),
         },
