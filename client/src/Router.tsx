@@ -10,6 +10,7 @@ import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
 import Auth from "./hoc/Auth";
 import CollectionPage from "./components/pages/main/collection/CollectionPage";
+import AddCollectionPage from "./components/pages/main/collection/AddCollectionPage";
 
 // ----------------------------------------------------------------------
 // 라우터
@@ -61,11 +62,25 @@ const Router = () => {
         },
         {
           path: "collection",
-          element: (
-            <Auth>
-              <CollectionPage />
-            </Auth>
-          ),
+          children: [
+            {
+              path: "",
+              element: (
+                <Auth>
+                  <CollectionPage />
+                </Auth>
+              ),
+              index: true,
+            },
+            {
+              path: "add",
+              element: (
+                <Auth>
+                  <AddCollectionPage />
+                </Auth>
+              ),
+            },
+          ],
         },
       ],
     },
