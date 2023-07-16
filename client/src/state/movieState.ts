@@ -10,9 +10,3 @@ export const moviesSearchList = atom({
   key: "moviesSearchList",
   default: [] as MovieListProps["movies"],
 });
-
-// Collection 페이지 여부
-export const isCollectionPage = atom({
-  key: "isCollectionPage",
-  default: false,
-});

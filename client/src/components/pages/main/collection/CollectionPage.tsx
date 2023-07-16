@@ -2,8 +2,6 @@ import { Button, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { isCollectionPage } from "../../../../state/movieState";
 import Iconify from "../../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
@@ -11,11 +9,9 @@ import Iconify from "../../../iconify/Iconify";
 // ----------------------------------------------------------------------
 
 const CollectionPage = () => {
-  const setIsCollection = useSetRecoilState(isCollectionPage);
   const navigate = useNavigate();
 
   const handleModalOpen = () => {
-    setIsCollection(true);
     navigate("/main/collection/add");
   };
 
