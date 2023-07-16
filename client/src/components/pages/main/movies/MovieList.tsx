@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import { MovieListProps } from "../../../../types/movies/movieTypes";
-import MovieCard from "./MovieCard";
 import Nodata from "../../Nodata";
+import MovieCard from "./MovieCard";
 
 // ----------------------------------------------------------------------
 // Movie 리스트

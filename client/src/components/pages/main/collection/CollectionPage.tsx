@@ -1,10 +1,10 @@
 import { Button, Container, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
-import Iconify from "../../../iconify/Iconify";
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isCollectionPage } from "../../../../state/movieState";
-import { useNavigate } from "react-router-dom";
+import Iconify from "../../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
 // Collection 페이지

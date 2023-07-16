@@ -1,13 +1,13 @@
 import { Container, Stack, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
-import MovieSearch from "./MovieSearch";
 import { useRecoilValue } from "recoil";
 import { isCollectionPage } from "../../../../state/movieState";
+import MovieSearch from "./MovieSearch";
 
 const MovieSearchPage = () => {
   const isCollection = useRecoilValue(isCollectionPage); // 컬렉션 페이지 여부
-  
+
   return (
     <>
       {!isCollection && (

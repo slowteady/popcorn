@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from "react";
-import { Box, SxProps } from "@mui/material";
-import Iconify from "../iconify/Iconify";
 import { IconifyIcon } from "@iconify/react";
+import { Box, SxProps } from "@mui/material";
+import React, { FunctionComponent } from "react";
+import Iconify from "../iconify/Iconify";
 
 interface NodataProps {
   msg?: string;

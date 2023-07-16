@@ -1,8 +1,7 @@
-import { Container, Modal, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import React from "react";
-import MovieSearchPage from "../search/MovieSearchPage";
-import { AddMovieModalProps } from "../../../../types/movies/movieTypes";
 import { Helmet } from "react-helmet-async";
+import MovieSearchPage from "../search/MovieSearchPage";
 
 // ----------------------------------------------------------------------
 // 영화 콜렉션 추가 페이지
