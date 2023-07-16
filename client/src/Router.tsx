@@ -56,7 +56,7 @@ const Router = () => {
           path: "search",
           element: (
             <Auth>
-              <MovieSearchPage />
+              <MovieSearchPage isCollection={false} />
             </Auth>
           ),
         },

@@ -19,7 +19,7 @@ const AddCollectionPage = () => {
           Collection
         </Typography>
       </Container>
-      <MovieSearchPage />
+      <MovieSearchPage isCollection={true} />
     </>
   );
 };
