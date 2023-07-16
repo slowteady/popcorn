@@ -1,7 +1,7 @@
 import { Button, Container, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Iconify from "../../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
@@ -10,7 +10,6 @@ import Iconify from "../../../iconify/Iconify";
 
 const CollectionPage = () => {
   const [isAdd, setIsAdd] = useState(false);
-  const navigate = useNavigate();
 
   const handleModalOpen = () => {
     setIsAdd(true);
