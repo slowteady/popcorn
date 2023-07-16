@@ -1,4 +1,5 @@
 export interface MovieListProps {
+  isCollection?: boolean;
   movies: {
     id: number;
     poster_path: string;
@@ -64,4 +65,8 @@ export interface MovieCreditsMember {
 export interface AddMovieModalProps {
   open: boolean;
   handleClose: () => void;
+}
+
+export interface isCollectionProps {
+  isCollection: boolean;
 }
