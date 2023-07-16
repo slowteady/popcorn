@@ -20,6 +20,7 @@ import { useRecoilState } from "recoil";
 import { getSearchMovieData } from "../../../../services/movieService";
 import { moviesSearchList } from "../../../../state/movieState";
 import { searchKeyword } from "../../../../state/searchState";
+import { isCollectionProps } from "../../../../types/movies/movieTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import MovieList from "../movies/MovieList";
@@ -28,7 +29,7 @@ import MovieList from "../movies/MovieList";
 // 영화 검색 창 / 리스트
 // ----------------------------------------------------------------------
 
-const MovieSearch = () => {
+const MovieSearch = ({ isCollection }: isCollectionProps) => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword); // 상단 검색 키워드
   const [movie, setMovie] = useRecoilState(moviesSearchList); // 영화 리스트
   const [inputValue, setInputValue] = useState(keyword); // 현재 값
@@ -148,7 +149,11 @@ const MovieSearch = () => {
       <Button variant="contained" sx={{ margin: "10px" }} onClick={handleClick}>
         Search
       </Button>
-      <Box sx={{ mt: 6 }}>{movie && query && <MovieList movies={movie} />}</Box>
+      <Box sx={{ mt: 6 }}>
+        {movie && query && (
+          <MovieList isCollection={isCollection} movies={movie} />
+        )}
+      </Box>
       <InView onChange={handleView}>
         <Box
           sx={{

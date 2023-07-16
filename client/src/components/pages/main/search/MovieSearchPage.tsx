@@ -1,13 +1,10 @@
 import { Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { isCollectionProps } from "../../../../types/movies/movieTypes";
 import MovieSearch from "./MovieSearch";
 
-interface MovieSearchPageProps {
-  isCollection: boolean;
-}
-
-const MovieSearchPage = ({ isCollection }: MovieSearchPageProps) => {
+const MovieSearchPage = ({ isCollection }: isCollectionProps) => {
   return (
     <>
       {isCollection ? (
@@ -44,7 +41,7 @@ const MovieSearchPage = ({ isCollection }: MovieSearchPageProps) => {
           </Container>
         </>
       )}
-      <MovieSearch />
+      <MovieSearch isCollection={isCollection} />
     </>
   );
 };
