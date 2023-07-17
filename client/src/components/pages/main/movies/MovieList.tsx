@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Checkbox, Grid } from "@mui/material";
 import React from "react";
 import { MovieListProps } from "../../../../types/movies/movieTypes";
 import Nodata from "../../Nodata";
@@ -11,12 +11,12 @@ import MovieCard from "./MovieCard";
 const whichCategory = (isCollection: boolean) => {
   return isCollection
     ? {
-        container: { spacing: 3, sx: { maxWidth: "50%" } },
-        item: { xs: 6, sm: 3 },
+        containerSize: { spacing: 3, sx: { maxWidth: "50%" } },
+        size: { xs: 12, sm: 6 },
       }
     : {
-        container: { spacing: 3 },
-        item: { xs: 12, sm: 6 },
+        containerSize: { spacing: 3 },
+        size: { xs: 12, sm: 6, md: 3 },
       };
 };
 
@@ -24,9 +24,10 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
   const isCol = whichCategory(isCollection);
 
   return movies && movies.length !== 0 ? (
-    <Grid container spacing={3}>
+    <Grid container {...isCol.containerSize}>
       {movies.map((movie, index) => (
-        <Grid key={index} item xs={12} sm={6} md={3}>
+        <Grid key={index} item {...isCol.size}>
+          {isCollection && <Checkbox />}
           <MovieCard movie={movie} />
         </Grid>
       ))}
