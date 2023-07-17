@@ -8,7 +8,21 @@ import MovieCard from "./MovieCard";
 // Movie 리스트
 // ----------------------------------------------------------------------
 
-const MovieList = ({ movies }: MovieListProps) => {
+const whichCategory = (isCollection: boolean) => {
+  return isCollection
+    ? {
+        container: { spacing: 3, sx: { maxWidth: "50%" } },
+        item: { xs: 6, sm: 3 },
+      }
+    : {
+        container: { spacing: 3 },
+        item: { xs: 12, sm: 6 },
+      };
+};
+
+const MovieList = ({ movies, isCollection }: MovieListProps) => {
+  const isCol = whichCategory(isCollection);
+
   return movies && movies.length !== 0 ? (
     <Grid container spacing={3}>
       {movies.map((movie, index) => (
