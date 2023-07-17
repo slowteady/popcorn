@@ -1,5 +1,5 @@
 export interface MovieListProps {
-  isCollection?: boolean;
+  isCollection: boolean;
   movies: {
     id: number;
     poster_path: string;

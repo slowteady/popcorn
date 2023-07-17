@@ -95,7 +95,7 @@ const MoviesPage = () => {
           </Stack>
         </Stack>
 
-        {movie && <MovieList movies={movie} />}
+        {movie && <MovieList isCollection={false} movies={movie} />}
         <InView onChange={handleView}>
           <Box
             sx={{
