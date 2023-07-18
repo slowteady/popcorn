@@ -69,4 +69,5 @@ export interface AddMovieModalProps {
 
 export interface isCollectionProps {
   isCollection: boolean;
+  query?: string;
 }
