@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Container,
+  Grid,
   InputAdornment,
   TextField,
 } from "@mui/material";
@@ -23,6 +24,7 @@ import { searchKeyword } from "../../../../state/searchState";
 import { isCollectionProps } from "../../../../types/movies/movieTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
+import { whichContainerSize } from "../../../utils/size";
 import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
@@ -35,9 +37,10 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
   const [inputValue, setInputValue] = useState(keyword); // 현재 값
   const [prevValue, setPrevValue] = useState<string>(keyword); // 이전 값
   const [isFirstLoad, setIsFirstLoad] = useState(true); // 초기 렌더링 여부
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [enabled, setEnabled] = useState(false);
+  const [page, setPage] = useState(1); // 페이지
+  const [query, setQuery] = useState(""); // 검색어
+  const [enabled, setEnabled] = useState(false); // Request 요청 여부
+  const size = whichContainerSize(isCollection); // 컨테이너 사이즈
   const location = useLocation();
 
   // 검색 결과 API 요청
@@ -149,11 +152,26 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
       <Button variant="contained" sx={{ margin: "10px" }} onClick={handleClick}>
         Search
       </Button>
-      <Box sx={{ mt: 6 }}>
-        {movie && query && (
-          <MovieList isCollection={isCollection} movies={movie} />
-        )}
-      </Box>
+      {isCollection ? (
+        <Grid container flexWrap="nowrap">
+          <Grid item {...size.itemSize}>
+            <Box sx={{ mt: 6 }}>
+              {movie && query && (
+                <MovieList isCollection={isCollection} movies={movie} />
+              )}
+            </Box>
+          </Grid>
+          <Grid item {...size.cartSize}>
+            asd
+          </Grid>
+        </Grid>
+      ) : (
+        <Box sx={{ mt: 6 }}>
+          {movie && query && (
+            <MovieList isCollection={isCollection} movies={movie} />
+          )}
+        </Box>
+      )}
       <InView onChange={handleView}>
         <Box
           sx={{
