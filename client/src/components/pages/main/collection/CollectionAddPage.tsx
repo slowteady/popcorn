@@ -7,7 +7,7 @@ import MovieSearchPage from "../search/MovieSearchPage";
 // 영화 콜렉션 추가 페이지
 // ----------------------------------------------------------------------
 
-const AddCollectionPage = () => {
+const CollectionAddPage = () => {
   return (
     <>
       <Helmet>
@@ -24,4 +24,4 @@ const AddCollectionPage = () => {
   );
 };
 
-export default AddCollectionPage;
+export default CollectionAddPage;
