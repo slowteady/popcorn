@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Container,
-  Grid,
   InputAdornment,
   TextField,
 } from "@mui/material";
@@ -24,8 +23,7 @@ import { searchKeyword } from "../../../../state/searchState";
 import { isCollectionProps } from "../../../../types/movies/movieTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
-import { whichContainerSize } from "../../../utils/size";
-import CollectionCart from "../collection/CollectionCart";
+import CollectionMovieList from "../collection/CollectionMovieList";
 import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
@@ -41,7 +39,6 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
   const [page, setPage] = useState(1); // 페이지
   const [query, setQuery] = useState(""); // 검색어
   const [enabled, setEnabled] = useState(false); // Request 요청 여부
-  const size = whichContainerSize(isCollection); // 컨테이너 사이즈
   const location = useLocation();
 
   // 검색 결과 API 요청
@@ -154,18 +151,7 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
         Search
       </Button>
       {isCollection ? (
-        <Grid container flexWrap="nowrap">
-          <Grid item {...size.itemSize}>
-            <Box sx={{ mt: 6 }}>
-              {movie && query && (
-                <MovieList isCollection={isCollection} movies={movie} />
-              )}
-            </Box>
-          </Grid>
-          <Grid item {...size.cartSize}>
-            <CollectionCart />
-          </Grid>
-        </Grid>
+        <CollectionMovieList isCollection={isCollection} query={query} />
       ) : (
         <Box sx={{ mt: 6 }}>
           {movie && query && (
