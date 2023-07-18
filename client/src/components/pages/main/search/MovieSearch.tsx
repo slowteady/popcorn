@@ -25,6 +25,7 @@ import { isCollectionProps } from "../../../../types/movies/movieTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import { whichContainerSize } from "../../../utils/size";
+import CollectionCart from "../collection/CollectionCart";
 import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
@@ -162,7 +163,7 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
             </Box>
           </Grid>
           <Grid item {...size.cartSize}>
-            asd
+            <CollectionCart />
           </Grid>
         </Grid>
       ) : (
