@@ -4,6 +4,10 @@ import { Helmet } from "react-helmet-async";
 import { isCollectionProps } from "../../../../types/movies/movieTypes";
 import MovieSearch from "./MovieSearch";
 
+// ----------------------------------------------------------------------
+// 영화 검색 페이지
+// ----------------------------------------------------------------------
+
 const MovieSearchPage = ({ isCollection }: isCollectionProps) => {
   return (
     <>
