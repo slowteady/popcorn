@@ -7,6 +7,10 @@ import { whichContainerSize } from "../../../utils/size";
 import MovieList from "../movies/MovieList";
 import CollectionCart from "./CollectionCart";
 
+// ----------------------------------------------------------------------
+// 컬렉션 영화 리스트
+// ----------------------------------------------------------------------
+
 const CollectionMovieList = ({ isCollection, query }: isCollectionProps) => {
   const movie = useRecoilValue(moviesSearchList);
   const style = whichContainerSize(isCollection); // 컨테이너 사이즈

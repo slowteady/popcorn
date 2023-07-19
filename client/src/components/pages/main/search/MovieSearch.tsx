@@ -153,25 +153,27 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
       {isCollection ? (
         <CollectionMovieList isCollection={isCollection} query={query} />
       ) : (
-        <Box sx={{ mt: 6 }}>
-          {movie && query && (
-            <MovieList isCollection={isCollection} movies={movie} />
-          )}
-        </Box>
+        <>
+          <Box sx={{ mt: 6 }}>
+            {movie && query && (
+              <MovieList isCollection={isCollection} movies={movie} />
+            )}
+          </Box>
+          <InView onChange={handleView}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "50px",
+                mt: "20px",
+              }}
+            >
+              {status === "loading" && <PendingIcon fontSize="large" />}
+            </Box>
+          </InView>
+        </>
       )}
-      <InView onChange={handleView}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "50px",
-            mt: "20px",
-          }}
-        >
-          {status === "loading" && <PendingIcon fontSize="large" />}
-        </Box>
-      </InView>
     </Container>
   );
 };
