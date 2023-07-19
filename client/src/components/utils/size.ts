@@ -2,13 +2,17 @@
 export const whichContainerSize = (isCollection: boolean) => {
   return isCollection
     ? {
-        containerSize: { spacing: 2 },
         itemSize: { xs: 8, sm: 7, md: 6, lg: 6 },
+        itemSx: { p: 1 },
+        cardSx: { p: 1, cursor: "pointer" },
         cartSize: { xs: 4, sm: 5, md: 6, lg: 6 },
-        sx: { maxHeight: "600px", overflowY: "auto" },
+        gridSx: { maxHeight: "525px", overflowY: "auto", mt: 5 },
+        boxSx: { minHeight: "200px", position: "relative" },
       }
     : {
-        containerSize: { spacing: 3 },
+        containerSize: { spacing: 2 },
         itemSize: { xs: 8, sm: 6, md: 3, lg: 3 },
+        cardSx: { cursor: "pointer" },
+        boxSx: { minHeight: "405px", position: "relative" },
       };
 };
