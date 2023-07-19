@@ -2,6 +2,7 @@ import { Box, Card, Stack, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
 import { API } from "../../../../Config";
 import { MovieCardProps } from "../../../../types/movies/movieTypes";
+import { whichContainerSize } from "../../../utils/size";
 import MovieModal from "./MovieModal";
 
 // ----------------------------------------------------------------------
@@ -16,11 +17,12 @@ const StyledMovieImg = styled("img")({
   position: "absolute",
 });
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const MovieCard = ({ movie, isCollection }: MovieCardProps) => {
   const [open, setOpen] = useState(false);
   const { id, poster_path, release_date, title, vote_average } = movie;
   const voteAverage = (Math.round(vote_average * 10) / 10).toFixed(1);
   const posterUrl = `${API.IMAGE_BASE_URL}${API.IMAGE_SIZE_500}${poster_path}`;
+  const style = whichContainerSize(isCollection);
 
   const handleModalOpen = () => setOpen(true);
   const handleModalClose = () => setOpen(false);
@@ -28,7 +30,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <>
       <Card sx={{ cursor: "pointer" }} onClick={handleModalOpen}>
-        <Box sx={{ minHeight: "405px", position: "relative" }}>
+        <Box sx={{ ...style.boxSx }}>
           {poster_path && <StyledMovieImg alt={title} src={posterUrl} />}
         </Box>
         <Stack spacing={2} sx={{ p: 3 }}>

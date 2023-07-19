@@ -10,16 +10,20 @@ import MovieCard from "./MovieCard";
 // ----------------------------------------------------------------------
 
 const MovieList = ({ movies, isCollection }: MovieListProps) => {
-  const size = whichContainerSize(isCollection);
+  const style = whichContainerSize(isCollection);
 
   return (
     <>
-      <Grid container sx={{ justifyContent: "center" }} {...size.containerSize}>
+      <Grid
+        container
+        sx={{ justifyContent: "center" }}
+        {...style.containerSize}
+      >
         {movies && movies.length !== 0 ? (
           movies.map((movie, index) => (
-            <Grid key={index} item {...size.itemSize}>
+            <Grid key={index} item sx={{ ...style.itemSx }} {...style.itemSize}>
               {isCollection && <Checkbox />}
-              <MovieCard movie={movie} />
+              <MovieCard isCollection={isCollection} movie={movie} />
             </Grid>
           ))
         ) : (

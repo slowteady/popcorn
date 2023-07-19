@@ -13,8 +13,8 @@ const CollectionMovieList = ({ isCollection, query }: isCollectionProps) => {
 
   return (
     <Grid container flexWrap="nowrap">
-      <Grid item {...style.itemSize} sx={{ ...style.sx }}>
-        <Box sx={{ mt: 6 }}>
+      <Grid item {...style.itemSize} sx={{ ...style.gridSx }}>
+        <Box>
           {movie && query && (
             <MovieList isCollection={isCollection} movies={movie} />
           )}
