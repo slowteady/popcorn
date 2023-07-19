@@ -9,16 +9,18 @@ import CollectionCart from "./CollectionCart";
 
 const CollectionMovieList = ({ isCollection, query }: isCollectionProps) => {
   const movie = useRecoilValue(moviesSearchList);
-  const size = whichContainerSize(isCollection); // 컨테이너 사이즈
+  const style = whichContainerSize(isCollection); // 컨테이너 사이즈
 
   return (
     <Grid container flexWrap="nowrap">
-      <Grid item {...size.itemSize}>
+      <Grid item {...style.itemSize} sx={{ ...style.sx }}>
         <Box sx={{ mt: 6 }}>
-          {movie && query && <MovieList isCollection={isCollection} movies={movie} />}
+          {movie && query && (
+            <MovieList isCollection={isCollection} movies={movie} />
+          )}
         </Box>
       </Grid>
-      <Grid item {...size.cartSize}>
+      <Grid item {...style.cartSize}>
         <CollectionCart />
       </Grid>
     </Grid>

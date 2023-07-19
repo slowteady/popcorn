@@ -14,7 +14,7 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
 
   return (
     <>
-      <Grid container {...size.containerSize} sx={{ justifyContent: "center" }}>
+      <Grid container sx={{ justifyContent: "center" }} {...size.containerSize}>
         {movies && movies.length !== 0 ? (
           movies.map((movie, index) => (
             <Grid key={index} item {...size.itemSize}>
@@ -31,7 +31,7 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
               width: "100%",
               textAlign: "center",
             }}
-            containerSx={{ mt: 25 }}
+            containerSx={{ p: 19 }}
           />
         )}
       </Grid>
