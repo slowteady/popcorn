@@ -11,6 +11,7 @@ export interface MovieListProps {
 }
 
 export interface MovieCardProps {
+  isCollection: boolean;
   movie: {
     id: number;
     poster_path: string;
