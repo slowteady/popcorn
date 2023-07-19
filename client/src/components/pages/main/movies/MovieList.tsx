@@ -14,7 +14,7 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
 
   return (
     <>
-      <Grid container {...size.containerSize}>
+      <Grid container {...size.containerSize} sx={{ justifyContent: "center" }}>
         {movies && movies.length !== 0 ? (
           movies.map((movie, index) => (
             <Grid key={index} item {...size.itemSize}>
@@ -26,7 +26,11 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
           <Nodata
             msg="검색 결과가 없습니다."
             icon="material-symbols:info-outline"
-            sx={{ height: "100%", width: "100%", textAlign: "center" }}
+            sx={{
+              height: "100%",
+              width: "100%",
+              textAlign: "center",
+            }}
             containerSx={{ mt: 25 }}
           />
         )}
