@@ -9,9 +9,7 @@ import {
 // 테이블 헤더
 // ----------------------------------------------------------------------
 
-const ListTableHead = ({
-  headLabel,
-}: ListTableHeadProps) => {
+const ListTableHead = ({ headLabel }: ListTableHeadProps) => {
   return (
     <TableHead>
       <TableRow>
