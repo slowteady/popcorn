@@ -1,4 +1,4 @@
-import { Checkbox, TableCell, TableHead, TableRow } from "@mui/material";
+import { TableCell, TableHead, TableRow } from "@mui/material";
 import React from "react";
 import {
   ListTableHeadLabelProps,
@@ -11,20 +11,11 @@ import {
 
 const ListTableHead = ({
   headLabel,
-  rowCount,
-  numSelected,
-  onSelectAllClick,
 }: ListTableHeadProps) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-          />
-        </TableCell>
+        <TableCell />
         {headLabel.map((headCell: ListTableHeadLabelProps) => (
           <TableCell
             key={headCell.id}
