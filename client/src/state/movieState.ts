@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { MovieListProps } from "../types/movies/movieTypes";
+import { MovieListProps, MovieProps } from "../types/movies/movieTypes";
 
 export const movieListType = atom({
   key: "movieListType",
@@ -9,4 +9,9 @@ export const movieListType = atom({
 export const moviesSearchList = atom({
   key: "moviesSearchList",
   default: [] as MovieListProps["movies"],
+});
+
+export const collectionCartList = atom({
+  key: "collectionCartList",
+  default: [] as MovieProps[],
 });
