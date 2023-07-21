@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useSetRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
@@ -11,8 +11,14 @@ import MovieSearchPage from "../search/MovieSearchPage";
 
 const CollectionAddPage = () => {
   const setCollectionCartList = useSetRecoilState(collectionCartList);
+  const [isFirstLoad, setIsFirstLoad] = useState(true); // 초기 렌더링 여부
 
-  setCollectionCartList([]);
+  useEffect(() => {
+    if (isFirstLoad) {
+      setCollectionCartList([]);
+      setIsFirstLoad(false);
+    }
+  }, [isFirstLoad]);
 
   return (
     <>
