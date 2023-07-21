@@ -10,6 +10,7 @@ interface IconifyProps {
   icon: string | IconifyIcon;
   width?: number;
   sx?: SxProps;
+  onClick?: React.MouseEventHandler;
 }
 
 const Iconify: FunctionComponent<IconifyProps> = ({
