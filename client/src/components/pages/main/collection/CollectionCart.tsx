@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  Checkbox,
   Container,
   Table,
   TableBody,
@@ -12,16 +11,20 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { ChangeEvent, MouseEvent, useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
+import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 
 // ----------------------------------------------------------------------
 // 컬렉션 추가 리스트 카트
 // ----------------------------------------------------------------------
 
+// 한 페이지 행 갯수
 const ROWSPERPAGE = 5;
+
+// 테이블 헤더 Config
 const TABLE_HEAD = [
   { id: "title", label: "제목", alignRight: false },
   { id: "release_date", label: "릴리즈", alignRight: false },
@@ -30,20 +33,9 @@ const TABLE_HEAD = [
 const CollectionCart = () => {
   const movies = useRecoilValue(collectionCartList);
   const [page, setPage] = useState(0);
-  const [selected, setSelected] = useState<string[]>([]);
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * ROWSPERPAGE - movies.length) : 0;
-
-  // 체크박스 전체 선택
-  const handleSelectAllClick = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.currentTarget.checked) {
-      const newSelecteds = movies.map((n) => n.title);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
 
   // 페이징
   const handleChangePage = (
@@ -53,14 +45,15 @@ const CollectionCart = () => {
     setPage(newPage);
   };
 
+  // 휴지통 아이콘 클릭 
+  const handleIconClick = () => {};
+
   // submit
   const handleSubmit = () => {};
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, title: string) => {};
-
   return (
     <Container sx={{ mt: 4, ml: 2 }}>
-      <Card sx={{ height: "525px" }}>
+      <Card sx={{ height: "575px" }}>
         <Box onSubmit={handleSubmit} sx={{ m: 2 }}>
           <Typography color="black" fontSize={15} sx={{ mb: 1 }}>
             제목
@@ -71,24 +64,22 @@ const CollectionCart = () => {
           </Typography>
           <TableContainer>
             <Table>
-              <ListTableHead
-                headLabel={TABLE_HEAD}
-                rowCount={movies.length}
-                numSelected={selected.length}
-                onSelectAllClick={handleSelectAllClick}
-              />
+              <ListTableHead headLabel={TABLE_HEAD} />
               <TableBody>
                 {movies
                   .slice(page * ROWSPERPAGE, page * ROWSPERPAGE + ROWSPERPAGE)
-                  .map((movie, index) => {
+                  .map((movie) => {
                     const { id, title, release_date } = movie;
 
                     return (
                       <TableRow hover key={id} tabIndex={-1} role="checkbox">
-                        <TableCell padding="checkbox">
-                          <Checkbox onChange={(e) => handleChange(e, title)} />
+                        <TableCell align="left">
+                          <Iconify
+                            icon={"eva:trash-2-outline"}
+                            sx={{ mr: 2, cursor: "pointer" }}
+                            onClick={handleIconClick}
+                          />
                         </TableCell>
-
                         <TableCell align="left">
                           <Typography variant="subtitle2" noWrap>
                             {title}

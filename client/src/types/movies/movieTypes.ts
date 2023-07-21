@@ -72,7 +72,4 @@ export interface ListTableHeadLabelProps {
 
 export interface ListTableHeadProps {
   headLabel: ListTableHeadLabelProps[];
-  rowCount: number;
-  numSelected: number;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
