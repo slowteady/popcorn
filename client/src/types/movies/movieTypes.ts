@@ -1,25 +1,20 @@
+export interface MovieProps {
+  id: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  vote_average: number;
+  genre_ids: number[];
+}
+
 export interface MovieListProps {
   isCollection: boolean;
-  movies: {
-    id: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    vote_average: number;
-    genre_ids: number[];
-  }[];
+  movies: MovieProps[];
 }
 
 export interface MovieCardProps {
   isCollection: boolean;
-  movie: {
-    id: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    vote_average: number;
-    genre_ids: number[];
-  };
+  movie: MovieProps;
 }
 
 export interface MovieModalProps {
@@ -34,14 +29,14 @@ export interface MovieModalProps {
   };
 }
 
+export interface MovieCreditsMember {
+  [key: string]: any;
+}
+
 export interface MovieCreditsProps {
   credits: {
-    crew?: {
-      [key: string]: any;
-    };
-    cast?: {
-      [key: string]: any;
-    };
+    crew?: MovieCreditsMember;
+    cast?: MovieCreditsMember;
   };
 }
 
@@ -59,10 +54,6 @@ export interface MovieDetailProps {
   };
 }
 
-export interface MovieCreditsMember {
-  [key: string]: any;
-}
-
 export interface AddMovieModalProps {
   open: boolean;
   handleClose: () => void;
@@ -71,4 +62,17 @@ export interface AddMovieModalProps {
 export interface isCollectionProps {
   isCollection: boolean;
   query?: string;
+}
+
+export interface ListTableHeadLabelProps {
+  id: string;
+  label: string;
+  alignRight: boolean;
+}
+
+export interface ListTableHeadProps {
+  headLabel: ListTableHeadLabelProps[];
+  rowCount: number;
+  numSelected: number;
+  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
