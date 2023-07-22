@@ -4,6 +4,7 @@ import {
   MovieCreditsMember,
   MovieCreditsProps,
   MovieModalProps,
+  addCollectionObj,
 } from "../types/movies/movieTypes";
 
 // movie api 요청
@@ -171,4 +172,17 @@ const transformMovieData = (
   }
 
   return obj;
+};
+
+// 컬렉션 등록
+export const registerCollection = async (body: addCollectionObj) => {
+  try {
+    const response = await axios.post("/api/collections/register", body);
+    
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
 };
