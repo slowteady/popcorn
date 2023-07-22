@@ -19,7 +19,7 @@ const StyledMovieImg = styled("img")({
 });
 
 interface ModalPageProps {
-  id: number;
+  id: number | null;
 }
 
 const MovieModalPage = ({ id }: ModalPageProps) => {

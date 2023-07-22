@@ -17,6 +17,7 @@ import { collectionCartList } from "../../../../state/movieState";
 import { MovieProps } from "../../../../types/movies/movieTypes";
 import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
+import MovieModal from "../movies/MovieModal";
 
 // ----------------------------------------------------------------------
 // 컬렉션 추가 리스트 카트
@@ -33,6 +34,8 @@ const TABLE_HEAD = [
 
 const CollectionCart = () => {
   const [movies, setMovies] = useRecoilState(collectionCartList);
+  const [open, setOpen] = useState(false);
+  const [movieId, setMovieId] = useState<number | null>(null);
   const [page, setPage] = useState(0);
 
   const emptyRows =
@@ -51,6 +54,17 @@ const CollectionCart = () => {
     e.stopPropagation();
 
     setMovies((prevMovies) => prevMovies.filter((m) => m !== movie));
+  };
+
+  // 타이틀 클릭 시 모달창 on/off
+  const handleModalOpen = (id: number) => {
+    setMovieId(id);
+    setOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setMovieId(null);
+    setOpen(false);
   };
 
   // submit
@@ -86,7 +100,12 @@ const CollectionCart = () => {
                           />
                         </TableCell>
                         <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
+                          <Typography
+                            onClick={() => handleModalOpen(id)}
+                            variant="subtitle2"
+                            noWrap
+                            sx={{ cursor: "pointer" }}
+                          >
                             {title}
                           </Typography>
                         </TableCell>
@@ -117,6 +136,7 @@ const CollectionCart = () => {
           />
         </Box>
       </Card>
+      <MovieModal id={movieId} open={open} handleClose={handleModalClose} />
     </Container>
   );
 };

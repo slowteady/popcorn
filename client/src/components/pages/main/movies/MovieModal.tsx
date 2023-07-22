@@ -9,7 +9,7 @@ import MovieModalPage from "./MovieModalPage";
 interface MovieModalProps {
   open: boolean;
   handleClose: () => void;
-  id: number;
+  id: number | null;
 }
 
 const MovieModal = ({ id, open, handleClose }: MovieModalProps) => {
