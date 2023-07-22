@@ -1,6 +1,6 @@
 import { Checkbox, Grid } from "@mui/material";
 import React, { ChangeEvent } from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
 import {
   MovieListProps,
@@ -16,8 +16,8 @@ import MovieCard from "./MovieCard";
 
 const MovieList = ({ movies, isCollection }: MovieListProps) => {
   const style = whichContainerSize(isCollection);
-  const setCheckedMovies = useSetRecoilState(collectionCartList);
-
+  const [checkedMovies, setCheckedMovies] = useRecoilState(collectionCartList);
+  
   const handleOnChange = (
     e: ChangeEvent<HTMLInputElement>,
     movie: MovieProps
@@ -34,6 +34,12 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
     }
   };
 
+  const isChecked = () => {
+    checkedMovies.map((movie, index) => {
+      return true;
+    });
+  };
+
   return (
     <>
       <Grid
@@ -42,14 +48,27 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
         {...style.containerSize}
       >
         {movies && movies.length !== 0 ? (
-          movies.map((movie, index) => (
-            <Grid key={index} item sx={{ ...style.itemSx }} {...style.itemSize}>
-              {isCollection && (
-                <Checkbox onChange={(e) => handleOnChange(e, movie)} />
-              )}
-              <MovieCard isCollection={isCollection} movie={movie} />
-            </Grid>
-          ))
+          movies.map((movie, index) => {
+            const isChecked = checkedMovies.some(
+              (checkedMovie) => checkedMovie.id === movie.id
+            );
+            return (
+              <Grid
+                key={index}
+                item
+                sx={{ ...style.itemSx }}
+                {...style.itemSize}
+              >
+                {isCollection && (
+                  <Checkbox
+                    onChange={(e) => handleOnChange(e, movie)}
+                    checked={isChecked}
+                  />
+                )}
+                <MovieCard isCollection={isCollection} movie={movie} />
+              </Grid>
+            );
+          })
         ) : (
           <Nodata
             msg="검색 결과가 없습니다."
