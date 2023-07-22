@@ -12,8 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
+import { MovieProps } from "../../../../types/movies/movieTypes";
 import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 
@@ -31,7 +32,7 @@ const TABLE_HEAD = [
 ];
 
 const CollectionCart = () => {
-  const movies = useRecoilValue(collectionCartList);
+  const [movies, setMovies] = useRecoilState(collectionCartList);
   const [page, setPage] = useState(0);
 
   const emptyRows =
@@ -45,8 +46,12 @@ const CollectionCart = () => {
     setPage(newPage);
   };
 
-  // 휴지통 아이콘 클릭 
-  const handleIconClick = () => {};
+  // 휴지통 아이콘 클릭
+  const handleIconClick = (e: MouseEvent, movie: MovieProps) => {
+    e.stopPropagation();
+
+    setMovies((prevMovies) => prevMovies.filter((m) => m !== movie));
+  };
 
   // submit
   const handleSubmit = () => {};
@@ -77,7 +82,7 @@ const CollectionCart = () => {
                           <Iconify
                             icon={"eva:trash-2-outline"}
                             sx={{ mr: 2, cursor: "pointer" }}
-                            onClick={handleIconClick}
+                            onClick={(e) => handleIconClick(e, movie)}
                           />
                         </TableCell>
                         <TableCell align="left">
