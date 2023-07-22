@@ -31,6 +31,9 @@ app.use(cookieParser());
 // 유저 라우터
 app.use("/api/users", require("./routes/users"));
 
+// 컬렉션 라우터
+app.use("/api/collections", require("./routes/collections"));
+
 // 포트번호 설정
 const port = process.env.SERVER_PORT || 8080;
 
