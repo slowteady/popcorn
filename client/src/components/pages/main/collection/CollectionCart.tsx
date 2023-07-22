@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import React, { MouseEvent, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
+import { registerCollection } from "../../../../services/movieService";
 import { collectionCartList } from "../../../../state/movieState";
 import { MovieProps } from "../../../../types/movies/movieTypes";
 import { msg } from "../../../../utils/msgUtils";
@@ -69,9 +70,10 @@ const CollectionCart = () => {
   };
 
   // 등록 버튼 클릭
-  const handleBtnClick = () => {
+  const handleBtnClick = async () => {
     const input = inputRef.current;
     let titleValue;
+    let movie = [];
 
     if (input) {
       titleValue = input.value;
@@ -85,7 +87,24 @@ const CollectionCart = () => {
     if (movies.length < 1) {
       msg("error", "영화를 한개 이상 추가해주세요");
       return false;
+    } else {
+      movie = movies.map((m) => {
+        return {
+          id: m.id,
+          poster_path: m.poster_path,
+          release_date: m.release_date,
+          title: m.title,
+          vote_average: m.vote_average,
+        };
+      });
     }
+
+    let body = {
+      collectionTitle: titleValue!,
+      movie,
+    };
+
+    const response = await registerCollection(body);
   };
 
   return (
