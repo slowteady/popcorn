@@ -12,10 +12,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { MouseEvent, useState } from "react";
+import React, { MouseEvent, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
 import { MovieProps } from "../../../../types/movies/movieTypes";
+import { msg } from "../../../../utils/msgUtils";
+import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 import MovieModal from "../movies/MovieModal";
@@ -38,6 +40,7 @@ const CollectionCart = () => {
   const [open, setOpen] = useState(false);
   const [movieId, setMovieId] = useState<number | null>(null);
   const [page, setPage] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // 페이징
   const handleChangePage = (
@@ -65,17 +68,40 @@ const CollectionCart = () => {
     setOpen(false);
   };
 
-  // submit
-  const handleSubmit = () => {};
+  // 등록 버튼 클릭
+  const handleBtnClick = () => {
+    const input = inputRef.current;
+    let titleValue;
+
+    if (input) {
+      titleValue = input.value;
+
+      if (strCheck.isEmpty(titleValue)) {
+        msg("error", "컬렉션 제목을 작성해주세요");
+        return false;
+      }
+    }
+
+    if (movies.length < 1) {
+      msg("error", "영화를 한개 이상 추가해주세요");
+      return false;
+    }
+  };
 
   return (
     <Container sx={{ mt: 4, ml: 2 }}>
       <Card sx={{ height: "550px" }}>
-        <Box onSubmit={handleSubmit} sx={{ m: 2 }}>
+        <Box sx={{ m: 2 }}>
           <Typography color="black" fontSize={15} sx={{ mb: 1 }}>
             제목
           </Typography>
-          <TextField required fullWidth size="small" sx={{ mr: 1, mb: 2 }} />
+          <TextField
+            required
+            fullWidth
+            size="small"
+            sx={{ mr: 1, mb: 2 }}
+            inputRef={inputRef}
+          />
           <Typography color="black" fontSize={15} sx={{ mb: 1 }}>
             리스트
           </Typography>
@@ -128,8 +154,8 @@ const CollectionCart = () => {
             onPageChange={handleChangePage}
           />
           <Button
+            onClick={handleBtnClick}
             variant="contained"
-            type="submit"
             size="medium"
             fullWidth
             sx={{ position: "absolute", bottom: 0, left: 0, right: 0 }}
