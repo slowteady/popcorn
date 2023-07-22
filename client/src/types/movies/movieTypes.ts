@@ -73,3 +73,14 @@ export interface ListTableHeadLabelProps {
 export interface ListTableHeadProps {
   headLabel: ListTableHeadLabelProps[];
 }
+
+export interface addCollectionObj {
+  collectionTitle: string;
+  movie: {
+    id: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    vote_average: number;
+  }[];
+}
