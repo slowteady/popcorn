@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   Container,
   Table,
@@ -38,9 +39,6 @@ const CollectionCart = () => {
   const [movieId, setMovieId] = useState<number | null>(null);
   const [page, setPage] = useState(0);
 
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * ROWSPERPAGE - movies.length) : 0;
-
   // 페이징
   const handleChangePage = (
     e: MouseEvent<HTMLButtonElement> | null,
@@ -72,7 +70,7 @@ const CollectionCart = () => {
 
   return (
     <Container sx={{ mt: 4, ml: 2 }}>
-      <Card sx={{ height: "575px" }}>
+      <Card sx={{ height: "550px" }}>
         <Box onSubmit={handleSubmit} sx={{ m: 2 }}>
           <Typography color="black" fontSize={15} sx={{ mb: 1 }}>
             제목
@@ -82,7 +80,7 @@ const CollectionCart = () => {
             리스트
           </Typography>
           <TableContainer>
-            <Table>
+            <Table size="small">
               <ListTableHead headLabel={TABLE_HEAD} />
               <TableBody>
                 {movies
@@ -117,11 +115,6 @@ const CollectionCart = () => {
                       </TableRow>
                     );
                   })}
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 53 * emptyRows }}>
-                    <TableCell colSpan={2} />
-                  </TableRow>
-                )}
               </TableBody>
             </Table>
           </TableContainer>
@@ -134,6 +127,15 @@ const CollectionCart = () => {
             page={page}
             onPageChange={handleChangePage}
           />
+          <Button
+            variant="contained"
+            type="submit"
+            size="medium"
+            fullWidth
+            sx={{ position: "absolute", bottom: 0, left: 0, right: 0 }}
+          >
+            등록
+          </Button>
         </Box>
       </Card>
       <MovieModal id={movieId} open={open} handleClose={handleModalClose} />
