@@ -10,7 +10,7 @@ const registerCollection = async (req, res) => {
     });
 
     await collection.save();
-    res.status(200).json({ isSuccess: true });
+    res.status(200).json({ isSuccess: true, msg: "컬렉션이 등록되었어요" });
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
