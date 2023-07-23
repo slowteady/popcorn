@@ -8,7 +8,7 @@ import Iconify from "../../../iconify/Iconify";
 // Collection 페이지
 // ----------------------------------------------------------------------
 
-const CollectionPage = () => {
+const CollectionListPage = () => {
   const [isAdd, setIsAdd] = useState(false);
 
   const handleModalOpen = () => {
@@ -45,4 +45,4 @@ const CollectionPage = () => {
   );
 };
 
-export default CollectionPage;
+export default CollectionListPage;

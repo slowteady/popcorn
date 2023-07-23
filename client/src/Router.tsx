@@ -6,7 +6,7 @@ import LoginPage from "./components/pages/LoginPage";
 import Page404 from "./components/pages/Page404";
 import SignupPage from "./components/pages/SignupPage";
 import CollectionAddPage from "./components/pages/main/collection/CollectionAddPage";
-import CollectionPage from "./components/pages/main/collection/CollectionPage";
+import CollectionListPage from "./components/pages/main/collection/CollectionListPage";
 import MoviesPage from "./components/pages/main/movies/MoviesPage";
 import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
@@ -67,7 +67,7 @@ const Router = () => {
               path: "",
               element: (
                 <Auth>
-                  <CollectionPage />
+                  <CollectionListPage />
                 </Auth>
               ),
               index: true,
