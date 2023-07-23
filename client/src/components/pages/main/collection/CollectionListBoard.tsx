@@ -1,6 +1,8 @@
 import { Box, Card, Table, TableContainer } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
+import { useQuery } from "react-query";
+import { getListBoardData } from "../../../../services/movieService";
 
 // ----------------------------------------------------------------------
 // 컬렉션 리스트 게시판형
@@ -17,6 +19,15 @@ const TABLE_HEAD = [
 ];
 
 const CollectionListBoard = () => {
+  const [page, setPage] = useState(0);
+  const [enabled, setEnabled] = useState(true);
+
+  const { status, data } = useQuery(
+    ["listBoardData", page],
+    () => getListBoardData(page, ROWSPERPAGE),
+    { enabled }
+  );
+
   return (
     <Card sx={{ maxHeight: "550px", mt: "70px" }}>
       <Box>
