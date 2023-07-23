@@ -17,6 +17,21 @@ const registerCollection = async (req, res) => {
   }
 };
 
+// 컬렉션 목록 조회
+const getCollection = async (req, res) => {
+  try {
+    const page = req.params.page;
+    const limit = req.query.limit;
+    const skip = page * limit;
+
+    const data = await Collection.find().skip(skip).limit(limit);
+  } catch (err) {
+    console.error("err: ", err, "code: ", err.code);
+    res.json({ isSuccess: false, msg: "오류가 발생했어요" });
+  }
+};
+
 module.exports = {
   registerCollection,
+  getCollection,
 };
