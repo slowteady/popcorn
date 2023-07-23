@@ -75,7 +75,7 @@ const CollectionAddForm = () => {
   // 등록 버튼 클릭
   const handleBtnClick = async () => {
     const input = inputRef.current;
-    let titleValue;
+    let titleValue: string;
     let movie = [];
 
     if (input) {
