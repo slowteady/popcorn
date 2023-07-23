@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, loginUser } from "../../services/userService";
 import { LoginForm } from "../../types/users/userTypes";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
-import { loginAndOutValidate } from "../auth/userValidate";
+import { isSuccessValidate } from "../auth/userValidate";
 
 // ----------------------------------------------------------------------
 // 로그인 페이지
@@ -85,7 +85,7 @@ const LoginPage = () => {
     const loginResult = await loginUser(body);
 
     // 로그인 검증
-    const isComplete = loginAndOutValidate(loginResult);
+    const isComplete = isSuccessValidate(loginResult);
     if (isComplete) {
       // 기억하기 기능
       if (isRemember) {

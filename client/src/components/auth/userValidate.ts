@@ -66,7 +66,7 @@ export const signupValidate = (result: Signup) => {
 };
 
 // 로그인, 로그아웃 검증
-export const loginAndOutValidate = (result: Payload) => {
+export const isSuccessValidate = (result: Payload) => {
   const { payload } = result;
 
   if (payload && payload.isSuccess) {

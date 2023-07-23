@@ -1,19 +1,19 @@
 import {
-  Avatar,
-  Box,
-  Divider,
-  IconButton,
-  MenuItem,
-  Popover,
-  Typography,
-  alpha,
+    Avatar,
+    Box,
+    Divider,
+    IconButton,
+    MenuItem,
+    Popover,
+    Typography,
+    alpha,
 } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { logoutUser } from "../../../services/userService";
 import { userData, userDataType } from "../../../state/userState";
-import { loginAndOutValidate } from "../../auth/userValidate";
+import { isSuccessValidate } from "../../auth/userValidate";
 
 // ----------------------------------------------------------------------
 // 헤더 사용자 레이어
@@ -40,7 +40,7 @@ const UserPopover = () => {
   const onClickLogout = async () => {
     handleClose();
     const logout = await logoutUser();
-    loginAndOutValidate(logout);
+    isSuccessValidate(logout);
 
     navigate("/");
   };
