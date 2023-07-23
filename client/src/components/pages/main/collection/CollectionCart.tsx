@@ -13,12 +13,14 @@ import {
   Typography,
 } from "@mui/material";
 import React, { MouseEvent, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { registerCollection } from "../../../../services/movieService";
 import { collectionCartList } from "../../../../state/movieState";
 import { MovieProps } from "../../../../types/movies/movieTypes";
 import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";
+import { isSuccessValidate } from "../../../auth/userValidate";
 import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 import MovieModal from "../movies/MovieModal";
@@ -42,6 +44,7 @@ const CollectionCart = () => {
   const [movieId, setMovieId] = useState<number | null>(null);
   const [page, setPage] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   // 페이징
   const handleChangePage = (
@@ -105,6 +108,11 @@ const CollectionCart = () => {
     };
 
     const response = await registerCollection(body);
+    const isSuccess = isSuccessValidate(response);
+    if (isSuccess) {
+      msg("success", response.payload.msg);
+      navigate("/main/collection");
+    }
   };
 
   return (
