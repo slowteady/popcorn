@@ -178,7 +178,12 @@ const transformMovieData = (
 export const registerCollection = async (body: addCollectionObj) => {
   try {
     const response = await axios.post("/api/collections/register", body);
-    
+    const obj = { payload: response.data };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
+    return obj;
   } catch (err) {
     console.error(err);
     return {
