@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navigate } from "react-router-dom";
 import Iconify from "../../../iconify/Iconify";
+import CollectionListBoard from "./CollectionListBoard";
 
 // ----------------------------------------------------------------------
 // Collection 페이지
@@ -39,6 +40,7 @@ const CollectionListPage = () => {
             New Collection
           </Button>
         </Stack>
+        <CollectionListBoard />
       </Container>
       {isAdd && <Navigate to="/main/collection/add" />}
     </>

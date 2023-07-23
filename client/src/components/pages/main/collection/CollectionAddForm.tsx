@@ -38,7 +38,7 @@ const TABLE_HEAD = [
   { id: "release_date", label: "릴리즈", alignRight: false },
 ];
 
-const CollectionCart = () => {
+const CollectionAddForm = () => {
   const [movies, setMovies] = useRecoilState(collectionCartList);
   const [open, setOpen] = useState(false);
   const [movieId, setMovieId] = useState<number | null>(null);
@@ -196,4 +196,4 @@ const CollectionCart = () => {
   );
 };
 
-export default CollectionCart;
+export default CollectionAddForm;

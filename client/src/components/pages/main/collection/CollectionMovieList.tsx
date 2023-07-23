@@ -5,7 +5,7 @@ import { moviesSearchList } from "../../../../state/movieState";
 import { isCollectionProps } from "../../../../types/movies/movieTypes";
 import { whichContainerSize } from "../../../utils/size";
 import MovieList from "../movies/MovieList";
-import CollectionCart from "./CollectionCart";
+import CollectionAddForm from "./CollectionAddForm";
 
 // ----------------------------------------------------------------------
 // 컬렉션 영화 리스트
@@ -25,7 +25,7 @@ const CollectionMovieList = ({ isCollection, query }: isCollectionProps) => {
         </Box>
       </Grid>
       <Grid item {...style.cartSize}>
-        <CollectionCart />
+        <CollectionAddForm />
       </Grid>
     </Grid>
   );
