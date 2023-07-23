@@ -17,6 +17,7 @@ const collectionSchema = new Schema({
   },
   collectionTitle: String,
   movie: [movieSchema],
+  rgstDate: { type: Date, default: Date.now },
 });
 
 const Collection = mongoose.model("Collection", collectionSchema);
