@@ -9,15 +9,16 @@ import {
 // 테이블 헤더
 // ----------------------------------------------------------------------
 
-const ListTableHead = ({ headLabel }: ListTableHeadProps) => {
+const ListTableHead = ({ headLabel, sx }: ListTableHeadProps) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell />
+        <TableCell sx={sx} />
         {headLabel.map((headCell: ListTableHeadLabelProps) => (
           <TableCell
             key={headCell.id}
             align={headCell.alignRight ? "right" : "center"}
+            sx={sx}
           >
             {headCell.label}
           </TableCell>

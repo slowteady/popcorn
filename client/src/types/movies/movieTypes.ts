@@ -1,3 +1,5 @@
+import { SxProps, Theme } from "@mui/material";
+
 export interface MovieProps {
   id: number;
   poster_path: string;
@@ -72,6 +74,7 @@ export interface ListTableHeadLabelProps {
 
 export interface ListTableHeadProps {
   headLabel: ListTableHeadLabelProps[];
+  sx?: SxProps<Theme>
 }
 
 export interface addCollectionObj {
