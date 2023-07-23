@@ -90,7 +90,7 @@ const CollectionCart = () => {
     } else {
       movie = movies.map((m) => {
         return {
-          id: m.id,
+          movieId: m.id,
           poster_path: m.poster_path,
           release_date: m.release_date,
           title: m.title,

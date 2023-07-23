@@ -77,7 +77,7 @@ export interface ListTableHeadProps {
 export interface addCollectionObj {
   collectionTitle: string;
   movie: {
-    id: number;
+    movieId: number;
     poster_path: string;
     release_date: string;
     title: string;
