@@ -9,12 +9,20 @@ const movieSchema = new Schema({
   vote_average: Number,
 });
 
-const collectionSchema = new Schema({
+const userSchema = new Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
+  userName: {
+    type: mongoose.Schema.Types.String,
+    ref: "User",
+  },
+});
+
+const collectionSchema = new Schema({
+  user: userSchema,
   collectionTitle: String,
   movie: [movieSchema],
   rgstDate: { type: Date, default: Date.now },
