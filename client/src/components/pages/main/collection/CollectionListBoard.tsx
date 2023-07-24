@@ -1,6 +1,7 @@
 import {
   Box,
   Card,
+  Pagination,
   Table,
   TableBody,
   TableCell,
@@ -29,7 +30,7 @@ const TABLE_HEAD = [
 ];
 
 const CollectionListBoard = () => {
-  const [collection, setCollection] = useState<ListCollectionObj[]>();
+  const [collection, setCollection] = useState<ListCollectionObj[]>([]);
   const [page, setPage] = useState(0);
   const [enabled, setEnabled] = useState(false);
 
@@ -45,6 +46,7 @@ const CollectionListBoard = () => {
 
   useEffect(() => {
     if (status === "success") {
+      console.log(data);
       const collection = data.payload;
       setCollection(collection);
     }
@@ -99,6 +101,16 @@ const CollectionListBoard = () => {
             )}
           </Table>
         </TableContainer>
+        <Pagination
+          count={20}
+          size="medium"
+          color="primary"
+          sx={{
+            display: "flex",
+            justifyContent: "right",
+            m: 1,
+          }}
+        />
       </Box>
     </Card>
   );
