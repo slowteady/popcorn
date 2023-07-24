@@ -24,7 +24,7 @@ const registerCollection = async (req, res) => {
 const getCollection = async (req, res) => {
   try {
     // 페이지 파라미터
-    const page = req.params.page;
+    const page = req.params.page - 1;
     // 페이징 항목 갯수
     const limit = req.query.limit;
     // 번호
