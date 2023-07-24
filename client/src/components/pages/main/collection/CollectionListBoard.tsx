@@ -9,10 +9,13 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { UseQueryResult, useQuery } from "react-query";
 import { getListBoardData } from "../../../../services/movieService";
-import { ListCollectionObj } from "../../../../types/movies/movieTypes";
+import {
+  ListBoardData,
+  ListCollectionObj,
+} from "../../../../types/movies/movieTypes";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 
 // ----------------------------------------------------------------------
@@ -31,10 +34,11 @@ const TABLE_HEAD = [
 
 const CollectionListBoard = () => {
   const [collection, setCollection] = useState<ListCollectionObj[]>([]);
-  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [page, setPage] = useState(1);
   const [enabled, setEnabled] = useState(false);
 
-  const { status, data } = useQuery(
+  const { status, data }: UseQueryResult<ListBoardData> = useQuery(
     ["listBoardData", page],
     () => getListBoardData(page, ROWSPERPAGE),
     { enabled }
@@ -46,11 +50,17 @@ const CollectionListBoard = () => {
 
   useEffect(() => {
     if (status === "success") {
-      console.log(data);
       const collection = data.payload;
+      const totalPage = data.totalPages;
+
       setCollection(collection);
+      setTotalPages(totalPage);
     }
   }, [data]);
+
+  const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
+    setPage(page);
+  };
 
   return (
     <Card sx={{ maxHeight: "700px", mt: "40px" }}>
@@ -102,7 +112,9 @@ const CollectionListBoard = () => {
           </Table>
         </TableContainer>
         <Pagination
-          count={20}
+          onChange={onPageChange}
+          count={totalPages}
+          page={page}
           size="medium"
           color="primary"
           sx={{
