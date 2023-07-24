@@ -202,10 +202,14 @@ export const getListBoardData = async (page: number, limit: number) => {
       },
     });
 
+    const data = response.data;
     const obj = {
-      isSuccess: response.data.isSuccess,
-      payload: response.data.collection,
+      isSuccess: data.isSuccess,
+      documentCount: data.documentCount,
+      totalPages: data.totalPages,
+      payload: data.collection,
     };
+
     if (response.data.msg && response.data.msg.code) {
       // 에러 코드 있을 시
       obj.payload.code = response.data.msg.code;
