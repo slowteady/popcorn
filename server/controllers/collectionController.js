@@ -4,7 +4,10 @@ const Collection = require("../databases/models/Collections");
 const registerCollection = async (req, res) => {
   try {
     const collection = new Collection({
-      userId: req.user._id,
+      user: {
+        userId: req.user._id,
+        userName: req.user.name,
+      },
       collectionTitle: req.body.collectionTitle,
       movie: req.body.movie,
     });
@@ -27,8 +30,15 @@ const getCollection = async (req, res) => {
     // 번호
     const skip = page * limit;
 
-    const data = await Collection.find().skip(skip).limit(limit);
-    res.status(200).json({ isSuccess: true, payload: data });
+    const response = await Collection.find().skip(skip).limit(limit);
+    const obj = response.map((m) => ({
+      user: m.user,
+      collectionTitle: m.collectionTitle,
+      movie: m.movie,
+      rgstDate: m.rgstDate,
+    }));
+    
+    res.status(200).json({ isSuccess: true, collection: obj });
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
