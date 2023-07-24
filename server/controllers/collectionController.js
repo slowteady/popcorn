@@ -30,15 +30,25 @@ const getCollection = async (req, res) => {
     // 번호
     const skip = page * limit;
 
-    const response = await Collection.find().skip(skip).limit(limit);
+    const response = await Collection.find()
+      .sort({ rgstDate: -1 })
+      .skip(skip)
+      .limit(limit);
+
     const obj = response.map((m) => ({
       user: m.user,
       collectionTitle: m.collectionTitle,
       movie: m.movie,
       rgstDate: m.rgstDate,
     }));
-    
-    res.status(200).json({ isSuccess: true, collection: obj });
+
+    // 문서 총 갯수
+    const documentCount = await Collection.countDocuments();
+    const totalPages = Math.ceil(documentCount / limit);
+
+    res
+      .status(200)
+      .json({ isSuccess: true, collection: obj, documentCount, totalPages });
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
