@@ -74,10 +74,11 @@ export interface ListTableHeadLabelProps {
 
 export interface ListTableHeadProps {
   headLabel: ListTableHeadLabelProps[];
-  sx?: SxProps<Theme>
+  isColList?: boolean;
+  sx?: SxProps<Theme>;
 }
 
-export interface addCollectionObj {
+export interface CollectionObj {
   collectionTitle: string;
   movie: {
     movieId: number;
@@ -86,4 +87,12 @@ export interface addCollectionObj {
     title: string;
     vote_average: number;
   }[];
+}
+
+export interface ListCollectionObj extends CollectionObj {
+  rgstDate: Date;
+  user: {
+    userId: string;
+    userName: string;
+  };
 }
