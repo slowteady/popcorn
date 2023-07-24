@@ -96,3 +96,10 @@ export interface ListCollectionObj extends CollectionObj {
     userName: string;
   };
 }
+
+export interface ListBoardData {
+  isSuccess: boolean;
+  documentCount: number;
+  totalPages: number;
+  payload: ListCollectionObj[];
+}
