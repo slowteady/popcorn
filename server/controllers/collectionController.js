@@ -20,11 +20,15 @@ const registerCollection = async (req, res) => {
 // 컬렉션 목록 조회
 const getCollection = async (req, res) => {
   try {
+    // 페이지 파라미터
     const page = req.params.page;
+    // 페이징 항목 갯수
     const limit = req.query.limit;
+    // 번호
     const skip = page * limit;
 
     const data = await Collection.find().skip(skip).limit(limit);
+    res.status(200).json({ isSuccess: true, payload: data });
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
