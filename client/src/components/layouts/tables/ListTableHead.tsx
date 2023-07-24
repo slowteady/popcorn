@@ -9,11 +9,11 @@ import {
 // 테이블 헤더
 // ----------------------------------------------------------------------
 
-const ListTableHead = ({ headLabel, sx }: ListTableHeadProps) => {
+const ListTableHead = ({ headLabel, isColList, sx }: ListTableHeadProps) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell sx={sx} />
+        {!isColList && <TableCell sx={sx} />}
         {headLabel.map((headCell: ListTableHeadLabelProps) => (
           <TableCell
             key={headCell.id}
