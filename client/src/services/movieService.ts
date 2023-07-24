@@ -1,10 +1,10 @@
 import axios from "axios";
 import { API } from "../Config";
 import {
+  CollectionObj,
   MovieCreditsMember,
   MovieCreditsProps,
   MovieModalProps,
-  addCollectionObj,
 } from "../types/movies/movieTypes";
 
 // movie api 요청
@@ -175,7 +175,7 @@ const transformMovieData = (
 };
 
 // 컬렉션 등록
-export const registerCollection = async (body: addCollectionObj) => {
+export const registerCollection = async (body: CollectionObj) => {
   try {
     const response = await axios.post("/api/collections/register", body);
     const obj = { payload: response.data };
@@ -202,12 +202,15 @@ export const getListBoardData = async (page: number, limit: number) => {
       },
     });
 
-    // const obj = { payload: response.data };
-    // if (response.data.msg && response.data.msg.code) {
-    //   // 에러 코드 있을 시
-    //   obj.payload.code = response.data.msg.code;
-    // }
-    // return obj;
+    const obj = {
+      isSuccess: response.data.isSuccess,
+      payload: response.data.collection,
+    };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
+    return obj;
   } catch (err) {
     console.error(err);
     return {
