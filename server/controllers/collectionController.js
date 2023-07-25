@@ -36,6 +36,7 @@ const getCollection = async (req, res) => {
       .limit(limit);
 
     const obj = response.map((m) => ({
+      id: m._id,
       user: m.user,
       collectionTitle: m.collectionTitle,
       movie: m.movie,
