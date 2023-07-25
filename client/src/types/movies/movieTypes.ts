@@ -6,7 +6,7 @@ export interface MovieProps {
   release_date: string;
   title: string;
   vote_average: number;
-  genre_ids: number[];
+  genre_ids?: number[];
 }
 
 export interface MovieListProps {
@@ -81,7 +81,7 @@ export interface ListTableHeadProps {
 export interface CollectionObj {
   collectionTitle: string;
   movie: {
-    movieId: number;
+    id: number;
     poster_path: string;
     release_date: string;
     title: string;
@@ -89,8 +89,9 @@ export interface CollectionObj {
   }[];
 }
 
-export interface ListCollectionObj extends CollectionObj {
+export interface ListCollectionObj {
   id: string;
+  collectionTitle: string;
   rgstDate: Date;
   user: {
     userId: string;
