@@ -34,12 +34,6 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
     }
   };
 
-  const isChecked = () => {
-    checkedMovies.map((movie, index) => {
-      return true;
-    });
-  };
-
   return (
     <>
       <Grid
