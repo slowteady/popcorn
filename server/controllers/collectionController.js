@@ -39,7 +39,6 @@ const getCollection = async (req, res) => {
       id: m._id,
       user: m.user,
       collectionTitle: m.collectionTitle,
-      movie: m.movie,
       rgstDate: m.rgstDate,
     }));
 
