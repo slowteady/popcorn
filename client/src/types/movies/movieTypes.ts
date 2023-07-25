@@ -90,6 +90,7 @@ export interface CollectionObj {
 }
 
 export interface ListCollectionObj extends CollectionObj {
+  id: string;
   rgstDate: Date;
   user: {
     userId: string;
