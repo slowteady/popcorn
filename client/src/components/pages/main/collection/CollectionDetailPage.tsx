@@ -48,7 +48,6 @@ const CollectionDetailPage = () => {
   }, [data]);
 
   const handleView = (inView: boolean) => {
-    console.log(inView);
     // 초기 렌더링 시 로직 두번 타는 거 방지
     if (isFirstLoad) {
       setIsFirstLoad(false);
