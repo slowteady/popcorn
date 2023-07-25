@@ -222,3 +222,49 @@ export const getListBoardData = async (page: number, limit: number) => {
     };
   }
 };
+
+// 컬렉션 디테일 데이터 요청
+export const getDetailData = (id: string, page: number) => {
+  return [
+    {
+      id: 155,
+      poster_path: "/f6dNinWX8rBM79JXKcShkfSh2oA.jpg",
+      release_date: "2008-07-14T",
+      title: "다크 나이트",
+      vote_average: 8.5,
+      _id: "64bf1c673559ebc432d19252",
+    },
+    {
+      id: 49026,
+      poster_path: "/stbZZs3WMPr9rvAT92Qd8gXCUfx.jpg",
+      release_date: "2012-07-16T",
+      title: "다크 나이트 라이즈",
+      vote_average: 7.8,
+      _id: "64bf1c673559ebc432d19253",
+    },
+    {
+      id: 272,
+      poster_path: "/sb3V2fPhNDRRUvHJW4pQaeHbDxm.jpg",
+      release_date: "2005-06-10T",
+      title: "배트맨 비긴즈",
+      vote_average: 7.698,
+      _id: "64bf1c673559ebc432d19254",
+    },
+    {
+      id: 272,
+      poster_path: "/sb3V2fPhNDRRUvHJW4pQaeHbDxm.jpg",
+      release_date: "2005-06-10T",
+      title: "배트맨 비긴즈",
+      vote_average: 7.698,
+      _id: "64bf1c673559ebc432d19254",
+    },
+    {
+      id: 272,
+      poster_path: "/sb3V2fPhNDRRUvHJW4pQaeHbDxm.jpg",
+      release_date: "2005-06-10T",
+      title: "배트맨 비긴즈",
+      vote_average: 7.698,
+      _id: "64bf1c673559ebc432d19254",
+    },
+  ];
+};
