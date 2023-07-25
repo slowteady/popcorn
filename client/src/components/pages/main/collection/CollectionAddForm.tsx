@@ -93,7 +93,7 @@ const CollectionAddForm = () => {
     } else {
       movie = movies.map((m) => {
         return {
-          movieId: m.id,
+          id: m.id,
           poster_path: m.poster_path,
           release_date: m.release_date,
           title: m.title,
