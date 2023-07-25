@@ -65,7 +65,9 @@ const CollectionListBoard = () => {
   };
 
   const onTitleClick = (e: MouseEvent<HTMLSpanElement>, id: string) => {
-    navigate("/main/collection/detail", { state: { id } });
+    navigate("/main/collection/detail", {
+      state: { id, collectionTitle: e.currentTarget.textContent },
+    });
   };
 
   return (
