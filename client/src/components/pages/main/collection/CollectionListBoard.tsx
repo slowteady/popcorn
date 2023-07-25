@@ -9,8 +9,9 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { UseQueryResult, useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { getListBoardData } from "../../../../services/movieService";
 import {
   ListBoardData,
@@ -37,6 +38,7 @@ const CollectionListBoard = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
   const [enabled, setEnabled] = useState(false);
+  const navigate = useNavigate();
 
   const { status, data }: UseQueryResult<ListBoardData> = useQuery(
     ["listBoardData", page],
@@ -62,6 +64,10 @@ const CollectionListBoard = () => {
     setPage(page);
   };
 
+  const onTitleClick = (e: MouseEvent<HTMLSpanElement>, id: string) => {
+    navigate("/main/collection/detail", { state: { id } });
+  };
+
   return (
     <Card sx={{ maxHeight: "700px", mt: "40px" }}>
       <Box>
@@ -80,13 +86,14 @@ const CollectionListBoard = () => {
             {collection && (
               <TableBody>
                 {collection.map((col, index) => {
-                  const { user, collectionTitle, rgstDate, movie } = col;
+                  const { id, user, collectionTitle, rgstDate } = col;
                   const date = rgstDate.toString().substring(0, 10);
 
                   return (
                     <TableRow hover key={index} tabIndex={-1} role="row">
                       <TableCell align="center">
                         <Typography
+                          onClick={(e) => onTitleClick(e, id)}
                           variant="subtitle2"
                           noWrap
                           sx={{ cursor: "pointer" }}
