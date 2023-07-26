@@ -23,20 +23,14 @@ import { strCheck } from "../../../../utils/validationUtils";
 import { isSuccessValidate } from "../../../auth/userValidate";
 import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
+import { addCollectionConf } from "../../../layouts/tables/tableConfig";
 import MovieModal from "../movies/MovieModal";
 
 // ----------------------------------------------------------------------
 // 컬렉션 추가 리스트 카트
 // ----------------------------------------------------------------------
 
-// 한 페이지 행 갯수
-const ROWSPERPAGE = 5;
-
-// 테이블 헤더 Config
-const TABLE_HEAD = [
-  { id: "title", label: "제목", alignRight: false },
-  { id: "release_date", label: "릴리즈", alignRight: false },
-];
+const { ROWSPERPAGE, TABLE_HEAD } = addCollectionConf;
 
 const CollectionAddForm = () => {
   const [movies, setMovies] = useRecoilState(collectionCartList);

@@ -18,20 +18,13 @@ import {
   ListCollectionObj,
 } from "../../../../types/movies/movieTypes";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
+import { listCollectionConf } from "../../../layouts/tables/tableConfig";
 
 // ----------------------------------------------------------------------
 // 컬렉션 리스트 게시판형
 // ----------------------------------------------------------------------
 
-// 한 페이지 행 갯수
-const ROWSPERPAGE = 10;
-
-// 테이블 헤더 Config
-const TABLE_HEAD = [
-  { id: "collection", label: "컬렉션", alignRight: false },
-  { id: "author", label: "큐레이터", alignRight: false },
-  { id: "rgstDate", label: "등록일자", alignRight: false },
-];
+const { ROWSPERPAGE, TABLE_HEAD } = listCollectionConf;
 
 const CollectionListBoard = () => {
   const [collection, setCollection] = useState<ListCollectionObj[]>([]);
