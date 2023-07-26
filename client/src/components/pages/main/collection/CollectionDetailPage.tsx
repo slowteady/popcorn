@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { getDetailData } from "../../../../services/movieService";
+import { userData } from "../../../../state/userState";
 import { MovieProps } from "../../../../types/movies/movieTypes";
 import Iconify from "../../../iconify/Iconify";
 import MovieList from "../movies/MovieList";
@@ -16,12 +18,14 @@ import MovieList from "../movies/MovieList";
 const LIST_COUNT = 20;
 
 const CollectionDetailPage = () => {
+  const user = useRecoilValue(userData);
   const [id, setId] = useState("");
   const [collectionTitle, setCollectionTitle] = useState("");
   const [movie, setMovie] = useState<MovieProps[]>([]);
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [enabled, setEnable] = useState(false);
+  const [isYours, setIsYours] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -35,6 +39,10 @@ const CollectionDetailPage = () => {
     if (!location.state || !location.state.id) {
       navigate("*");
     } else {
+      // 해당 게시물의 작성자일 경우
+      if (location.state.userId === user.id) {
+        setIsYours(true);
+      }
       setId(location.state.id);
       setCollectionTitle(location.state.collectionTitle);
       setEnable(true);
@@ -42,7 +50,7 @@ const CollectionDetailPage = () => {
   }, [location]);
 
   useEffect(() => {
-    if (status === "success") {
+    if (status === "success" && data) {
       const { movie } = data?.payload.collection;
       setMovie((prevMovie) => [...prevMovie, ...movie]);
     }
@@ -73,22 +81,24 @@ const CollectionDetailPage = () => {
         mb={3}
       >
         <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-          <Box>
-            <Button
-              variant="contained"
-              startIcon={<Iconify icon="eva:edit-fill" />}
-              sx={{ mx: 1 }}
-            >
-              Edit
-            </Button>
-            <Button
-              variant="contained"
-              startIcon={<Iconify icon="eva:trash-2-fill" />}
-              sx={{ backgroundColor: "#c53126" }}
-            >
-              Delete
-            </Button>
-          </Box>
+          {isYours && (
+            <Box>
+              <Button
+                variant="contained"
+                startIcon={<Iconify icon="eva:edit-fill" />}
+                sx={{ mx: 1 }}
+              >
+                Edit
+              </Button>
+              <Button
+                variant="contained"
+                startIcon={<Iconify icon="eva:trash-2-fill" />}
+                sx={{ backgroundColor: "#c53126" }}
+              >
+                Delete
+              </Button>
+            </Box>
+          )}
         </Stack>
       </Stack>
 
