@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 
 export interface userDataType {
+  id: string;
   email: string;
   image: string;
   intro: string;
@@ -9,5 +10,5 @@ export interface userDataType {
 
 export const userData = atom<userDataType | string>({
   key: "userData",
-  default: { email: "", image: "", intro: "", name: "" },
+  default: { email: "", image: "", intro: "", name: "", id: "" },
 });
