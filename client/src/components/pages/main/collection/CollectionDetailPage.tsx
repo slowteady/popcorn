@@ -1,11 +1,12 @@
 import PendingIcon from "@mui/icons-material/Pending";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getDetailData } from "../../../../services/movieService";
 import { MovieProps } from "../../../../types/movies/movieTypes";
+import Iconify from "../../../iconify/Iconify";
 import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
@@ -60,9 +61,37 @@ const CollectionDetailPage = () => {
 
   return (
     <Container>
-      <Typography title={collectionTitle} variant="h4" sx={{ mb: 5 }} noWrap>
+      <Typography title={collectionTitle} variant="h4" noWrap>
         {collectionTitle}
       </Typography>
+
+      <Stack
+        direction="row"
+        flexWrap="wrap-reverse"
+        alignItems="center"
+        justifyContent="flex-end"
+        mb={3}
+      >
+        <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
+          <Box>
+            <Button
+              variant="contained"
+              startIcon={<Iconify icon="eva:edit-fill" />}
+              sx={{ mx: 1 }}
+            >
+              Edit
+            </Button>
+            <Button
+              variant="contained"
+              startIcon={<Iconify icon="eva:trash-2-fill" />}
+              sx={{ backgroundColor: "#c53126" }}
+            >
+              Delete
+            </Button>
+          </Box>
+        </Stack>
+      </Stack>
+
       {movie && <MovieList isCollection={false} movies={movie} />}
       <InView onChange={handleView}>
         <Box
