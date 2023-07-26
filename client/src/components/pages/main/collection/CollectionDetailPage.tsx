@@ -8,12 +8,19 @@ import { getDetailData } from "../../../../services/movieService";
 import { MovieProps } from "../../../../types/movies/movieTypes";
 import MovieList from "../movies/MovieList";
 
+// ----------------------------------------------------------------------
+// 컬렉션 디테일 페이지
+// ----------------------------------------------------------------------
+
 // 1. state로 넘어오는 id 받기 - O
 // - 다른 타이틀 누를 때 마다 바뀌니까 useEffect 처리, setEnable(true)로 변경해서 데이터 요청 - O
 // 2. 받은 id로 데이터 요청 - O
 // - 받은 데이터 계속 바뀌니까 state로 처리, useEffect - [data] 로 변경 감지하여 자동 변경 처리 - O
-// 3. 받은 데이터로 앨범형 리스트 렌더링
+// 3. 테이블 설정들 config로 빼고 이 컴포넌트에서 사용. getDetailData 아규먼트로 ROWSPERPAGE 넘겨주기.
+// 받은 데이터로 앨범형 리스트 렌더링
 // 4. 무한 스크롤 페이징 처리
+
+const LIST_COUNT = 20;
 
 const CollectionDetailPage = () => {
   const [id, setId] = useState("");
@@ -27,7 +34,7 @@ const CollectionDetailPage = () => {
 
   const { status, data } = useQuery(
     ["detailData", id],
-    () => getDetailData(id, page),
+    () => getDetailData(id, page, LIST_COUNT),
     { enabled }
   );
 
