@@ -71,6 +71,7 @@ const authUser = (req, res) => {
       obj = {
         isSuccess: true,
         user: {
+          id: user._id,
           email: user.email,
           image: user.image,
           intro: user.intro,

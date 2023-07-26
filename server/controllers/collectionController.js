@@ -80,7 +80,7 @@ const getDetailCollection = async (req, res) => {
 
       return { ...m, release_date };
     });
-    
+
     res.status(200).json({ isSuccess: true, collection: obj });
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
