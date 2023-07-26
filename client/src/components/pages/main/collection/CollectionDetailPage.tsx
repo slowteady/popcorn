@@ -25,7 +25,7 @@ const LIST_COUNT = 20;
 const CollectionDetailPage = () => {
   const [id, setId] = useState("");
   const [collectionTitle, setCollectionTitle] = useState("");
-  const [collection, setCollection] = useState<MovieProps[]>([]);
+  const [movie, setMovie] = useState<MovieProps[]>([]);
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [enabled, setEnable] = useState(false);
@@ -33,7 +33,7 @@ const CollectionDetailPage = () => {
   const location = useLocation();
 
   const { status, data } = useQuery(
-    ["detailData", id],
+    ["detailData", id, page],
     () => getDetailData(id, page, LIST_COUNT),
     { enabled }
   );
@@ -50,7 +50,8 @@ const CollectionDetailPage = () => {
 
   useEffect(() => {
     if (status === "success") {
-      setCollection([...data]);
+      const { movie } = data?.payload.collection;
+      setMovie((prevMovie) => [...prevMovie, ...movie]);
     }
   }, [data]);
 
@@ -70,7 +71,7 @@ const CollectionDetailPage = () => {
       <Typography title={collectionTitle} variant="h4" sx={{ mb: 5 }} noWrap>
         {collectionTitle}
       </Typography>
-      {collection && <MovieList isCollection={false} movies={collection} />}
+      {movie && <MovieList isCollection={false} movies={movie} />}
       <InView onChange={handleView}>
         <Box
           sx={{
