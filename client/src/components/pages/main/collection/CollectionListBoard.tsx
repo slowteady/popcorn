@@ -57,9 +57,13 @@ const CollectionListBoard = () => {
     setPage(page);
   };
 
-  const onTitleClick = (e: MouseEvent<HTMLSpanElement>, id: string) => {
+  const onTitleClick = (
+    e: MouseEvent<HTMLSpanElement>,
+    id: string,
+    userId: String
+  ) => {
     navigate("/main/collection/detail", {
-      state: { id, collectionTitle: e.currentTarget.textContent },
+      state: { id, userId, collectionTitle: e.currentTarget.textContent },
     });
   };
 
@@ -88,7 +92,7 @@ const CollectionListBoard = () => {
                     <TableRow hover key={index} tabIndex={-1} role="row">
                       <TableCell align="center">
                         <Typography
-                          onClick={(e) => onTitleClick(e, id)}
+                          onClick={(e) => onTitleClick(e, id, user.userId)}
                           variant="subtitle2"
                           noWrap
                           sx={{ cursor: "pointer" }}
