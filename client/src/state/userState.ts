@@ -8,7 +8,7 @@ export interface userDataType {
   name: string;
 }
 
-export const userData = atom<userDataType | string>({
+export const userData = atom<userDataType>({
   key: "userData",
   default: { email: "", image: "", intro: "", name: "", id: "" },
 });
