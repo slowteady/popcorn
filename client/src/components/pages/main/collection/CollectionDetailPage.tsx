@@ -1,13 +1,13 @@
 import PendingIcon from "@mui/icons-material/Pending";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import { getDetailData } from "../../../../services/movieService";
-import { userData } from "../../../../state/userState";
 import { MovieProps } from "../../../../types/movies/movieTypes";
+import { getCookie } from "../../../../utils/cookieUtils";
+import { confirmMsg } from "../../../../utils/msgUtils";
 import Iconify from "../../../iconify/Iconify";
 import MovieList from "../movies/MovieList";
 
@@ -18,7 +18,6 @@ import MovieList from "../movies/MovieList";
 const LIST_COUNT = 20;
 
 const CollectionDetailPage = () => {
-  const user = useRecoilValue(userData);
   const [id, setId] = useState("");
   const [collectionTitle, setCollectionTitle] = useState("");
   const [movie, setMovie] = useState<MovieProps[]>([]);
@@ -39,8 +38,11 @@ const CollectionDetailPage = () => {
     if (!location.state || !location.state.id) {
       navigate("*");
     } else {
+      const cookie = getCookie("AUTH_TOKEN");
+      const userId = cookie._id;
+
       // 해당 게시물의 작성자일 경우
-      if (location.state.userId === user.id) {
+      if (location.state.userId === userId) {
         setIsYours(true);
       }
       setId(location.state.id);
@@ -67,6 +69,10 @@ const CollectionDetailPage = () => {
     }
   };
 
+  const handleDeleteBtn = (e: MouseEvent<HTMLButtonElement>) => {
+    confirmMsg("warning", "정말 삭제하시겠습니까?", "");
+  };
+
   return (
     <Container>
       <Typography title={collectionTitle} variant="h4" noWrap>
@@ -91,6 +97,7 @@ const CollectionDetailPage = () => {
                 Edit
               </Button>
               <Button
+                onClick={handleDeleteBtn}
                 variant="contained"
                 startIcon={<Iconify icon="eva:trash-2-fill" />}
                 sx={{ backgroundColor: "#c53126" }}
