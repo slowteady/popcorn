@@ -12,12 +12,17 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { MouseEvent, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { registerCollection } from "../../../../services/movieService";
+import {
+  editCollection,
+  getPreCollection,
+  registerCollection,
+} from "../../../../services/movieService";
 import { collectionCartList } from "../../../../state/movieState";
-import { MovieProps } from "../../../../types/movies/movieTypes";
+import { MovieProps, payload } from "../../../../types/movies/movieTypes";
 import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";
 import { isSuccessValidate } from "../../../auth/userValidate";
@@ -34,11 +39,40 @@ const { ROWSPERPAGE, TABLE_HEAD } = addCollectionConf;
 
 const CollectionAddForm = () => {
   const [movies, setMovies] = useRecoilState(collectionCartList);
+  const [collectionTitle, setCollectionTitle] = useState("");
   const [open, setOpen] = useState(false);
   const [movieId, setMovieId] = useState<number | null>(null);
   const [page, setPage] = useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [id, setId] = useState("");
+  const [isEdit, setIsEdit] = useState(false); // 수정 페이지 여부
+  const [enabled, setEnabled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const { status, data } = useQuery(
+    ["getPreCollection", id],
+    () => getPreCollection(id),
+    { enabled }
+  );
+
+  useEffect(() => {
+    if (location.state && location.state.isEdit) {
+      setIsEdit(true);
+      setId(location.state.id);
+      setEnabled(true);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (status === "success" && data) {
+      setCollectionTitle(data.payload.collection.collectionTitle);
+      setMovies(data.payload.collection.movie);
+    }
+  }, [data]);
+
+  const handleTextField = (e: ChangeEvent<HTMLInputElement>) => {
+    setCollectionTitle(e.currentTarget.value);
+  };
 
   // 페이징
   const handleChangePage = (
@@ -68,17 +102,11 @@ const CollectionAddForm = () => {
 
   // 등록 버튼 클릭
   const handleBtnClick = async () => {
-    const input = inputRef.current;
-    let titleValue: string;
     let movie = [];
 
-    if (input) {
-      titleValue = input.value;
-
-      if (strCheck.isEmpty(titleValue)) {
-        msg("error", "컬렉션 제목을 작성해주세요");
-        return false;
-      }
+    if (strCheck.isEmpty(collectionTitle)) {
+      msg("error", "컬렉션 제목을 작성해주세요");
+      return false;
     }
 
     if (movies.length < 1) {
@@ -97,11 +125,18 @@ const CollectionAddForm = () => {
     }
 
     let body = {
-      collectionTitle: titleValue!,
+      collectionTitle,
       movie,
     };
 
-    const response = await registerCollection(body);
+    let service: payload;
+    if (isEdit) {
+      service = await editCollection(id, body);
+    } else {
+      service = await registerCollection(body);
+    }
+
+    const response = service;
     const isSuccess = isSuccessValidate(response);
     if (isSuccess) {
       msg("success", response.payload.msg);
@@ -117,11 +152,12 @@ const CollectionAddForm = () => {
             제목
           </Typography>
           <TextField
+            onChange={handleTextField}
+            value={collectionTitle}
             required
             fullWidth
             size="small"
             sx={{ mr: 1, mb: 2 }}
-            inputRef={inputRef}
           />
           <Typography color="black" fontSize={15} sx={{ mb: 1 }}>
             리스트
@@ -181,7 +217,7 @@ const CollectionAddForm = () => {
             fullWidth
             sx={{ position: "absolute", bottom: 0, left: 0, right: 0 }}
           >
-            등록
+            {isEdit ? "수정" : "등록"}
           </Button>
         </Box>
       </Card>
