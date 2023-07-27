@@ -17,20 +17,16 @@ import MovieCard from "./MovieCard";
 const MovieList = ({ movies, isCollection }: MovieListProps) => {
   const style = whichContainerSize(isCollection);
   const [checkedMovies, setCheckedMovies] = useRecoilState(collectionCartList);
-  
+
   const handleOnChange = (
     e: ChangeEvent<HTMLInputElement>,
     movie: MovieProps
   ) => {
-    e.stopPropagation();
     const isChecked = e.currentTarget.checked;
-
     if (isChecked) {
       setCheckedMovies((prevCheckMovies) => [...prevCheckMovies, movie]);
     } else {
-      setCheckedMovies((prevCheckedMovies) =>
-        prevCheckedMovies.filter((m) => m !== movie)
-      );
+      setCheckedMovies(checkedMovies.filter((m) => m.id !== movie.id));
     }
   };
 
