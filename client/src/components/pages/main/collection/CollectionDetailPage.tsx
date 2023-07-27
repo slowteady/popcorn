@@ -1,6 +1,6 @@
 import PendingIcon from "@mui/icons-material/Pending";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import React, { MouseEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -72,8 +72,13 @@ const CollectionDetailPage = () => {
     }
   };
 
+  // 수정 버튼
+  const handleEditBtn = () => {
+    navigate("/main/collection/add", { state: { id, isEdit: true } });
+  };
+
   // 삭제 버튼
-  const handleDeleteBtn = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleDeleteBtn = () => {
     confirmMsg("warning", "정말 삭제하시겠습니까?", "").then(async (result) => {
       if (result.isConfirmed) {
         const response = await deleteCollection(id);
@@ -85,12 +90,16 @@ const CollectionDetailPage = () => {
     });
   };
 
+  // 목록 버튼
+  const handleListBtn = () => {
+    navigate("/main/collection");
+  };
+
   return (
     <Container>
       <Typography title={collectionTitle} variant="h4" noWrap>
         {collectionTitle}
       </Typography>
-
       <Stack
         direction="row"
         flexWrap="wrap-reverse"
@@ -102,9 +111,10 @@ const CollectionDetailPage = () => {
           {isYours && (
             <Box>
               <Button
+                onClick={handleEditBtn}
                 variant="contained"
                 startIcon={<Iconify icon="eva:edit-fill" />}
-                sx={{ mx: 1 }}
+                sx={{ mr: 1 }}
               >
                 Edit
               </Button>
@@ -112,13 +122,21 @@ const CollectionDetailPage = () => {
                 onClick={handleDeleteBtn}
                 variant="contained"
                 startIcon={<Iconify icon="eva:trash-2-fill" />}
-                sx={{ backgroundColor: "#c53126" }}
+                sx={{ backgroundColor: "#c53126", mr: 1 }}
               >
                 Delete
               </Button>
             </Box>
           )}
         </Stack>
+        <Button
+          onClick={handleListBtn}
+          variant="contained"
+          startIcon={<Iconify icon="ph:list-fill" />}
+          sx={{ backgroundColor: "#3e4857" }}
+        >
+          List
+        </Button>
       </Stack>
 
       {movie && <MovieList isCollection={false} movies={movie} />}
