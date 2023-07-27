@@ -88,8 +88,30 @@ const getDetailCollection = async (req, res) => {
   }
 };
 
+// 컬렉션 삭제
+const deleteCollection = async (req, res) => {
+  try {
+    // 컬렉션 아이디
+    const id = req.query.id;
+
+    const response = await Collection.deleteOne({ _id: id });
+    const { acknowledged, deletedCount } = response;
+    const obj = {};
+
+    if (acknowledged && deletedCount > 0) {
+      obj.isSuccess = true;
+    }
+
+    res.status(200).json(obj);
+  } catch (err) {
+    console.error("err: ", err, "code: ", err.code);
+    res.json({ isSuccess: false, msg: "오류가 발생했어요" });
+  }
+};
+
 module.exports = {
   registerCollection,
   getCollection,
   getDetailCollection,
+  deleteCollection,
 };
