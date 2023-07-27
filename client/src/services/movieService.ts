@@ -192,6 +192,24 @@ export const registerCollection = async (body: CollectionObj) => {
   }
 };
 
+// 컬렉션 수정 요청
+export const editCollection = async (id: string, body: CollectionObj) => {
+  try {
+    const response = await axios.patch(`/api/collections/edit/${id}`, body);
+    const obj = { payload: response.data };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
+    return obj;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
+
 // 컬렉션 리스트 데이터 요청
 export const getListBoardData = async (page: number, limit: number) => {
   try {
@@ -237,6 +255,26 @@ export const getDetailData = async (
         limit,
       },
     });
+
+    const obj = { payload: response.data };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
+    return obj;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
+
+// 이전 컬렉션 데이터 요청
+export const getPreCollection = async (id: string) => {
+  try {
+    const url = `/api/collections/pre/${id}`;
+    const response = await axios.get(url);
 
     const obj = { payload: response.data };
     if (response.data.msg && response.data.msg.code) {
