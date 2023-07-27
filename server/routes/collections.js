@@ -2,7 +2,8 @@ const express = require("express");
 const {
   registerCollection,
   getCollection,
-  getDetailCollection
+  getDetailCollection,
+  deleteCollection,
 } = require("../controllers/collectionController");
 const { auth } = require("../middleware/auth");
 const router = express.Router();
@@ -15,5 +16,8 @@ router.get("/:page", auth, getCollection);
 
 // 조회
 router.get("/detail/:id", auth, getDetailCollection);
+
+// 삭제
+router.delete("/", auth, deleteCollection);
 
 module.exports = router;
