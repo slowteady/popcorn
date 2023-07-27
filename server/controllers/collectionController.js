@@ -60,10 +60,13 @@ const getDetailCollection = async (req, res) => {
   try {
     // 영화 아이디
     const id = req.params.id;
+
     // 페이지 파라미터
     const page = req.query.page - 1;
+
     // 페이징 항목 갯수
     const limit = parseInt(req.query.limit, 10);
+
     // 번호
     const skip = parseInt(page * limit, 10);
 
@@ -92,7 +95,7 @@ const getDetailCollection = async (req, res) => {
 const deleteCollection = async (req, res) => {
   try {
     // 컬렉션 아이디
-    const id = req.query.id;
+    // const id = req.query.id;
 
     const response = await Collection.deleteOne({ _id: id });
     const { acknowledged, deletedCount } = response;
@@ -109,9 +112,59 @@ const deleteCollection = async (req, res) => {
   }
 };
 
+// id에 해당하는 컬렉션 리턴
+const getPreCollection = async (req, res) => {
+  try {
+    // 영화 아이디
+    const id = req.params.id;
+
+    const response = await Collection.findOne({ _id: id });
+
+    // 날짜 형태 변환
+    const obj = { ...response.toObject() };
+    obj.movie = obj.movie.map((m) => {
+      let date = new Date(m.release_date);
+      let dateString = date.toISOString().substring(0, 10);
+      const release_date = dateString;
+
+      return { ...m, release_date };
+    });
+
+    res.status(200).json({ isSuccess: true, collection: obj });
+  } catch (err) {
+    console.error("err: ", err, "code: ", err.code);
+    res.json({ isSuccess: false, msg: "오류가 발생했어요" });
+  }
+};
+
+// 컬렉션 수정
+const editCollection = async (req, res) => {
+  try {
+    // 컬렉션 아이디
+    const id = req.params.id;
+    const body = req.body;
+    const response = await Collection.findByIdAndUpdate(id, body, {
+      new: true,
+    });
+
+    const obj = {};
+    if (response.movie && response.movie.length > 0) {
+      obj.isSuccess = true;
+      obj.msg = "컬렉션이 수정되었어요";
+    }
+
+    res.status(200).json(obj);
+  } catch (err) {
+    console.error("err: ", err, "code: ", err.code);
+    res.json({ isSuccess: false, msg: "오류가 발생했어요" });
+  }
+};
+
 module.exports = {
   registerCollection,
   getCollection,
   getDetailCollection,
   deleteCollection,
+  editCollection,
+  getPreCollection,
 };
