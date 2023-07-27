@@ -1,4 +1,4 @@
-import Swal, { SweetAlertIcon } from "sweetalert2";
+import Swal, { SweetAlertIcon, SweetAlertResult } from "sweetalert2";
 
 // ----------------------------------------------------------------------
 // Alert 사용 유틸
@@ -15,8 +15,8 @@ export const confirmMsg = (
   icon: SweetAlertIcon,
   title: string,
   text: string
-): void => {
-  Swal.fire({
+): Promise<SweetAlertResult> => {
+  return Swal.fire({
     icon,
     title,
     text,
