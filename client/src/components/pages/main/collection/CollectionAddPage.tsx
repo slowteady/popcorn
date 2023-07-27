@@ -1,8 +1,10 @@
-import { Container, Typography } from "@mui/material";
+import { Button, Container, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
+import Iconify from "../../../iconify/Iconify";
 import MovieSearchPage from "../search/MovieSearchPage";
 
 // ----------------------------------------------------------------------
@@ -12,6 +14,7 @@ import MovieSearchPage from "../search/MovieSearchPage";
 const CollectionAddPage = () => {
   const setCollectionCartList = useSetRecoilState(collectionCartList);
   const [isFirstLoad, setIsFirstLoad] = useState(true); // 초기 렌더링 여부
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isFirstLoad) {
@@ -20,6 +23,10 @@ const CollectionAddPage = () => {
     }
   }, [isFirstLoad]);
 
+  const handleListBtn = () => {
+    navigate("/main/collection");
+  };
+  
   return (
     <>
       <Helmet>
@@ -27,9 +34,19 @@ const CollectionAddPage = () => {
       </Helmet>
 
       <Container>
-        <Typography variant="h4" gutterBottom>
-          Collection
-        </Typography>
+        <Stack direction="row" justifyContent="space-between">
+          <Typography variant="h4" gutterBottom>
+            Collection
+          </Typography>
+          <Button
+            onClick={handleListBtn}
+            variant="contained"
+            startIcon={<Iconify icon="ph:list-fill" />}
+            sx={{ backgroundColor: "#3e4857" }}
+          >
+            List
+          </Button>
+        </Stack>
       </Container>
       <MovieSearchPage isCollection={true} />
     </>
