@@ -105,3 +105,10 @@ export interface ListBoardData {
   totalPages: number;
   payload: ListCollectionObj[];
 }
+
+export interface payload {
+  payload: {
+    isSuccess: boolean;
+    msg: string;
+  };
+}
