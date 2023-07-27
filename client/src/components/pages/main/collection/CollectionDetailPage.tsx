@@ -31,20 +31,25 @@ const CollectionDetailPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { status, data } = useQuery(
+  const { status } = useQuery(
     ["detailData", id, page],
     () => getDetailData(id, page, LIST_COUNT),
-    { enabled }
+    {
+      enabled,
+      onSuccess: (data) => {
+        const { movie } = data?.payload.collection;
+        setMovie((prevMovie) => [...prevMovie, ...movie]);
+      },
+    }
   );
 
   useEffect(() => {
     if (!location.state || !location.state.id) {
       navigate("*");
     } else {
+      // 해당 게시물의 작성자일 경우
       const cookie = getCookie("AUTH_TOKEN");
       const userId = cookie._id;
-
-      // 해당 게시물의 작성자일 경우
       if (location.state.userId === userId) {
         setIsYours(true);
       }
@@ -53,13 +58,6 @@ const CollectionDetailPage = () => {
       setEnable(true);
     }
   }, [location]);
-
-  useEffect(() => {
-    if (status === "success" && data) {
-      const { movie } = data?.payload.collection;
-      setMovie((prevMovie) => [...prevMovie, ...movie]);
-    }
-  }, [data]);
 
   const handleView = (inView: boolean) => {
     // 초기 렌더링 시 로직 두번 타는 거 방지
