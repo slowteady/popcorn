@@ -4,10 +4,13 @@ import React, { MouseEvent, useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getDetailData } from "../../../../services/movieService";
+import {
+  deleteCollection,
+  getDetailData,
+} from "../../../../services/movieService";
 import { MovieProps } from "../../../../types/movies/movieTypes";
 import { getCookie } from "../../../../utils/cookieUtils";
-import { confirmMsg } from "../../../../utils/msgUtils";
+import { confirmMsg, msg } from "../../../../utils/msgUtils";
 import Iconify from "../../../iconify/Iconify";
 import MovieList from "../movies/MovieList";
 
@@ -69,8 +72,17 @@ const CollectionDetailPage = () => {
     }
   };
 
+  // 삭제 버튼
   const handleDeleteBtn = (e: MouseEvent<HTMLButtonElement>) => {
-    confirmMsg("warning", "정말 삭제하시겠습니까?", "");
+    confirmMsg("warning", "정말 삭제하시겠습니까?", "").then(async (result) => {
+      if (result.isConfirmed) {
+        const response = await deleteCollection(id);
+        if (response.payload && response.payload.isSuccess) {
+          msg("success", "삭제가 완료됐어요");
+          navigate("/main/collection");
+        }
+      }
+    });
   };
 
   return (
