@@ -1,7 +1,7 @@
 import Swal, { SweetAlertIcon, SweetAlertResult } from "sweetalert2";
 
 // ----------------------------------------------------------------------
-// Alert 사용 유틸
+// SweetAlert 사용 유틸
 // ----------------------------------------------------------------------
 
 export const msg = (icon: SweetAlertIcon, title: string): void => {
