@@ -4,13 +4,14 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Router from "./Router";
+import ScrollToTop from "./components/layouts/scroll/ScrollToTop";
 import ThemeProvider from "./theme";
 
-// react-query 사용을 위한 객체 생성
+// 리액트 쿼리 객체 생성
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // 앱이 다시 포커싱 받을 시 재요청 할지 여부
+      // 다시 포커싱 받을 시 재요청 할지 여부
       refetchOnWindowFocus: false,
       // 실패시 재요청 횟수
       retry: 1,
@@ -25,6 +26,7 @@ const App = () => {
         <ThemeProvider>
           <QueryClientProvider client={queryClient}>
             <RecoilRoot>
+              <ScrollToTop />
               <Router />
             </RecoilRoot>
           </QueryClientProvider>
