@@ -1,9 +1,9 @@
 import React, { FunctionComponent, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { auth } from "../services/userService";
-import { userData, userDataType } from "../state/userState";
-import { removeCookie } from "../utils/cookieUtils";
+import { auth } from "../../services/userService";
+import { userData, userDataType } from "../../state/userState";
+import { removeCookie } from "../../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
 // 사용자 검증 컴포넌트

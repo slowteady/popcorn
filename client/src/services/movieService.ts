@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API } from "../Config";
+import { API } from "../config/api/Config";
 import {
   CollectionObj,
   MovieCreditsMember,

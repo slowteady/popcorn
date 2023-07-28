@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
+import Auth from "./components/hoc/Auth";
 import FrameLayout from "./components/layouts/FrameLayout";
 import MainLayout from "./components/layouts/MainLayout";
 import LoginPage from "./components/pages/LoginPage";
@@ -11,7 +12,6 @@ import CollectionListPage from "./components/pages/main/collection/CollectionLis
 import MoviesPage from "./components/pages/main/movies/MoviesPage";
 import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
-import Auth from "./hoc/Auth";
 
 // ----------------------------------------------------------------------
 // 라우터
