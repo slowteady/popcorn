@@ -14,8 +14,8 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { auth, loginUser } from "../../services/userService";
 import { LoginFormObj } from "../../types/users/loginTypes";
+import { isSuccessValidate } from "../../utils/auth/userValidate";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
-import { isSuccessValidate } from "../auth/userValidate";
 
 // ----------------------------------------------------------------------
 // 로그인 페이지

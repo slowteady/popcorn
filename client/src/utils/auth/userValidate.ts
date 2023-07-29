@@ -1,10 +1,10 @@
 import { AuthPayload } from "../../types/users/authTypes";
 import { SignupFormObj, SignupPayload } from "../../types/users/signupTypes";
-import { msg } from "../../utils/msgUtils";
-import { strCheck } from "../../utils/validationUtils";
+import { msg } from "../msgUtils";
+import { strCheck } from "../validationUtils";
 
 // ----------------------------------------------------------------------
-// 사용자 유효성 검사 관련 로직
+// 사용자 유효성 검사 유틸
 // ----------------------------------------------------------------------
 
 export const inputValidate = ({

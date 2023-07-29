@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { logoutUser } from "../../../services/userService";
 import { userData, userDataType } from "../../../state/userState";
-import { isSuccessValidate } from "../../auth/userValidate";
+import { isSuccessValidate } from "../../../utils/auth/userValidate";
 
 // ----------------------------------------------------------------------
 // 헤더 사용자 레이어
