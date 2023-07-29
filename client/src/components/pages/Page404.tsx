@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link as RouterLink } from "react-router-dom";
-import img404 from "../img/illustration_404.svg";
+import img404 from "../../img/illustration_404.svg";
 
 // -------------------------------------------------------------
 
