@@ -16,6 +16,7 @@ import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import { addCollectionConf } from "../../../../config/layout/tableConfig";
 import {
   editCollection,
   getPreCollection,
@@ -28,7 +29,6 @@ import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
-import { addCollectionConf } from "../../../layouts/tables/tableConfig";
 import MovieModal from "../movies/MovieModal";
 
 // ----------------------------------------------------------------------

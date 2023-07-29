@@ -2,7 +2,7 @@
 // 좌측 메뉴 리스트 설정
 // ----------------------------------------------------------------------
 
-const listConfig = [
+const leftmenuConfig = [
   {
     title: "Movies",
     path: "/main/movies",
@@ -20,4 +20,4 @@ const listConfig = [
   },
 ];
 
-export default listConfig;
+export default leftmenuConfig;

@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
-// 좌측 메뉴 리스트
+// 좌측 메뉴 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
 const StyledListItem = styled((props: ListItemButtonProps) => (

@@ -12,13 +12,13 @@ import {
 import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { UseQueryResult, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { listCollectionConf } from "../../../../config/layout/tableConfig";
 import { getListBoardData } from "../../../../services/movieService";
 import {
   ListBoardData,
   ListCollectionObj,
 } from "../../../../types/movies/movieTypes";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
-import { listCollectionConf } from "../../../layouts/tables/tableConfig";
 
 // ----------------------------------------------------------------------
 // 컬렉션 리스트 게시판형

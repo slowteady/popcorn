@@ -10,14 +10,14 @@ import {
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
+import leftmenuConfig from "../../../config/layout/leftMenuConfig";
 import { useResponsive } from "../../../hooks/useResponsive";
 import { userData, userDataType } from "../../../state/userState";
 import Logo from "../../pages/Logo/Logo";
 import LeftMenuList from "./LeftMenuList";
-import listConfig from "./config";
 
 // ----------------------------------------------------------------------
-// 좌측 메뉴
+// 좌측 메뉴 컴포넌트
 // ----------------------------------------------------------------------
 
 const NAV_WIDTH = 280;
@@ -59,7 +59,7 @@ const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
         <Box sx={{ mb: 5, mx: 2.5 }}>
           <Link underline="none">
             <StyledAccount>
-              <Avatar src={image}/>
+              <Avatar src={image} />
 
               <Box sx={{ ml: 2 }}>
                 <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
@@ -70,7 +70,7 @@ const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
           </Link>
         </Box>
 
-        <LeftMenuList data={listConfig} />
+        <LeftMenuList data={leftmenuConfig} />
       </>
     );
   };
