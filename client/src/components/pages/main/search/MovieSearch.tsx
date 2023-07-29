@@ -1,17 +1,17 @@
 import PendingIcon from "@mui/icons-material/Pending";
 import {
-    Box,
-    Button,
-    Container,
-    InputAdornment,
-    TextField,
+  Box,
+  Button,
+  Container,
+  InputAdornment,
+  TextField,
 } from "@mui/material";
 import React, {
-    ChangeEvent,
-    KeyboardEvent,
-    MouseEvent,
-    useEffect,
-    useState,
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useState,
 } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
@@ -27,7 +27,7 @@ import CollectionMovieList from "../collection/CollectionMovieList";
 import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
-// 영화 검색 창 / 리스트
+// 영화 검색 창 / 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
 const MovieSearch = ({ isCollection }: isCollectionProps) => {

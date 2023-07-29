@@ -6,7 +6,7 @@ import { userData, userDataType } from "../../../state/userState";
 import { ProfileFormProps } from "../../../types/state/users/profileTypes";
 
 // ----------------------------------------------------------------------
-// 프로파일 폼 처리
+// 프로파일 Form 컴포넌트
 // ----------------------------------------------------------------------
 
 const ProfileForm = ({ avatarImg }: ProfileFormProps) => {

@@ -6,7 +6,7 @@ import { userData, userDataType } from "../../../state/userState";
 import ProfileForm from "./ProfileForm";
 
 // ----------------------------------------------------------------------
-// 프로파일 수정 페이지
+// 프로파일 수정 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const ProfilePage = () => {

@@ -5,7 +5,7 @@ import { isCollectionProps } from "../../../../types/state/movies/movieTypes";
 import MovieSearch from "./MovieSearch";
 
 // ----------------------------------------------------------------------
-// 영화 검색 페이지
+// 영화 검색 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const MovieSearchPage = ({ isCollection }: isCollectionProps) => {
