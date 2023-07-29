@@ -66,12 +66,11 @@ export const signupValidate = (result: SignupPayload) => {
   }
 };
 
-// 로그인, 로그아웃 검증
+// Payload 응답 성공 실패 검증
 export const isSuccessValidate = (result: AuthPayload) => {
   const { payload } = result;
 
   if (payload && payload.isSuccess) {
-    // 성공
     return true;
   } else {
     msg("error", payload.msg as string);
