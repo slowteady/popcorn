@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
 import React from "react";
 import {
-  MovieDetailTypographyProps,
-  responsiveFontSizesProps,
-} from "../types/theme/themeTypes";
+    MovieDetailTypographyProps,
+    responsiveFontSizesProps,
+} from "../types/layout/theme/themeTypes";
 
 // ----------------------------------------------------------------------
 // Typography 테마

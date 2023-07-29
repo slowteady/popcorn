@@ -1,5 +1,5 @@
 import { alpha } from "@mui/material/styles";
-import { CustomTheme } from "../../types/theme/themeTypes";
+import { CustomTheme } from "../../types/layout/theme/themeTypes";
 
 // ----------------------------------------------------------------------
 

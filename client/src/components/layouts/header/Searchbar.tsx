@@ -1,23 +1,23 @@
 import {
-  Button,
-  ClickAwayListener,
-  IconButton,
-  Input,
-  InputAdornment,
-  Slide,
-  styled,
+    Button,
+    ClickAwayListener,
+    IconButton,
+    Input,
+    InputAdornment,
+    Slide,
+    styled,
 } from "@mui/material";
 import React, {
-  ChangeEvent,
-  KeyboardEvent,
-  MouseEvent,
-  useRef,
-  useState,
+    ChangeEvent,
+    KeyboardEvent,
+    MouseEvent,
+    useRef,
+    useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { searchKeyword } from "../../../state/searchState";
-import { CustomTheme } from "../../../types/theme/themeTypes";
+import { CustomTheme } from "../../../types/layout/theme/themeTypes";
 import { bgBlur } from "../../../utils/styleUtils";
 import { strCheck } from "../../../utils/validationUtils";
 import Iconify from "../../iconify/Iconify";

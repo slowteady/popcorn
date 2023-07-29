@@ -13,6 +13,7 @@ import { useRecoilValue } from "recoil";
 import leftmenuConfig from "../../../config/layout/leftMenuConfig";
 import { useResponsive } from "../../../hooks/useResponsive";
 import { userData, userDataType } from "../../../state/userState";
+import { MenuProps } from "../../../types/layout/layoutTypes";
 import Logo from "../../pages/Logo/Logo";
 import LeftMenuList from "./LeftMenuList";
 
@@ -31,11 +32,6 @@ const StyledAccount = styled("div")(({ theme }) => ({
 }));
 
 // ----------------------------------------------------------------------
-
-interface MenuProps {
-  openNav: boolean;
-  onCloseNav: () => void;
-}
 
 const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
   const usrData = useRecoilValue(userData);

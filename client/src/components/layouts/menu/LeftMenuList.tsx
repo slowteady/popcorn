@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import React, { FunctionComponent } from "react";
 import { NavLink } from "react-router-dom";
+import { ItemProps, ListProps } from "../../../types/layout/layoutTypes";
 import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
@@ -36,20 +37,6 @@ const StyledListItemIcon = styled(ListItemIcon)({
 });
 
 // ----------------------------------------------------------------------
-
-interface Item {
-  title: string;
-  path: string;
-  icon: string;
-}
-
-interface ListProps {
-  data: Item[];
-}
-
-interface ItemProps {
-  item: Item;
-}
 
 const ListItem: FunctionComponent<ItemProps> = ({ item }) => {
   const { title, path, icon } = item;

@@ -1,4 +1,4 @@
-import { CustomTheme } from "../../types/theme/themeTypes";
+import { CustomTheme } from "../../types/layout/theme/themeTypes";
 
 export default function Card(theme: CustomTheme) {
   return {

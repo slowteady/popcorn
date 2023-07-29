@@ -1,6 +1,6 @@
 import { Palette, Theme, TypographyProps } from "@mui/material";
 import { ReactNode } from "react";
-import customShadows from "../../theme/customShadows";
+import customShadows from "../../../theme/customShadows";
 
 // ----------------------------------------------------------------------
 // 테마 타입 정의

@@ -1,11 +1,11 @@
 import { CssBaseline, Shadows } from "@mui/material";
 import {
-  ThemeProvider as MUIThemeProvider,
-  StyledEngineProvider,
-  createTheme,
+    ThemeProvider as MUIThemeProvider,
+    StyledEngineProvider,
+    createTheme,
 } from "@mui/material/styles";
 import React, { useMemo } from "react";
-import { ThemeProviderProps } from "../types/theme/themeTypes";
+import { ThemeProviderProps } from "../types/layout/theme/themeTypes";
 import customShadows from "./customShadows";
 import GlobalStyles from "./globalStyles";
 import ComponentsOverrides from "./overrides";
