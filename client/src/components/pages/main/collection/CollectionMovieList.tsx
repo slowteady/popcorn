@@ -3,7 +3,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { moviesSearchList } from "../../../../state/movieState";
 import { isCollectionProps } from "../../../../types/movies/movieTypes";
-import { whichContainerSize } from "../../../layouts/componentSize";
+import { whichContainerSize } from "../../../../utils/styleUtils";
 import MovieList from "../movies/MovieList";
 import CollectionAddForm from "./CollectionAddForm";
 
