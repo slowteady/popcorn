@@ -3,7 +3,9 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Logo from "../pages/Logo/Logo";
 
-// -------------------------------------------------------------
+// ----------------------------------------------------------------------
+// 예외 페이지 레이아웃 컴포넌트
+// ----------------------------------------------------------------------
 
 const StyledHeader = styled("header")(({ theme }) => ({
   top: 0,
@@ -18,7 +20,7 @@ const StyledHeader = styled("header")(({ theme }) => ({
 
 // -------------------------------------------------------------
 
-const FrameLayout = () => {
+const ExceptionLayout = () => {
   return (
     <>
       <StyledHeader>
@@ -30,4 +32,4 @@ const FrameLayout = () => {
   );
 };
 
-export default FrameLayout;
+export default ExceptionLayout;

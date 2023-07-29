@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import Auth from "./components/hoc/Auth";
-import FrameLayout from "./components/layouts/FrameLayout";
+import ExceptionLayout from "./components/layouts/ExceptionLayout";
 import MainLayout from "./components/layouts/MainLayout";
 import LoginPage from "./components/pages/LoginPage";
 import Page404 from "./components/pages/Page404";
@@ -94,7 +94,7 @@ const Router = () => {
       ],
     },
     {
-      element: <FrameLayout />,
+      element: <ExceptionLayout />,
       children: [
         { path: "404", element: <Page404 /> },
         { path: "*", element: <Navigate to="/404" /> },
