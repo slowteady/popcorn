@@ -1,17 +1,11 @@
-import { Icon, IconifyIcon } from "@iconify/react";
-import { Box, SxProps } from "@mui/material";
+import { Icon } from "@iconify/react";
+import { Box } from "@mui/material";
 import React, { FunctionComponent } from "react";
+import { IconifyProps } from "../../types/icon/iconTypes";
 
 // ----------------------------------------------------------------------
-// 아이콘
+// 아이콘 사용 컴포넌트
 // ----------------------------------------------------------------------
-
-interface IconifyProps {
-  icon: string | IconifyIcon;
-  width?: number;
-  sx?: SxProps;
-  onClick?: React.MouseEventHandler;
-}
 
 const Iconify: FunctionComponent<IconifyProps> = ({
   icon,
