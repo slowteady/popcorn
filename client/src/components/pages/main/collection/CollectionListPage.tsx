@@ -6,7 +6,7 @@ import Iconify from "../../../iconify/Iconify";
 import CollectionListBoard from "./CollectionListBoard";
 
 // ----------------------------------------------------------------------
-// Collection 페이지
+// Collection 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const CollectionListPage = () => {

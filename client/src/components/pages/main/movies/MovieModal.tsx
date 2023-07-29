@@ -3,10 +3,10 @@ import React from "react";
 import MovieModalPage from "./MovieModalPage";
 
 // ----------------------------------------------------------------------
-// 세부영화 모달 레이아웃
+// 세부영화 모달 레이아웃 컴포넌트
 // ----------------------------------------------------------------------
 
-interface MovieModalProps {
+export interface MovieModalProps {
   open: boolean;
   handleClose: () => void;
   id: number | null;

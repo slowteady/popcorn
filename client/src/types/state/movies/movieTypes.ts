@@ -125,3 +125,11 @@ export interface NodataProps {
   sx?: SxProps;
   containerSx?: SxProps;
 }
+
+export interface MovieTypeProps {
+  onChange: () => void;
+}
+
+export interface MovieModalPageProps {
+  id: number | null;
+}

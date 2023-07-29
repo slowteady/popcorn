@@ -8,7 +8,7 @@ import MovieList from "../movies/MovieList";
 import CollectionAddForm from "./CollectionAddForm";
 
 // ----------------------------------------------------------------------
-// 컬렉션 영화 리스트
+// 컬렉션 영화 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
 const CollectionMovieList = ({ isCollection, query }: isCollectionProps) => {

@@ -32,7 +32,7 @@ import ListTableHead from "../../../layouts/tables/ListTableHead";
 import MovieModal from "../movies/MovieModal";
 
 // ----------------------------------------------------------------------
-// 컬렉션 추가 리스트 카트
+// 컬렉션 추가 리스트 카트 컴포넌트
 // ----------------------------------------------------------------------
 
 const { ROWSPERPAGE, TABLE_HEAD } = addCollectionConf;

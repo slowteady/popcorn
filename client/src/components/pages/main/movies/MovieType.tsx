@@ -1,22 +1,14 @@
 import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
 import { useRecoilState } from "recoil";
+import { SORT_TYPE_OPTION } from "../../../../config/movie/movieConfig";
 import { movieListType } from "../../../../state/movieState";
+import { MovieTypeProps } from "../../../../types/state/movies/movieTypes";
 import Iconify from "../../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
-// MovieType 지정
+// MovieType 지정 컴포넌트
 // ----------------------------------------------------------------------
-
-interface MovieTypeProps {
-  onChange: () => void;
-}
-
-const TYPE_OPTION = [
-  { value: "POPULAR", label: "Popular" },
-  { value: "NOWPLAYING", label: "Now Playing" },
-  { value: "TOPRATED", label: "Top Rated" },
-];
 
 const MovieType = ({ onChange }: MovieTypeProps) => {
   const [open, setOpen] = useState(false);
@@ -70,7 +62,7 @@ const MovieType = ({ onChange }: MovieTypeProps) => {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        {TYPE_OPTION.map((option) => (
+        {SORT_TYPE_OPTION.map((option) => (
           <MenuItem
             key={option.value}
             selected={option.value === "popular"}

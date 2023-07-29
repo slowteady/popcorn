@@ -21,7 +21,7 @@ import {
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 
 // ----------------------------------------------------------------------
-// 컬렉션 리스트 게시판형
+// 컬렉션 리스트 게시판형 컴포넌트
 // ----------------------------------------------------------------------
 
 const { ROWSPERPAGE, TABLE_HEAD } = listCollectionConf;

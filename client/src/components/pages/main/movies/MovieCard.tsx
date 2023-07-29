@@ -6,7 +6,7 @@ import { whichContainerSize } from "../../../../utils/styleUtils";
 import MovieModal from "./MovieModal";
 
 // ----------------------------------------------------------------------
-// Movie 카드
+// Movie 카드 컴포넌트
 // ----------------------------------------------------------------------
 
 const StyledMovieImg = styled("img")({

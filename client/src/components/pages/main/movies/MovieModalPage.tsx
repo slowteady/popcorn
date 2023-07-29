@@ -4,10 +4,13 @@ import { useQuery } from "react-query";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieDetailData } from "../../../../services/movieService";
 import { MovieDetailTypography } from "../../../../theme/typography";
-import { MovieDetailProps } from "../../../../types/state/movies/movieTypes";
+import {
+  MovieDetailProps,
+  MovieModalPageProps,
+} from "../../../../types/state/movies/movieTypes";
 
 // ----------------------------------------------------------------------
-// 세부영화 모달 페이지
+// 세부영화 모달 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const StyledMovieImg = styled("img")({
@@ -18,11 +21,7 @@ const StyledMovieImg = styled("img")({
   borderRadius: "3%",
 });
 
-interface ModalPageProps {
-  id: number | null;
-}
-
-const MovieModalPage = ({ id }: ModalPageProps) => {
+const MovieModalPage = ({ id }: MovieModalPageProps) => {
   const [movie, setMovie] = useState<MovieDetailProps["movie"]>();
   const url = `${MOVIE_API.BASE_URL}movie/${id}`;
   const { status, data } = useQuery(["movieDetailData", url], () =>

@@ -3,15 +3,15 @@ import React, { ChangeEvent } from "react";
 import { useRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
 import {
-    MovieListProps,
-    MovieProps,
+  MovieListProps,
+  MovieProps,
 } from "../../../../types/state/movies/movieTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
 import Nodata from "../../Nodata";
 import MovieCard from "./MovieCard";
 
 // ----------------------------------------------------------------------
-// Movie 리스트
+// Movie 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
 const MovieList = ({ movies, isCollection }: MovieListProps) => {

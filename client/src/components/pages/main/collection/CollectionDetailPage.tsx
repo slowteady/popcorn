@@ -5,8 +5,8 @@ import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-    deleteCollection,
-    getDetailData,
+  deleteCollection,
+  getDetailData,
 } from "../../../../services/movieService";
 import { MovieProps } from "../../../../types/state/movies/movieTypes";
 import { getCookie } from "../../../../utils/cookieUtils";
@@ -15,7 +15,7 @@ import Iconify from "../../../iconify/Iconify";
 import MovieList from "../movies/MovieList";
 
 // ----------------------------------------------------------------------
-// 컬렉션 디테일 페이지
+// 컬렉션 디테일 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const LIST_COUNT = 20;
