@@ -1,17 +1,15 @@
-import React, { FunctionComponent, ReactNode, useEffect } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { auth } from "../../services/userService";
 import { userData, userDataType } from "../../state/userState";
+import { AuthProps } from "../../types/users/authTypes";
 import { removeCookie } from "../../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
-// 사용자 검증 컴포넌트
+// 사용자 로그인 검증 컴포넌트
 // ----------------------------------------------------------------------
 
-interface AuthProps {
-  children: ReactNode;
-}
 const Auth: FunctionComponent<AuthProps> = ({ children }) => {
   const setData = useSetRecoilState(userData);
   const navigate = useNavigate();

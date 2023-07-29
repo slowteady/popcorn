@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 // ----------------------------------------------------------------------
 // 사용자 검증 타입 정의
 // ----------------------------------------------------------------------
@@ -9,4 +11,8 @@ export interface AuthPayload {
     user?: object | boolean;
     isExpire?: boolean;
   };
+}
+
+export interface AuthProps {
+  children: ReactNode;
 }
