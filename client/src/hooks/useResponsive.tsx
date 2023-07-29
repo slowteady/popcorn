@@ -36,18 +36,4 @@ export const useResponsive = ({ query, start, end }: useResponsiveProps) => {
   return mediaOnly;
 };
 
-// ----------------------------------------------------------------------
 
-export const useWidth = () => {
-  const theme = useTheme();
-
-  const keys = [...theme.breakpoints.keys].reverse();
-
-  return (
-    keys.reduce<Breakpoint | null>((output, key) => {
-      const matches = useMediaQuery(theme.breakpoints.up(key));
-
-      return !output && matches ? key : output;
-    }, null) || "xs"
-  );
-};
