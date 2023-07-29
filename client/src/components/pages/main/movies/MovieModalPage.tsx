@@ -1,7 +1,7 @@
 import { Box, Grid, Typography, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { MOVIE_API } from "../../../../config/api/conf";
+import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieDetailData } from "../../../../services/movieService";
 import { MovieDetailTypography } from "../../../../theme/typography";
 import { MovieDetailProps } from "../../../../types/movies/movieTypes";

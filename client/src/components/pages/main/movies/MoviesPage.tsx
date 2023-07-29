@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
-import { MOVIE_API } from "../../../../config/api/conf";
+import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieData } from "../../../../services/movieService";
 import { movieListType } from "../../../../state/movieState";
 import { MovieListProps } from "../../../../types/movies/movieTypes";
