@@ -1,4 +1,5 @@
-import { Payload, Signup, SignupForm } from "../../types/users/userTypes";
+import { AuthPayload } from "../../types/users/authTypes";
+import { SignupFormObj, SignupPayload } from "../../types/users/signupTypes";
 import { msg } from "../../utils/msgUtils";
 import { strCheck } from "../../utils/validationUtils";
 
@@ -11,7 +12,7 @@ export const inputValidate = ({
   Name,
   Password,
   ConfirmPassword,
-}: SignupForm) => {
+}: SignupFormObj) => {
   // 비밀번호, 비밀번호 확인 일치 검증
   if (Password !== ConfirmPassword) {
     msg("error", "비밀번호가 일치하지 않아요");
@@ -49,7 +50,7 @@ export const inputValidate = ({
 };
 
 // 회원가입 검증 및 완료 처리
-export const signupValidate = (result: Signup) => {
+export const signupValidate = (result: SignupPayload) => {
   const { payload } = result;
 
   if (payload && payload.isSuccess) {
@@ -66,7 +67,7 @@ export const signupValidate = (result: Signup) => {
 };
 
 // 로그인, 로그아웃 검증
-export const isSuccessValidate = (result: Payload) => {
+export const isSuccessValidate = (result: AuthPayload) => {
   const { payload } = result;
 
   if (payload && payload.isSuccess) {

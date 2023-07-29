@@ -1,11 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
-import {
-  LoginBody,
-  Payload,
-  ProfileBody,
-  Signup,
-  SignupBody,
-} from "../types/users/userTypes";
+import { LoginBody } from "../types/users/loginTypes";
+import { ProfileBody } from "../types/users/profileTypes";
+import { SignupBody } from "../types/users/signupTypes";
 import { getCookie } from "../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
@@ -13,7 +9,7 @@ import { getCookie } from "../utils/cookieUtils";
 // ----------------------------------------------------------------------
 
 // 회원가입 요청
-export const registerUser = async (body: SignupBody): Promise<Signup> => {
+export const registerUser = async (body: SignupBody) => {
   try {
     const response = await axios.post("/api/users/register", body);
     const obj = { isSuccess: true, payload: response.data };
@@ -31,10 +27,11 @@ export const registerUser = async (body: SignupBody): Promise<Signup> => {
 };
 
 // 로그인 요청
-export const loginUser = async (body: LoginBody): Promise<Payload> => {
+export const loginUser = async (body: LoginBody) => {
   try {
     const response = await axios.post("/api/users/login", body);
     const obj = { isSuccess: true, payload: response.data };
+
     return obj;
   } catch (err) {
     console.error(err);
@@ -45,7 +42,7 @@ export const loginUser = async (body: LoginBody): Promise<Payload> => {
 };
 
 // 로그아웃 요청
-export const logoutUser = async (): Promise<Payload> => {
+export const logoutUser = async () => {
   try {
     const response = await axios.get("/api/users/logout");
     const obj = { isSuccess: true, payload: response.data };
@@ -59,9 +56,7 @@ export const logoutUser = async (): Promise<Payload> => {
 };
 
 // 사용자 검증 요청
-export const auth = async (
-  token?: AxiosRequestConfig<any>
-): Promise<Payload> => {
+export const auth = async (token?: AxiosRequestConfig<any>) => {
   try {
     let response;
     if (token) {

@@ -4,14 +4,15 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/userService";
-import { SignupForm } from "../../types/users/userTypes";
+import { SignupFormObj } from "../../types/users/signupTypes";
 import { inputValidate, signupValidate } from "../auth/userValidate";
 
 // ----------------------------------------------------------------------
 // 회원가입 페이지
 // ----------------------------------------------------------------------
 
-const initialState: SignupForm = {
+// 초기값
+const initialState: SignupFormObj = {
   Email: "",
   Name: "",
   Password: "",
@@ -20,7 +21,7 @@ const initialState: SignupForm = {
 
 const SignupPage = () => {
   const navigate = useNavigate();
-  const [FormData, setFormData] = useState<SignupForm>(initialState);
+  const [FormData, setFormData] = useState<SignupFormObj>(initialState);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

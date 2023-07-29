@@ -13,7 +13,7 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { auth, loginUser } from "../../services/userService";
-import { LoginForm } from "../../types/users/userTypes";
+import { LoginFormObj } from "../../types/users/loginTypes";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
 import { isSuccessValidate } from "../auth/userValidate";
 
@@ -21,7 +21,8 @@ import { isSuccessValidate } from "../auth/userValidate";
 // 로그인 페이지
 // ----------------------------------------------------------------------
 
-const initialState: LoginForm = {
+// 초기값
+const initialState: LoginFormObj = {
   Email: "",
   Password: "",
 };
@@ -29,7 +30,7 @@ const initialState: LoginForm = {
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const [FormData, setFormData] = useState<LoginForm>(initialState);
+  const [FormData, setFormData] = useState<LoginFormObj>(initialState);
   const [isRemember, setRemember] = useState(false);
 
   useEffect(() => {
