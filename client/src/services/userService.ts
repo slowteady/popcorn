@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { LoginBody } from "../types/users/loginTypes";
-import { ProfileBody } from "../types/users/profileTypes";
-import { SignupBody } from "../types/users/signupTypes";
+import { LoginBody } from "../types/state/users/loginTypes";
+import { ProfileBody } from "../types/state/users/profileTypes";
+import { SignupBody } from "../types/state/users/signupTypes";
 import { getCookie } from "../utils/cookieUtils";
 
 // ----------------------------------------------------------------------

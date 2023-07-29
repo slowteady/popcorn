@@ -3,7 +3,7 @@ import React, { FormEvent, memo, useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { updateProfile } from "../../../services/userService";
 import { userData, userDataType } from "../../../state/userState";
-import { ProfileFormProps } from "../../../types/users/profileTypes";
+import { ProfileFormProps } from "../../../types/state/users/profileTypes";
 
 // ----------------------------------------------------------------------
 // 프로파일 폼 처리

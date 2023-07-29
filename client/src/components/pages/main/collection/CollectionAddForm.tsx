@@ -23,7 +23,7 @@ import {
   registerCollection,
 } from "../../../../services/movieService";
 import { collectionCartList } from "../../../../state/movieState";
-import { MovieProps, payload } from "../../../../types/movies/movieTypes";
+import { MovieProps, payload } from "../../../../types/state/movies/movieTypes";
 import { isSuccessValidate } from "../../../../utils/auth/userValidate";
 import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";

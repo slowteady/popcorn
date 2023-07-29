@@ -3,9 +3,9 @@ import React, { ChangeEvent } from "react";
 import { useRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
 import {
-  MovieListProps,
-  MovieProps,
-} from "../../../../types/movies/movieTypes";
+    MovieListProps,
+    MovieProps,
+} from "../../../../types/state/movies/movieTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
 import Nodata from "../../Nodata";
 import MovieCard from "./MovieCard";

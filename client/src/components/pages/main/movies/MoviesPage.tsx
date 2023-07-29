@@ -8,7 +8,7 @@ import { useRecoilValue } from "recoil";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieData } from "../../../../services/movieService";
 import { movieListType } from "../../../../state/movieState";
-import { MovieListProps } from "../../../../types/movies/movieTypes";
+import { MovieListProps } from "../../../../types/state/movies/movieTypes";
 import MovieList from "./MovieList";
 import MovieType from "./MovieType";
 

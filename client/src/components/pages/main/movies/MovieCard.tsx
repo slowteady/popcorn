@@ -1,7 +1,7 @@
 import { Box, Card, Stack, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
-import { MovieCardProps } from "../../../../types/movies/movieTypes";
+import { MovieCardProps } from "../../../../types/state/movies/movieTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
 import MovieModal from "./MovieModal";
 

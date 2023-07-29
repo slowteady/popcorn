@@ -1,5 +1,5 @@
-import { AuthPayload } from "../../types/users/authTypes";
-import { SignupFormObj, SignupPayload } from "../../types/users/signupTypes";
+import { AuthPayload } from "../../types/state/users/authTypes";
+import { SignupFormObj, SignupPayload } from "../../types/state/users/signupTypes";
 import { msg } from "../msgUtils";
 import { strCheck } from "../validationUtils";
 

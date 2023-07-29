@@ -1,7 +1,7 @@
 import { Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { isCollectionProps } from "../../../../types/movies/movieTypes";
+import { isCollectionProps } from "../../../../types/state/movies/movieTypes";
 import MovieSearch from "./MovieSearch";
 
 // ----------------------------------------------------------------------

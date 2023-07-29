@@ -1,7 +1,8 @@
+import { IconifyIcon } from "@iconify/react";
 import { SxProps, Theme } from "@mui/material";
 
 // ----------------------------------------------------------------------
-// movie 매뉴 타입 지정
+// movie 타입
 // ----------------------------------------------------------------------
 
 export interface MovieProps {
@@ -115,4 +116,12 @@ export interface payload {
     isSuccess: boolean;
     msg: string;
   };
+}
+
+export interface NodataProps {
+  msg?: string;
+  icon: string | IconifyIcon;
+  width?: number;
+  sx?: SxProps;
+  containerSx?: SxProps;
 }

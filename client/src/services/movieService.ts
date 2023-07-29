@@ -5,7 +5,7 @@ import {
   MovieCreditsMember,
   MovieCreditsProps,
   MovieModalProps,
-} from "../types/movies/movieTypes";
+} from "../types/state/movies/movieTypes";
 
 // movie api 요청
 export const getMovieData = async (url: string, page: number) => {

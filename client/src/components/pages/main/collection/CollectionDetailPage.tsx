@@ -5,10 +5,10 @@ import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  deleteCollection,
-  getDetailData,
+    deleteCollection,
+    getDetailData,
 } from "../../../../services/movieService";
-import { MovieProps } from "../../../../types/movies/movieTypes";
+import { MovieProps } from "../../../../types/state/movies/movieTypes";
 import { getCookie } from "../../../../utils/cookieUtils";
 import { confirmMsg, msg } from "../../../../utils/msgUtils";
 import Iconify from "../../../iconify/Iconify";

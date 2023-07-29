@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieDetailData } from "../../../../services/movieService";
 import { MovieDetailTypography } from "../../../../theme/typography";
-import { MovieDetailProps } from "../../../../types/movies/movieTypes";
+import { MovieDetailProps } from "../../../../types/state/movies/movieTypes";
 
 // ----------------------------------------------------------------------
 // 세부영화 모달 페이지

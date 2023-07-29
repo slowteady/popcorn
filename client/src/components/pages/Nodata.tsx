@@ -1,15 +1,11 @@
-import { IconifyIcon } from "@iconify/react";
-import { Box, SxProps } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { FunctionComponent } from "react";
+import { NodataProps } from "../../types/state/movies/movieTypes";
 import Iconify from "../iconify/Iconify";
 
-interface NodataProps {
-  msg?: string;
-  icon: string | IconifyIcon;
-  width?: number;
-  sx?: SxProps;
-  containerSx?: SxProps;
-}
+// ----------------------------------------------------------------------
+// 노데이터 페이지 컴포넌트
+// ----------------------------------------------------------------------
 
 const Nodata: FunctionComponent<NodataProps> = ({
   msg,

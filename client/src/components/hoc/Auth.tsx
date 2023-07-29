@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { auth } from "../../services/userService";
 import { userData, userDataType } from "../../state/userState";
-import { AuthProps } from "../../types/users/authTypes";
+import { AuthProps } from "../../types/state/users/authTypes";
 import { removeCookie } from "../../utils/cookieUtils";
 
 // ----------------------------------------------------------------------

@@ -4,11 +4,11 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/userService";
-import { SignupFormObj } from "../../types/users/signupTypes";
+import { SignupFormObj } from "../../types/state/users/signupTypes";
 import { inputValidate, signupValidate } from "../../utils/auth/userValidate";
 
 // ----------------------------------------------------------------------
-// 회원가입 페이지
+// 회원가입 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 // 초기값

@@ -1,17 +1,17 @@
 import PendingIcon from "@mui/icons-material/Pending";
 import {
-  Box,
-  Button,
-  Container,
-  InputAdornment,
-  TextField,
+    Box,
+    Button,
+    Container,
+    InputAdornment,
+    TextField,
 } from "@mui/material";
 import React, {
-  ChangeEvent,
-  KeyboardEvent,
-  MouseEvent,
-  useEffect,
-  useState,
+    ChangeEvent,
+    KeyboardEvent,
+    MouseEvent,
+    useEffect,
+    useState,
 } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
@@ -20,7 +20,7 @@ import { useRecoilState } from "recoil";
 import { getSearchMovieData } from "../../../../services/movieService";
 import { moviesSearchList } from "../../../../state/movieState";
 import { searchKeyword } from "../../../../state/searchState";
-import { isCollectionProps } from "../../../../types/movies/movieTypes";
+import { isCollectionProps } from "../../../../types/state/movies/movieTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import CollectionMovieList from "../collection/CollectionMovieList";

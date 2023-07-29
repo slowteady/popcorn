@@ -3,7 +3,7 @@ import React from "react";
 import {
   ListTableHeadLabelProps,
   ListTableHeadProps,
-} from "../../../types/movies/movieTypes";
+} from "../../../types/state/movies/movieTypes";
 
 // ----------------------------------------------------------------------
 // 테이블 헤더 컴포넌트

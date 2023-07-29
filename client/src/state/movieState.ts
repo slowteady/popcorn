@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { MovieListProps, MovieProps } from "../types/movies/movieTypes";
+import { MovieListProps, MovieProps } from "../types/state/movies/movieTypes";
 
 export const movieListType = atom({
   key: "movieListType",

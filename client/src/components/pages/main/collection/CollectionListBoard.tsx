@@ -17,7 +17,7 @@ import { getListBoardData } from "../../../../services/movieService";
 import {
   ListBoardData,
   ListCollectionObj,
-} from "../../../../types/movies/movieTypes";
+} from "../../../../types/state/movies/movieTypes";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 
 // ----------------------------------------------------------------------

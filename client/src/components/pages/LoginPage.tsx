@@ -13,7 +13,7 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { auth, loginUser } from "../../services/userService";
-import { LoginFormObj } from "../../types/users/loginTypes";
+import { LoginFormObj } from "../../types/state/users/loginTypes";
 import { isSuccessValidate } from "../../utils/auth/userValidate";
 import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
 
