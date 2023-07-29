@@ -13,7 +13,7 @@ import MovieList from "./MovieList";
 import MovieType from "./MovieType";
 
 // ----------------------------------------------------------------------
-// Movies 페이지
+// Movies 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const MoviesPage = () => {

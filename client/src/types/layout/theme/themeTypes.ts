@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import customShadows from "../../../theme/customShadows";
 
 // ----------------------------------------------------------------------
-// 테마 타입 정의
+// 테마 타입
 // ----------------------------------------------------------------------
 
 export interface ThemeProviderProps {
