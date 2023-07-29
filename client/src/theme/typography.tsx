@@ -1,21 +1,13 @@
-import { Typography, TypographyProps } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
+import {
+  MovieDetailTypographyProps,
+  responsiveFontSizesProps,
+} from "../types/theme/themeTypes";
 
 // ----------------------------------------------------------------------
-
-interface responsiveFontSizesProps {
-  sm: number;
-  md: number;
-  lg: number;
-}
-
-interface MovieDetailTypographyProps extends TypographyProps {
-  children: React.ReactNode;
-}
-
-export const remToPx = (value: string) => {
-  return Math.round(parseFloat(value) * 16);
-};
+// Typography 테마
+// ----------------------------------------------------------------------
 
 export const pxToRem = (value: number) => {
   return `${value / 16}rem`;
@@ -42,7 +34,6 @@ export const responsiveFontSizes = ({
 // ----------------------------------------------------------------------
 
 const FONT_PRIMARY = "Public Sans, sans-serif"; // Google Font
-// const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 export const typography = {
   fontFamily: FONT_PRIMARY,

@@ -3,6 +3,9 @@ import { GlobalStyles as MUIGlobalStyles } from "@mui/material";
 import React from "react";
 
 // ----------------------------------------------------------------------
+// global 테마
+// ----------------------------------------------------------------------
+
 
 const GlobalStyles = () => {
   const inputGlobalStyles = (

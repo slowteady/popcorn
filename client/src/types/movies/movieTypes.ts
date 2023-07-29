@@ -1,5 +1,9 @@
 import { SxProps, Theme } from "@mui/material";
 
+// ----------------------------------------------------------------------
+// movie 매뉴 타입 지정
+// ----------------------------------------------------------------------
+
 export interface MovieProps {
   id: number;
   poster_path: string;

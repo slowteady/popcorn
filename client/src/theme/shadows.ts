@@ -4,6 +4,8 @@ import { alpha } from "@mui/material/styles";
 import palette from "./palette";
 
 // ----------------------------------------------------------------------
+// shadows 테마
+// ----------------------------------------------------------------------
 
 const color = palette.grey[500];
 
