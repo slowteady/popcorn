@@ -3,7 +3,7 @@ import React, { ChangeEvent, memo, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useRecoilValue } from "recoil";
 import { userData, userDataType } from "../../../state/userState";
-import ProfileForm from "../../utils/ProfileForm";
+import ProfileForm from "./ProfileForm";
 
 // ----------------------------------------------------------------------
 // 프로파일 수정 페이지

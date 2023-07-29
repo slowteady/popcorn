@@ -6,7 +6,7 @@ import {
   MovieListProps,
   MovieProps,
 } from "../../../../types/movies/movieTypes";
-import { whichContainerSize } from "../../../utils/size";
+import { whichContainerSize } from "../../../layouts/componentSize";
 import Nodata from "../../Nodata";
 import MovieCard from "./MovieCard";
 
