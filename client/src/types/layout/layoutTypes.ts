@@ -20,3 +20,7 @@ export interface ListProps {
 export interface ItemProps {
   item: Item;
 }
+
+export interface HeaderProps {
+  onOpenNav: () => void;
+}

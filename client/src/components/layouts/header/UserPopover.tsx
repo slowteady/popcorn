@@ -16,7 +16,7 @@ import { userData, userDataType } from "../../../state/userState";
 import { isSuccessValidate } from "../../../utils/auth/userValidate";
 
 // ----------------------------------------------------------------------
-// 헤더 사용자 레이어
+// 우측상단 사용자 레이어 컴포넌트
 // ----------------------------------------------------------------------
 
 const UserPopover = () => {

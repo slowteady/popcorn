@@ -1,18 +1,18 @@
 import {
-    Button,
-    ClickAwayListener,
-    IconButton,
-    Input,
-    InputAdornment,
-    Slide,
-    styled,
+  Button,
+  ClickAwayListener,
+  IconButton,
+  Input,
+  InputAdornment,
+  Slide,
+  styled,
 } from "@mui/material";
 import React, {
-    ChangeEvent,
-    KeyboardEvent,
-    MouseEvent,
-    useRef,
-    useState,
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useRef,
+  useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -23,7 +23,7 @@ import { strCheck } from "../../../utils/validationUtils";
 import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
-// 헤더 영화 검색 창
+// 상단 영화 검색 레이어 컴포넌트
 // ----------------------------------------------------------------------
 
 const HEADER_MOBILE = 64;

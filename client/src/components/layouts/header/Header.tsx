@@ -2,12 +2,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Box, IconButton, Stack, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
+import { HeaderProps } from "../../../types/layout/layoutTypes";
 import { bgBlur } from "../../../utils/styleUtils";
 import Searchbar from "./Searchbar";
 import UserPopover from "./UserPopover";
 
 // ----------------------------------------------------------------------
-// 헤더
+// 헤더 컴포넌트
 // ----------------------------------------------------------------------
 
 const NAV_WIDTH = 280;
@@ -33,10 +34,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 // ----------------------------------------------------------------------
-
-interface HeaderProps {
-  onOpenNav: () => void;
-}
 
 const Header = ({ onOpenNav }: HeaderProps) => {
   return (
