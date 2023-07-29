@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API } from "../config/api/Config";
+import { MOVIE_API } from "../config/api/conf";
 import {
   CollectionObj,
   MovieCreditsMember,
@@ -12,8 +12,8 @@ export const getMovieData = async (url: string, page: number) => {
   try {
     const response = await axios.get(url, {
       params: {
-        api_key: API.API_KEY,
-        language: API.LANGUAGE,
+        api_key: MOVIE_API.API_KEY,
+        language: MOVIE_API.LANGUAGE,
         page,
       },
     });
@@ -33,16 +33,16 @@ export const getMovieDetailData = async (url: string) => {
   try {
     const movieResponse = await axios.get(url, {
       params: {
-        api_key: API.API_KEY,
-        language: API.LANGUAGE,
+        api_key: MOVIE_API.API_KEY,
+        language: MOVIE_API.LANGUAGE,
       },
     });
 
-    const creditsUrl = `${url}/${API.CREDITS_PATH}`;
+    const creditsUrl = `${url}/${MOVIE_API.CREDITS_PATH}`;
     const creditsResponse = await axios.get(creditsUrl, {
       params: {
-        api_key: API.API_KEY,
-        language: API.LANGUAGE,
+        api_key: MOVIE_API.API_KEY,
+        language: MOVIE_API.LANGUAGE,
       },
     });
 
@@ -69,11 +69,11 @@ export const getMovieDetailData = async (url: string) => {
 // 영화 검색 데이터 요청
 export const getSearchMovieData = async (query: string, page: number) => {
   try {
-    const url = `${API.BASE_URL}${API.SEARCH_PATH}`;
+    const url = `${MOVIE_API.BASE_URL}${MOVIE_API.SEARCH_PATH}`;
     const response = await axios.get(url, {
       params: {
-        api_key: API.API_KEY,
-        language: API.LANGUAGE,
+        api_key: MOVIE_API.API_KEY,
+        language: MOVIE_API.LANGUAGE,
         query,
         page,
       },

@@ -1,6 +1,6 @@
 import { Box, Card, Stack, Typography, styled } from "@mui/material";
 import React, { useState } from "react";
-import { API } from "../../../../config/api/Config";
+import { MOVIE_API } from "../../../../config/api/conf";
 import { MovieCardProps } from "../../../../types/movies/movieTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
 import MovieModal from "./MovieModal";
@@ -21,7 +21,7 @@ const MovieCard = ({ movie, isCollection }: MovieCardProps) => {
   const [open, setOpen] = useState(false);
   const { id, poster_path, release_date, title, vote_average } = movie;
   const voteAverage = (Math.round(vote_average * 10) / 10).toFixed(1);
-  const posterUrl = `${API.IMAGE_BASE_URL}${API.IMAGE_SIZE_500}${poster_path}`;
+  const posterUrl = `${MOVIE_API.IMAGE_BASE_URL}${MOVIE_API.IMAGE_SIZE_500}${poster_path}`;
   const style = whichContainerSize(isCollection);
 
   const handleModalOpen = () => setOpen(true);

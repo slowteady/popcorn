@@ -1,7 +1,7 @@
 import { Box, Grid, Typography, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { API } from "../../../../config/api/Config";
+import { MOVIE_API } from "../../../../config/api/conf";
 import { getMovieDetailData } from "../../../../services/movieService";
 import { MovieDetailTypography } from "../../../../theme/typography";
 import { MovieDetailProps } from "../../../../types/movies/movieTypes";
@@ -24,7 +24,7 @@ interface ModalPageProps {
 
 const MovieModalPage = ({ id }: ModalPageProps) => {
   const [movie, setMovie] = useState<MovieDetailProps["movie"]>();
-  const url = `${API.BASE_URL}movie/${id}`;
+  const url = `${MOVIE_API.BASE_URL}movie/${id}`;
   const { status, data } = useQuery(["movieDetailData", url], () =>
     getMovieDetailData(url)
   );
@@ -41,7 +41,7 @@ const MovieModalPage = ({ id }: ModalPageProps) => {
 
   let posterUrl = "";
   if (movie) {
-    posterUrl = `${API.IMAGE_BASE_URL}${API.IMAGE_SIZE_300}${movie.poster_path}`;
+    posterUrl = `${MOVIE_API.IMAGE_BASE_URL}${MOVIE_API.IMAGE_SIZE_300}${movie.poster_path}`;
   }
 
   return (

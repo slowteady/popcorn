@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
-import { API } from "../../../../config/api/Config";
+import { MOVIE_API } from "../../../../config/api/conf";
 import { getMovieData } from "../../../../services/movieService";
 import { movieListType } from "../../../../state/movieState";
 import { MovieListProps } from "../../../../types/movies/movieTypes";
@@ -23,19 +23,19 @@ const MoviesPage = () => {
   const [enabled, setEnabled] = useState(false);
   const movieType = useRecoilValue(movieListType);
 
-  let url = API.BASE_URL;
+  let url = MOVIE_API.BASE_URL;
   switch (movieType.value) {
     case "POPULAR":
-      url += API.POPULAR_PATH;
+      url += MOVIE_API.POPULAR_PATH;
       break;
     case "NOWPLAYING":
-      url += API.NOWPLAYING_PATH;
+      url += MOVIE_API.NOWPLAYING_PATH;
       break;
     case "TOPRATED":
-      url += API.TOP_RATED;
+      url += MOVIE_API.TOP_RATED;
       break;
     default:
-      url += API.POPULAR_PATH;
+      url += MOVIE_API.POPULAR_PATH;
   }
 
   // API 데이터 호출 및 캐싱
