@@ -1,9 +1,9 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { FormEvent, memo, useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { updateProfile } from "../../services/userService";
-import { userData, userDataType } from "../../state/userState";
-import { ProfileFormProps } from "../../types/users/userTypes";
+import { updateProfile } from "../../../services/userService";
+import { userData, userDataType } from "../../../state/userState";
+import { ProfileFormProps } from "../../../types/users/profileTypes";
 
 // ----------------------------------------------------------------------
 // 프로파일 폼 처리
@@ -18,7 +18,7 @@ const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
   useEffect(() => {
     setSelfIntro(intro);
   }, [intro]);
-  
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
