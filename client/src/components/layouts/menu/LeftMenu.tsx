@@ -35,8 +35,8 @@ const StyledAccount = styled("div")(({ theme }) => ({
 
 const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
   const usrData = useRecoilValue(userData);
-  const { image, name } = usrData;
   const { pathname } = useLocation();
+  const { image, name } = usrData;
   const isDesktop = useResponsive({ query: "up", start: "lg" });
 
   useEffect(() => {

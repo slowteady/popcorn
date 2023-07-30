@@ -10,9 +10,8 @@ import {
 import React, {
   ChangeEvent,
   KeyboardEvent,
-  MouseEvent,
   useRef,
-  useState,
+  useState
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -50,10 +49,10 @@ const StyledSearchbar = styled("div")(({ theme }: { theme: CustomTheme }) => ({
 // ----------------------------------------------------------------------
 
 const Searchbar = () => {
-  const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
   const setKeyword = useSetRecoilState(searchKeyword);
+  const [open, setOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const handleOpen = () => {
     setOpen(!open);
@@ -81,7 +80,7 @@ const Searchbar = () => {
   };
 
   // 버튼 클릭 시
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = () => {
     const input = inputRef.current;
     if (input && strCheck.isNotEmpty(input.value)) {
       setKeyword(input.value);
