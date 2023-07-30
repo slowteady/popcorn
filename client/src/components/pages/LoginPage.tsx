@@ -11,14 +11,14 @@ import {
 } from "@mui/material";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/userService";
 import { LoginFormObj } from "../../types/state/users/loginTypes";
 import { isSuccessValidate } from "../../utils/auth/userValidate";
 import { getCookie, setCookie } from "../../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
-// 로그인 페이지
+// 로그인 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 // 초기값
@@ -28,12 +28,16 @@ const initialState: LoginFormObj = {
 };
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-
   const [FormData, setFormData] = useState<LoginFormObj>(initialState);
-  const [isRemember, setRemember] = useState(false);
+  const [isRemember, setRemember] = useState(false); // 기억하기 체크박스 체크 여부
+  const [isExpired, setIsExpired] = useState(false); // 토큰 만료 여부
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    if (location.state && location.state.expired) {
+      setIsExpired(true);
+    }
     const isRememberCookie = getCookie("isRemember");
 
     // 기억하기 체크 true 인 경우
@@ -56,9 +60,6 @@ const LoginPage = () => {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const queryParams = new URLSearchParams(location.search);
-    const expired = queryParams.get("expired");
-
     const { Email, Password } = FormData;
 
     let body = {
@@ -80,10 +81,10 @@ const LoginPage = () => {
         localStorage.removeItem("email");
       }
 
-      if (expired) {
+      if (isExpired) {
         navigate(-1);
       } else {
-        navigate("/main");
+        navigate("/");
       }
     }
   };
