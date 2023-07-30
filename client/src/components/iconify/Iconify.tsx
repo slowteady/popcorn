@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { Box } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, memo } from "react";
 import { IconifyProps } from "../../types/layout/icon/iconTypes";
 
 // ----------------------------------------------------------------------
@@ -23,4 +23,4 @@ const Iconify: FunctionComponent<IconifyProps> = ({
   );
 };
 
-export default Iconify;
+export default memo(Iconify);
