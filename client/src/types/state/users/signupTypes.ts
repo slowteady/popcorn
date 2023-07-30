@@ -14,7 +14,3 @@ export interface SignupBody {
   password: string;
   name: string;
 }
-
-export interface SignupPayload {
-  payload: { isSuccess: boolean; msg?: string; code?: number };
-}
