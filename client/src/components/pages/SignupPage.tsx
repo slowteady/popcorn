@@ -48,11 +48,12 @@ const SignupPage = () => {
     const signupResult = await registerUser(body);
     const isComplete = signupValidate(signupResult);
     if (isComplete) {
-      navigate("/");
+      navigate("/login");
     }
   };
+
   const onClickCancel = () => {
-    navigate("/");
+    navigate("/login");
   };
 
   return (
