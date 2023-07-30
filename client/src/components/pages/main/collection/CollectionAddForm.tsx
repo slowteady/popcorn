@@ -24,7 +24,7 @@ import {
 } from "../../../../services/movieService";
 import { collectionCartList } from "../../../../state/movieState";
 import { MovieProps, payload } from "../../../../types/state/movies/movieTypes";
-import { isSuccessValidate } from "../../../../utils/auth/userValidate";
+import { isSuccessValidate } from "../../../../utils/auth/responseValidate";
 import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";

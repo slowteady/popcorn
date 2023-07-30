@@ -70,8 +70,8 @@ const SignupPage = () => {
     };
 
     // 회원 가입
-    const signupResult = await registerUser(body);
-    const isComplete = signupValidate(signupResult);
+    const response = await registerUser(body);
+    const isComplete = signupValidate(response);
     
     if (isComplete) {
       navigate("/login");

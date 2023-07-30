@@ -13,7 +13,7 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../../services/userService";
-import { isSuccessValidate } from "../../../utils/auth/userValidate";
+import { isSuccessValidate } from "../../../utils/auth/responseValidate";
 import { getCookie, setCookie } from "../../../utils/cookieUtils";
 import LoginPoster from "./LoginPoster";
 
@@ -68,8 +68,8 @@ const LoginPage = () => {
     };
 
     // 로그인 검증
-    const loginResult = await loginUser(body);
-    const isComplete = isSuccessValidate(loginResult);
+    const response = await loginUser(body);
+    const isComplete = isSuccessValidate(response);
 
     if (isComplete) {
       // 기억하기 기능

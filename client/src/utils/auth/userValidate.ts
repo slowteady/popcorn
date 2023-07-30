@@ -1,8 +1,4 @@
-import { AuthPayload } from "../../types/state/users/authTypes";
-import {
-  SignupFormObj,
-  SignupPayload,
-} from "../../types/state/users/signupTypes";
+import { SignupFormObj } from "../../types/state/users/signupTypes";
 import { msg } from "../msgUtils";
 import { strCheck } from "../validationUtils";
 
@@ -19,7 +15,7 @@ export const inputValidate = ({
   // 비밀번호, 비밀번호 확인 일치 검증
   if (Password !== ConfirmPassword) {
     msg("error", "비밀번호가 일치하지 않아요");
-    
+
     return false;
   }
 
@@ -41,7 +37,7 @@ export const inputValidate = ({
 
   if (!isValidEmail) {
     msg("error", "올바른 이메일의 형태로 입력해주세요");
-    
+
     return false;
   }
 
@@ -58,8 +54,8 @@ export const inputValidate = ({
 };
 
 // 회원가입 검증 및 완료 처리
-export const signupValidate = (result: SignupPayload) => {
-  const { payload } = result;
+export const signupValidate = (response: Payload) => {
+  const { payload } = response;
 
   if (payload && payload.isSuccess) {
     msg("success", "회원가입이 완료되었어요");
@@ -70,19 +66,6 @@ export const signupValidate = (result: SignupPayload) => {
     msg("error", "이미 존재하는 이메일이에요");
 
     return false;
-  } else {
-    msg("error", payload.msg as string);
-
-    return false;
-  }
-};
-
-// Payload 응답 성공 실패 검증
-export const isSuccessValidate = (result: AuthPayload) => {
-  const { payload } = result;
-
-  if (payload && payload.isSuccess) {
-    return true;
   } else {
     msg("error", payload.msg as string);
 
