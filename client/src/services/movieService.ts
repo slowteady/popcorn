@@ -5,7 +5,33 @@ import {
   MovieCreditsMember,
   MovieCreditsProps,
   MovieModalProps,
+  MovieProps,
 } from "../types/state/movies/movieTypes";
+
+// popular 포스터 최대 20개 요청
+export const getPoster = async () => {
+  try {
+    const url = `${MOVIE_API.BASE_URL}${MOVIE_API.POPULAR_PATH}`;
+    const response = await axios.get(url, {
+      params: {
+        api_key: MOVIE_API.API_KEY,
+        language: "en",
+      },
+    });
+
+    const results = response.data.results;
+    const arr = results.map((m: MovieProps) => {
+      return m.poster_path;
+    });
+
+    return arr;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
 
 // movie api 요청
 export const getMovieData = async (url: string, page: number) => {
