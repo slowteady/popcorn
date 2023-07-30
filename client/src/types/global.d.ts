@@ -13,8 +13,11 @@ declare global {
       isSuccess: boolean;
       msg: string | unknown;
       code?: number;
+      isExpire?: boolean;
+      user?: object | boolean;
     };
   }
 }
 
 export { };
+
