@@ -36,12 +36,13 @@ const LoginPage = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // 토큰 만료로 인해 로그인 페이지 호출됐는지 확인
     if (location.state && location.state.expired) {
       setIsExpired(true);
     }
-    const isRememberCookie = getCookie("isRemember");
 
     // 기억하기 체크 true 인 경우
+    const isRememberCookie = getCookie("isRemember");
     if (isRememberCookie) {
       const saveEmail = localStorage.getItem("email");
       setFormData((prevData) => ({ ...prevData, Email: saveEmail || "" }));
@@ -60,7 +61,6 @@ const LoginPage = () => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const { Email, Password } = FormData;
 
     let body = {
@@ -68,10 +68,10 @@ const LoginPage = () => {
       password: Password,
     };
 
-    const loginResult = await loginUser(body);
-
     // 로그인 검증
+    const loginResult = await loginUser(body);
     const isComplete = isSuccessValidate(loginResult);
+
     if (isComplete) {
       // 기억하기 기능
       if (isRemember) {

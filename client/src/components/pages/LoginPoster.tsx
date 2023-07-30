@@ -8,7 +8,7 @@ import { getPoster } from "../../services/movieService";
 // 로그인 페이지 포스터 컴포넌트
 // ----------------------------------------------------------------------
 
-// 랜덤으로 추출
+// 랜덤으로 추출 후 URL 리턴
 const getRandomUrl = (arr: []) => {
   const randomIndex = Math.floor(Math.random() * arr.length);
   const randomElement = arr[randomIndex];
