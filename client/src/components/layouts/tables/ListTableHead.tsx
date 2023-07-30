@@ -1,9 +1,9 @@
 import { TableCell, TableHead, TableRow } from "@mui/material";
-import React from "react";
+import React, { memo } from "react";
 import {
   ListTableHeadLabelProps,
   ListTableHeadProps,
-} from "../../../types/state/movies/movieTypes";
+} from "../../../types/layout/layoutTypes";
 
 // ----------------------------------------------------------------------
 // 테이블 헤더 컴포넌트
@@ -28,4 +28,4 @@ const ListTableHead = ({ headLabel, isColList, sx }: ListTableHeadProps) => {
   );
 };
 
-export default ListTableHead;
+export default memo(ListTableHead);

@@ -40,8 +40,8 @@ const Page404 = () => {
 
           <Box
             component="img"
-            sx={{ height: 260, mx: "auto", my: { xs: 5, sm: 10 } }}
             src={img404}
+            sx={{ height: 260, mx: "auto", my: { xs: 5, sm: 10 } }}
           />
           <Button
             to="/"

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, memo } from "react";
 import { NodataProps } from "../../../types/state/movies/movieTypes";
 import Iconify from "../../iconify/Iconify";
 
@@ -27,4 +27,4 @@ const Nodata: FunctionComponent<NodataProps> = ({
   );
 };
 
-export default Nodata;
+export default memo(Nodata);

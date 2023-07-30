@@ -1,5 +1,5 @@
 import { IconifyIcon } from "@iconify/react";
-import { SxProps, Theme } from "@mui/material";
+import { SxProps } from "@mui/material";
 
 // ----------------------------------------------------------------------
 // movie 타입
@@ -69,18 +69,6 @@ export interface AddMovieModalProps {
 export interface isCollectionProps {
   isCollection: boolean;
   query?: string;
-}
-
-export interface ListTableHeadLabelProps {
-  id: string;
-  label: string;
-  alignRight: boolean;
-}
-
-export interface ListTableHeadProps {
-  headLabel: ListTableHeadLabelProps[];
-  isColList?: boolean;
-  sx?: SxProps<Theme>;
 }
 
 export interface CollectionObj {

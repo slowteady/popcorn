@@ -2,7 +2,7 @@
 // 레이아웃 타입
 // ----------------------------------------------------------------------
 
-import { Breakpoint } from "@mui/material";
+import { Breakpoint, SxProps, Theme } from "@mui/material";
 
 export interface MenuProps {
   openNav: boolean;
@@ -31,4 +31,16 @@ export interface useResponsiveProps {
   query: "up" | "down" | "between";
   start: Breakpoint;
   end?: number | Breakpoint;
+}
+
+export interface ListTableHeadLabelProps {
+  id: string;
+  label: string;
+  alignRight: boolean;
+}
+
+export interface ListTableHeadProps {
+  headLabel: ListTableHeadLabelProps[];
+  isColList?: boolean;
+  sx?: SxProps<Theme>;
 }
