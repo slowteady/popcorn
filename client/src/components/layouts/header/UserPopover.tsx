@@ -21,11 +21,10 @@ import { isSuccessValidate } from "../../../utils/auth/responseValidate";
 
 const UserPopover = () => {
   const usrData = useRecoilValue(userData);
-  const { name, image, email } = usrData;
-
-  const navigate = useNavigate();
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
   const [element, setElement] = useState<HTMLElement | null>();
+  const navigate = useNavigate();
+  const { name, image, email } = usrData;
 
   const handleOpen = (e: MouseEvent<HTMLButtonElement>) => {
     setOpen(true);
@@ -40,9 +39,10 @@ const UserPopover = () => {
   const onClickLogout = async () => {
     handleClose();
     const response = await logoutUser();
-    isSuccessValidate(response);
-
-    navigate("/login");
+    const isComplete = isSuccessValidate(response);
+    if (isComplete) {
+      navigate("/login");
+    }
   };
 
   const onClickProfile = () => {
