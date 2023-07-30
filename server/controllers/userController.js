@@ -5,9 +5,11 @@ const registerUser = async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
+
     res.status(200).json({ isSuccess: true });
   } catch (err) {
     console.error(err);
+
     res.json({ isSuccess: false, msg: err, code: err.code });
   }
 };
@@ -32,6 +34,7 @@ const loginUser = async (req, res) => {
     res.cookie("AUTH_TOKEN", token).status(200).json({ isSuccess: true });
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
+
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
   }
 };
@@ -47,6 +50,7 @@ const logoutUser = async (req, res) => {
       // 토큰 정보 빈 값처리
       await User.findOneAndUpdate({ _id: foundUser._id }, { token: "" });
       res.clearCookie("AUTH_TOKEN");
+
       return res.status(200).json({ isSuccess: true });
     } else {
       res.clearCookie("AUTH_TOKEN");
@@ -58,6 +62,7 @@ const logoutUser = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.clearCookie("AUTH_TOKEN");
+
     res.json({ isSuccess: false, msg: "오류가 발생했어요. 재로그인 해주세요" });
   }
 };
@@ -65,8 +70,9 @@ const logoutUser = async (req, res) => {
 // 사용자 검증
 const authUser = (req, res) => {
   try {
-    const { user, token, isExpire } = req;
+    const { user, isExpire } = req;
     let obj = {};
+
     if (user) {
       obj = {
         isSuccess: true,
@@ -89,6 +95,7 @@ const authUser = (req, res) => {
     res.status(200).json(obj);
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
+
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
   }
 };
@@ -123,6 +130,7 @@ const updateProfile = async (req, res) => {
     res.status(200).json(obj);
   } catch (err) {
     console.error("err: ", err, "code: ", err.code);
+
     res.json({ isSuccess: false, msg: "오류가 발생했어요" });
   }
 };

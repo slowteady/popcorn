@@ -1,5 +1,4 @@
 const express = require("express");
-
 const cookieParser = require("cookie-parser");
 
 // config 설정 파일 초기화
