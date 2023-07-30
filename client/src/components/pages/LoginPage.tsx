@@ -12,10 +12,10 @@ import {
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import { auth, loginUser } from "../../services/userService";
+import { loginUser } from "../../services/userService";
 import { LoginFormObj } from "../../types/state/users/loginTypes";
 import { isSuccessValidate } from "../../utils/auth/userValidate";
-import { getCookie, removeCookie, setCookie } from "../../utils/cookieUtils";
+import { getCookie, setCookie } from "../../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
 // 로그인 페이지
@@ -35,23 +35,6 @@ const LoginPage = () => {
 
   useEffect(() => {
     const isRememberCookie = getCookie("isRemember");
-    const authToken = getCookie("AUTH_TOKEN");
-
-    // 로그인 페이지 요청 시 쿠키에 로그인 토큰 있는 경우
-    if (authToken) {
-      auth(authToken).then((response) => {
-        const isSuccess = response.payload.isSuccess;
-        const isUser = response.payload.user;
-        const isExpire = response.payload.isExpire;
-
-        // 토큰 만료 시
-        if (isExpire) {
-          removeCookie("AUTH_TOKEN");
-        } else if (isSuccess && isUser) {
-          navigate("/main");
-        }
-      });
-    }
 
     // 기억하기 체크 true 인 경우
     if (isRememberCookie) {
