@@ -2,7 +2,7 @@ import { Avatar, Box, Container, Typography } from "@mui/material";
 import React, { ChangeEvent, memo, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useRecoilValue } from "recoil";
-import { userData, userDataType } from "../../../state/userState";
+import { userData } from "../../../state/userState";
 import ProfileForm from "./ProfileForm";
 
 // ----------------------------------------------------------------------
@@ -11,7 +11,7 @@ import ProfileForm from "./ProfileForm";
 
 const ProfilePage = () => {
   const usrData = useRecoilValue(userData);
-  const { image } = usrData as userDataType;
+  const { image } = usrData;
   const [isHovered, setIsHovered] = useState(false);
   const [avatarImg, setAvatarImg] = useState<File>();
   const [imgUrl, setImgUrl] = useState<string>();

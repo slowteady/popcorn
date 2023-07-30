@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import leftmenuConfig from "../../../config/layout/leftMenuConfig";
 import { useResponsive } from "../../../hooks/useResponsive";
-import { userData, userDataType } from "../../../state/userState";
+import { userData } from "../../../state/userState";
 import { MenuProps } from "../../../types/layout/layoutTypes";
 import Logo from "../../pages/Logo/Logo";
 import LeftMenuList from "./LeftMenuList";
@@ -35,7 +35,7 @@ const StyledAccount = styled("div")(({ theme }) => ({
 
 const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
   const usrData = useRecoilValue(userData);
-  const { image, name } = usrData as userDataType;
+  const { image, name } = usrData;
   const { pathname } = useLocation();
   const isDesktop = useResponsive({ query: "up", start: "lg" });
 

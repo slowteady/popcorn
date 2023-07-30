@@ -12,7 +12,7 @@ import React, { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { logoutUser } from "../../../services/userService";
-import { userData, userDataType } from "../../../state/userState";
+import { userData } from "../../../state/userState";
 import { isSuccessValidate } from "../../../utils/auth/userValidate";
 
 // ----------------------------------------------------------------------
@@ -21,7 +21,7 @@ import { isSuccessValidate } from "../../../utils/auth/userValidate";
 
 const UserPopover = () => {
   const usrData = useRecoilValue(userData);
-  const { name, image, email } = usrData as userDataType;
+  const { name, image, email } = usrData;
 
   const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);

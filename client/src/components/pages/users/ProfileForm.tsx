@@ -2,7 +2,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { FormEvent, memo, useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { updateProfile } from "../../../services/userService";
-import { userData, userDataType } from "../../../state/userState";
+import { userData } from "../../../state/userState";
 import { ProfileFormProps } from "../../../types/state/users/profileTypes";
 
 // ----------------------------------------------------------------------
@@ -12,7 +12,7 @@ import { ProfileFormProps } from "../../../types/state/users/profileTypes";
 const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
   const usrData = useRecoilValue(userData);
   const setData = useSetRecoilState(userData);
-  const { intro, name, email } = usrData as userDataType;
+  const { intro, name, email } = usrData;
   const [selfIntro, setSelfIntro] = useState("");
 
   useEffect(() => {
