@@ -103,23 +103,24 @@ const SignupPage = () => {
           </Typography>
           <form onSubmit={onSubmit}>
             <TextField
+              inputRef={refs.emailInput}
               label="이메일"
               margin="normal"
               autoComplete="email"
               name="Email"
               required
               fullWidth
-              inputRef={refs.emailInput}
             />
             <TextField
+              inputRef={refs.nameInput}
               label="이름"
               margin="normal"
               name="Name"
               required
               fullWidth
-              inputRef={refs.nameInput}
             />
             <TextField
+              inputRef={refs.pwInput}
               label="패스워드"
               margin="normal"
               type="password"
@@ -127,38 +128,37 @@ const SignupPage = () => {
               autoComplete="current-password"
               required
               fullWidth
-              inputRef={refs.pwInput}
             />
             <TextField
+              inputRef={refs.pwConfirmInput}
               label="패스워드 확인"
               margin="normal"
               type="password"
               name="ConfirmPassword"
               required
               fullWidth
-              inputRef={refs.pwConfirmInput}
             />
             <Button
               type="submit"
               variant="contained"
               size="large"
-              sx={{ mt: 2, mb: 2 }}
               fullWidth
+              sx={{ mt: 2, mb: 2 }}
             >
               회원가입
             </Button>
           </form>
           <Button
+            onClick={onClickCancel}
             variant="contained"
             size="large"
+            fullWidth
             sx={{
               backgroundColor: "#c97c63",
               "&:hover": {
                 backgroundColor: "#ab6e59",
               },
             }}
-            fullWidth
-            onClick={onClickCancel}
           >
             취소
           </Button>

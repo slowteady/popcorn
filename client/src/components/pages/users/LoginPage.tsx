@@ -116,16 +116,18 @@ const LoginPage = () => {
             </Typography>
             <form onSubmit={onSubmit} style={{ width: "100%" }}>
               <TextField
+                onChange={onChangeHandler}
+                value={FormData.Email}
                 label="이메일"
                 margin="normal"
                 autoComplete="email"
                 name="Email"
                 required
                 fullWidth
-                onChange={onChangeHandler}
-                value={FormData.Email}
               />
               <TextField
+                onChange={onChangeHandler}
+                value={FormData.Password}
                 label="패스워드"
                 margin="normal"
                 type="password"
@@ -133,17 +135,15 @@ const LoginPage = () => {
                 autoComplete="current-password"
                 required
                 fullWidth
-                onChange={onChangeHandler}
-                value={FormData.Password}
               />
               <Grid container alignItems="center">
                 <Grid item xs={6}>
                   <FormControlLabel
                     control={
                       <Checkbox
-                        value="remember"
-                        checked={isRemember}
                         onChange={onChangeCheckBox}
+                        checked={isRemember}
+                        value="remember"
                         color="info"
                       />
                     }
@@ -155,23 +155,23 @@ const LoginPage = () => {
                 type="submit"
                 variant="contained"
                 size="large"
-                sx={{ mt: 2, mb: 2 }}
                 fullWidth
+                sx={{ mt: 2, mb: 2 }}
               >
                 로그인
               </Button>
             </form>
             <Button
+              onClick={handleSignupBtn}
               variant="contained"
               size="large"
+              fullWidth
               sx={{
                 backgroundColor: "#435c77",
                 "&:hover": {
                   backgroundColor: "#454468",
                 },
               }}
-              fullWidth
-              onClick={handleSignupBtn}
             >
               회원가입
             </Button>
