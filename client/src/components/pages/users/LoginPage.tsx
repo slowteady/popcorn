@@ -13,7 +13,6 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../../services/userService";
-import { LoginFormObj } from "../../../types/state/users/loginTypes";
 import { isSuccessValidate } from "../../../utils/auth/userValidate";
 import { getCookie, setCookie } from "../../../utils/cookieUtils";
 import LoginPoster from "./LoginPoster";
@@ -23,13 +22,13 @@ import LoginPoster from "./LoginPoster";
 // ----------------------------------------------------------------------
 
 // 초기값
-const initialState: LoginFormObj = {
+const initialState = {
   Email: "",
   Password: "",
 };
 
 const LoginPage = () => {
-  const [FormData, setFormData] = useState<LoginFormObj>(initialState);
+  const [FormData, setFormData] = useState(initialState);
   const [isRemember, setRemember] = useState(false); // 기억하기 체크박스 체크 여부
   const [isExpired, setIsExpired] = useState(false); // 토큰 만료 여부
   const navigate = useNavigate();
