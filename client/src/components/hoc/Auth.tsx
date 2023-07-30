@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { auth } from "../../services/userService";
-import { userData, userDataType } from "../../state/userState";
+import { userData } from "../../state/userState";
 import { AuthProps } from "../../types/state/users/authTypes";
 import { removeCookie } from "../../utils/cookieUtils";
 
@@ -11,15 +11,15 @@ import { removeCookie } from "../../utils/cookieUtils";
 // ----------------------------------------------------------------------
 
 const Auth: FunctionComponent<AuthProps> = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true); // 로딩 여부
+  const [isLoginedUser, setIsLoginedUser] = useState(false); // 로그인된 사용자인지 여부
+  const [isExpired, setIsExpired] = useState(false); // 토큰 만료 여부
   const setData = useSetRecoilState(userData);
-  const navigate = useNavigate();
 
   useEffect(() => {
     auth()
       .then((response) => {
-        const isSuccess = response.payload.isSuccess;
-        const user = response.payload.user as userDataType;
-        const isExpire = response.payload.isExpire;
+        const { isSuccess, user, isExpire } = response.payload;
 
         // 유저 객체 전역으로 띄우기
         if (user) {
@@ -29,21 +29,31 @@ const Auth: FunctionComponent<AuthProps> = ({ children }) => {
         // 토큰 만료 시
         if (isExpire) {
           removeCookie("AUTH_TOKEN");
-          navigate({
-            pathname: "/",
-            search: `?expired=true`,
-          });
-        } else if (!isSuccess || !user) {
+          setIsExpired(true);
+        } else if (isSuccess && user) {
+          // 사용자 검증 성공 시
+          setIsLoginedUser(true);
+        } else {
           // 사용자 검증 실패 시
-          navigate("/");
+          setIsLoginedUser(false);
         }
+        setIsLoading(false);
       })
       .catch((err) => {
-        navigate("/");
+        setIsLoginedUser(false);
+        setIsLoading(false);
       });
   }, []);
 
-  return <>{children}</>;
+  if (isLoading) {
+    return <></>;
+  } else if (isExpired) {
+    return <Navigate to="/login" state={{ expired: true }} />;
+  } else if (isLoginedUser) {
+    return <>{children}</>;
+  } else {
+    return <Navigate to="/login" replace />;
+  }
 };
 
 export default Auth;
