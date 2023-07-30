@@ -7,7 +7,7 @@ import {
   alpha,
   styled,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import leftmenuConfig from "../../../config/layout/leftMenuConfig";
@@ -111,4 +111,4 @@ const LeftMenu = ({ openNav, onCloseNav }: MenuProps) => {
   );
 };
 
-export default LeftMenu;
+export default memo(LeftMenu);

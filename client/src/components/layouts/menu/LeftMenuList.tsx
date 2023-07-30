@@ -7,7 +7,7 @@ import {
   ListItemText,
   styled,
 } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { ItemProps, ListProps } from "../../../types/layout/layoutTypes";
 import Iconify from "../../iconify/Iconify";
@@ -38,7 +38,7 @@ const StyledListItemIcon = styled(ListItemIcon)({
 
 // ----------------------------------------------------------------------
 
-const ListItem: FunctionComponent<ItemProps> = ({ item }) => {
+const ListItem: FunctionComponent<ItemProps> = memo(({ item }) => {
   const { title, path, icon } = item;
 
   return (
@@ -59,7 +59,7 @@ const ListItem: FunctionComponent<ItemProps> = ({ item }) => {
       <ListItemText disableTypography primary={title} />
     </StyledListItem>
   );
-};
+});
 
 const LeftMenuList: FunctionComponent<ListProps> = ({
   data = [],
@@ -76,4 +76,4 @@ const LeftMenuList: FunctionComponent<ListProps> = ({
   );
 };
 
-export default LeftMenuList;
+export default memo(LeftMenuList);
