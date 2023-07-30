@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React, { FunctionComponent } from "react";
-import { NodataProps } from "../../types/state/movies/movieTypes";
-import Iconify from "../iconify/Iconify";
+import { NodataProps } from "../../../types/state/movies/movieTypes";
+import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
 // 노데이터 페이지 컴포넌트

@@ -7,7 +7,7 @@ import {
   MovieProps,
 } from "../../../../types/state/movies/movieTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
-import Nodata from "../../Nodata";
+import Nodata from "../../exception/Nodata";
 import MovieCard from "./MovieCard";
 
 // ----------------------------------------------------------------------
