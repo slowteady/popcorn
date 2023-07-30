@@ -42,7 +42,7 @@ const UserPopover = () => {
     const logout = await logoutUser();
     isSuccessValidate(logout);
 
-    navigate("/");
+    navigate("/login");
   };
 
   const onClickProfile = () => {
