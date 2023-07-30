@@ -1,6 +1,10 @@
 import { atom } from "recoil";
 import { MovieListProps, MovieProps } from "../types/state/movies/movieTypes";
 
+// ----------------------------------------------------------------------
+// movies 매뉴 관련 전역 STATE
+// ----------------------------------------------------------------------
+
 export const movieListType = atom({
   key: "movieListType",
   default: { value: "POPULAR", label: "Popular" },
