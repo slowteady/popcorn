@@ -39,8 +39,8 @@ const UserPopover = () => {
 
   const onClickLogout = async () => {
     handleClose();
-    const logout = await logoutUser();
-    isSuccessValidate(logout);
+    const response = await logoutUser();
+    isSuccessValidate(response);
 
     navigate("/login");
   };

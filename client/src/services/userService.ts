@@ -5,20 +5,19 @@ import { SignupBody } from "../types/state/users/signupTypes";
 import { getCookie } from "../utils/cookieUtils";
 
 // ----------------------------------------------------------------------
-// 사용자 관련 서비스 
+// 사용자 관련 서비스
 // ----------------------------------------------------------------------
 
 // 회원가입 요청
 export const registerUser = async (body: SignupBody) => {
   try {
     const response = await axios.post("/api/users/register", body);
-    const obj = { isSuccess: true, payload: response.data };
-    
+    const obj = { payload: response.data };
     if (response.data.msg && response.data.msg.code) {
       // 에러 코드 있을 시
       obj.payload.code = response.data.msg.code;
     }
-    
+
     return obj;
   } catch (err) {
     console.error(err);
@@ -32,7 +31,11 @@ export const registerUser = async (body: SignupBody) => {
 export const loginUser = async (body: LoginBody) => {
   try {
     const response = await axios.post("/api/users/login", body);
-    const obj = { isSuccess: true, payload: response.data };
+    const obj = { payload: response.data };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
 
     return obj;
   } catch (err) {
@@ -47,7 +50,12 @@ export const loginUser = async (body: LoginBody) => {
 export const logoutUser = async () => {
   try {
     const response = await axios.get("/api/users/logout");
-    const obj = { isSuccess: true, payload: response.data };
+    const obj = { payload: response.data };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
+
     return obj;
   } catch (err) {
     console.error(err);
@@ -58,7 +66,7 @@ export const logoutUser = async () => {
 };
 
 // 사용자 검증 요청
-export const auth = async (token?: AxiosRequestConfig<any>) => {
+export const authUser = async (token?: AxiosRequestConfig<any>) => {
   try {
     let response;
     if (token) {
@@ -70,7 +78,12 @@ export const auth = async (token?: AxiosRequestConfig<any>) => {
       response = await axios.get("/api/users/auth");
     }
 
-    const obj = { isSuccess: true, payload: response.data };
+    const obj = { payload: response.data };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
+
     return obj;
   } catch (err) {
     console.error(err);
@@ -81,7 +94,7 @@ export const auth = async (token?: AxiosRequestConfig<any>) => {
 };
 
 // 사용자 프로파일 업데이트 요청
-export const updateProfile = async (data: ProfileBody) => {
+export const updateProfileUser = async (data: ProfileBody) => {
   const formData = new FormData();
   formData.append("intro", data.selfIntro);
 
@@ -99,7 +112,12 @@ export const updateProfile = async (data: ProfileBody) => {
       },
     });
 
-    const obj = { isSuccess: true, payload: response.data };
+    const obj = { payload: response.data };
+    if (response.data.msg && response.data.msg.code) {
+      // 에러 코드 있을 시
+      obj.payload.code = response.data.msg.code;
+    }
+
     return obj;
   } catch (err) {
     console.error(err);

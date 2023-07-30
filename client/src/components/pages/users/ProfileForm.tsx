@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { FormEvent, memo, useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { updateProfile } from "../../../services/userService";
+import { updateProfileUser } from "../../../services/userService";
 import { userData } from "../../../state/userState";
 import { ProfileFormProps } from "../../../types/state/users/profileTypes";
 
@@ -23,7 +23,7 @@ const ProfileForm = ({ avatarImg }: ProfileFormProps) => {
     e.preventDefault();
 
     const updateData = { selfIntro, avatarImg };
-    const updateResult = await updateProfile(updateData);
+    const updateResult = await updateProfileUser(updateData);
     const payload = updateResult.payload;
     const { isSuccess, user } = payload;
 

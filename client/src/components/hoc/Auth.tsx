@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { auth } from "../../services/userService";
+import { authUser } from "../../services/userService";
 import { userData } from "../../state/userState";
 import { AuthProps } from "../../types/state/users/authTypes";
 import { removeCookie } from "../../utils/cookieUtils";
@@ -17,7 +17,7 @@ const Auth: FunctionComponent<AuthProps> = ({ children }) => {
   const setData = useSetRecoilState(userData);
 
   useEffect(() => {
-    auth()
+    authUser()
       .then((response) => {
         const { isSuccess, user, isExpire } = response.payload;
 

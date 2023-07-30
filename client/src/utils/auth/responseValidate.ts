@@ -5,8 +5,8 @@ import { msg } from "../msgUtils";
 // ----------------------------------------------------------------------
 
 // Payload 응답 후처리
-export const isSuccessValidate = (result: Payload) => {
-  const { payload } = result;
+export const isSuccessValidate = (response: Payload) => {
+  const { payload } = response;
 
   if (payload && payload.isSuccess) {
     if (payload.msg) {

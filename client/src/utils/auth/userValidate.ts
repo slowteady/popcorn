@@ -6,12 +6,10 @@ import { strCheck } from "../validationUtils";
 // 사용자 유효성 검사 유틸
 // ----------------------------------------------------------------------
 
-export const inputValidate = ({
-  Email,
-  Name,
-  Password,
-  ConfirmPassword,
-}: SignupFormObj) => {
+// 클라이언트 회원가입 유효성 검사
+export const inputValidate = (formData: SignupFormObj) => {
+  const { Email, Name, Password, ConfirmPassword } = formData;
+
   // 비밀번호, 비밀번호 확인 일치 검증
   if (Password !== ConfirmPassword) {
     msg("error", "비밀번호가 일치하지 않아요");
@@ -53,7 +51,7 @@ export const inputValidate = ({
   return true;
 };
 
-// 회원가입 검증 및 완료 처리
+// 응답 받은 후 회원가입 검증 및 완료 처리
 export const signupValidate = (response: Payload) => {
   const { payload } = response;
 
