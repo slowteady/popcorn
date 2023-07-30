@@ -1,11 +1,14 @@
 import FaceIcon from "@mui/icons-material/Face";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { FormEvent, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../services/userService";
-import { SignupFormObj } from "../../types/state/users/signupTypes";
-import { inputValidate, signupValidate } from "../../utils/auth/userValidate";
+import { registerUser } from "../../../services/userService";
+import { SignupFormObj } from "../../../types/state/users/signupTypes";
+import {
+  inputValidate,
+  signupValidate,
+} from "../../../utils/auth/userValidate";
 
 // ----------------------------------------------------------------------
 // 회원가입 페이지 컴포넌트
@@ -20,19 +23,40 @@ const initialState: SignupFormObj = {
 };
 
 const SignupPage = () => {
-  const navigate = useNavigate();
-  const [FormData, setFormData] = useState<SignupFormObj>(initialState);
-
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  const refs = {
+    emailInput: useRef<HTMLInputElement>(null),
+    nameInput: useRef<HTMLInputElement>(null),
+    pwInput: useRef<HTMLInputElement>(null),
+    pwConfirmInput: useRef<HTMLInputElement>(null),
   };
+  const navigate = useNavigate();
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { Email, Name, Password } = FormData;
+    const { emailInput, nameInput, pwInput, pwConfirmInput } = refs;
+    let formData = initialState;
+
+    if (emailInput.current && emailInput.current.value) {
+      formData.Email = emailInput.current.value;
+    }
+
+    if (nameInput.current && nameInput.current.value) {
+      formData.Name = nameInput.current.value;
+    }
+
+    if (pwInput.current && pwInput.current.value) {
+      formData.Password = pwInput.current.value;
+    }
+
+    if (pwConfirmInput.current && pwConfirmInput.current.value) {
+      formData.ConfirmPassword = pwConfirmInput.current.value;
+    }
+
+    const { Email, Name, Password } = formData;
 
     // 데이터 검증
-    const isValid = inputValidate(FormData);
+    const isValid = inputValidate(formData);
+
     // 검증 실패 시 프로세스 중단
     if (!isValid) {
       return;
@@ -83,8 +107,7 @@ const SignupPage = () => {
               name="Email"
               required
               fullWidth
-              onChange={onChangeHandler}
-              value={FormData.Email}
+              inputRef={refs.emailInput}
             />
             <TextField
               label="이름"
@@ -92,8 +115,7 @@ const SignupPage = () => {
               name="Name"
               required
               fullWidth
-              onChange={onChangeHandler}
-              value={FormData.Name}
+              inputRef={refs.nameInput}
             />
             <TextField
               label="패스워드"
@@ -103,8 +125,7 @@ const SignupPage = () => {
               autoComplete="current-password"
               required
               fullWidth
-              onChange={onChangeHandler}
-              value={FormData.Password}
+              inputRef={refs.pwInput}
             />
             <TextField
               label="패스워드 확인"
@@ -113,8 +134,7 @@ const SignupPage = () => {
               name="ConfirmPassword"
               required
               fullWidth
-              onChange={onChangeHandler}
-              value={FormData.ConfirmPassword}
+              inputRef={refs.pwConfirmInput}
             />
             <Button
               type="submit"

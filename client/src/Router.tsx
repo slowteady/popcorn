@@ -3,15 +3,15 @@ import { Navigate, useRoutes } from "react-router-dom";
 import Auth from "./components/hoc/Auth";
 import ExceptionLayout from "./components/layouts/ExceptionLayout";
 import MainLayout from "./components/layouts/MainLayout";
-import LoginPage from "./components/pages/LoginPage";
-import SignupPage from "./components/pages/SignupPage";
 import Page404 from "./components/pages/exception/Page404";
 import CollectionAddPage from "./components/pages/main/collection/CollectionAddPage";
 import CollectionDetailPage from "./components/pages/main/collection/CollectionDetailPage";
 import CollectionListPage from "./components/pages/main/collection/CollectionListPage";
 import MoviesPage from "./components/pages/main/movies/MoviesPage";
 import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
+import LoginPage from "./components/pages/users/LoginPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
+import SignupPage from "./components/pages/users/SignupPage";
 
 // ----------------------------------------------------------------------
 // 라우터 컴포넌트

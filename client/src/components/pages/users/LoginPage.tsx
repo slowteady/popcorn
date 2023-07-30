@@ -12,10 +12,10 @@ import {
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation, useNavigate } from "react-router-dom";
-import { loginUser } from "../../services/userService";
-import { LoginFormObj } from "../../types/state/users/loginTypes";
-import { isSuccessValidate } from "../../utils/auth/userValidate";
-import { getCookie, setCookie } from "../../utils/cookieUtils";
+import { loginUser } from "../../../services/userService";
+import { LoginFormObj } from "../../../types/state/users/loginTypes";
+import { isSuccessValidate } from "../../../utils/auth/userValidate";
+import { getCookie, setCookie } from "../../../utils/cookieUtils";
 import LoginPoster from "./LoginPoster";
 
 // ----------------------------------------------------------------------

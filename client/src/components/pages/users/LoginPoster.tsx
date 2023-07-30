@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { MOVIE_API } from "../../config/api/dataConfig";
-import { getPoster } from "../../services/movieService";
+import { MOVIE_API } from "../../../config/api/dataConfig";
+import { getPoster } from "../../../services/movieService";
 
 // ----------------------------------------------------------------------
 // 로그인 페이지 포스터 컴포넌트
