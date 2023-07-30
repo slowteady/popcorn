@@ -33,6 +33,7 @@ const SignupPage = () => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     const { emailInput, nameInput, pwInput, pwConfirmInput } = refs;
     let formData = initialState;
 
@@ -71,6 +72,7 @@ const SignupPage = () => {
     // 회원 가입
     const signupResult = await registerUser(body);
     const isComplete = signupValidate(signupResult);
+    
     if (isComplete) {
       navigate("/login");
     }
