@@ -101,7 +101,7 @@ const authUser = (req, res) => {
 };
 
 // 사용자 프로파일 업데이트
-const updateProfile = async (req, res) => {
+const updateProfileUser = async (req, res) => {
   const userId = req.params.userId;
   const intro = req.body.intro;
   let filePath;
@@ -140,5 +140,5 @@ module.exports = {
   loginUser,
   logoutUser,
   authUser,
-  updateProfile,
+  updateProfile: updateProfileUser,
 };
