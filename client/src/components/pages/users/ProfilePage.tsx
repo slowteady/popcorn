@@ -1,5 +1,5 @@
 import { Avatar, Box, Container, Typography } from "@mui/material";
-import React, { ChangeEvent, memo, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useRecoilValue } from "recoil";
 import { userData } from "../../../state/userState";
@@ -11,16 +11,15 @@ import ProfileForm from "./ProfileForm";
 
 const ProfilePage = () => {
   const usrData = useRecoilValue(userData);
-  const { image } = usrData;
-  const [isHovered, setIsHovered] = useState(false);
-  const [avatarImg, setAvatarImg] = useState<File>();
-  const [imgUrl, setImgUrl] = useState<string>();
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isHovered, setIsHovered] = useState(false); // hover 여부
+  const [avatarImg, setAvatarImg] = useState<File>(); // 이미지 파일값 처리를 위한 state
+  const [imgUrl, setImgUrl] = useState(usrData.image);
+  const fileInput = useRef<HTMLInputElement>(null);
 
   // 이미지 초기값을 위한 useEffect
   useEffect(() => {
-    setImgUrl(image);
-  }, [image]);
+    setImgUrl(imgUrl);
+  }, [imgUrl]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -31,15 +30,16 @@ const ProfilePage = () => {
   };
 
   const handleImgBox = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
+    if (fileInput.current) {
+      fileInput.current.click();
     }
   };
 
   // 파일 삽입
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      const file = event.target.files[0];
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // 파일 정보를 콘솔에 출력
+    if (e.target.files) {
+      const file = e.target.files[0];
       setAvatarImg(file);
 
       const reader = new FileReader();
@@ -68,17 +68,25 @@ const ProfilePage = () => {
           }}
         >
           <Box
-            sx={{ position: "relative" }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            sx={{ position: "relative" }}
           >
+            <input
+              onChange={handleFileChange}
+              ref={fileInput}
+              type="file"
+              accept="image/*"
+              hidden
+            />
             <Avatar
               src={imgUrl}
               alt="photoURL"
-              sx={{ width: 72, height: 72 }}
+              sx={{ width: 156, height: 156 }}
             />
             {isHovered && (
               <Box
+                onClick={handleImgBox}
                 sx={{
                   position: "absolute",
                   top: 0,
@@ -91,15 +99,8 @@ const ProfilePage = () => {
                   alignItems: "center",
                   cursor: "pointer",
                 }}
-                onClick={handleImgBox}
               >
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleFileChange}
-                  style={{ display: "none" }}
-                />
-                <Typography color="white" fontSize={12}>
+                <Typography color="white" fontSize={13}>
                   이미지 추가
                 </Typography>
               </Box>
@@ -112,4 +113,4 @@ const ProfilePage = () => {
   );
 };
 
-export default memo(ProfilePage);
+export default ProfilePage;
