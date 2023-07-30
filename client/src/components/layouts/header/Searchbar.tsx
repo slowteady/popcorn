@@ -7,12 +7,7 @@ import {
   Slide,
   styled,
 } from "@mui/material";
-import React, {
-  ChangeEvent,
-  KeyboardEvent,
-  useRef,
-  useState
-} from "react";
+import React, { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { searchKeyword } from "../../../state/searchState";
@@ -101,13 +96,13 @@ const Searchbar = () => {
         <Slide direction="down" in={open} mountOnEnter unmountOnExit>
           <StyledSearchbar>
             <Input
-              autoFocus
-              fullWidth
-              disableUnderline
-              placeholder="영화를 검색해주세요"
               onKeyDown={handleKeyDown}
               inputRef={inputRef}
               onChange={handleInputChange}
+              placeholder="영화를 검색해주세요"
+              autoFocus
+              fullWidth
+              disableUnderline
               startAdornment={
                 <InputAdornment position="start">
                   <Iconify
