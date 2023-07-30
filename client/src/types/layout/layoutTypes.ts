@@ -2,6 +2,8 @@
 // 레이아웃 타입
 // ----------------------------------------------------------------------
 
+import { Breakpoint } from "@mui/material";
+
 export interface MenuProps {
   openNav: boolean;
   onCloseNav: () => void;
@@ -23,4 +25,10 @@ export interface ItemProps {
 
 export interface HeaderProps {
   onOpenNav: () => void;
+}
+
+export interface useResponsiveProps {
+  query: "up" | "down" | "between";
+  start: Breakpoint;
+  end?: number | Breakpoint;
 }
