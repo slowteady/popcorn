@@ -14,13 +14,21 @@ import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
 
 // ----------------------------------------------------------------------
-// 라우터
+// 라우터 컴포넌트
 // ----------------------------------------------------------------------
 
 const Router = () => {
   const routes = useRoutes([
     {
       path: "/",
+      element: (
+        <Auth>
+          <Navigate to="/main" />
+        </Auth>
+      ),
+    },
+    {
+      path: "/login",
       element: <LoginPage />,
     },
     {
