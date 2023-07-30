@@ -94,12 +94,12 @@ export const authUser = async (token?: AxiosRequestConfig<any>) => {
 };
 
 // 사용자 프로파일 업데이트 요청
-export const updateProfileUser = async (data: ProfileBody) => {
+export const updateProfileUser = async (body: ProfileBody) => {
   const formData = new FormData();
-  formData.append("intro", data.selfIntro);
+  formData.append("intro", body.selfIntro);
 
-  if (data.avatarImg) {
-    formData.append("userImg", data.avatarImg);
+  if (body.avatarImg) {
+    formData.append("userImg", body.avatarImg);
   }
 
   try {
