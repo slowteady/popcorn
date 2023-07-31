@@ -12,7 +12,7 @@ import { MoviesObj } from "../../../../types/state/movies/moviesTypes";
 import { getCookie } from "../../../../utils/cookieUtils";
 import { confirmMsg, msg } from "../../../../utils/msgUtils";
 import Iconify from "../../../iconify/Iconify";
-import MovieList from "../movies/MovieList";
+import MovieAlbumList from "../movies/MovieAlbumList";
 
 // ----------------------------------------------------------------------
 // 컬렉션 디테일 페이지 컴포넌트
@@ -137,7 +137,7 @@ const CollectionDetailPage = () => {
         </Button>
       </Stack>
 
-      {movie && <MovieList isCollection={false} movies={movie} />}
+      {movie && <MovieAlbumList isCollection={false} movies={movie} />}
       <InView onChange={handleView}>
         <Box
           sx={{

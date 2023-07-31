@@ -7,7 +7,7 @@ import { MovieDetailTypography } from "../../../../theme/typography";
 import {
   MovieDetailProps,
   MovieModalPageProps,
-} from "../../../../types/state/movies/movieTypes";
+} from "../../../../types/state/movies/moviesTypes";
 
 // ----------------------------------------------------------------------
 // 세부영화 모달 페이지 컴포넌트

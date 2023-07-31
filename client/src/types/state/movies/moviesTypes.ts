@@ -14,7 +14,11 @@ export interface MoviesObj {
   genre_ids?: number[];
 }
 
-export interface MovieListProps {
+export interface MoviesSortBoxProps {
+  onChange: () => void;
+}
+
+export interface MovieAlbumListProps {
   isCollection: boolean;
   movies: MoviesObj[];
 }
@@ -112,10 +116,6 @@ export interface NodataProps {
   width?: number;
   sx?: SxProps;
   containerSx?: SxProps;
-}
-
-export interface MovieTypeProps {
-  onChange: () => void;
 }
 
 export interface MovieModalPageProps {

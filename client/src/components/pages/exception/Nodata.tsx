@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React, { FunctionComponent, memo } from "react";
-import { NodataProps } from "../../../types/state/movies/movieTypes";
+import { NodataProps } from "../../../types/state/movies/moviesTypes";
 import Iconify from "../../iconify/Iconify";
 
 // ----------------------------------------------------------------------

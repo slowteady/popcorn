@@ -1,9 +1,9 @@
 import { Checkbox, Grid } from "@mui/material";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, memo } from "react";
 import { useRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
 import {
-  MovieListProps,
+  MovieAlbumListProps,
   MoviesObj,
 } from "../../../../types/state/movies/moviesTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
@@ -11,12 +11,12 @@ import Nodata from "../../exception/Nodata";
 import MovieCard from "./MovieCard";
 
 // ----------------------------------------------------------------------
-// Movie 리스트 컴포넌트
+// Movies 앨범형 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
-const MovieList = ({ movies, isCollection }: MovieListProps) => {
-  const style = whichContainerSize(isCollection);
+const MovieAlbumList = ({ movies, isCollection }: MovieAlbumListProps) => {
   const [checkedMovies, setCheckedMovies] = useRecoilState(collectionCartList);
+  const style = whichContainerSize(isCollection);
 
   const handleOnChange = (
     e: ChangeEvent<HTMLInputElement>,
@@ -76,4 +76,4 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
   );
 };
 
-export default MovieList;
+export default memo(MovieAlbumList);

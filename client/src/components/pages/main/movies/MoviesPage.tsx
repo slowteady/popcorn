@@ -9,7 +9,7 @@ import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieData } from "../../../../services/movieService";
 import { moviesSortType } from "../../../../state/movieState";
 import { MoviesObj } from "../../../../types/state/movies/moviesTypes";
-import MovieList from "./MovieList";
+import MovieAlbumList from "./MovieAlbumList";
 import MoviesSortBox from "./MoviesSortBox";
 
 // ----------------------------------------------------------------------
@@ -96,7 +96,7 @@ const MoviesPage = () => {
           </Stack>
         </Stack>
 
-        {movies && <MovieList isCollection={false} movies={movies} />}
+        {movies && <MovieAlbumList isCollection={false} movies={movies} />}
         <InView onChange={handleScroll}>
           <Box
             sx={{

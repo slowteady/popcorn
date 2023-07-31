@@ -6,7 +6,7 @@ import {
   MovieCreditsProps,
   MovieModalProps,
   MoviesObj,
-} from "../types/state/movies/movieTypes";
+} from "../types/state/movies/moviesTypes";
 
 // ----------------------------------------------------------------------
 // 영화 관련 서비스 
