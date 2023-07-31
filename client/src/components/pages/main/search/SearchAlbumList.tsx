@@ -10,6 +10,7 @@ import React, {
   ChangeEvent,
   KeyboardEvent,
   MouseEvent,
+  memo,
   useEffect,
   useState,
 } from "react";
@@ -17,10 +18,10 @@ import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { getSearchMovieData } from "../../../../services/movieService";
+import { getSearchMovieData } from "../../../../services/searchService";
 import { moviesSearchList } from "../../../../state/movieState";
 import { searchKeyword } from "../../../../state/searchState";
-import { isCollectionProps } from "../../../../types/state/movies/moviesTypes";
+import { SearchAlbumListProps } from "../../../../types/state/search/searchTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import CollectionMovieList from "../collection/CollectionMovieList";
@@ -30,11 +31,11 @@ import MoviesAlbumList from "../movies/MoviesAlbumList";
 // 영화 검색 창 / 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
-const MovieSearch = ({ isCollection }: isCollectionProps) => {
+const SearchAlbumList = ({ isCollection }: SearchAlbumListProps) => {
   const [keyword, setKeyword] = useRecoilState(searchKeyword); // 상단 검색 키워드
   const [movie, setMovie] = useRecoilState(moviesSearchList); // 영화 리스트
   const [inputValue, setInputValue] = useState(keyword); // 현재 값
-  const [prevValue, setPrevValue] = useState<string>(keyword); // 이전 값
+  const [prevValue, setPrevValue] = useState(keyword); // 이전 값
   const [isFirstLoad, setIsFirstLoad] = useState(true); // 초기 렌더링 여부
   const [page, setPage] = useState(1); // 페이지
   const [query, setQuery] = useState(""); // 검색어
@@ -42,10 +43,17 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
   const location = useLocation();
 
   // 검색 결과 API 요청
-  const { status, data } = useQuery(
+  const { status } = useQuery(
     ["searchMovieData", query, page],
     () => getSearchMovieData(query, page),
-    { enabled }
+    {
+      onSuccess: (data) => {
+        if (data && data.payload.length > 0) {
+          setMovie((prevMovie) => [...prevMovie, ...data.payload]);
+        }
+      },
+      enabled,
+    }
   );
 
   useEffect(() => {
@@ -66,12 +74,6 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
       setQuery(inputValue);
     }
   }, [location]);
-
-  useEffect(() => {
-    if (data && data.payload.length > 0 && status === "success") {
-      setMovie((prevMovie) => [...prevMovie, ...data.payload]);
-    }
-  }, [data]);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -131,11 +133,11 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
   return (
     <Container>
       <TextField
-        sx={{ width: 280 }}
-        value={inputValue}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
+        value={inputValue}
         placeholder="영화를 검색해주세요"
+        sx={{ width: 280 }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -147,7 +149,7 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
           ),
         }}
       />
-      <Button variant="contained" sx={{ margin: "10px" }} onClick={handleClick}>
+      <Button onClick={handleClick} variant="contained" sx={{ margin: "10px" }}>
         Search
       </Button>
       {isCollection ? (
@@ -169,7 +171,7 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
                 mt: "20px",
               }}
             >
-              {status === "loading" && <PendingIcon fontSize="large" />}
+              {status === "success" && <PendingIcon fontSize="large" />}
             </Box>
           </InView>
         </>
@@ -178,4 +180,4 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
   );
 };
 
-export default MovieSearch;
+export default memo(SearchAlbumList);

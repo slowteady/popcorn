@@ -75,11 +75,6 @@ export interface MovieCreditsObj {
 
 // -------------------------------
 
-export interface isCollectionProps {
-  isCollection: boolean;
-  query?: string;
-}
-
 export interface CollectionObj {
   collectionTitle: string;
   movie: {

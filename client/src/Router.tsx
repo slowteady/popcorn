@@ -8,7 +8,7 @@ import CollectionAddPage from "./components/pages/main/collection/CollectionAddP
 import CollectionDetailPage from "./components/pages/main/collection/CollectionDetailPage";
 import CollectionListPage from "./components/pages/main/collection/CollectionListPage";
 import MoviesPage from "./components/pages/main/movies/MoviesPage";
-import MovieSearchPage from "./components/pages/main/search/MovieSearchPage";
+import SearchPage from "./components/pages/main/search/SearchPage";
 import LoginPage from "./components/pages/users/LoginPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
 import SignupPage from "./components/pages/users/SignupPage";
@@ -65,7 +65,7 @@ const Router = () => {
           path: "search",
           element: (
             <Auth>
-              <MovieSearchPage isCollection={false} />
+              <SearchPage isCollection={false} />
             </Auth>
           ),
         },

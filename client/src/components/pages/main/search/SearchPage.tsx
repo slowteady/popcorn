@@ -1,14 +1,14 @@
 import { Container, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { memo } from "react";
 import { Helmet } from "react-helmet-async";
-import { isCollectionProps } from "../../../../types/state/movies/moviesTypes";
-import MovieSearch from "./MovieSearch";
+import { SearchAlbumListProps } from "../../../../types/state/search/searchTypes";
+import SearchAlbumList from "./SearchAlbumList";
 
 // ----------------------------------------------------------------------
 // 영화 검색 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
-const MovieSearchPage = ({ isCollection }: isCollectionProps) => {
+const SearchPage = ({ isCollection }: SearchAlbumListProps) => {
   return (
     <>
       {isCollection ? (
@@ -45,9 +45,9 @@ const MovieSearchPage = ({ isCollection }: isCollectionProps) => {
           </Container>
         </>
       )}
-      <MovieSearch isCollection={isCollection} />
+      <SearchAlbumList isCollection={isCollection} />
     </>
   );
 };
 
-export default MovieSearchPage;
+export default memo(SearchPage);
