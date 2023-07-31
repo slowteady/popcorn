@@ -9,36 +9,34 @@ import MovieModalPage from "./MovieModalPage";
 
 const MovieModalLayout = ({ id, open, handleClose }: MovieModalProps) => {
   return (
-    <>
-      <Modal
-        open={open}
-        onClose={handleClose}
+    <Modal
+      open={open}
+      onClose={handleClose}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Container
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          bgcolor: "#f9f6f6",
+          border: "1px solid rgb(0, 0, 0, 0.8)",
+          borderRadius: "2%",
+          boxShadow: 24,
+          p: 4,
+          maxWidth: {
+            xs: 444,
+            sm: 600,
+          },
         }}
       >
-        <Container
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            bgcolor: "#f9f6f6",
-            border: "1px solid rgb(0, 0, 0, 0.8)",
-            borderRadius: "2%",
-            boxShadow: 24,
-            p: 4,
-            maxWidth: {
-              xs: 444,
-              sm: 600,
-            },
-          }}
-        >
-          <MovieModalPage id={id} />
-        </Container>
-      </Modal>
-    </>
+        <MovieModalPage id={id} />
+      </Container>
+    </Modal>
   );
 };
 
