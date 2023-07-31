@@ -1,6 +1,6 @@
 import PendingIcon from "@mui/icons-material/Pending";
 import { Box, Container, Stack, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
@@ -18,7 +18,7 @@ import MoviesSortBox from "./MoviesSortBox";
 
 const MoviesPage = () => {
   const sortType = useRecoilValue(moviesSortType); // 정렬 조건
-  const [movies, setMovies] = useState<MoviesObj[]>([]); // 
+  const [movies, setMovies] = useState<MoviesObj[]>([]); // 영화 state
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [enabled, setEnabled] = useState(false);
@@ -45,13 +45,6 @@ const MoviesPage = () => {
     { enabled }
   );
 
-  // 초기화
-  const handleMovieTypeChange = () => {
-    setPage(1);
-    setMovies([]);
-    setIsFirstLoad(true);
-  };
-
   useEffect(() => {
     setEnabled(true);
   }, [page]);
@@ -62,7 +55,15 @@ const MoviesPage = () => {
     }
   }, [data]);
 
-  const handleView = (inView: boolean) => {
+  // 초기화
+  const handleMoviesSortType = useCallback(() => {
+    setPage(1);
+    setMovies([]);
+    setIsFirstLoad(true);
+  }, [page, movies, isFirstLoad]);
+
+  // 스크롤
+  const handleScroll = (inView: boolean) => {
     // 초기 렌더링 시 로직 두번 타는 거 방지
     if (isFirstLoad) {
       setIsFirstLoad(false);
@@ -91,12 +92,12 @@ const MoviesPage = () => {
           mb={3}
         >
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            <MoviesSortBox onChange={handleMovieTypeChange} />
+            <MoviesSortBox onChange={handleMoviesSortType} />
           </Stack>
         </Stack>
 
         {movies && <MovieList isCollection={false} movies={movies} />}
-        <InView onChange={handleView}>
+        <InView onChange={handleScroll}>
           <Box
             sx={{
               display: "flex",
