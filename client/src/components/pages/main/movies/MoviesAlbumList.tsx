@@ -55,7 +55,7 @@ const MoviesAlbumList = ({ movies, isCollection }: MovieAlbumListProps) => {
                     checked={isChecked}
                   />
                 )}
-                <MovieCard isCollection={isCollection} movie={movie} />
+                <MovieCard isCollection={isCollection} movies={movie} />
               </Grid>
             );
           })

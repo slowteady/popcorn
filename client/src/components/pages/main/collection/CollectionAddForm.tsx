@@ -29,7 +29,7 @@ import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
-import MovieModal from "../movies/MovieModal";
+import MovieModalLayout from "../movies/MovieModalLayout";
 
 // ----------------------------------------------------------------------
 // 컬렉션 추가 리스트 카트 컴포넌트
@@ -221,7 +221,11 @@ const CollectionAddForm = () => {
           </Button>
         </Box>
       </Card>
-      <MovieModal id={movieId} open={open} handleClose={handleModalClose} />
+      <MovieModalLayout
+        id={movieId}
+        open={open}
+        handleClose={handleModalClose}
+      />
     </Container>
   );
 };

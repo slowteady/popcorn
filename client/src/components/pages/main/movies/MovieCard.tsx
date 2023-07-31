@@ -1,12 +1,12 @@
 import { Box, Card, Stack, Typography, styled } from "@mui/material";
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { MovieCardProps } from "../../../../types/state/movies/moviesTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
-import MovieModal from "./MovieModal";
+import MovieModalLayout from "./MovieModalLayout";
 
 // ----------------------------------------------------------------------
-// Movies 카드 컴포넌트
+// Movie 카드 컴포넌트
 // ----------------------------------------------------------------------
 
 const StyledMovieImg = styled("img")({
@@ -17,9 +17,9 @@ const StyledMovieImg = styled("img")({
   position: "absolute",
 });
 
-const MovieCard = ({ movie, isCollection }: MovieCardProps) => {
+const MovieCard = ({ movies, isCollection }: MovieCardProps) => {
   const [open, setOpen] = useState(false);
-  const { id, poster_path, release_date, title, vote_average } = movie;
+  const { id, poster_path, release_date, title, vote_average } = movies;
   const voteAverage = (Math.round(vote_average * 10) / 10).toFixed(1);
   const posterUrl = `${MOVIE_API.IMAGE_BASE_URL}${MOVIE_API.IMAGE_SIZE_500}${poster_path}`;
   const style = whichContainerSize(isCollection);
@@ -73,9 +73,9 @@ const MovieCard = ({ movie, isCollection }: MovieCardProps) => {
           </Stack>
         </Stack>
       </Card>
-      <MovieModal id={id} open={open} handleClose={handleModalClose} />
+      <MovieModalLayout id={id} open={open} handleClose={handleModalClose} />
     </>
   );
 };
 
-export default MovieCard;
+export default memo(MovieCard);
