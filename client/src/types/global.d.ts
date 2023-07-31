@@ -1,3 +1,5 @@
+import { MoviesObj } from "./state/movies/moviesTypes";
+
 // ----------------------------------------------------------------------
 // 전역 타입 선언
 // ----------------------------------------------------------------------
@@ -15,6 +17,7 @@ declare global {
       code?: number;
       isExpire?: boolean;
       user?: object | boolean;
+      movie?: MoviesObj[];
     };
   }
 }
