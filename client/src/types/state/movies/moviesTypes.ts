@@ -75,11 +75,6 @@ export interface MovieCreditsObj {
 
 // -------------------------------
 
-export interface AddMovieModalProps {
-  open: boolean;
-  handleClose: () => void;
-}
-
 export interface isCollectionProps {
   isCollection: boolean;
   query?: string;
