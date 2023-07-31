@@ -2,15 +2,10 @@ import { atom } from "recoil";
 import { MoviesObj } from "../types/state/movies/moviesTypes";
 
 // ----------------------------------------------------------------------
-// movies 메뉴 관련 전역 STATE
+// Collection 메뉴 관련 전역 STATE
 // ----------------------------------------------------------------------
 
-export const moviesSortType = atom({
-  key: "moviesSortType",
-  default: { value: "POPULAR", label: "Popular" },
-});
-
-export const moviesSearchList = atom({
-  key: "moviesSearchList",
+export const collectionAddBoard = atom({
+  key: "collectionAddBoard",
   default: [] as MoviesObj[],
 });
