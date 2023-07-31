@@ -1,13 +1,13 @@
 import { Container, Modal } from "@mui/material";
 import React, { memo } from "react";
-import { MovieModalProps } from "../../../../types/state/movies/moviesTypes";
+import { MovieModalLayoutProps } from "../../../../types/state/movies/moviesTypes";
 import MovieModalPage from "./MovieModalPage";
 
 // ----------------------------------------------------------------------
 // 세부영화 모달 레이아웃 컴포넌트
 // ----------------------------------------------------------------------
 
-const MovieModalLayout = ({ id, open, handleClose }: MovieModalProps) => {
+const MovieModalLayout = ({ id, open, handleClose }: MovieModalLayoutProps) => {
   return (
     <Modal
       open={open}

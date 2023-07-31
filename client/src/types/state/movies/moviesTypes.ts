@@ -28,7 +28,7 @@ export interface MovieCardProps {
   movies: MoviesObj;
 }
 
-export interface MovieModalProps {
+export interface MovieModalLayoutProps {
   open: boolean;
   handleClose: () => void;
   id: number | null;
