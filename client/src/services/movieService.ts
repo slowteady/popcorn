@@ -3,8 +3,8 @@ import { MOVIE_API } from "../config/api/dataConfig";
 import {
   CollectionObj,
   MovieCreditsMember,
-  MovieCreditsProps,
-  MovieModalProps,
+  MovieCreditsObj,
+  MovieResponseData,
   MoviesObj,
 } from "../types/state/movies/moviesTypes";
 
@@ -48,7 +48,7 @@ export const getMovieData = async (url: string, page: number) => {
       },
     });
     const obj = { isSuccess: true, payload: response.data.results };
-    
+
     return obj;
   } catch (err) {
     console.error(err);
@@ -58,7 +58,7 @@ export const getMovieData = async (url: string, page: number) => {
   }
 };
 
-// movie api 디테일 요청
+// Movie Detail 데이터 요청
 export const getMovieDetailData = async (url: string) => {
   try {
     const movieResponse = await axios.get(url, {
@@ -67,7 +67,6 @@ export const getMovieDetailData = async (url: string) => {
         language: MOVIE_API.LANGUAGE,
       },
     });
-
     const creditsUrl = `${url}/${MOVIE_API.CREDITS_PATH}`;
     const creditsResponse = await axios.get(creditsUrl, {
       params: {
@@ -75,41 +74,18 @@ export const getMovieDetailData = async (url: string) => {
         language: MOVIE_API.LANGUAGE,
       },
     });
-
     const transObj = transformMovieData(
       movieResponse.data,
       creditsResponse.data
     );
 
     const obj = {
+      isSuccess: true,
       payload: {
-        isSuccess: true,
         movie: transObj,
       },
     };
-    return obj;
-  } catch (err) {
-    console.error(err);
-    return {
-      payload: { isSuccess: false, msg: "오류가 발생했어요" },
-    };
-  }
-};
 
-// 영화 검색 데이터 요청
-export const getSearchMovieData = async (query: string, page: number) => {
-  try {
-    const url = `${MOVIE_API.BASE_URL}${MOVIE_API.SEARCH_PATH}`;
-    const response = await axios.get(url, {
-      params: {
-        api_key: MOVIE_API.API_KEY,
-        language: MOVIE_API.LANGUAGE,
-        query,
-        page,
-      },
-    });
-
-    const obj = { isSuccess: true, payload: response.data.results };
     return obj;
   } catch (err) {
     console.error(err);
@@ -121,8 +97,8 @@ export const getSearchMovieData = async (query: string, page: number) => {
 
 // 데이터 변환
 const transformMovieData = (
-  movieData: MovieModalProps["movie"],
-  creditsData: MovieCreditsProps["credits"]
+  movieData: MovieResponseData["movie"],
+  creditsData: MovieCreditsObj["credits"]
 ) => {
   const {
     genres,
@@ -135,7 +111,6 @@ const transformMovieData = (
   } = movieData;
 
   const { cast, crew } = creditsData;
-
   const initData = {
     genres: [] as string[],
     tagline: "-",
@@ -204,6 +179,29 @@ const transformMovieData = (
   return obj;
 };
 
+// 영화 검색 데이터 요청
+export const getSearchMovieData = async (query: string, page: number) => {
+  try {
+    const url = `${MOVIE_API.BASE_URL}${MOVIE_API.SEARCH_PATH}`;
+    const response = await axios.get(url, {
+      params: {
+        api_key: MOVIE_API.API_KEY,
+        language: MOVIE_API.LANGUAGE,
+        query,
+        page,
+      },
+    });
+    const obj = { isSuccess: true, payload: response.data.results };
+
+    return obj;
+  } catch (err) {
+    console.error(err);
+    return {
+      payload: { isSuccess: false, msg: "오류가 발생했어요" },
+    };
+  }
+};
+
 // 컬렉션 등록
 export const registerCollection = async (body: CollectionObj) => {
   try {
@@ -213,6 +211,7 @@ export const registerCollection = async (body: CollectionObj) => {
       // 에러 코드 있을 시
       obj.payload.code = response.data.msg.code;
     }
+
     return obj;
   } catch (err) {
     console.error(err);

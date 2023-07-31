@@ -1,11 +1,11 @@
 import { Box, Grid, Typography, styled } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 import { useQuery } from "react-query";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieDetailData } from "../../../../services/movieService";
 import { MovieDetailTypography } from "../../../../theme/typography";
 import {
-  MovieDetailProps,
+  MovieDetailObj,
   MovieModalPageProps,
 } from "../../../../types/state/movies/moviesTypes";
 
@@ -22,21 +22,20 @@ const StyledMovieImg = styled("img")({
 });
 
 const MovieModalPage = ({ id }: MovieModalPageProps) => {
-  const [movie, setMovie] = useState<MovieDetailProps["movie"]>();
+  const [movie, setMovie] = useState<MovieDetailObj>();
   const url = `${MOVIE_API.BASE_URL}movie/${id}`;
-  const { status, data } = useQuery(["movieDetailData", url], () =>
-    getMovieDetailData(url)
-  );
 
-  useEffect(() => {
-    if (
-      status === "success" &&
-      data.payload.isSuccess &&
-      "movie" in data.payload
-    ) {
-      setMovie({ ...data.payload.movie });
+  const { status } = useQuery(
+    ["movieDetailData", url],
+    () => getMovieDetailData(url),
+    {
+      onSuccess: (data) => {
+        if ("movie" in data.payload) {
+          setMovie({ ...data.payload.movie });
+        }
+      },
     }
-  }, [data]);
+  );
 
   let posterUrl = "";
   if (movie) {
@@ -106,6 +105,8 @@ const MovieModalPage = ({ id }: MovieModalPageProps) => {
           </Typography>
           {movie && movie.tagline && (
             <Typography
+              fontSize={14}
+              title={movie.tagline}
               sx={{
                 mb: "2px",
                 mt: "2px",
@@ -114,8 +115,6 @@ const MovieModalPage = ({ id }: MovieModalPageProps) => {
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
               }}
-              fontSize={14}
-              title={movie.tagline}
             >
               {movie.tagline}
             </Typography>
@@ -126,4 +125,4 @@ const MovieModalPage = ({ id }: MovieModalPageProps) => {
   );
 };
 
-export default MovieModalPage;
+export default memo(MovieModalPage);
