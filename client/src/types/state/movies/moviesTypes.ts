@@ -25,10 +25,16 @@ export interface MovieAlbumListProps {
 
 export interface MovieCardProps {
   isCollection: boolean;
-  movie: MoviesObj;
+  movies: MoviesObj;
 }
 
 export interface MovieModalProps {
+  open: boolean;
+  handleClose: () => void;
+  id: number | null;
+}
+
+export interface MovieResponseData {
   movie: {
     title: string;
     poster_path: string;
@@ -40,30 +46,34 @@ export interface MovieModalProps {
   };
 }
 
+export interface MovieModalPageProps {
+  id: number | null;
+}
+
+export interface MovieDetailObj {
+  genres: string[];
+  tagline: string;
+  poster_path: string;
+  release_date: string;
+  runtime: number | string;
+  title: string;
+  vote_average: number | string;
+  actor: string[];
+  director: string[];
+}
+
 export interface MovieCreditsMember {
   [key: string]: any;
 }
 
-export interface MovieCreditsProps {
+export interface MovieCreditsObj {
   credits: {
     crew?: MovieCreditsMember;
     cast?: MovieCreditsMember;
   };
 }
 
-export interface MovieDetailProps {
-  movie: {
-    genres: string[];
-    tagline: string;
-    poster_path: string;
-    release_date: string;
-    runtime: number | string;
-    title: string;
-    vote_average: number | string;
-    actor: string[];
-    director: string[];
-  };
-}
+// -------------------------------
 
 export interface AddMovieModalProps {
   open: boolean;
@@ -116,8 +126,4 @@ export interface NodataProps {
   width?: number;
   sx?: SxProps;
   containerSx?: SxProps;
-}
-
-export interface MovieModalPageProps {
-  id: number | null;
 }

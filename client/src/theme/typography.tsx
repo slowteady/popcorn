@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import React from "react";
 import {
-    MovieDetailTypographyProps,
-    responsiveFontSizesProps,
+  MovieDetailTypographyProps,
+  responsiveFontSizesProps,
 } from "../types/layout/theme/themeTypes";
 
 // ----------------------------------------------------------------------
@@ -118,7 +118,7 @@ export const MovieDetailTypography = ({
   ...props
 }: MovieDetailTypographyProps) => {
   return (
-    <Typography sx={{ mb: "2px", mt: "2px" }} fontSize={14} noWrap {...props}>
+    <Typography fontSize={14} noWrap sx={{ mb: "2px", mt: "2px" }} {...props}>
       {children}
     </Typography>
   );

@@ -28,5 +28,5 @@ export interface responsiveFontSizesProps {
 }
 
 export interface MovieDetailTypographyProps extends TypographyProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
