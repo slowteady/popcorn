@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { moviesSearchList } from "../../../../state/movieState";
 import { isCollectionProps } from "../../../../types/state/movies/moviesTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
-import MovieAlbumList from "../movies/MovieAlbumList";
+import MoviesAlbumList from "../movies/MoviesAlbumList";
 import CollectionAddForm from "./CollectionAddForm";
 
 // ----------------------------------------------------------------------
@@ -20,7 +20,7 @@ const CollectionMovieList = ({ isCollection, query }: isCollectionProps) => {
       <Grid item {...style.itemSize} sx={{ ...style.gridSx }}>
         <Box>
           {movie && query && (
-            <MovieAlbumList isCollection={isCollection} movies={movie} />
+            <MoviesAlbumList isCollection={isCollection} movies={movie} />
           )}
         </Box>
       </Grid>

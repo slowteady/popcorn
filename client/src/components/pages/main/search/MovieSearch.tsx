@@ -24,7 +24,7 @@ import { isCollectionProps } from "../../../../types/state/movies/moviesTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import CollectionMovieList from "../collection/CollectionMovieList";
-import MovieAlbumList from "../movies/MovieAlbumList";
+import MoviesAlbumList from "../movies/MoviesAlbumList";
 
 // ----------------------------------------------------------------------
 // 영화 검색 창 / 리스트 컴포넌트
@@ -156,7 +156,7 @@ const MovieSearch = ({ isCollection }: isCollectionProps) => {
         <>
           <Box sx={{ mt: 6 }}>
             {movie && query && (
-              <MovieAlbumList isCollection={isCollection} movies={movie} />
+              <MoviesAlbumList isCollection={isCollection} movies={movie} />
             )}
           </Box>
           <InView onChange={handleView}>

@@ -14,7 +14,7 @@ import MovieCard from "./MovieCard";
 // Movies 앨범형 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
-const MovieAlbumList = ({ movies, isCollection }: MovieAlbumListProps) => {
+const MoviesAlbumList = ({ movies, isCollection }: MovieAlbumListProps) => {
   const [checkedMovies, setCheckedMovies] = useRecoilState(collectionAddBoard);
   const style = useMemo(() => whichContainerSize(isCollection), [isCollection]);
 
@@ -76,4 +76,4 @@ const MovieAlbumList = ({ movies, isCollection }: MovieAlbumListProps) => {
   );
 };
 
-export default memo(MovieAlbumList);
+export default memo(MoviesAlbumList);
