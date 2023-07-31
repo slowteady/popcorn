@@ -8,7 +8,7 @@ import {
   deleteCollection,
   getDetailData,
 } from "../../../../services/movieService";
-import { MovieProps } from "../../../../types/state/movies/movieTypes";
+import { MoviesObj } from "../../../../types/state/movies/moviesTypes";
 import { getCookie } from "../../../../utils/cookieUtils";
 import { confirmMsg, msg } from "../../../../utils/msgUtils";
 import Iconify from "../../../iconify/Iconify";
@@ -23,7 +23,7 @@ const LIST_COUNT = 20;
 const CollectionDetailPage = () => {
   const [id, setId] = useState("");
   const [collectionTitle, setCollectionTitle] = useState("");
-  const [movie, setMovie] = useState<MovieProps[]>([]);
+  const [movie, setMovie] = useState<MoviesObj[]>([]);
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [enabled, setEnable] = useState(false);

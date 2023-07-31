@@ -23,7 +23,7 @@ import {
   registerCollection,
 } from "../../../../services/movieService";
 import { collectionCartList } from "../../../../state/movieState";
-import { MovieProps, payload } from "../../../../types/state/movies/movieTypes";
+import { MoviesObj, payload } from "../../../../types/state/movies/moviesTypes";
 import { isSuccessValidate } from "../../../../utils/auth/responseValidate";
 import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";
@@ -83,7 +83,7 @@ const CollectionAddForm = () => {
   };
 
   // 휴지통 아이콘 클릭
-  const handleIconClick = (e: MouseEvent, movie: MovieProps) => {
+  const handleIconClick = (e: MouseEvent, movie: MoviesObj) => {
     e.stopPropagation();
 
     setMovies((prevMovies) => prevMovies.filter((m) => m !== movie));

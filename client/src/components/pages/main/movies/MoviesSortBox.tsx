@@ -2,17 +2,17 @@ import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
 import { useRecoilState } from "recoil";
 import { SORT_TYPE_OPTION } from "../../../../config/movie/movieConfig";
-import { movieListType } from "../../../../state/movieState";
-import { MovieTypeProps } from "../../../../types/state/movies/movieTypes";
+import { moviesSortType } from "../../../../state/movieState";
+import { MovieTypeProps } from "../../../../types/state/movies/moviesTypes";
 import Iconify from "../../../iconify/Iconify";
 
 // ----------------------------------------------------------------------
 // MovieType 지정 컴포넌트
 // ----------------------------------------------------------------------
 
-const MovieType = ({ onChange }: MovieTypeProps) => {
+const MoviesSortBox = ({ onChange }: MovieTypeProps) => {
   const [open, setOpen] = useState(false);
-  const [movieType, setMovieType] = useRecoilState(movieListType);
+  const [movieType, setMovieType] = useRecoilState(moviesSortType);
 
   // 레이어 위치 참조를 위한 state
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -79,4 +79,4 @@ const MovieType = ({ onChange }: MovieTypeProps) => {
   );
 };
 
-export default MovieType;
+export default MoviesSortBox;

@@ -7,24 +7,24 @@ import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
 import { getMovieData } from "../../../../services/movieService";
-import { movieListType } from "../../../../state/movieState";
-import { MovieListProps } from "../../../../types/state/movies/movieTypes";
+import { moviesSortType } from "../../../../state/movieState";
+import { MoviesObj } from "../../../../types/state/movies/moviesTypes";
 import MovieList from "./MovieList";
-import MovieType from "./MovieType";
+import MoviesSortBox from "./MoviesSortBox";
 
 // ----------------------------------------------------------------------
 // Movies 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const MoviesPage = () => {
-  const [movie, setMovie] = useState<MovieListProps["movies"]>([]);
+  const sortType = useRecoilValue(moviesSortType); // 정렬 조건
+  const [movies, setMovies] = useState<MoviesObj[]>([]); // 
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [enabled, setEnabled] = useState(false);
-  const movieType = useRecoilValue(movieListType);
 
   let url = MOVIE_API.BASE_URL;
-  switch (movieType.value) {
+  switch (sortType.value) {
     case "POPULAR":
       url += MOVIE_API.POPULAR_PATH;
       break;
@@ -48,7 +48,7 @@ const MoviesPage = () => {
   // 초기화
   const handleMovieTypeChange = () => {
     setPage(1);
-    setMovie([]);
+    setMovies([]);
     setIsFirstLoad(true);
   };
 
@@ -58,7 +58,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     if (status === "success") {
-      setMovie((prevMovie) => [...prevMovie, ...data.payload]);
+      setMovies((prevMovie) => [...prevMovie, ...data.payload]);
     }
   }, [data]);
 
@@ -91,11 +91,11 @@ const MoviesPage = () => {
           mb={3}
         >
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            <MovieType onChange={handleMovieTypeChange} />
+            <MoviesSortBox onChange={handleMovieTypeChange} />
           </Stack>
         </Stack>
 
-        {movie && <MovieList isCollection={false} movies={movie} />}
+        {movies && <MovieList isCollection={false} movies={movies} />}
         <InView onChange={handleView}>
           <Box
             sx={{

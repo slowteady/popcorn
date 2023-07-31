@@ -5,7 +5,7 @@ import {
   MovieCreditsMember,
   MovieCreditsProps,
   MovieModalProps,
-  MovieProps,
+  MoviesObj,
 } from "../types/state/movies/movieTypes";
 
 // ----------------------------------------------------------------------
@@ -24,7 +24,7 @@ export const getPoster = async () => {
     });
 
     const results = response.data.results;
-    const arr = results.map((m: MovieProps) => {
+    const arr = results.map((m: MoviesObj) => {
       return m.poster_path;
     });
 

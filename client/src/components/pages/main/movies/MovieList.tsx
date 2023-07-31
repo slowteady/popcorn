@@ -4,8 +4,8 @@ import { useRecoilState } from "recoil";
 import { collectionCartList } from "../../../../state/movieState";
 import {
   MovieListProps,
-  MovieProps,
-} from "../../../../types/state/movies/movieTypes";
+  MoviesObj,
+} from "../../../../types/state/movies/moviesTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
 import Nodata from "../../exception/Nodata";
 import MovieCard from "./MovieCard";
@@ -20,7 +20,7 @@ const MovieList = ({ movies, isCollection }: MovieListProps) => {
 
   const handleOnChange = (
     e: ChangeEvent<HTMLInputElement>,
-    movie: MovieProps
+    movie: MoviesObj
   ) => {
     const isChecked = e.currentTarget.checked;
     if (isChecked) {

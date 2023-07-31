@@ -20,7 +20,7 @@ import { useRecoilState } from "recoil";
 import { getSearchMovieData } from "../../../../services/movieService";
 import { moviesSearchList } from "../../../../state/movieState";
 import { searchKeyword } from "../../../../state/searchState";
-import { isCollectionProps } from "../../../../types/state/movies/movieTypes";
+import { isCollectionProps } from "../../../../types/state/movies/moviesTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
 import CollectionMovieList from "../collection/CollectionMovieList";

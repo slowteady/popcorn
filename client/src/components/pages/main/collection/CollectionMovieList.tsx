@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { moviesSearchList } from "../../../../state/movieState";
-import { isCollectionProps } from "../../../../types/state/movies/movieTypes";
+import { isCollectionProps } from "../../../../types/state/movies/moviesTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
 import MovieList from "../movies/MovieList";
 import CollectionAddForm from "./CollectionAddForm";

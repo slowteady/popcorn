@@ -2,10 +2,10 @@ import { IconifyIcon } from "@iconify/react";
 import { SxProps } from "@mui/material";
 
 // ----------------------------------------------------------------------
-// movie 타입
+// movies 타입
 // ----------------------------------------------------------------------
 
-export interface MovieProps {
+export interface MoviesObj {
   id: number;
   poster_path: string;
   release_date: string;
@@ -16,12 +16,12 @@ export interface MovieProps {
 
 export interface MovieListProps {
   isCollection: boolean;
-  movies: MovieProps[];
+  movies: MoviesObj[];
 }
 
 export interface MovieCardProps {
   isCollection: boolean;
-  movie: MovieProps;
+  movie: MoviesObj;
 }
 
 export interface MovieModalProps {
