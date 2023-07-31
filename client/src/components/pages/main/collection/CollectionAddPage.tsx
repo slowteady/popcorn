@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { collectionCartList } from "../../../../state/movieState";
+import { collectionAddBoard } from "../../../../state/collectionState";
 import Iconify from "../../../iconify/Iconify";
 import MovieSearchPage from "../search/MovieSearchPage";
 
@@ -12,7 +12,7 @@ import MovieSearchPage from "../search/MovieSearchPage";
 // ----------------------------------------------------------------------
 
 const CollectionAddPage = () => {
-  const setCollectionCartList = useSetRecoilState(collectionCartList);
+  const setCollectionCartList = useSetRecoilState(collectionAddBoard);
   const [isFirstLoad, setIsFirstLoad] = useState(true); // 초기 렌더링 여부
   const navigate = useNavigate();
 

@@ -39,23 +39,22 @@ const MoviesPage = () => {
   }
 
   // API 데이터 호출 및 캐싱
-  const { status, data } = useQuery(
+  const { status } = useQuery(
     ["movieData", url, page],
     () => getMovieData(url, page),
-    { enabled }
+    {
+      onSuccess: (data) => {
+        setMovies((prevMovie) => [...prevMovie, ...data.payload]);
+      },
+      enabled,
+    }
   );
 
   useEffect(() => {
     setEnabled(true);
   }, [page]);
 
-  useEffect(() => {
-    if (status === "success") {
-      setMovies((prevMovie) => [...prevMovie, ...data.payload]);
-    }
-  }, [data]);
-
-  // 초기화
+  // 정렬 조건 바뀔 시 초기화
   const handleMoviesSortType = useCallback(() => {
     setPage(1);
     setMovies([]);
@@ -97,6 +96,7 @@ const MoviesPage = () => {
         </Stack>
 
         {movies && <MovieAlbumList isCollection={false} movies={movies} />}
+
         <InView onChange={handleScroll}>
           <Box
             sx={{
@@ -107,7 +107,7 @@ const MoviesPage = () => {
               mt: "20px",
             }}
           >
-            {status === "loading" && <PendingIcon fontSize="large" />}
+            {!(status === "success") && <PendingIcon fontSize="large" />}
           </Box>
         </InView>
       </Container>

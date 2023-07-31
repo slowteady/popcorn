@@ -22,7 +22,7 @@ import {
   getPreCollection,
   registerCollection,
 } from "../../../../services/movieService";
-import { collectionCartList } from "../../../../state/movieState";
+import { collectionAddBoard } from "../../../../state/collectionState";
 import { MoviesObj, payload } from "../../../../types/state/movies/moviesTypes";
 import { isSuccessValidate } from "../../../../utils/auth/responseValidate";
 import { msg } from "../../../../utils/msgUtils";
@@ -38,7 +38,7 @@ import MovieModal from "../movies/MovieModal";
 const { ROWSPERPAGE, TABLE_HEAD } = addCollectionConf;
 
 const CollectionAddForm = () => {
-  const [movies, setMovies] = useRecoilState(collectionCartList);
+  const [movies, setMovies] = useRecoilState(collectionAddBoard);
   const [collectionTitle, setCollectionTitle] = useState("");
   const [open, setOpen] = useState(false);
   const [movieId, setMovieId] = useState<number | null>(null);

@@ -9,7 +9,7 @@ import {
 } from "../types/state/movies/moviesTypes";
 
 // ----------------------------------------------------------------------
-// 영화 관련 서비스 
+// 영화 관련 서비스
 // ----------------------------------------------------------------------
 
 // popular 포스터 최대 20개 요청
@@ -37,7 +37,7 @@ export const getPoster = async () => {
   }
 };
 
-// movie api 요청
+// Movies 데이터 요청
 export const getMovieData = async (url: string, page: number) => {
   try {
     const response = await axios.get(url, {
@@ -47,8 +47,8 @@ export const getMovieData = async (url: string, page: number) => {
         page,
       },
     });
-
     const obj = { isSuccess: true, payload: response.data.results };
+    
     return obj;
   } catch (err) {
     console.error(err);
