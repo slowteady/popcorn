@@ -3,7 +3,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import Iconify from "../../../iconify/Iconify";
-import CollectionListBoard from "./CollectionListBoard";
+import CollectionMainList from "./CollectionMainList";
 
 // ----------------------------------------------------------------------
 // Collection 메인 페이지 컴포넌트
@@ -40,7 +40,7 @@ const CollectionMainPage = () => {
             New Collection
           </Button>
         </Stack>
-        <CollectionListBoard />
+        <CollectionMainList />
       </Container>
     </>
   );

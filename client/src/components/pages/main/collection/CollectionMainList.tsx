@@ -10,48 +10,50 @@ import {
   Typography,
 } from "@mui/material";
 import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
-import { UseQueryResult, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { listCollectionConf } from "../../../../config/layout/tableConfig";
-import { getListBoardData } from "../../../../services/movieService";
+import { useSetRecoilState } from "recoil";
+import { LIST_TABLE_CONF } from "../../../../config/layout/tableConfig";
+import { getCollectionData } from "../../../../services/collectionService";
+import { collectionDetailData } from "../../../../state/collectionState";
 import {
-  ListBoardData,
-  ListCollectionObj,
-} from "../../../../types/state/movies/moviesTypes";
+  CollectionData,
+  CollectionListObj,
+} from "../../../../types/state/collection/collectionTypes";
 import ListTableHead from "../../../layouts/tables/ListTableHead";
 
 // ----------------------------------------------------------------------
 // 컬렉션 리스트 게시판형 컴포넌트
 // ----------------------------------------------------------------------
 
-const { ROWSPERPAGE, TABLE_HEAD } = listCollectionConf;
+const { ROWSPERPAGE, TABLE_HEAD } = LIST_TABLE_CONF;
 
-const CollectionListBoard = () => {
-  const [collection, setCollection] = useState<ListCollectionObj[]>([]);
-  const [totalPages, setTotalPages] = useState(0);
-  const [page, setPage] = useState(1);
+const CollectionMainList = () => {
+  const setDetailData = useSetRecoilState(collectionDetailData);
+  const [collection, setCollection] = useState<CollectionListObj[]>([]);
+  const [totalPages, setTotalPages] = useState(0); // 전체 페이지 갯수
+  const [page, setPage] = useState(1); // 현재 페이지
   const [enabled, setEnabled] = useState(false);
   const navigate = useNavigate();
 
-  const { status, data }: UseQueryResult<ListBoardData> = useQuery(
-    ["listBoardData", page],
-    () => getListBoardData(page, ROWSPERPAGE),
-    { enabled }
+  useQuery(
+    ["getCollectionData", page],
+    () => getCollectionData(page, ROWSPERPAGE),
+    {
+      onSuccess: (data: CollectionData) => {
+        const collection = data.payload;
+        const totalPage = data.totalPages;
+
+        setCollection(collection);
+        setTotalPages(totalPage);
+      },
+      enabled,
+    }
   );
 
   useEffect(() => {
     setEnabled(true);
   }, [page]);
-
-  useEffect(() => {
-    if (status === "success") {
-      const collection = data.payload;
-      const totalPage = data.totalPages;
-
-      setCollection(collection);
-      setTotalPages(totalPage);
-    }
-  }, [data]);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setPage(page);
@@ -60,11 +62,17 @@ const CollectionListBoard = () => {
   const onTitleClick = (
     e: MouseEvent<HTMLSpanElement>,
     id: string,
-    userId: String
+    authUserId: string
   ) => {
-    navigate("/main/collection/detail", {
-      state: { id, userId, collectionTitle: e.currentTarget.textContent },
-    });
+    const obj = {
+      authUserId,
+      collectionTitle: e.currentTarget.textContent
+        ? e.currentTarget.textContent
+        : "",
+    };
+    setDetailData(obj);
+
+    navigate("/main/collection/detail", { state: { id } });
   };
 
   return (
@@ -90,16 +98,18 @@ const CollectionListBoard = () => {
 
                   return (
                     <TableRow hover key={index} tabIndex={-1} role="row">
-                      <TableCell align="center">
-                        <Typography
-                          onClick={(e) => onTitleClick(e, id, user.userId)}
-                          variant="subtitle2"
-                          noWrap
-                          sx={{ cursor: "pointer" }}
-                        >
-                          {collectionTitle}
-                        </Typography>
-                      </TableCell>
+                      {collectionTitle && (
+                        <TableCell align="center">
+                          <Typography
+                            onClick={(e) => onTitleClick(e, id, user.userId)}
+                            variant="subtitle2"
+                            noWrap
+                            sx={{ cursor: "pointer" }}
+                          >
+                            {collectionTitle}
+                          </Typography>
+                        </TableCell>
+                      )}
                       <TableCell align="center">
                         <Typography variant="subtitle2" noWrap>
                           {user.userName}
@@ -134,4 +144,4 @@ const CollectionListBoard = () => {
   );
 };
 
-export default CollectionListBoard;
+export default CollectionMainList;

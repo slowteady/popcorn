@@ -4,10 +4,12 @@ import React, { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import {
   deleteCollection,
   getDetailData,
-} from "../../../../services/movieService";
+} from "../../../../services/collectionService";
+import { collectionDetailData } from "../../../../state/collectionState";
 import { MoviesObj } from "../../../../types/state/movies/moviesTypes";
 import { getCookie } from "../../../../utils/cookieUtils";
 import { confirmMsg, msg } from "../../../../utils/msgUtils";
@@ -21,40 +23,43 @@ import MoviesAlbumList from "../movies/MoviesAlbumList";
 const LIST_COUNT = 20;
 
 const CollectionDetailPage = () => {
+  const collectionData = useRecoilValue(collectionDetailData);
   const [id, setId] = useState("");
-  const [collectionTitle, setCollectionTitle] = useState("");
   const [movie, setMovie] = useState<MoviesObj[]>([]);
   const [page, setPage] = useState(1);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [enabled, setEnable] = useState(false);
-  const [isYours, setIsYours] = useState(false);
+  const [isAuthor, setIsAuthor] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { authUserId, collectionTitle } = collectionData;
 
   const { status } = useQuery(
     ["detailData", id, page],
     () => getDetailData(id, page, LIST_COUNT),
     {
-      enabled,
       onSuccess: (data) => {
-        const { movie } = data?.payload.collection;
-        setMovie((prevMovie) => [...prevMovie, ...movie]);
+        if (data && data.payload) {
+          const { movie } = data.payload.collection;
+          setMovie((prevMovie) => [...prevMovie, ...movie]);
+        }
       },
+      enabled,
     }
   );
 
   useEffect(() => {
-    if (!location.state || !location.state.id) {
+    if (location && !location.state.id) {
       navigate("*");
     } else {
       // 해당 게시물의 작성자일 경우
       const cookie = getCookie("AUTH_TOKEN");
-      const userId = cookie._id;
-      if (location.state.userId === userId) {
-        setIsYours(true);
+      const loginedUserId = cookie._id;
+      if (authUserId === loginedUserId) {
+        setIsAuthor(true);
       }
       setId(location.state.id);
-      setCollectionTitle(location.state.collectionTitle);
       setEnable(true);
     }
   }, [location]);
@@ -106,7 +111,7 @@ const CollectionDetailPage = () => {
         mb={3}
       >
         <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-          {isYours && (
+          {isAuthor && (
             <Box>
               <Button
                 onClick={handleEditBtn}

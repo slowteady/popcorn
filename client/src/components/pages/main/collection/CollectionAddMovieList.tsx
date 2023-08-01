@@ -2,19 +2,19 @@ import { Box, Grid } from "@mui/material";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { moviesSearchList } from "../../../../state/movieState";
-import { CollectionAlbumListProps } from "../../../../types/state/collection/collectionTypes";
+import { CollectionAddMovieListProps } from "../../../../types/state/collection/collectionTypes";
 import { whichContainerSize } from "../../../../utils/styleUtils";
 import MoviesAlbumList from "../movies/MoviesAlbumList";
 import CollectionAddForm from "./CollectionAddForm";
 
 // ----------------------------------------------------------------------
-// 컬렉션 영화 리스트 컴포넌트
+// 컬렉션 생성 페이지 영화 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
-const CollectionMovieList = ({
+const CollectionAddMovieList = ({
   isCollection,
   query,
-}: CollectionAlbumListProps) => {
+}: CollectionAddMovieListProps) => {
   const movie = useRecoilValue(moviesSearchList);
   const style = whichContainerSize(isCollection); // 컨테이너 사이즈
 
@@ -34,4 +34,4 @@ const CollectionMovieList = ({
   );
 };
 
-export default CollectionMovieList;
+export default CollectionAddMovieList;

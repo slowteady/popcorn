@@ -3,22 +3,22 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { collectionAddBoard } from "../../../../state/collectionState";
+import { collectionAddMovie } from "../../../../state/collectionState";
 import Iconify from "../../../iconify/Iconify";
 import SearchMainPage from "../search/SearchMainPage";
 
 // ----------------------------------------------------------------------
-// 영화 콜렉션 추가 페이지 컴포넌트
+// 영화 컬렉션 생성 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
 const CollectionAddPage = () => {
-  const setCollectionCartList = useSetRecoilState(collectionAddBoard);
+  const setCollectionMovie = useSetRecoilState(collectionAddMovie);
   const [isFirstLoad, setIsFirstLoad] = useState(true); // 초기 렌더링 여부
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isFirstLoad) {
-      setCollectionCartList([]);
+      setCollectionMovie([]);
       setIsFirstLoad(false);
     }
   }, [isFirstLoad]);
@@ -26,7 +26,7 @@ const CollectionAddPage = () => {
   const handleListBtn = () => {
     navigate("/main/collection");
   };
-  
+
   return (
     <>
       <Helmet>

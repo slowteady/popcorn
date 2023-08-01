@@ -1,7 +1,7 @@
 import { Checkbox, Grid } from "@mui/material";
 import React, { ChangeEvent, memo, useMemo } from "react";
 import { useRecoilState } from "recoil";
-import { collectionAddBoard } from "../../../../state/collectionState";
+import { collectionAddMovie } from "../../../../state/collectionState";
 import {
   MovieAlbumListProps,
   MoviesObj,
@@ -15,7 +15,7 @@ import MovieCard from "./MovieCard";
 // ----------------------------------------------------------------------
 
 const MoviesAlbumList = ({ movies, isCollection }: MovieAlbumListProps) => {
-  const [checkedMovies, setCheckedMovies] = useRecoilState(collectionAddBoard);
+  const [checkedMovies, setCheckedMovies] = useRecoilState(collectionAddMovie);
   const style = useMemo(() => whichContainerSize(isCollection), [isCollection]);
 
   const handleOnChange = (

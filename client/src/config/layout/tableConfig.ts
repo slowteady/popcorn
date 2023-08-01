@@ -2,7 +2,7 @@
 // 테이블 설정
 // ----------------------------------------------------------------------
 
-export const addCollectionConf = {
+export const ADD_TABLE_CONF = {
   // 한 페이지 행 갯수
   ROWSPERPAGE: 5,
 
@@ -13,7 +13,7 @@ export const addCollectionConf = {
   ],
 };
 
-export const listCollectionConf = {
+export const LIST_TABLE_CONF = {
   // 한 페이지 행 갯수
   ROWSPERPAGE: 10,
 

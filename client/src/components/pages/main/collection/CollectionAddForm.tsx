@@ -16,14 +16,14 @@ import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { addCollectionConf } from "../../../../config/layout/tableConfig";
+import { ADD_TABLE_CONF } from "../../../../config/layout/tableConfig";
 import {
   editCollection,
   getPreCollection,
   registerCollection,
-} from "../../../../services/movieService";
-import { collectionAddBoard } from "../../../../state/collectionState";
-import { MoviesObj, payload } from "../../../../types/state/movies/moviesTypes";
+} from "../../../../services/collectionService";
+import { collectionAddMovie } from "../../../../state/collectionState";
+import { MoviesObj } from "../../../../types/state/movies/moviesTypes";
 import { isSuccessValidate } from "../../../../utils/auth/responseValidate";
 import { msg } from "../../../../utils/msgUtils";
 import { strCheck } from "../../../../utils/validationUtils";
@@ -32,13 +32,13 @@ import ListTableHead from "../../../layouts/tables/ListTableHead";
 import MovieModalLayout from "../movies/MovieModalLayout";
 
 // ----------------------------------------------------------------------
-// 컬렉션 추가 리스트 카트 컴포넌트
+// 컬렉션 생성 영화 추가 리스트 컴포넌트
 // ----------------------------------------------------------------------
 
-const { ROWSPERPAGE, TABLE_HEAD } = addCollectionConf;
+const { ROWSPERPAGE, TABLE_HEAD } = ADD_TABLE_CONF;
 
 const CollectionAddForm = () => {
-  const [movies, setMovies] = useRecoilState(collectionAddBoard);
+  const [movies, setMovies] = useRecoilState(collectionAddMovie);
   const [collectionTitle, setCollectionTitle] = useState("");
   const [open, setOpen] = useState(false);
   const [movieId, setMovieId] = useState<number | null>(null);
@@ -49,11 +49,15 @@ const CollectionAddForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { status, data } = useQuery(
-    ["getPreCollection", id],
-    () => getPreCollection(id),
-    { enabled }
-  );
+  useQuery(["getPreCollection", id], () => getPreCollection(id), {
+    onSuccess: (data) => {
+      if (data) {
+        setCollectionTitle(data.payload.collection.collectionTitle);
+        setMovies(data.payload.collection.movie);
+      }
+    },
+    enabled,
+  });
 
   useEffect(() => {
     if (location.state && location.state.isEdit) {
@@ -62,13 +66,6 @@ const CollectionAddForm = () => {
       setEnabled(true);
     }
   }, [location]);
-
-  useEffect(() => {
-    if (status === "success" && data) {
-      setCollectionTitle(data.payload.collection.collectionTitle);
-      setMovies(data.payload.collection.movie);
-    }
-  }, [data]);
 
   const handleTextField = (e: ChangeEvent<HTMLInputElement>) => {
     setCollectionTitle(e.currentTarget.value);
@@ -129,7 +126,7 @@ const CollectionAddForm = () => {
       movie,
     };
 
-    let service: payload;
+    let service;
     if (isEdit) {
       service = await editCollection(id, body);
     } else {

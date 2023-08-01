@@ -24,7 +24,7 @@ import { searchKeyword } from "../../../../state/searchState";
 import { SearchAlbumListProps } from "../../../../types/state/search/searchTypes";
 import { strCheck } from "../../../../utils/validationUtils";
 import Iconify from "../../../iconify/Iconify";
-import CollectionMovieList from "../collection/CollectionMovieList";
+import CollectionAddMovieList from "../collection/CollectionAddMovieList";
 import MoviesAlbumList from "../movies/MoviesAlbumList";
 
 // ----------------------------------------------------------------------
@@ -153,7 +153,7 @@ const SearchAlbumList = ({ isCollection }: SearchAlbumListProps) => {
         Search
       </Button>
       {isCollection ? (
-        <CollectionMovieList isCollection={isCollection} query={query} />
+        <CollectionAddMovieList isCollection={isCollection} query={query} />
       ) : (
         <>
           <Box sx={{ mt: 6 }}>
