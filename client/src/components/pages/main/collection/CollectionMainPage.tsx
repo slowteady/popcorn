@@ -6,10 +6,10 @@ import Iconify from "../../../iconify/Iconify";
 import CollectionListBoard from "./CollectionListBoard";
 
 // ----------------------------------------------------------------------
-// Collection 페이지 컴포넌트
+// Collection 메인 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
-const CollectionListPage = () => {
+const CollectionMainPage = () => {
   const [isAdd, setIsAdd] = useState(false);
 
   const handleModalOpen = () => {
@@ -47,4 +47,4 @@ const CollectionListPage = () => {
   );
 };
 
-export default CollectionListPage;
+export default CollectionMainPage;

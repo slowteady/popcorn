@@ -5,10 +5,10 @@ import { SearchAlbumListProps } from "../../../../types/state/search/searchTypes
 import SearchAlbumList from "./SearchAlbumList";
 
 // ----------------------------------------------------------------------
-// 영화 검색 페이지 컴포넌트
+// 영화 검색 메인 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
-const SearchPage = ({ isCollection }: SearchAlbumListProps) => {
+const SearchMainPage = ({ isCollection }: SearchAlbumListProps) => {
   return (
     <>
       {isCollection ? (
@@ -50,4 +50,4 @@ const SearchPage = ({ isCollection }: SearchAlbumListProps) => {
   );
 };
 
-export default memo(SearchPage);
+export default memo(SearchMainPage);

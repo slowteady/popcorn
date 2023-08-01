@@ -6,9 +6,9 @@ import MainLayout from "./components/layouts/MainLayout";
 import Page404 from "./components/pages/exception/Page404";
 import CollectionAddPage from "./components/pages/main/collection/CollectionAddPage";
 import CollectionDetailPage from "./components/pages/main/collection/CollectionDetailPage";
-import CollectionListPage from "./components/pages/main/collection/CollectionListPage";
-import MoviesPage from "./components/pages/main/movies/MoviesPage";
-import SearchPage from "./components/pages/main/search/SearchPage";
+import CollectionMainPage from "./components/pages/main/collection/CollectionMainPage";
+import MoviesMainPage from "./components/pages/main/movies/MoviesMainPage";
+import SearchMainPage from "./components/pages/main/search/SearchMainPage";
 import LoginPage from "./components/pages/users/LoginPage";
 import ProfilePage from "./components/pages/users/ProfilePage";
 import SignupPage from "./components/pages/users/SignupPage";
@@ -44,7 +44,7 @@ const Router = () => {
           path: "movies",
           element: (
             <Auth>
-              <MoviesPage />
+              <MoviesMainPage />
             </Auth>
           ),
         },
@@ -65,7 +65,7 @@ const Router = () => {
           path: "search",
           element: (
             <Auth>
-              <SearchPage isCollection={false} />
+              <SearchMainPage isCollection={false} />
             </Auth>
           ),
         },
@@ -76,7 +76,7 @@ const Router = () => {
               path: "",
               element: (
                 <Auth>
-                  <CollectionListPage />
+                  <CollectionMainPage />
                 </Auth>
               ),
               index: true,

@@ -13,10 +13,10 @@ import MoviesAlbumList from "./MoviesAlbumList";
 import MoviesSortBox from "./MoviesSortBox";
 
 // ----------------------------------------------------------------------
-// Movies 페이지 컴포넌트
+// Movies 메인 페이지 컴포넌트
 // ----------------------------------------------------------------------
 
-const MoviesPage = () => {
+const MoviesMainPage = () => {
   const sortType = useRecoilValue(moviesSortType); // 정렬 조건
   const [movies, setMovies] = useState<MoviesObj[]>([]); // 영화 state
   const [page, setPage] = useState(1);
@@ -115,4 +115,4 @@ const MoviesPage = () => {
   );
 };
 
-export default MoviesPage;
+export default MoviesMainPage;

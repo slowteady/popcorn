@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { collectionAddBoard } from "../../../../state/collectionState";
 import Iconify from "../../../iconify/Iconify";
-import SearchPage from "../search/SearchPage";
+import SearchMainPage from "../search/SearchMainPage";
 
 // ----------------------------------------------------------------------
 // 영화 콜렉션 추가 페이지 컴포넌트
@@ -48,7 +48,7 @@ const CollectionAddPage = () => {
           </Button>
         </Stack>
       </Container>
-      <SearchPage isCollection={true} />
+      <SearchMainPage isCollection={true} />
     </>
   );
 };
