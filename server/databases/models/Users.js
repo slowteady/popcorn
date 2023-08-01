@@ -91,6 +91,7 @@ userSchema.statics.findByToken = async function (cookieToken) {
       _id: decodedToken._id,
       token: token,
     });
+    
     return foundUser;
   } catch (err) {
     // 토큰 만료 시
