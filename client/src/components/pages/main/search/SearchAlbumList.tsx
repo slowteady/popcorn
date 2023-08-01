@@ -171,7 +171,7 @@ const SearchAlbumList = ({ isCollection }: SearchAlbumListProps) => {
                 mt: "20px",
               }}
             >
-              {status === "success" && <PendingIcon fontSize="large" />}
+              {status === "loading" && <PendingIcon fontSize="large" />}
             </Box>
           </InView>
         </>
