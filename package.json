@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon ./server/index.js",
     "prod": "NODE_ENV=production node ./server/index.js",
-    "start": "concurrently \"yarn run dev\" \"cd client && yarn run dev\""
+    "once": "concurrently \"yarn run dev\" \"cd client && yarn run dev\"",
+    "start": "NODE_ENV=production node ./server/index.js"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
