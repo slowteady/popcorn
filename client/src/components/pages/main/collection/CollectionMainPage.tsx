@@ -1,7 +1,7 @@
 import { Button, Container, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Iconify from "../../../iconify/Iconify";
 import CollectionListBoard from "./CollectionListBoard";
 
@@ -10,10 +10,10 @@ import CollectionListBoard from "./CollectionListBoard";
 // ----------------------------------------------------------------------
 
 const CollectionMainPage = () => {
-  const [isAdd, setIsAdd] = useState(false);
+  const navigate = useNavigate();
 
-  const handleModalOpen = () => {
-    setIsAdd(true);
+  const handleClickBtn = () => {
+    navigate("/main/collection/add");
   };
 
   return (
@@ -33,16 +33,15 @@ const CollectionMainPage = () => {
             Collection
           </Typography>
           <Button
+            onClick={handleClickBtn}
             variant="contained"
             startIcon={<Iconify icon="eva:plus-fill" />}
-            onClick={handleModalOpen}
           >
             New Collection
           </Button>
         </Stack>
         <CollectionListBoard />
       </Container>
-      {isAdd && <Navigate to="/main/collection/add" />}
     </>
   );
 };
