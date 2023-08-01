@@ -70,7 +70,6 @@ export const getPreCollection = async (id: string) => {
   try {
     const url = `/api/collections/pre/${id}`;
     const response = await axios.get(url);
-
     const obj = { payload: response.data };
     if (response.data.msg && response.data.msg.code) {
       // 에러 코드 있을 시
@@ -114,6 +113,7 @@ export const editCollection = async (id: string, body: CollectionObj) => {
       // 에러 코드 있을 시
       obj.payload.code = response.data.msg.code;
     }
+
     return obj;
   } catch (err) {
     console.error(err);
@@ -132,12 +132,12 @@ export const deleteCollection = async (id: string) => {
         id,
       },
     });
-
     const obj = { payload: response.data };
     if (response.data.msg && response.data.msg.code) {
       // 에러 코드 있을 시
       obj.payload.code = response.data.msg.code;
     }
+
     return obj;
   } catch (err) {
     console.error(err);

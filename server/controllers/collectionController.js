@@ -25,8 +25,10 @@ const getCollection = async (req, res) => {
   try {
     // 페이지 파라미터
     const page = req.params.page - 1;
+
     // 페이징 항목 갯수
     const limit = req.query.limit;
+
     // 번호
     const skip = page * limit;
 
@@ -95,7 +97,7 @@ const getDetailCollection = async (req, res) => {
 const deleteCollection = async (req, res) => {
   try {
     // 컬렉션 아이디
-    // const id = req.query.id;
+    const id = req.query.id;
 
     const response = await Collection.deleteOne({ _id: id });
     const { acknowledged, deletedCount } = response;
@@ -103,7 +105,7 @@ const deleteCollection = async (req, res) => {
 
     if (acknowledged && deletedCount > 0) {
       obj.isSuccess = true;
-    }
+    } 
 
     res.status(200).json(obj);
   } catch (err) {
