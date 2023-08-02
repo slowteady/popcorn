@@ -46,5 +46,4 @@ let repo = process.env.UPLOAD_PATH;
 module.exports = {
   init,
   repo,
-  logger,
 };
