@@ -21,7 +21,7 @@ const MovieCard = ({ movies, isCollection }: MovieCardProps) => {
   const [open, setOpen] = useState(false);
   const { id, poster_path, release_date, title, vote_average } = movies;
   const voteAverage = (Math.round(vote_average * 10) / 10).toFixed(1);
-  const posterUrl = `${MOVIE_API.IMAGE_BASE_URL}${MOVIE_API.IMAGE_SIZE_500}${poster_path}`;
+  const posterUrl = `${MOVIE_API.IMAGE_BASE_URL}${MOVIE_API.IMAGE_SIZE_780}${poster_path}`;
   const style = whichContainerSize(isCollection);
 
   const handleModalOpen = () => setOpen(true);

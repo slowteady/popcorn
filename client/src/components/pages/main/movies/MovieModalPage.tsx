@@ -39,7 +39,7 @@ const MovieModalPage = ({ id }: MovieModalPageProps) => {
 
   let posterUrl = "";
   if (movie) {
-    posterUrl = `${MOVIE_API.IMAGE_BASE_URL}${MOVIE_API.IMAGE_SIZE_300}${movie.poster_path}`;
+    posterUrl = `${MOVIE_API.IMAGE_BASE_URL}${MOVIE_API.IMAGE_SIZE_780}${movie.poster_path}`;
   }
 
   return (
