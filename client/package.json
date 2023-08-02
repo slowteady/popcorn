@@ -3,8 +3,8 @@
   "packageManager": "yarn@3.3.1",
   "license": "ISC",
   "scripts": {
-    "dev": "webpack-dev-server --hot --mode development",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --hot --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
