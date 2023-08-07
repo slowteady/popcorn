@@ -6,7 +6,7 @@ export const MOVIE_API = {
   API_KEY: "50bce08bd7644cf283922a7b984a50ee",
   LANGUAGE: "ko-KR",
   BASE_URL: "https://api.themoviedb.org/3/",
-  IMAGE_BASE_URL: "http://image.tmdb.org/t/p/",
+  IMAGE_BASE_URL: "https://image.tmdb.org/t/p/",
   IMAGE_SIZE_300: "w300",
   IMAGE_SIZE_500: "w500",
   IMAGE_SIZE_780: "w780",
