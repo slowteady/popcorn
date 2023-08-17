@@ -10,10 +10,14 @@
 
 > **개발기간: 2023.05 ~ 2023.08**
 
+---
+
 ## 주소
 
 > **배포 주소**: [https://slowteady.com/](https://slowteady.com/)  
 > **개발 회고**: [https://slowteady.github.io/](https://slowteady.github.io/etc/project-popcorn-01/)
+
+---
 
 ## 멤버
 
@@ -21,12 +25,15 @@
 | :------------------------------------------------------------: |
 | <img width="160px" src="https://github.com/slowteady/popcorn/assets/68311202/bdb0b325-3a59-4493-8362-5ed3ad7418a0" /> |
 |        [@slowteady](https://github.com/slowteady)        |
-|  
+  
+---
 
 ## 프로젝트 소개
 
 팝콘 프로젝트는 영화를 좋아하는 사람들을 위해 가볍게 놀기 좋은 플랫폼을 만들자는 생각에서 출발한 프로젝트 입니다.  
 자신만의 컬렉션을 만들어 소장할 수 있는 컬렉션 기능, 현재 또는 역대 가장 인기있는 영화의 순위를 보여주는 기능, 영화 검색기능 등을 제공합니다.  
+
+---
 
 ## 시작 가이드
 
