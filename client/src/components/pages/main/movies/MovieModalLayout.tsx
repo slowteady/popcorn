@@ -28,9 +28,14 @@ const MovieModalLayout = ({ id, open, handleClose }: MovieModalLayoutProps) => {
           borderRadius: "2%",
           boxShadow: 24,
           p: 4,
+          mx: 4,
+          overflow: "auto",
           maxWidth: {
             xs: 444,
             sm: 600,
+          },
+          maxHeight: {
+            xs: 600,
           },
         }}
       >

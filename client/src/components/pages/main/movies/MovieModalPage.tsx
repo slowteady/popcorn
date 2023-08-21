@@ -1,4 +1,11 @@
-import { Box, Grid, Typography, styled } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  styled,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React, { memo, useState } from "react";
 import { useQuery } from "react-query";
 import { MOVIE_API } from "../../../../config/api/dataConfig";
@@ -24,6 +31,8 @@ const StyledMovieImg = styled("img")({
 const MovieModalPage = ({ id }: MovieModalPageProps) => {
   const [movie, setMovie] = useState<MovieDetailObj>();
   const url = `${MOVIE_API.BASE_URL}movie/${id}`;
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.only("xs"));
 
   const { status } = useQuery(
     ["movieDetailData", url],
@@ -45,13 +54,15 @@ const MovieModalPage = ({ id }: MovieModalPageProps) => {
   return (
     <>
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={6}>
-          <Box sx={{ minHeight: 475, position: "relative" }}>
-            {movie && movie.poster_path && (
-              <StyledMovieImg alt={movie.title} src={posterUrl} />
-            )}
-          </Box>
-        </Grid>
+        {!isXs && (
+          <Grid item xs={12} sm={6}>
+            <Box sx={{ minHeight: 475, position: "relative" }}>
+              {movie && movie.poster_path && (
+                <StyledMovieImg alt={movie.title} src={posterUrl} />
+              )}
+            </Box>
+          </Grid>
+        )}
         <Grid item xs={12} sm={6}>
           {/* 영화, 감독, 배우, 릴리즈 날짜, 장르, 상영시간, 평점, 태그 */}
           <Typography variant="h6" noWrap>
