@@ -1,6 +1,5 @@
 const Collection = require("../databases/models/Collections");
 
-// 컬렉션 등록
 const registerCollection = async (req, res) => {
   try {
     const collection = new Collection({
@@ -20,16 +19,10 @@ const registerCollection = async (req, res) => {
   }
 };
 
-// 컬렉션 목록 조회
 const getCollection = async (req, res) => {
   try {
-    // 페이지 파라미터
     const page = req.params.page - 1;
-
-    // 페이징 항목 갯수
     const limit = req.query.limit;
-
-    // 번호
     const skip = page * limit;
 
     const response = await Collection.find()
@@ -44,7 +37,6 @@ const getCollection = async (req, res) => {
       rgstDate: m.rgstDate,
     }));
 
-    // 문서 총 갯수
     const documentCount = await Collection.countDocuments();
     const totalPages = Math.ceil(documentCount / limit);
 
@@ -57,26 +49,17 @@ const getCollection = async (req, res) => {
   }
 };
 
-// 컬렉션 디테일 조회
 const getDetailCollection = async (req, res) => {
   try {
-    // 영화 아이디
     const id = req.params.id;
-
-    // 페이지 파라미터
     const page = req.query.page - 1;
-
-    // 페이징 항목 갯수
     const limit = parseInt(req.query.limit, 10);
-
-    // 번호
     const skip = parseInt(page * limit, 10);
 
     const response = await Collection.findOne({ _id: id }).select({
       movie: { $slice: [skip, limit] },
     });
 
-    // 날짜 형태 변환
     const obj = { ...response.toObject() };
     obj.movie = obj.movie.map((m) => {
       let date = new Date(m.release_date);
@@ -93,10 +76,8 @@ const getDetailCollection = async (req, res) => {
   }
 };
 
-// 컬렉션 삭제
 const deleteCollection = async (req, res) => {
   try {
-    // 컬렉션 아이디
     const id = req.query.id;
 
     const response = await Collection.deleteOne({ _id: id });
@@ -105,7 +86,7 @@ const deleteCollection = async (req, res) => {
 
     if (acknowledged && deletedCount > 0) {
       obj.isSuccess = true;
-    } 
+    }
 
     res.status(200).json(obj);
   } catch (err) {
@@ -114,16 +95,12 @@ const deleteCollection = async (req, res) => {
   }
 };
 
-// id에 해당하는 컬렉션 리턴
 const getPreCollection = async (req, res) => {
   try {
-    // 영화 아이디
     const id = req.params.id;
-
     const response = await Collection.findOne({ _id: id });
-
-    // 날짜 형태 변환
     const obj = { ...response.toObject() };
+
     obj.movie = obj.movie.map((m) => {
       let date = new Date(m.release_date);
       let dateString = date.toISOString().substring(0, 10);
@@ -139,10 +116,8 @@ const getPreCollection = async (req, res) => {
   }
 };
 
-// 컬렉션 수정
 const editCollection = async (req, res) => {
   try {
-    // 컬렉션 아이디
     const id = req.params.id;
     const body = req.body;
     const response = await Collection.findByIdAndUpdate(id, body, {
