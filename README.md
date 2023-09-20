@@ -15,7 +15,7 @@
 ## 주소
 
 > **배포 주소**: [https://slowteady.com/](https://slowteady.com/)  
-> **개발 회고**: [https://slowteady.github.io/](https://slowteady.github.io/etc/project-popcorn-01/)
+> **개발 회고**: [https://slowteady.github.io/](https://slowteady.github.io/story/project-popcorn-01/)
 
 ---
 
@@ -57,14 +57,8 @@ UPLOAD_PATH=${REPOSITORY_PATH} // 첨부파일 저장할 레포지토리 경로
 ### 3. 실행
 
 ```bash
-// FrontEnd
-
-popcorn> cd client
-popcorn/client> yarn install
-popcorn/client> cd..
-
-// BackEnd
-popcorn> yarn install
+popcorn> yarn install concurrently --dev
+popcorn> yarn install:both
 popcorn> yarn run once
 ```
 
