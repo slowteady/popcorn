@@ -1,4 +1,4 @@
 export default {
-  main: '/',
-  index: '/index'
+  root: '/',
+  signin: '/signin'
 };
