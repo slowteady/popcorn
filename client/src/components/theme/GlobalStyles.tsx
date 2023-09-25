@@ -18,7 +18,11 @@ const GlobalStyles = () => {
           margin: 0,
           padding: 0,
           width: '100%',
-          height: '100%'
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          backgroundColor: 'rgba(255, 255, 255)'
         },
         '#root': {
           width: '100%',
