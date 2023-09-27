@@ -7,6 +7,9 @@ import { Movie } from '../../types/movie';
 import { DataErrorIcon } from '../common/DataError';
 import Loading from '../common/Loading';
 
+const { POPULAR_PATH, IMAGE_SIZE_ORIGINAL } = MOVIE_PATH;
+const ERORR_MESSAGE = '데이터 호출에 실패하였습니다.';
+
 const Poster = () => {
   const { data, status } = useQuery(['getRandomPoster', POPULAR_PATH], async () => {
     const movieData = await getMovie(POPULAR_PATH);
@@ -30,6 +33,8 @@ const Poster = () => {
       </StyleDiv>
     );
   }
+
+  return <img src={data} alt='poster'></img>;
 };
 
 const getPosterPaths = (results: Array<Movie>) => {
@@ -39,9 +44,6 @@ const getPosterPaths = (results: Array<Movie>) => {
 const getRandomPosterPath = (posterPaths: string[]) => {
   return posterPaths[Math.floor(Math.random() * posterPaths.length)];
 };
-
-const { POPULAR_PATH, IMAGE_SIZE_ORIGINAL } = MOVIE_PATH;
-const ERORR_MESSAGE = '데이터 호출에 실패하였습니다.';
 
 const StyleDiv = styled(Box)({
   display: 'flex',
