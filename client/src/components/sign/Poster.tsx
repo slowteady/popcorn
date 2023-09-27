@@ -34,7 +34,7 @@ const Poster = () => {
     );
   }
 
-  return <img src={data} alt='poster'></img>;
+  return <img src={data} alt='poster' />;
 };
 
 const getPosterPaths = (results: Array<Movie>) => {
