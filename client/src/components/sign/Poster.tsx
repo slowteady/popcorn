@@ -34,7 +34,7 @@ const Poster = () => {
     );
   }
 
-  return <img src={data} alt='poster' />;
+  return <StyledImg src={data} alt='poster' />;
 };
 
 const getPosterPaths = (results: Array<Movie>) => {
@@ -52,6 +52,12 @@ const StyleDiv = styled(Box)({
   alignItems: 'center',
   height: '100%',
   width: '100%'
+});
+
+const StyledImg = styled('img')({
+  height: '100vh',
+  width: '100%',
+  objectFit: 'fill'
 });
 
 export default Poster;
