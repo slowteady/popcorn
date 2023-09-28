@@ -22,7 +22,7 @@ const responsiveFontSizes = ({ sm, md, lg }: responsiveFontSizesProps) => {
   };
 };
 
-const FONT_PRIMARY = 'Public Sans, sans-serif'; // Google Font
+const FONT_PRIMARY = 'Public Sans, sans-serif';
 
 const typography = {
   fontFamily: FONT_PRIMARY,
