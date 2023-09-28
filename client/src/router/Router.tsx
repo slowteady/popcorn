@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom';
-import SignIn from '../pages/sign/SignIn';
+import SignInPage from '../pages/sign/SignInPage';
 import path from './path';
 
 const { root, signin } = path;
@@ -12,7 +12,7 @@ const Router = () => {
     },
     {
       path: signin,
-      element: <SignIn />
+      element: <SignInPage />
     }
   ]);
 
