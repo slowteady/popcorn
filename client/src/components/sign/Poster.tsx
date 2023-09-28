@@ -28,9 +28,9 @@ const Poster = () => {
     return <Loading />;
   } else if (status === 'error') {
     return (
-      <StyleDiv>
+      <StyledDiv>
         <DataErrorIcon icon='ph:file-x-bold' size={128} message={ERORR_MESSAGE} />
-      </StyleDiv>
+      </StyledDiv>
     );
   }
 
@@ -45,7 +45,7 @@ const getRandomPosterPath = (posterPaths: string[]) => {
   return posterPaths[Math.floor(Math.random() * posterPaths.length)];
 };
 
-const StyleDiv = styled(Box)({
+const StyledDiv = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
