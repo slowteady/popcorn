@@ -1,5 +1,6 @@
 import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, TextField } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const initialValue = {
   email: '',
@@ -10,6 +11,7 @@ const initialValue = {
 const SignInForm = () => {
   const [formData, setFormData] = useState(initialValue);
   const { email, password, isRemember } = formData;
+  const navigate = useNavigate();
 
   const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
@@ -19,6 +21,10 @@ const SignInForm = () => {
   const checkBoxClick = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.currentTarget;
     setFormData((prevData) => ({ ...prevData, [name]: checked }));
+  };
+
+  const naviToSignUp = () => {
+    navigate('/signup');
   };
 
   return (
@@ -42,7 +48,7 @@ const SignInForm = () => {
         <Button type='submit' variant='contained' size='large' fullWidth sx={{ mt: 1 }}>
           로그인
         </Button>
-        <Button type='button' variant='contained' size='large' sx={buttonSx}>
+        <Button type='button' variant='contained' size='large' onClick={naviToSignUp} sx={buttonSx}>
           회원가입
         </Button>
       </FormControl>
