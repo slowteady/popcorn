@@ -35,6 +35,7 @@ const SignInForm = () => {
           <TextField
             required
             margin='normal'
+            type='password'
             name='password'
             label='패스워드'
             onChange={inputChange}
