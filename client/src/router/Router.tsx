@@ -1,8 +1,10 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import SignIn from '../pages/sign/SignIn';
-import path from './path';
+import SignUp from '../pages/sign/SignUp';
+import paths from './paths';
 
-const { root, signin } = path;
+const { root } = paths;
+const { signin, signup } = paths.sign;
 
 const Router = () => {
   const routes = useRoutes([
@@ -13,6 +15,10 @@ const Router = () => {
     {
       path: signin,
       element: <SignIn />
+    },
+    {
+      path: signup,
+      element: <SignUp />
     }
   ]);
 
