@@ -39,6 +39,7 @@ const SignUpform = () => {
               key={index}
               required
               margin='normal'
+              autoComplete='new-password'
               onChange={inputChange}
               type={type}
               name={name}
