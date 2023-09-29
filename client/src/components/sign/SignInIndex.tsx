@@ -1,5 +1,6 @@
 import FaceIcon from '@mui/icons-material/Face';
-import { Box, Typography, styled } from '@mui/material';
+import { Typography } from '@mui/material';
+import { StyledBox } from '../theme/sign/commonStyles';
 import SignInForm from './SignInForm';
 
 const HEADER_LABEL = '로그인';
@@ -13,12 +14,5 @@ const SignInIndex = () => {
     </StyledBox>
   );
 };
-
-const StyledBox = styled(Box)({
-  margin: '40px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center'
-});
 
 export default SignInIndex;
