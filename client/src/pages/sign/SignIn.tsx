@@ -1,11 +1,11 @@
 import { Grid, Hidden, Paper } from '@mui/material';
 import Helmet from '../../components/common/Helmet';
 import Poster from '../../components/sign/Poster';
-import SignIn from '../../components/sign/SignIn';
+import SignInIndex from '../../components/sign/SignInIndex';
 
 const PAGE_TITLE = 'SignIn';
 
-const SignInPage = () => {
+const SignIn = () => {
   return (
     <>
       <Helmet text={PAGE_TITLE} />
@@ -16,7 +16,7 @@ const SignInPage = () => {
           </Grid>
         </Hidden>
         <Grid item square component={Paper} xs={12} sm={12} md={7} lg={6} elevation={6}>
-          <SignIn />
+          <SignInIndex />
         </Grid>
       </Grid>
     </>
@@ -27,4 +27,4 @@ const fullHeightSx = {
   height: '100vh'
 };
 
-export default SignInPage;
+export default SignIn;
