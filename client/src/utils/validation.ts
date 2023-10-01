@@ -26,16 +26,35 @@ export const signValidation = {
       ? { isValid: true, errorMessage: '' }
       : { isValid: false, errorMessage: '*비밀번호는 8자 이상의 영문자, 숫자, !@#$%^&*만 사용 가능합니다.' };
   },
-  signValidate: function (type: string, value: string) {
-    switch (type) {
+  isPwEquals: function (password: string, confirmPassword: string) {
+    return password === confirmPassword
+      ? { isValid: true, errorMessage: '' }
+      : { isValid: false, errorMessage: '*비밀번호가 일치하지 않습니다.' };
+  },
+  signValidate: function (fieldsName: string, formData: SignUpForm) {
+    const { email, name, password, confirmPassword } = formData;
+
+    switch (fieldsName) {
       case 'email':
-        return this.emailValidate(value);
+        return this.emailValidate(email);
       case 'text':
-        return this.nameValidate(value);
+        return this.nameValidate(name);
       case 'password':
-        return this.pwValidate(value);
+        return this.pwValidate(password);
+      case 'confirmPassword':
+        return this.isPwEquals(password, confirmPassword);
       default:
         return { isValid: false, errorMessage: '*알 수 없는 유형입니다.' };
     }
+  },
+  formValidate: function (formData: SignUpForm) {
+    const { password, confirmPassword } = formData;
   }
 };
+
+interface SignUpForm {
+  email: string;
+  password: string;
+  name: string;
+  confirmPassword: string;
+}
