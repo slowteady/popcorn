@@ -37,7 +37,7 @@ export const signValidation = {
     switch (fieldsName) {
       case 'email':
         return this.emailValidate(email);
-      case 'text':
+      case 'name':
         return this.nameValidate(name);
       case 'password':
         return this.pwValidate(password);
@@ -46,9 +46,6 @@ export const signValidation = {
       default:
         return { isValid: false, errorMessage: '*알 수 없는 유형입니다.' };
     }
-  },
-  formValidate: function (formData: SignUpForm) {
-    const { password, confirmPassword } = formData;
   }
 };
 
