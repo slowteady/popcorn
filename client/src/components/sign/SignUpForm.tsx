@@ -14,10 +14,10 @@ const SignUpform = () => {
   const [formData, setFormData] = useState(initialValue);
   const { email, name, password, confirmPassword } = formData;
   const inputFields = [
-    { type: 'email', name: 'email', label: '이메일', value: email },
-    { type: 'text', name: 'name', label: '이름', value: name },
-    { type: 'password', name: 'password', label: '패스워드', value: password },
-    { type: 'password', name: 'confirmPassword', label: '패스워드 확인', value: confirmPassword }
+    { type: 'email', fieldsName: 'email', label: '이메일', value: email },
+    { type: 'text', fieldsName: 'name', label: '이름', value: name },
+    { type: 'password', fieldsName: 'password', label: '패스워드', value: password },
+    { type: 'password', fieldsName: 'confirmPassword', label: '패스워드 확인', value: confirmPassword }
   ];
   const [isAble, setIsAble] = useState(false);
   const navigate = useNavigate();
@@ -26,9 +26,10 @@ const SignUpform = () => {
     const { name, value } = e.currentTarget;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
 
+    const updatedFormData = { ...formData, [name]: value };
     const isAble = inputFields.every((field) => {
-      const { value, type } = field;
-      const validation = strValidation.isNotEmpty(value) && signValidation.signValidate(type, value);
+      const { value, fieldsName } = field;
+      const validation = strValidation.isNotEmpty(value) && signValidation.signValidate(fieldsName, updatedFormData);
       return validation && validation.isValid;
     });
 
@@ -47,8 +48,8 @@ const SignUpform = () => {
     <FormControl fullWidth onSubmit={doSignUp} component='form'>
       <FormGroup>
         {inputFields.map((field, index) => {
-          const { type, name, label, value } = field;
-          const validation = strValidation.isNotEmpty(value) && signValidation.signValidate(type, value);
+          const { type, fieldsName, label, value } = field;
+          const validation = strValidation.isNotEmpty(value) && signValidation.signValidate(fieldsName, formData);
 
           return (
             <Fragment key={index}>
@@ -59,7 +60,7 @@ const SignUpform = () => {
                 autoComplete='new-password'
                 onChange={inputChange}
                 type={type}
-                name={name}
+                name={fieldsName}
                 label={label}
                 value={value}
                 error={validation ? !validation.isValid : false}
