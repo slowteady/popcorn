@@ -6,3 +6,6 @@ export interface SignUpForm extends BasicForm {
   name: string;
   confirmPassword: string;
 }
+export interface SignInForm extends BasicForm {
+  isRemember: boolean;
+}
