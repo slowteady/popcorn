@@ -1,5 +1,5 @@
-import { commonRequest } from '../api/movie/movieApiInstance';
+import { movieDataRequest } from '../api/movie/movieApiInstance';
 
 export const getMovie = (path: string) => {
-  return commonRequest.get(path);
+  return movieDataRequest.get(path);
 };

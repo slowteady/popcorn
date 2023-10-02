@@ -10,12 +10,12 @@ const defaultOptions = {
   params: { language: 'ko-KR' }
 };
 
-export const commonRequest = axios.create({
+export const movieDataRequest = axios.create({
   baseURL: BASE_URL,
   ...defaultOptions
 });
 
-export const imageRequest = axios.create({
+export const movieImageRequest = axios.create({
   baseURL: IMAGE_URL,
   ...defaultOptions
 });
