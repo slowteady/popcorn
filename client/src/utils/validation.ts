@@ -1,3 +1,5 @@
+import { SignUpForm } from '../types/sign';
+
 export const strValidation = {
   isEmpty: function (text: string) {
     return text.trim() === '' || text === null || text === undefined;
@@ -48,10 +50,3 @@ export const signValidation = {
     }
   }
 };
-
-interface SignUpForm {
-  email: string;
-  password: string;
-  name: string;
-  confirmPassword: string;
-}
