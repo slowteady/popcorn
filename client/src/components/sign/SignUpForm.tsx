@@ -1,6 +1,7 @@
 import { Button, FormControl, FormGroup, FormHelperText, TextField } from '@mui/material';
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { OVERLAPPING_CODE, SUCCESS_CODE } from '../../api/code';
 import { registerUser } from '../../service/signService';
 import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';
@@ -12,8 +13,6 @@ const INITIAL_VALUE = {
   confirmPassword: ''
 };
 
-const SUCCESS_CODE = 200;
-const OVERLAPPING_CODE = 11000;
 const OVERLAPPING_MSG = '이미 가입된 회원이 있습니다.';
 
 const SignUpform = () => {
