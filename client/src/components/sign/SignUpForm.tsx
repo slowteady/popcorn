@@ -1,17 +1,23 @@
 import { Button, FormControl, FormGroup, FormHelperText, TextField } from '@mui/material';
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../../service/signService';
+import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';
 
-const initialValue = {
+const INITIAL_VALUE = {
   email: '',
   name: '',
   password: '',
   confirmPassword: ''
 };
 
+const SUCCESS_CODE = 200;
+const OVERLAPPING_CODE = 11000;
+const OVERLAPPING_MSG = '이미 가입된 회원이 있습니다.';
+
 const SignUpform = () => {
-  const [formData, setFormData] = useState(initialValue);
+  const [formData, setFormData] = useState(INITIAL_VALUE);
   const { email, name, password, confirmPassword } = formData;
   const inputFields = [
     { type: 'email', fieldsName: 'email', label: '이메일', value: email },
@@ -36,8 +42,21 @@ const SignUpform = () => {
     setIsAble(isAble);
   };
 
-  const doSignUp = (e: FormEvent<HTMLFormElement>) => {
+  const doSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    try {
+      const response = await registerUser(formData);
+      const { status, data } = response;
+
+      if (status === SUCCESS_CODE && data.isSuccess) {
+        navigate('/signin');
+      } else if (!data.isSuccess && data.code === OVERLAPPING_CODE) {
+        throw new Error(OVERLAPPING_MSG);
+      }
+    } catch (error) {
+      errorHandler(error as Error);
+    }
   };
 
   const naviToSignIn = () => {
