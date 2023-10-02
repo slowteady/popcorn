@@ -1,7 +1,7 @@
 import { Box, styled } from '@mui/material';
 import { useQuery } from 'react-query';
-import { IMAGE_URL } from '../../api/requestInstance';
-import { MOVIE_PATH } from '../../api/requestPaths';
+import { IMAGE_URL } from '../../api/movie/requestInstance';
+import { MOVIE_PATH } from '../../api/movie/requestPaths';
 import { getMovie } from '../../service/movieService';
 import { Movie } from '../../types/movie';
 import { DataErrorIcon } from '../common/DataError';
