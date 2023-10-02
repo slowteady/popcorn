@@ -1,4 +1,4 @@
-import { SignUpForm } from '../types/sign';
+import { SignInForm, SignUpForm } from '../types/sign';
 
 export const strValidation = {
   isEmpty: function (text: string) {
@@ -33,7 +33,7 @@ export const signValidation = {
       ? { isValid: true, errorMessage: '' }
       : { isValid: false, errorMessage: '*비밀번호가 일치하지 않습니다.' };
   },
-  signValidate: function (fieldsName: string, formData: SignUpForm) {
+  signUpValidate: function (fieldsName: string, formData: SignUpForm) {
     const { email, name, password, confirmPassword } = formData;
 
     switch (fieldsName) {
@@ -45,6 +45,18 @@ export const signValidation = {
         return this.pwValidate(password);
       case 'confirmPassword':
         return this.isPwEquals(password, confirmPassword);
+      default:
+        return { isValid: false, errorMessage: '*알 수 없는 유형입니다.' };
+    }
+  },
+  signInValidate: function (fieldsName: string, formData: SignInForm) {
+    const { email, password } = formData;
+
+    switch (fieldsName) {
+      case 'email':
+        return this.emailValidate(email);
+      case 'password':
+        return this.pwValidate(password);
       default:
         return { isValid: false, errorMessage: '*알 수 없는 유형입니다.' };
     }
