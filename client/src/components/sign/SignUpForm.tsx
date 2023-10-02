@@ -2,6 +2,7 @@ import { Button, FormControl, FormGroup, FormHelperText, TextField } from '@mui/
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { OVERLAPPING_CODE, SUCCESS_CODE } from '../../api/code';
+import useBtnAble from '../../hooks/useBtnAble';
 import { registerUser } from '../../service/signService';
 import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';
@@ -24,21 +25,12 @@ const SignUpform = () => {
     { type: 'password', fieldsName: 'password', label: '패스워드', value: password },
     { type: 'password', fieldsName: 'confirmPassword', label: '패스워드 확인', value: confirmPassword }
   ];
-  const [isAble, setIsAble] = useState(false);
+  const isAble = useBtnAble(inputFields, formData, signValidation.signUpValidate.bind(signValidation));
   const navigate = useNavigate();
 
   const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-
-    const updatedFormData = { ...formData, [name]: value };
-    const isAble = inputFields.every((field) => {
-      const { value, fieldsName } = field;
-      const validation = strValidation.isNotEmpty(value) && signValidation.signValidate(fieldsName, updatedFormData);
-      return validation && validation.isValid;
-    });
-
-    setIsAble(isAble);
   };
 
   const doSignUp = async (e: FormEvent<HTMLFormElement>) => {
@@ -67,7 +59,7 @@ const SignUpform = () => {
       <FormGroup>
         {inputFields.map((field, index) => {
           const { type, fieldsName, label, value } = field;
-          const validation = strValidation.isNotEmpty(value) && signValidation.signValidate(fieldsName, formData);
+          const validation = strValidation.isNotEmpty(value) && signValidation.signUpValidate(fieldsName, formData);
 
           return (
             <Fragment key={index}>
