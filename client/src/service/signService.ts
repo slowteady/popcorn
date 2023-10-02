@@ -1,6 +1,9 @@
 import { signRequest } from '../api/sign/signApiInstance';
-import { SignUpForm } from '../types/sign';
+import { BasicForm, SignUpForm } from '../types/sign';
 
 export const registerUser = (body: SignUpForm) => {
   return signRequest.post('/register', body);
+};
+export const loginUser = (body: BasicForm) => {
+  return signRequest.post('/login', body);
 };
