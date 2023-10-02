@@ -7,5 +7,5 @@ export interface SignUpForm extends BasicForm {
   confirmPassword: string;
 }
 export interface SignInForm extends BasicForm {
-  isRemember: boolean;
+  rememberMe: boolean;
 }

@@ -4,20 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import { PASSWORD_NOT_CORRECT_CODE, SUCCESS_CODE } from '../../api/code';
 import useBtnAble from '../../hooks/useBtnAble';
 import { loginUser } from '../../service/signService';
+import { getCookie, removeCookie, setCookie } from '../../utils/cookieManager';
 import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';
 
-const INITIAL_VALUE = {
-  email: '',
-  password: '',
-  isRemember: false
-};
-
 const PASSWORD_NOT_CORRECT_MSG = '패스워드가 일치하지 않습니다.';
+const REMEMBER_ME_COOKIE_KEY = 'REMEMBER_ME';
+
+const rememberMeCookie = getCookie(REMEMBER_ME_COOKIE_KEY);
+const INITIAL_VALUE = {
+  email: rememberMeCookie || '',
+  password: '',
+  rememberMe: Boolean(rememberMeCookie)
+};
 
 const SignInForm = () => {
   const [formData, setFormData] = useState(INITIAL_VALUE);
-  const { email, password, isRemember } = formData;
+  const { email, password, rememberMe } = formData;
   const inputFields = [
     { type: 'email', fieldsName: 'email', label: '이메일', value: email },
     { type: 'password', fieldsName: 'password', label: '패스워드', value: password }
@@ -44,6 +47,7 @@ const SignInForm = () => {
       const { status, data } = response;
 
       if (status === SUCCESS_CODE && data.isSuccess) {
+        formData.rememberMe ? setCookie(REMEMBER_ME_COOKIE_KEY, formData.email) : removeCookie(REMEMBER_ME_COOKIE_KEY);
         navigate('/main');
       } else if (!data.isSuccess && data.code === PASSWORD_NOT_CORRECT_CODE) {
         throw new Error(PASSWORD_NOT_CORRECT_MSG);
@@ -87,7 +91,7 @@ const SignInForm = () => {
           );
         })}
         <FormControlLabel
-          control={<Checkbox name='isRemember' onChange={checkBoxClick} checked={isRemember} color='info' />}
+          control={<Checkbox name='rememberMe' onChange={checkBoxClick} checked={rememberMe} color='info' />}
           label='기억하기'
         />
       </FormGroup>
