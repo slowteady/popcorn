@@ -1,6 +1,7 @@
 import { styled } from '@mui/material';
 import { useState } from 'react';
-import { ReactNodeProps } from '../../../types/global';
+import { ReactNodeProps } from '../../types/global';
+import Header from './header/Header';
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
@@ -8,7 +9,12 @@ const APP_BAR_DESKTOP = 92;
 const MainLayout = ({ children }: ReactNodeProps) => {
   const [open, setOpen] = useState(false);
 
-  return <Main>{children}</Main>;
+  return (
+    <StyledRoot>
+      <Header onOpenNav={() => setOpen(true)} />
+      <Main>{children}</Main>
+    </StyledRoot>
+  );
 };
 
 const StyledRoot = styled('div')({
