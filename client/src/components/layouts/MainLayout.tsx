@@ -2,6 +2,7 @@ import { styled } from '@mui/material';
 import { useState } from 'react';
 import { ReactNodeProps } from '../../types/global';
 import Header from './header/Header';
+import LeftMenu from './menu/LeftMenu';
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
@@ -12,6 +13,7 @@ const MainLayout = ({ children }: ReactNodeProps) => {
   return (
     <StyledRoot>
       <Header onOpenNav={() => setOpen(true)} />
+      <LeftMenu openNav={open} onCloseNav={() => setOpen(false)} />
       <Main>{children}</Main>
     </StyledRoot>
   );
