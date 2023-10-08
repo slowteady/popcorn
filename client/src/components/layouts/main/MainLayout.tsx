@@ -1,8 +1,8 @@
 import { styled } from '@mui/material';
 import { useState } from 'react';
-import { ReactNodeProps } from '../../types/global';
-import Header from './header/Header';
-import LeftMenu from './menu/LeftMenu';
+import { ReactNodeProps } from '../../../types/global';
+import Header from '../header/Header';
+import LeftMenu from '../menu/left/LeftMenu';
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
