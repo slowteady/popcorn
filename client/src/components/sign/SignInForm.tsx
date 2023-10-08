@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PASSWORD_NOT_CORRECT_CODE, SUCCESS_CODE } from '../../api/code';
 import useBtnAble from '../../hooks/useBtnAble';
+import paths from '../../router/paths';
 import { loginUser } from '../../service/signService';
 import { getCookie, removeCookie, setCookie } from '../../utils/cookieManager';
 import { errorHandler } from '../../utils/exceptionHandler';
@@ -17,6 +18,8 @@ const INITIAL_VALUE = {
   password: '',
   rememberMe: Boolean(rememberMeCookie)
 };
+const { signup } = paths.sign;
+const { main } = paths.main;
 
 const SignInForm = () => {
   const [formData, setFormData] = useState(INITIAL_VALUE);
@@ -48,7 +51,7 @@ const SignInForm = () => {
 
       if (status === SUCCESS_CODE && data.isSuccess) {
         formData.rememberMe ? setCookie(REMEMBER_ME_COOKIE_KEY, formData.email) : removeCookie(REMEMBER_ME_COOKIE_KEY);
-        navigate('/main');
+        navigate(main);
       } else if (!data.isSuccess && data.code === PASSWORD_NOT_CORRECT_CODE) {
         throw new Error(PASSWORD_NOT_CORRECT_MSG);
       }
@@ -58,7 +61,7 @@ const SignInForm = () => {
   };
 
   const naviToSignUp = () => {
-    navigate('/signup');
+    navigate(signup);
   };
 
   return (

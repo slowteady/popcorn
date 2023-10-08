@@ -3,18 +3,19 @@ import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { OVERLAPPING_CODE, SUCCESS_CODE } from '../../api/code';
 import useBtnAble from '../../hooks/useBtnAble';
+import paths from '../../router/paths';
 import { registerUser } from '../../service/signService';
 import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';
 
+const OVERLAPPING_MSG = '이미 가입된 회원이 있습니다.';
 const INITIAL_VALUE = {
   email: '',
   name: '',
   password: '',
   confirmPassword: ''
 };
-
-const OVERLAPPING_MSG = '이미 가입된 회원이 있습니다.';
+const { signin } = paths.sign;
 
 const SignUpform = () => {
   const [formData, setFormData] = useState(INITIAL_VALUE);
@@ -41,7 +42,7 @@ const SignUpform = () => {
       const { status, data } = response;
 
       if (status === SUCCESS_CODE && data.isSuccess) {
-        navigate('/signin');
+        navigate(signin);
       } else if (!data.isSuccess && data.code === OVERLAPPING_CODE) {
         throw new Error(OVERLAPPING_MSG);
       }
@@ -51,7 +52,7 @@ const SignUpform = () => {
   };
 
   const naviToSignIn = () => {
-    navigate('/signin');
+    navigate(signin);
   };
 
   return (
