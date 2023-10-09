@@ -25,14 +25,12 @@ const StyledAccount = styled('div')(({ theme }) => ({
   backgroundColor: alpha(theme.palette.grey[500], 0.12)
 }));
 
-const StyledBox = styled(Box)({
-  px: 2.5,
-  py: 3,
-  display: 'inline-flex'
-});
+const StyledBox = styled(Box)(({ theme }) => ({
+  margin: theme.spacing(0, 2.5, 5)
+}));
 
-const TypoBox = styled(Box)({
-  ml: 2
-});
+const TypoBox = styled(Box)(({ theme }) => ({
+  marginLeft: theme.spacing(2)
+}));
 
 export default LeftMenuUser;
