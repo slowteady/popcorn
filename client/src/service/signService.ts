@@ -7,3 +7,6 @@ export const registerUser = (body: SignUpForm) => {
 export const loginUser = (body: BasicForm) => {
   return signRequest.post('/login', body);
 };
+export const authCheck = () => {
+  return signRequest.get('/auth');
+};
