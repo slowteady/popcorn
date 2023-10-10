@@ -1,13 +1,25 @@
 import { SignInForm, SignUpForm } from '../types/sign';
 
-export const strValidation = {
-  isEmpty: function (text: string) {
+export const strValidation = (text: string) => ({
+  isEmpty: function () {
     return text.trim() === '' || text === null || text === undefined;
   },
-  isNotEmpty: function (text: string) {
-    return !this.isEmpty(text);
+  isNotEmpty: function () {
+    return !this.isEmpty();
   }
-};
+});
+
+export const objValidation = (obj: Object) => ({
+  isEmpty: function () {
+    return Object.keys(obj).length < 0;
+  },
+  isNotEmpty: function () {
+    return !this.isEmpty();
+  },
+  hasKey: function (key: string) {
+    return obj.hasOwnProperty(key);
+  }
+});
 
 export const signValidation = {
   emailValidate: function (email: string) {
