@@ -69,7 +69,7 @@ const SignInForm = () => {
       <FormGroup>
         {inputFields.map((fields, index) => {
           const { type, fieldsName, label, value } = fields;
-          const validation = strValidation.isNotEmpty(value) && signValidation.signInValidate(fieldsName, formData);
+          const validation = strValidation(value).isNotEmpty() && signValidation.signInValidate(fieldsName, formData);
 
           return (
             <Fragment key={index}>

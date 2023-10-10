@@ -15,7 +15,7 @@ const useBtnAble = (inputFields: InputField[], formData: SignUpForm | SignInForm
   useEffect(() => {
     const isAble = inputFields.every((field) => {
       const { value, fieldsName } = field;
-      const validation = strValidation.isNotEmpty(value) && validateFunc(fieldsName, formData);
+      const validation = strValidation(value).isNotEmpty() && validateFunc(fieldsName, formData);
 
       return validation && validation.isValid;
     });
