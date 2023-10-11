@@ -1,4 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom';
+import Auth from '../components/hoc/Auth';
 import Main from '../pages/main/Main';
 import Movies from '../pages/main/movies/Movies';
 import SignIn from '../pages/sign/SignIn';
@@ -9,23 +10,45 @@ const { root } = paths;
 const { signin, signup } = paths.sign;
 const { main, movies } = paths.main;
 
+interface Route {
+  path: string;
+  element: JSX.Element;
+  children?: Route[];
+}
+
 const Router = () => {
   const routes = useRoutes([
     {
       path: root,
-      element: <Navigate to={signin} replace />
+      element: (
+        <Auth>
+          <Navigate to={signin} replace />
+        </Auth>
+      )
     },
     {
       path: signin,
-      element: <SignIn />
+      element: (
+        <Auth>
+          <SignIn />
+        </Auth>
+      )
     },
     {
       path: signup,
-      element: <SignUp />
+      element: (
+        <Auth>
+          <SignUp />
+        </Auth>
+      )
     },
     {
       path: main,
-      element: <Main />,
+      element: (
+        <Auth>
+          <Main />
+        </Auth>
+      ),
       children: [
         { element: <Navigate to={`${main}${movies}`} />, index: true },
         {
