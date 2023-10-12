@@ -1,7 +1,7 @@
 import { Box, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import paths from '../../../config/routes/paths';
 import logoImg from '../../../img/popcorn_icon.png';
-import paths from '../../../router/paths';
 
 const { main } = paths.main;
 

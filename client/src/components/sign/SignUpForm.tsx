@@ -2,8 +2,8 @@ import { Button, FormControl, FormGroup, FormHelperText, TextField } from '@mui/
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { OVERLAPPING_CODE, SUCCESS_CODE } from '../../api/code';
+import paths from '../../config/routes/paths';
 import useBtnAble from '../../hooks/useBtnAble';
-import paths from '../../router/paths';
 import { registerUser } from '../../service/signService';
 import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';

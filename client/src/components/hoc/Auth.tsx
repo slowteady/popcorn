@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
+import paths from '../../config/routes/paths';
 import useAuthCheck from '../../hooks/useAuthCheck';
-import paths from '../../router/paths';
 import { ReactNodeProps } from '../../types/global';
 import Loading from '../common/Loading';
 

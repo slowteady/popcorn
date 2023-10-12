@@ -1,10 +1,10 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import Auth from '../components/hoc/Auth';
+import paths from '../config/routes/paths';
 import Main from '../pages/main/Main';
 import Movies from '../pages/main/movies/Movies';
 import SignIn from '../pages/sign/SignIn';
 import SignUp from '../pages/sign/SignUp';
-import paths from './paths';
 
 const { root } = paths;
 const { signin, signup } = paths.sign;

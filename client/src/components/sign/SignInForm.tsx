@@ -2,8 +2,8 @@ import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperT
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PASSWORD_NOT_CORRECT_CODE, SUCCESS_CODE } from '../../api/code';
+import paths from '../../config/routes/paths';
 import useBtnAble from '../../hooks/useBtnAble';
-import paths from '../../router/paths';
 import { loginUser } from '../../service/signService';
 import { getCookie, removeCookie, setCookie } from '../../utils/cookieManager';
 import { errorHandler } from '../../utils/exceptionHandler';
