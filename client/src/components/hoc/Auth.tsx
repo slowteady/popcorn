@@ -11,17 +11,17 @@ const Auth = ({ children }: ReactNodeProps) => {
   const location = useLocation();
   const { isLogined, isLoading } = useAuthCheck(location);
 
-  if (location.pathname === signin || location.pathname === signup) {
-    if (isLogined) return <Navigate to={main} />;
-  }
+  const isNeedRedirect = location.pathname === signin || location.pathname === signup;
 
   if (isLoading) {
     return <Loading />;
-  } else if (isLogined) {
-    return <>{children}</>;
-  } else {
-    return <Navigate to={signin} replace />;
   }
+
+  if (isLogined) {
+    return isNeedRedirect ? <Navigate to={main} /> : <>{children}</>;
+  }
+
+  return isNeedRedirect ? <>{children}</> : <Navigate to={signin} replace />;
 };
 
 export default Auth;
