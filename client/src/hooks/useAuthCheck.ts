@@ -13,9 +13,10 @@ const useAuthCheck = (location: Location) => {
   const { isLoading } = useQuery(['authCheck', location.pathname], authCheck, {
     onSuccess: (payload) => {
       const { data } = payload;
-
       const validation = objValidation(data);
-      if (validation.isNotEmpty() && validation.hasKey(RESPONSE_DATA_KEY)) {
+      const userData = data.user;
+
+      if (validation.isNotEmpty() && typeof userData === 'object' && validation.hasKey(RESPONSE_DATA_KEY)) {
         setIsLogined(true);
       } else {
         setIsLogined(false);
