@@ -1,13 +1,13 @@
 import { Icon } from '@iconify/react';
 import { Typography } from '@mui/material';
 
-interface DataErrorIconProps {
+interface IconMsgProps {
   icon: string;
   size: number;
   message: string;
 }
 
-export const DataErrorIcon = ({ icon, size, message }: DataErrorIconProps) => {
+export const IconMsg = ({ icon, size, message }: IconMsgProps) => {
   return (
     <>
       <Icon icon={icon} width={size} height={size} />

@@ -4,7 +4,7 @@ import { IMAGE_URL } from '../../api/movie/movieApiInstance';
 import { MOVIE_PATH } from '../../api/movie/movieApiPaths';
 import { getMovie } from '../../service/movieService';
 import { Movie } from '../../types/movie';
-import { DataErrorIcon } from '../common/DataError';
+import { IconMsg } from '../common/IconMsg';
 import Loading from '../common/Loading';
 
 const { POPULAR_PATH, IMAGE_SIZE_ORIGINAL } = MOVIE_PATH;
@@ -29,7 +29,7 @@ const Poster = () => {
   } else if (status === 'error') {
     return (
       <StyledDiv>
-        <DataErrorIcon icon='ph:file-x-bold' size={128} message={ERORR_MESSAGE} />
+        <IconMsg icon='ph:file-x-bold' size={128} message={ERORR_MESSAGE} />
       </StyledDiv>
     );
   }
