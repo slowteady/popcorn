@@ -1,7 +1,7 @@
 import { Box, List, ListItemButton, ListItemButtonProps, ListItemIcon, ListItemText, styled } from '@mui/material';
 import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
-import Icon from '../../../icon/Icon';
+import Icon from '../../../common/icon/Icon';
 
 interface MenuData {
   title: string;

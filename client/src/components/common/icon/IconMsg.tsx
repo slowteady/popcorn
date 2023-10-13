@@ -3,14 +3,14 @@ import { Typography } from '@mui/material';
 
 interface IconMsgProps {
   icon: string;
-  size: number;
+  width: number;
   message: string;
 }
 
-export const IconMsg = ({ icon, size, message }: IconMsgProps) => {
+export const IconMsg = ({ icon, width, message }: IconMsgProps) => {
   return (
     <>
-      <Icon icon={icon} width={size} height={size} />
+      <Icon icon={icon} width={width} height={width} />
       <Typography m={2}>{message}</Typography>
     </>
   );

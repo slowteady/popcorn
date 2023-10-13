@@ -4,8 +4,8 @@ import { IMAGE_URL } from '../../api/movie/movieApiInstance';
 import { MOVIE_PATH } from '../../api/movie/movieApiPaths';
 import { getMovie } from '../../service/movieService';
 import { Movie } from '../../types/movie';
-import { IconMsg } from '../common/IconMsg';
 import Loading from '../common/Loading';
+import { IconMsg } from '../common/icon/IconMsg';
 
 const { POPULAR_PATH, IMAGE_SIZE_ORIGINAL } = MOVIE_PATH;
 const ERORR_MESSAGE = '데이터 호출에 실패하였습니다.';
@@ -29,7 +29,7 @@ const Poster = () => {
   } else if (status === 'error') {
     return (
       <StyledDiv>
-        <IconMsg icon='ph:file-x-bold' size={128} message={ERORR_MESSAGE} />
+        <IconMsg icon='ph:file-x-bold' width={128} message={ERORR_MESSAGE} />
       </StyledDiv>
     );
   }
