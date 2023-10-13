@@ -1,14 +1,19 @@
 import { Avatar, Box, Link, Typography, alpha, styled } from '@mui/material';
+import { useRecoilValue } from 'recoil';
+import { userSelector } from '../../../../state/userState';
 
 const LeftMenuUser = () => {
+  const userData = useRecoilValue(userSelector);
+  const { name, image } = userData;
+
   return (
     <StyledBox>
       <Link underline='none'>
         <StyledAccount>
-          <Avatar />
+          <Avatar src={image} />
           <TypoBox>
             <Typography variant='subtitle2' sx={{ color: 'text.primary' }}>
-              MOCK
+              {name}
             </Typography>
           </TypoBox>
         </StyledAccount>
