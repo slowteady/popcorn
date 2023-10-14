@@ -1,10 +1,8 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, IconButton, Toolbar, styled } from '@mui/material';
+import { HEADER_DESKTOP, HEADER_MOBILE, NAV_WIDTH } from '../../../config/layout/headerConfig';
 import { bgBlur } from '../../../utils/styleUtils';
-
-const NAV_WIDTH = 280;
-const HEADER_MOBILE = 64;
-const HEADER_DESKTOP = 92;
+import SearchBar from './search/SearchBar';
 
 export interface HeaderProps {
   onOpenNav: () => void;
@@ -17,6 +15,7 @@ const Header = ({ onOpenNav }: HeaderProps) => {
         <IconButton onClick={onOpenNav} sx={iconBtnSx}>
           <MenuIcon />
         </IconButton>
+        <SearchBar />
       </StyledToolbar>
     </StyledRoot>
   );
