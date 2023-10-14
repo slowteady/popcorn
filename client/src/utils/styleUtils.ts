@@ -1,9 +1,9 @@
 import { alpha } from '@mui/material';
 
 interface BgBlurProps {
-  color: string;
-  blur: number;
-  opacity: number;
+  color?: string;
+  blur?: number;
+  opacity?: number;
 }
 
 export const bgBlur = (props: BgBlurProps) => {
