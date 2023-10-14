@@ -6,6 +6,10 @@ export const strValidation = (text: string) => ({
   },
   isNotEmpty: function () {
     return !this.isEmpty();
+  },
+  notSpecialChars: function () {
+    const regex = /[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣\s]/gi;
+    return text.replace(regex, '');
   }
 });
 
