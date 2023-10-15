@@ -1,7 +1,8 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, IconButton, Toolbar, styled } from '@mui/material';
+import { AppBar, Box, IconButton, Stack, Toolbar, styled } from '@mui/material';
 import { HEADER_DESKTOP, HEADER_MOBILE, NAV_WIDTH } from '../../../config/layout/headerConfig';
 import { bgBlur } from '../../../utils/styleUtils';
+import UserPopover from './UserPopover';
 import SearchBar from './search/SearchBar';
 
 export interface HeaderProps {
@@ -16,6 +17,10 @@ const Header = ({ onOpenNav }: HeaderProps) => {
           <MenuIcon />
         </IconButton>
         <SearchBar />
+        <Box sx={{ flexGrow: 1 }} />
+        <Stack direction='row' alignItems='center' spacing={{ xs: 0.5, sm: 1 }}>
+          <UserPopover />
+        </Stack>
       </StyledToolbar>
     </StyledRoot>
   );
