@@ -3,13 +3,14 @@ import ExceptionLayout from '../../components/layouts/main/exception/ExceptionLa
 import Main from '../../pages/main/Main';
 import NotFound from '../../pages/main/exception/NotFound';
 import Movies from '../../pages/main/movies/Movies';
+import Search from '../../pages/main/search/Search';
 import SignIn from '../../pages/sign/SignIn';
 import SignUp from '../../pages/sign/SignUp';
 import paths from './paths';
 
 const { all, root, notFound } = paths;
 const { signin, signup } = paths.sign;
-const { main, movies } = paths.main;
+const { main, movies, search } = paths.main;
 
 const routesConfig: RouteObject[] = [
   { path: root, element: <Navigate to={signin} replace /> },
@@ -20,7 +21,8 @@ const routesConfig: RouteObject[] = [
     element: <Main />,
     children: [
       { element: <Navigate to={`${main}${movies}`} />, index: true },
-      { path: movies.slice(1), element: <Movies /> }
+      { path: movies.slice(1), element: <Movies /> },
+      { path: search.slice(1), element: <Search /> }
     ]
   },
   {

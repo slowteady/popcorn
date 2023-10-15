@@ -8,6 +8,7 @@ export default {
   },
   main: {
     main: '/main',
-    movies: '/movies'
+    movies: '/movies',
+    search: '/search'
   }
 };
