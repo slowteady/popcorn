@@ -3,8 +3,7 @@ import { useRecoilValue } from 'recoil';
 import { userSelector } from '../../../../state/userState';
 
 const LeftMenuUser = () => {
-  const userData = useRecoilValue(userSelector);
-  const { name, image } = userData;
+  const { name, image } = useRecoilValue(userSelector);
 
   return (
     <StyledBox>
