@@ -1,9 +1,9 @@
 import { Avatar, Box, Link, Typography, alpha, styled } from '@mui/material';
 import { useRecoilValue } from 'recoil';
-import { userSelector } from '../../../../state/userState';
+import { USER_MAIN_OPTION, userSelector } from '../../../../state/userState';
 
 const LeftMenuUser = () => {
-  const { name, image } = useRecoilValue(userSelector);
+  const { name, image } = useRecoilValue(userSelector(USER_MAIN_OPTION));
 
   return (
     <StyledBox>
