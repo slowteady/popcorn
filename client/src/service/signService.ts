@@ -20,6 +20,10 @@ export const loginUser = (body: BasicForm) => {
   return signRequest.post('/login', body);
 };
 
+export const logoutUser = () => {
+  return signRequest.delete('/logout');
+};
+
 export const authCheck = (): Promise<AxiosResponse<userDataType>> => {
   return signRequest.get('/auth');
 };
