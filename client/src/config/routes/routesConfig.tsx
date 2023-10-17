@@ -4,6 +4,7 @@ import Main from '../../pages/main/Main';
 import NotFound from '../../pages/main/exception/NotFound';
 import Movies from '../../pages/main/movies/Movies';
 import Search from '../../pages/main/search/Search';
+import Profile from '../../pages/main/users/Profile';
 import SignIn from '../../pages/sign/SignIn';
 import SignUp from '../../pages/sign/SignUp';
 import paths from './paths';
@@ -11,6 +12,7 @@ import paths from './paths';
 const { all, root, notFound } = paths;
 const { signin, signup } = paths.sign;
 const { main, movies, search } = paths.main;
+const { users, profile } = paths.users;
 
 const routesConfig: RouteObject[] = [
   { path: root, element: <Navigate to={signin} replace /> },
@@ -22,7 +24,8 @@ const routesConfig: RouteObject[] = [
     children: [
       { element: <Navigate to={`${main}${movies}`} />, index: true },
       { path: movies.slice(1), element: <Movies /> },
-      { path: search.slice(1), element: <Search /> }
+      { path: search.slice(1), element: <Search /> },
+      { path: users.slice(1), children: [{ path: profile.slice(1), element: <Profile /> }] }
     ]
   },
   {

@@ -10,5 +10,9 @@ export default {
     main: '/main',
     movies: '/movies',
     search: '/search'
+  },
+  users: {
+    users: '/users',
+    profile: '/profile'
   }
 };
