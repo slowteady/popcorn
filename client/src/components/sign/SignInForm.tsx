@@ -17,14 +17,13 @@ const PASSWORD_NOT_CORRECT_CODE = 10000;
 const { signup } = paths.sign;
 const { main } = paths.main;
 
-const rememberMeCookie = getCookie(REMEMBER_ME_COOKIE_KEY);
-const INITIAL_VALUE = {
-  email: rememberMeCookie || '',
-  password: '',
-  rememberMe: Boolean(rememberMeCookie)
-};
-
 const SignInForm = () => {
+  const rememberMeCookie = getCookie(REMEMBER_ME_COOKIE_KEY);
+  const INITIAL_VALUE = {
+    email: rememberMeCookie || '',
+    password: '',
+    rememberMe: Boolean(rememberMeCookie)
+  };
   const [formData, setFormData] = useState(INITIAL_VALUE);
   const { email, password, rememberMe } = formData;
   const inputFields = [
