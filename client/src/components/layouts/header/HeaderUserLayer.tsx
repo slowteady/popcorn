@@ -16,7 +16,7 @@ interface UserProfileLayerProps {
 const { main } = paths.main;
 const { users, profile } = paths.users;
 
-const UserProfileLayer = ({ element, closeLayer }: UserProfileLayerProps) => {
+const HeaderUserLayer = ({ element, closeLayer }: UserProfileLayerProps) => {
   const { name, email } = useRecoilValue(userSelector(USER_MYPAGE_OPTION));
   const navigate = useNavigate();
 
@@ -89,4 +89,4 @@ const SteyldBox = styled(Box)(({ theme }) => ({
   padding: theme.spacing(0, 2.5)
 }));
 
-export default UserProfileLayer;
+export default HeaderUserLayer;

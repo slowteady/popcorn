@@ -2,9 +2,9 @@ import { Avatar, IconButton, alpha } from '@mui/material';
 import { MouseEvent, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { USER_MAIN_OPTION, userSelector } from '../../../state/userState';
-import UserProfileLayer from './UserProfileLayer';
+import HeaderUserLayer from './HeaderUserLayer';
 
-const UserProfileBtn = () => {
+const HeaderUserButton = () => {
   const { image } = useRecoilValue(userSelector(USER_MAIN_OPTION));
   const [open, setOpen] = useState(false);
   const [element, setElement] = useState<HTMLButtonElement | null>(null);
@@ -43,9 +43,9 @@ const UserProfileBtn = () => {
       >
         <Avatar src={image} />
       </IconButton>
-      <UserProfileLayer element={element} closeLayer={closeLayer} />
+      <HeaderUserLayer element={element} closeLayer={closeLayer} />
     </>
   );
 };
 
-export default UserProfileBtn;
+export default HeaderUserButton;

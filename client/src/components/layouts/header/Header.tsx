@@ -2,7 +2,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box, IconButton, Stack, Toolbar, styled } from '@mui/material';
 import { HEADER_DESKTOP, HEADER_MOBILE, NAV_WIDTH } from '../../../config/layout/headerConfig';
 import { bgBlur } from '../../../utils/styleUtils';
-import UserProfileBtn from './UserProfileBtn';
+import HeaderUserButton from './HeaderUserButton';
 import SearchBar from './search/SearchBar';
 
 export interface HeaderProps {
@@ -19,7 +19,7 @@ const Header = ({ onOpenNav }: HeaderProps) => {
         <SearchBar />
         <Box sx={{ flexGrow: 1 }} />
         <Stack direction='row' alignItems='center' spacing={{ xs: 0.5, sm: 1 }}>
-          <UserProfileBtn />
+          <HeaderUserButton />
         </Stack>
       </StyledToolbar>
     </StyledRoot>
