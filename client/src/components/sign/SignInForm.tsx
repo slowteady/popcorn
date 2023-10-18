@@ -45,8 +45,8 @@ const SignInForm = () => {
         throw new Error(PASSWORD_NOT_CORRECT_MSG);
       }
     },
-    onError: (error) => {
-      errorHandler(error as Error);
+    onError: (error: Error) => {
+      errorHandler(error);
     }
   });
 

@@ -43,8 +43,8 @@ const SignUpform = () => {
         throw new Error(OVERLAPPING_MSG);
       }
     },
-    onError: (error) => {
-      errorHandler(error as Error);
+    onError: (error: Error) => {
+      errorHandler(error);
     }
   });
 
