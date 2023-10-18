@@ -21,8 +21,7 @@ const GlobalStyles = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100vh',
-          backgroundColor: 'rgba(255, 255, 255)'
+          height: '100vh'
         },
         '#root': {
           width: '100%',
