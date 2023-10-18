@@ -1,8 +1,12 @@
 import { Box, Divider, MenuItem, Popover, Typography, styled } from '@mui/material';
+import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
+import { SUCCESS_CODE } from '../../../api/code';
 import paths from '../../../config/routes/paths';
+import { logoutUser } from '../../../service/signService';
 import { USER_MYPAGE_OPTION, userSelector } from '../../../state/userState';
+import { errorHandler } from '../../../utils/exceptionHandler';
 
 interface UserProfileLayerProps {
   element: HTMLButtonElement | null;
@@ -16,6 +20,18 @@ const UserProfileLayer = ({ element, closeLayer }: UserProfileLayerProps) => {
   const { name, email } = useRecoilValue(userSelector(USER_MYPAGE_OPTION));
   const navigate = useNavigate();
 
+  const logoutMutation = useMutation(logoutUser, {
+    onSuccess: (response) => {
+      const { status, data } = response;
+      if (status === SUCCESS_CODE && data.isSuccess) {
+        navigate(main);
+      }
+    },
+    onError: (error: Error) => {
+      errorHandler(error);
+    }
+  });
+
   const clickProfile = () => {
     closeLayer();
     navigate(`${main}${users}${profile}`);
@@ -23,7 +39,7 @@ const UserProfileLayer = ({ element, closeLayer }: UserProfileLayerProps) => {
 
   const clickLogout = () => {
     closeLayer();
-    
+    logoutMutation.mutate();
   };
 
   return (
