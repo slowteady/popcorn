@@ -5,7 +5,6 @@ interface IconProps {
   icon: string | IconifyIcon;
   width?: number;
   sx?: SxProps;
-  onClick?: React.MouseEventHandler;
 }
 
 const Icon = ({ icon, width = 20, sx, ...other }: IconProps) => {
