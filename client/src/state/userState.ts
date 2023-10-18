@@ -1,10 +1,10 @@
 import { selectorFamily } from 'recoil';
 import { authCheck } from '../service/signService';
 
-type FilterOption = 'Main' | 'My Page';
+type FilterOption = 'Main' | 'Profile';
 
 export const USER_MAIN_OPTION = 'Main';
-export const USER_MYPAGE_OPTION = 'My Page';
+export const USER_PROFILE_OPTION = 'Profile';
 
 export const userSelector = selectorFamily({
   key: 'userSelector',
@@ -15,7 +15,7 @@ export const userSelector = selectorFamily({
     switch (option) {
       case USER_MAIN_OPTION:
         return { image, name };
-      case USER_MYPAGE_OPTION:
+      case USER_PROFILE_OPTION:
         return { email, image, intro, name };
     }
   }

@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { SUCCESS_CODE } from '../../../api/code';
 import paths from '../../../config/routes/paths';
 import { logoutUser } from '../../../service/signService';
-import { USER_MYPAGE_OPTION, userSelector } from '../../../state/userState';
+import { USER_PROFILE_OPTION, userSelector } from '../../../state/userState';
 import { errorHandler } from '../../../utils/exceptionHandler';
 
 interface UserProfileLayerProps {
@@ -17,7 +17,7 @@ const { main } = paths.main;
 const { users, profile } = paths.users;
 
 const HeaderUserLayer = ({ element, closeLayer }: UserProfileLayerProps) => {
-  const { name, email } = useRecoilValue(userSelector(USER_MYPAGE_OPTION));
+  const { name, email } = useRecoilValue(userSelector(USER_PROFILE_OPTION));
   const navigate = useNavigate();
 
   const logoutMutation = useMutation(logoutUser, {
