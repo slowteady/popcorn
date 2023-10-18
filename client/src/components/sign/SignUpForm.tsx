@@ -1,7 +1,8 @@
 import { Button, FormControl, FormGroup, FormHelperText, TextField } from '@mui/material';
 import { ChangeEvent, FormEvent, Fragment, useState } from 'react';
+import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { OVERLAPPING_CODE, SUCCESS_CODE } from '../../api/code';
+import { SUCCESS_CODE } from '../../api/code';
 import paths from '../../config/routes/paths';
 import useBtnAble from '../../hooks/useBtnAble';
 import { registerUser } from '../../service/signService';
@@ -9,13 +10,16 @@ import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';
 
 const OVERLAPPING_MSG = '이미 가입된 회원이 있습니다.';
+const OVERLAPPING_CODE = 11000;
+
+const { signin } = paths.sign;
+
 const INITIAL_VALUE = {
   email: '',
   name: '',
   password: '',
   confirmPassword: ''
 };
-const { signin } = paths.sign;
 
 const SignUpform = () => {
   const [formData, setFormData] = useState(INITIAL_VALUE);
@@ -29,6 +33,21 @@ const SignUpform = () => {
   const isAble = useBtnAble(inputFields, formData, signValidation.signUpValidate.bind(signValidation));
   const navigate = useNavigate();
 
+  const signUpMutation = useMutation(registerUser, {
+    onSuccess: (response) => {
+      const { status, data } = response;
+
+      if (status === SUCCESS_CODE && data.isSuccess) {
+        navigate(signin);
+      } else if (!data.isSuccess && data.code === OVERLAPPING_CODE) {
+        throw new Error(OVERLAPPING_MSG);
+      }
+    },
+    onError: (error) => {
+      errorHandler(error as Error);
+    }
+  });
+
   const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -37,18 +56,7 @@ const SignUpform = () => {
   const doSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await registerUser(formData);
-      const { status, data } = response;
-
-      if (status === SUCCESS_CODE && data.isSuccess) {
-        navigate(signin);
-      } else if (!data.isSuccess && data.code === OVERLAPPING_CODE) {
-        throw new Error(OVERLAPPING_MSG);
-      }
-    } catch (error) {
-      errorHandler(error as Error);
-    }
+    signUpMutation.mutate(formData);
   };
 
   const naviToSignIn = () => {
