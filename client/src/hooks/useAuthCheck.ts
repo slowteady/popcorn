@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Location } from 'react-router-dom';
-import { authCheck } from '../service/signService';
+import { authCheck } from '../service/userService';
 import { errorHandler } from '../utils/exceptionHandler';
 import { objValidation } from '../utils/validation';
 

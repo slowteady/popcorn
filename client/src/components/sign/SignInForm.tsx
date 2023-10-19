@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { SUCCESS_CODE } from '../../api/code';
 import paths from '../../config/routes/paths';
 import useBtnAble from '../../hooks/useBtnAble';
-import { loginUser } from '../../service/signService';
+import { loginUser } from '../../service/userService';
 import { getCookie, removeCookie, setCookie } from '../../utils/cookieManager';
 import { errorHandler } from '../../utils/exceptionHandler';
 import { signValidation, strValidation } from '../../utils/validation';

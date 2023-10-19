@@ -1,6 +1,8 @@
 import { Button, Input, InputAdornment, styled } from '@mui/material';
 import { ChangeEvent, KeyboardEvent, forwardRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { HEADER_DESKTOP, HEADER_MOBILE } from '../../../../config/layout/headerConfig';
+import paths from '../../../../config/routes/paths';
 import { bgBlur } from '../../../../utils/styleUtils';
 import { strValidation } from '../../../../utils/validation';
 import Icon from '../../../common/icon/Icon';
@@ -11,12 +13,18 @@ interface SearchBarSlideProps {
 }
 
 const INPUT_PLACEHOLDER = '영화를 검색해주세요';
+const { main, search } = paths.main;
 
 const SearchBarSlide = forwardRef<HTMLInputElement, SearchBarSlideProps>(({ setOpen }, ref) => {
+  const navigate = useNavigate();
+
   const doSearch = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       const { value } = e.currentTarget;
-      setOpen(false);
+      if (strValidation(value).isNotEmpty()) {
+        navigate(`${main}${search}`, { state: { query: value } });
+        setOpen(false);
+      }
     }
   };
 

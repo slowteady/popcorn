@@ -1,5 +1,5 @@
 import { selectorFamily } from 'recoil';
-import { authCheck } from '../service/signService';
+import { authCheck } from '../service/userService';
 
 type FilterOption = 'Main' | 'Profile';
 

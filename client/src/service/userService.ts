@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { signRequest } from '../api/sign/signApiInstance';
+import { userRequest } from '../api/user/userApiInstance';
 import { BasicForm, SignUpForm } from '../types/sign';
 
 export interface userDataType {
@@ -13,17 +13,17 @@ export interface userDataType {
 }
 
 export const registerUser = (body: SignUpForm) => {
-  return signRequest.post('/register', body);
+  return userRequest.post('/register', body);
 };
 
 export const loginUser = (body: BasicForm) => {
-  return signRequest.post('/login', body);
+  return userRequest.post('/login', body);
 };
 
 export const logoutUser = () => {
-  return signRequest.delete('/logout');
+  return userRequest.delete('/logout');
 };
 
 export const authCheck = (): Promise<AxiosResponse<userDataType>> => {
-  return signRequest.get('/auth');
+  return userRequest.get('/auth');
 };

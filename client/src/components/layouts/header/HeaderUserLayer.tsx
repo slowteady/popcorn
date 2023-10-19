@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { SUCCESS_CODE } from '../../../api/code';
 import paths from '../../../config/routes/paths';
-import { logoutUser } from '../../../service/signService';
+import { logoutUser } from '../../../service/userService';
 import { USER_PROFILE_OPTION, userSelector } from '../../../state/userState';
 import { errorHandler } from '../../../utils/exceptionHandler';
 

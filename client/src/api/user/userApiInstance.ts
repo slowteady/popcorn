@@ -7,6 +7,6 @@ const defaultOptions = {
   baseURL: BASE_URL
 };
 
-export const signRequest = axios.create({
+export const userRequest = axios.create({
   ...defaultOptions
 });
