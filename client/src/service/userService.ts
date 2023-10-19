@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { userRequest } from '../api/user/userApiInstance';
 import { BasicForm, SignUpForm } from '../types/sign';
 
-export interface userDataType {
+interface userDataType {
   user: {
     id: string;
     email: string;
@@ -10,6 +10,11 @@ export interface userDataType {
     intro: string;
     name: string;
   };
+}
+
+interface UpdateUserForm {
+  id: string;
+  body: { image: File | string; intro: string };
 }
 
 export const registerUser = (body: SignUpForm) => {
@@ -26,4 +31,12 @@ export const logoutUser = () => {
 
 export const authCheck = (): Promise<AxiosResponse<userDataType>> => {
   return userRequest.get('/auth');
+};
+
+export const updateUser = ({ id, body }: UpdateUserForm) => {
+  return userRequest.patch(`/update/${id}`, body, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
 };
