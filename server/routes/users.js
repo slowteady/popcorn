@@ -9,6 +9,6 @@ router.post('/login', loginUser);
 router.delete('/logout', logoutUser);
 router.get('/auth', auth, authUser);
 router.post('/auth', auth, authUser);
-router.patch('/update/:userId', upload.single('userImg'), updateProfile);
+router.patch('/update/:userId', upload.single('image'), updateProfile);
 
 module.exports = router;
