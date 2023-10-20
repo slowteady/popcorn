@@ -8,7 +8,7 @@ const Profile = () => {
   return (
     <>
       <Helmet text={PAGE_TITLE} />
-      <Typography variant='h4' sx={{ pl: 3 }}>
+      <Typography variant='h4' sx={{ pl: 3, mt: 1 }}>
         {PAGE_TITLE}
       </Typography>
       <Container component='main' maxWidth='sm'>
