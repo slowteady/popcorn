@@ -1,13 +1,13 @@
 import { atom, selector, selectorFamily } from 'recoil';
 import { authCheck } from '../service/userService';
 
-type FilterOption = 'Main' | 'Profile';
+type FilterOption = 'MAIN' | 'PROFILE';
 
-export const USER_MAIN_OPTION = 'Main';
-export const USER_PROFILE_OPTION = 'Profile';
+export const USER_MAIN_OPTION = 'MAIN';
+export const USER_PROFILE_OPTION = 'PROFILE';
 
-const asyncSelector = selector({
-  key: 'asyncSelector',
+const userAuthSelector = selector({
+  key: 'userAuthSelector',
   get: async () => {
     const response = await authCheck();
     return response.data.user;
@@ -16,7 +16,7 @@ const asyncSelector = selector({
 
 export const userAtom = atom({
   key: 'userAtom',
-  default: asyncSelector
+  default: userAuthSelector
 });
 
 export const userSelector = selectorFamily({
