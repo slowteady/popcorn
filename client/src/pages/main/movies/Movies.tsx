@@ -8,7 +8,7 @@ const Movies = () => {
   return (
     <>
       <Helmet text={PAGE_TITLE} />
-      <Container sx={{ mt: 1 }}>
+      <Container sx={containerSx}>
         <Typography variant='h4' sx={{ mb: 5 }}>
           {PAGE_TITLE}
         </Typography>
@@ -16,6 +16,12 @@ const Movies = () => {
       </Container>
     </>
   );
+};
+
+const containerSx = {
+  height: '100%',
+  position: 'relative',
+  mt: 1
 };
 
 export default Movies;
