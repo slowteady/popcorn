@@ -1,14 +1,12 @@
-import { Box, styled } from '@mui/material';
+import { styled } from '@mui/material';
 import { useQuery } from 'react-query';
 import { IMAGE_URL } from '../../api/movie/movieApiInstance';
 import { MOVIE_PATH } from '../../api/movie/movieApiPaths';
 import { getMovie } from '../../service/movieService';
 import { Movie } from '../../types/movie';
-import Loading from '../common/Loading';
-import { IconMsg } from '../common/icon/IconMsg';
+import QueryStatusHandler from '../hoc/QueryStatusHandler';
 
 const { POPULAR_PATH, IMAGE_SIZE_ORIGINAL } = MOVIE_PATH;
-const ERORR_MESSAGE = '데이터 호출에 실패하였습니다.';
 
 const Poster = () => {
   const { data, status } = useQuery(['getRandomPoster', POPULAR_PATH], async () => {
@@ -24,17 +22,11 @@ const Poster = () => {
     return posterUrl;
   });
 
-  if (status === 'loading') {
-    return <Loading />;
-  } else if (status === 'error') {
-    return (
-      <StyledDiv>
-        <IconMsg icon='ph:file-x-bold' width={128} message={ERORR_MESSAGE} />
-      </StyledDiv>
-    );
-  }
-
-  return <StyledImg src={data} alt='poster' />;
+  return (
+    <QueryStatusHandler status={status}>
+      <StyledImg src={data} alt='poster' />
+    </QueryStatusHandler>
+  );
 };
 
 const getPosterPaths = (results: Array<Movie>) => {
@@ -44,15 +36,6 @@ const getPosterPaths = (results: Array<Movie>) => {
 const getRandomPosterPath = (posterPaths: string[]) => {
   return posterPaths[Math.floor(Math.random() * posterPaths.length)];
 };
-
-const StyledDiv = styled(Box)({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100%',
-  width: '100%'
-});
 
 const StyledImg = styled('img')({
   height: '100vh',
