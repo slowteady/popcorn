@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { Box, SxProps, Typography } from '@mui/material';
+import { Box, SxProps, Typography, styled } from '@mui/material';
 
 interface IconMsgProps {
   icon: string;
@@ -9,20 +9,20 @@ interface IconMsgProps {
   fontSx?: SxProps;
 }
 
-export const IconMsg = ({ icon, width = 48, message, sx = defaultSx, fontSx }: IconMsgProps) => {
+export const IconMsg = ({ icon, width = 48, message, sx, fontSx }: IconMsgProps) => {
   return (
-    <Box sx={{ ...sx }}>
+    <StyledBox sx={{ ...sx }}>
       <Icon icon={icon} width={width} height={width} />
       <Typography m={2} sx={{ ...fontSx }}>
         {message}
       </Typography>
-    </Box>
+    </StyledBox>
   );
 };
 
-const defaultSx = {
+const StyledBox = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center'
-};
+}));
