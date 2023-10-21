@@ -8,9 +8,10 @@ interface QueryStatusHandlerProps extends ReactNodeProps {
   status: QueryStatus;
 }
 
-const ERORR_MESSAGE = '데이터 호출에 실패하였습니다.';
+const ERROR_MESSAGE = '데이터 호출에 실패하였습니다.';
 const STATUS_LOADING = 'loading';
 const STATUS_ERROR = 'error';
+const DEFAULT_ICON = 'ph:file-x-bold';
 
 const QueryStatusHandler = ({ status, children }: QueryStatusHandlerProps) => {
   if (status === STATUS_LOADING) {
@@ -18,7 +19,7 @@ const QueryStatusHandler = ({ status, children }: QueryStatusHandlerProps) => {
   } else if (status === STATUS_ERROR) {
     return (
       <StyledDiv>
-        <IconMsg icon='ph:file-x-bold' width={128} message={ERORR_MESSAGE} />
+        <IconMsg icon={DEFAULT_ICON} width={128} message={ERROR_MESSAGE} />
       </StyledDiv>
     );
   }
