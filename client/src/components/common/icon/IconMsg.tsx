@@ -3,11 +3,11 @@ import { Typography } from '@mui/material';
 
 interface IconMsgProps {
   icon: string;
-  width: number;
+  width?: number;
   message: string;
 }
 
-export const IconMsg = ({ icon, width, message }: IconMsgProps) => {
+export const IconMsg = ({ icon, width = 48, message }: IconMsgProps) => {
   return (
     <>
       <Icon icon={icon} width={width} height={width} />
