@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/material';
-import MovieAlbum from './MovieAlbum';
+import MovieAlbumList from './MovieAlbumList';
 import MovieFilterLayer from './MovieFilterLayer';
 
 const MoviesIndex = () => {
@@ -10,7 +10,7 @@ const MoviesIndex = () => {
           <MovieFilterLayer />
         </Stack>
       </WrapStack>
-      <MovieAlbum />
+      <MovieAlbumList />
     </>
   );
 };
@@ -23,4 +23,5 @@ const WrapStack = styled(Stack)(({ theme }) => ({
   justifyContent: 'flex-end',
   marginBottom: theme.spacing(3)
 }));
+
 export default MoviesIndex;
