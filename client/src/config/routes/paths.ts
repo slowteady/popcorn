@@ -9,7 +9,8 @@ export default {
   main: {
     main: '/main',
     movies: '/movies',
-    search: '/search'
+    search: '/search',
+    collection: '/collection'
   },
   users: {
     users: '/users',

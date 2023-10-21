@@ -1,6 +1,7 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import ExceptionLayout from '../../components/layouts/main/exception/ExceptionLayout';
 import Main from '../../pages/main/Main';
+import Collection from '../../pages/main/collection/Collection';
 import NotFound from '../../pages/main/exception/NotFound';
 import Movies from '../../pages/main/movies/Movies';
 import Search from '../../pages/main/search/Search';
@@ -11,7 +12,7 @@ import paths from './paths';
 
 const { all, root, notFound } = paths;
 const { signin, signup } = paths.sign;
-const { main, movies, search } = paths.main;
+const { main, movies, search, collection } = paths.main;
 const { users, profile } = paths.users;
 
 const routesConfig: RouteObject[] = [
@@ -25,6 +26,7 @@ const routesConfig: RouteObject[] = [
       { element: <Navigate to={`${main}${movies}`} />, index: true },
       { path: movies.slice(1), element: <Movies /> },
       { path: search.slice(1), element: <Search /> },
+      { path: collection.slice(1), element: <Collection /> },
       { path: users.slice(1), children: [{ path: profile.slice(1), element: <Profile /> }] }
     ]
   },
