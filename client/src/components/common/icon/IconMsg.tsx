@@ -23,6 +23,8 @@ export const IconMsg = ({ icon, width = 48, message, sx, fontSx }: IconMsgProps)
 const StyledBox = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
+  justifyContent: 'center',
   alignItems: 'center',
-  justifyContent: 'center'
+  height: '100%',
+  width: '100%'
 }));
