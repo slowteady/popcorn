@@ -9,8 +9,8 @@ interface MovieImgBoxProps {
 
 const MovieImgBox = ({ alt, src, sx }: MovieImgBoxProps) => {
   return (
-    <Box sx={{ ...sx }}>
-      <StyledMovieImg alt={alt} src={src} sx={{ ...sx }} />
+    <Box sx={{ position: 'relative', ...defaultSx, ...sx }}>
+      <StyledMovieImg alt={alt} src={src} />
     </Box>
   );
 };
@@ -22,5 +22,10 @@ const StyledMovieImg = styled('img')({
   objectFit: 'cover',
   position: 'absolute'
 });
+
+const defaultSx = {
+  width: '225px',
+  minHeight: '400px'
+};
 
 export default MovieImgBox;
