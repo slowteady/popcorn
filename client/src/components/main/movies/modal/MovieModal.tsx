@@ -37,7 +37,11 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   boxShadow: theme.shadows[24],
   padding: theme.spacing(4),
   margin: theme.spacing(0, 4),
-  overflow: 'auto'
+  overflow: 'revert',
+  height: '550px',
+  [theme.breakpoints.down('sm')]: {
+    height: '450px'
+  }
 }));
 
 const mediaSx = {
