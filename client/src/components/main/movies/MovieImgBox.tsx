@@ -24,7 +24,6 @@ const StyledMovieImg = styled('img')({
 });
 
 const defaultSx = {
-  width: '225px',
   minHeight: '400px'
 };
 
