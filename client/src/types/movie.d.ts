@@ -17,3 +17,10 @@ export interface MoviesData {
   vote_average: number;
   genre_ids: number[];
 }
+
+export interface MoviesDetailProps {
+  movie: {
+    id: number;
+    posterPath: string;
+  };
+}
