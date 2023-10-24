@@ -3,7 +3,7 @@ import { memo, useState } from 'react';
 import { MOVIE_PATH } from '../../../../api/movie/movieApiPaths';
 import { MoviesData } from '../../../../types/movie';
 import MovieModal from '../modal/MovieModal';
-import MovieImgBox from './MovieImgBox';
+import MovieImgBox from '../utils/MovieImgBox';
 
 interface MovieCardProps {
   movies: MoviesData;
@@ -23,15 +23,15 @@ const changePosterPath = (path: string) => {
 
 const MovieCard = ({ movies, sx }: MovieCardProps) => {
   const [open, setOpen] = useState(false);
-  const { poster_path, release_date, title, vote_average } = movies;
+  const { id, poster_path, release_date, title, vote_average } = movies;
 
-  const modalOpen = () => {
+  const openModal = () => {
     setOpen(true);
   };
 
   return (
     <>
-      <Card onClick={modalOpen} sx={{ ...defaultCardSx, ...sx }}>
+      <Card onClick={openModal} sx={{ ...defaultCardSx, ...sx }}>
         <MovieImgBox src={changePosterPath(poster_path)} alt={title} />
         <Stack spacing={2} sx={{ p: 3 }}>
           <Box sx={{ color: 'inherit' }}>
@@ -47,7 +47,7 @@ const MovieCard = ({ movies, sx }: MovieCardProps) => {
           </FlexStack>
         </Stack>
       </Card>
-      <MovieModal open={open} setOpen={setOpen} />
+      <MovieModal open={open} setOpen={setOpen} movie={{ id, posterPath: changePosterPath(poster_path) }} />
     </>
   );
 };
