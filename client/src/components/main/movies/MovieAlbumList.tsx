@@ -19,15 +19,19 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
   return (
     <>
       <QueryStatusHandler status={status} sx={centerSx}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
           {movies && movies.length > 0 ? (
             movies.map((movie, index) => {
-              return <MovieCard key={index} movies={movie} />;
+              return (
+                <Grid key={index} item>
+                  <MovieCard movies={movie} />
+                </Grid>
+              );
             })
           ) : (
             <IconMsg icon={NODATA_ICON} width={128} message={NODATA_MESSAGE} sx={centerSx} />
           )}
-          {ref && <DummyDiv ref={ref} />}
+          {ref && <ObserveDiv ref={ref} />}
         </Grid>
       </QueryStatusHandler>
     </>
@@ -38,7 +42,7 @@ const centerSx = {
   height: '50vh'
 };
 
-const DummyDiv = styled('div')(() => ({
+const ObserveDiv = styled('div')(() => ({
   height: '40px'
 }));
 
