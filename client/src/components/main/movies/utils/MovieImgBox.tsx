@@ -5,12 +5,13 @@ interface MovieImgBoxProps {
   alt: string;
   src: string;
   sx?: SxProps;
+  imgSx?: SxProps;
 }
 
-const MovieImgBox = ({ alt, src, sx }: MovieImgBoxProps) => {
+const MovieImgBox = ({ alt, src, sx, imgSx }: MovieImgBoxProps) => {
   return (
     <Box sx={{ position: 'relative', ...defaultSx, ...sx }}>
-      <StyledMovieImg alt={alt} src={src} />
+      <StyledMovieImg alt={alt} src={src} sx={{ ...imgSx }} />
     </Box>
   );
 };
