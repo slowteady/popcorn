@@ -23,7 +23,7 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
           {movies && movies.length > 0 ? (
             movies.map((movie, index) => {
               return (
-                <Grid key={index} item>
+                <Grid key={index} item {...movieCardSx}>
                   <MovieCard movies={movie} />
                 </Grid>
               );
@@ -37,6 +37,13 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
     </>
   );
 });
+
+const movieCardSx = {
+  xs: 8,
+  sm: 6,
+  md: 3,
+  lg: 3
+};
 
 const centerSx = {
   height: '50vh'
