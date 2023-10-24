@@ -21,7 +21,7 @@ const changePosterPath = (path: string) => {
 };
 
 const MovieCard = ({ movies, sx }: MovieCardProps) => {
-  const { id, poster_path, release_date, title, vote_average, genre_ids } = movies;
+  const { poster_path, release_date, title, vote_average } = movies;
 
   return (
     <>
@@ -32,25 +32,24 @@ const MovieCard = ({ movies, sx }: MovieCardProps) => {
             <Typography title={title} variant='subtitle2' noWrap>
               {title}
             </Typography>
-            <FlexStack>
-              <Typography variant='subtitle1'>{release_date}</Typography>
-              <VoteAvgBox>
-                <VoteTypography>{changeVoteAvg(vote_average)}</VoteTypography>
-              </VoteAvgBox>
-            </FlexStack>
           </Box>
+          <FlexStack>
+            <Typography variant='subtitle1'>{release_date}</Typography>
+            <VoteAvgBox>
+              <VoteTypography>{changeVoteAvg(vote_average)}</VoteTypography>
+            </VoteAvgBox>
+          </FlexStack>
         </Stack>
       </Card>
     </>
   );
 };
 
-const FlexStack = styled(Stack)(({ theme }) => ({
+const FlexStack = styled(Stack)(() => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'space-between',
-  paddingTop: theme.spacing(2)
+  justifyContent: 'space-between'
 }));
 
 const VoteAvgBox = styled(Box)(() => ({
