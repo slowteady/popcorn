@@ -13,8 +13,8 @@ const FIRST_PAGE = 1;
 
 const MoviesIndex = () => {
   const path = useRecoilValue(filteredPath);
-  const dummyRef = useRef<HTMLDivElement | null>(null);
-  const isIntersecting = useInfiniteScroll(dummyRef);
+  const observeRef = useRef<HTMLDivElement | null>(null);
+  const isIntersecting = useInfiniteScroll(observeRef);
 
   const {
     data: movies,
@@ -41,7 +41,7 @@ const MoviesIndex = () => {
           <MovieFilterLayer />
         </Stack>
       </WrapStack>
-      <MovieAlbumList status={status} ref={dummyRef} movies={movies ? transformMovieData(movies) : []} />
+      <MovieAlbumList status={status} ref={observeRef} movies={movies ? transformMovieData(movies) : []} />
     </>
   );
 };
