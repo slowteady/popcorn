@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
+const MOVIE_URL = `${BASE_URL}/movie`;
 export const IMAGE_URL = process.env.REACT_APP_IMAGE_BASE_URL;
 const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
 
@@ -11,7 +12,7 @@ const defaultOptions = {
 };
 
 export const movieDataRequest = axios.create({
-  baseURL: BASE_URL,
+  baseURL: MOVIE_URL,
   ...defaultOptions
 });
 
