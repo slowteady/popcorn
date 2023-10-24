@@ -5,8 +5,8 @@ import { useRecoilValue } from 'recoil';
 import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
 import { getMovie } from '../../../service/movieService';
 import { filteredPath } from '../../../state/moviesState';
-import MovieAlbumList from './MovieAlbumList';
-import MovieFilterLayer from './MovieFilterLayer';
+import MovieAlbumList from './list/MovieAlbumList';
+import MovieFilterLayer from './utils/MovieFilterLayer';
 
 const FIRST_PAGE = 1;
 const STALE_TIME = 1000 * 60 * 60;

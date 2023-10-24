@@ -1,9 +1,9 @@
 import { Grid, styled } from '@mui/material';
 import { RefObject, forwardRef } from 'react';
 import { QueryStatus } from 'react-query';
-import { MoviesData } from '../../../types/movie';
-import { IconMsg } from '../../common/icon/IconMsg';
-import QueryStatusHandler from '../../hoc/QueryStatusHandler';
+import { MoviesData } from '../../../../types/movie';
+import { IconMsg } from '../../../common/icon/IconMsg';
+import QueryStatusHandler from '../../../hoc/QueryStatusHandler';
 import MovieCard from './MovieCard';
 
 const NODATA_MESSAGE = '데이터가 없습니다.';
