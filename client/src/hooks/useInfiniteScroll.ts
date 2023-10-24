@@ -1,29 +1,33 @@
-import { RefObject, useEffect, useState } from 'react';
+import { useCallback, useRef } from 'react';
+import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query';
 
-const useInfiniteScroll = (ref: RefObject<HTMLElement>) => {
-  const [isIntersecting, setIntersecting] = useState(false);
+interface useInfiniteScrollProps {
+  fetchNextPage: (options?: FetchNextPageOptions) => Promise<InfiniteQueryObserverResult<any, any>>;
+  hasNextPage: boolean | undefined;
+}
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      setIntersecting(entry.isIntersecting);
+const useInfiniteScroll = ({ fetchNextPage, hasNextPage }: useInfiniteScrollProps) => {
+  const ref = useRef<IntersectionObserver | null>(null);
+
+  const observeRef = useCallback(
+    (node: Element | null) => {
+      if (ref.current) {
+        ref.current.disconnect();
+      }
+
+      ref.current = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && hasNextPage) {
+          fetchNextPage();
+        }
+      });
+      if (node) {
+        ref.current?.observe(node);
+      }
     },
-    { threshold: 1 }
+    [fetchNextPage, hasNextPage]
   );
 
-  useEffect(() => {
-    const observeRef = ref.current;
-    if (observeRef) {
-      observer.observe(observeRef);
-    }
-
-    return () => {
-      if (observeRef) {
-        observer.unobserve(observeRef);
-      }
-    };
-  }, []);
-
-  return isIntersecting;
+  return observeRef;
 };
 
 export default useInfiniteScroll;
