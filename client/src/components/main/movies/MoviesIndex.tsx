@@ -1,6 +1,5 @@
 import { Stack, styled } from '@mui/material';
 import { AxiosResponse } from 'axios';
-import { useEffect, useRef } from 'react';
 import { InfiniteData, useInfiniteQuery } from 'react-query';
 import { useRecoilValue } from 'recoil';
 import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
@@ -10,11 +9,10 @@ import MovieAlbumList from './MovieAlbumList';
 import MovieFilterLayer from './MovieFilterLayer';
 
 const FIRST_PAGE = 1;
+const STALE_TIME = 1000 * 60 * 60;
 
 const MoviesIndex = () => {
   const path = useRecoilValue(filteredPath);
-  const observeRef = useRef<HTMLDivElement | null>(null);
-  const isIntersecting = useInfiniteScroll(observeRef);
 
   const {
     data: movies,
@@ -25,14 +23,10 @@ const MoviesIndex = () => {
     getNextPageParam: ({ data }) => {
       const { page, total_pages } = data;
       return page < total_pages && page + 1;
-    }
+    },
+    staleTime: STALE_TIME
   });
-
-  useEffect(() => {
-    if (hasNextPage && isIntersecting) {
-      fetchNextPage();
-    }
-  }, [isIntersecting, hasNextPage]);
+  const observeRef = useInfiniteScroll({ fetchNextPage, hasNextPage });
 
   return (
     <>
