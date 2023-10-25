@@ -21,7 +21,7 @@ const MovieImgBox = ({ alt, src, sx, imgSx }: MovieImgBoxProps) => {
 
   return (
     <Box sx={{ position: 'relative', ...defaultSx, ...sx }}>
-      {!hasError ? (
+      {hasError ? (
         <NoImgBox>
           <Icon icon={NO_IMG_ICON} width={84} />
         </NoImgBox>
