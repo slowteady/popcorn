@@ -1,4 +1,4 @@
-import { movieDataRequest } from '../api/movie/movieApiInstance';
+import { movieBasedRequest, movieDataRequest } from '../api/movie/movieApiInstance';
 import { MOVIE_PATH } from '../api/movie/movieApiPaths';
 
 export const getMovie = (path: string, page?: number) => {
@@ -11,4 +11,8 @@ export const getMovieDetail = (id: number) => {
 
 export const getMovieDetailCredits = (id: number) => {
   return movieDataRequest.get(`/${id}${MOVIE_PATH.CREDITS_PATH}`);
+};
+
+export const getSearchedMovie = (query: string, page: number) => {
+  return movieBasedRequest.get(`${MOVIE_PATH.SEARCH_PATH}`, { params: { query, page } });
 };
