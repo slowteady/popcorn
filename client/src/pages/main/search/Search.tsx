@@ -9,7 +9,7 @@ const Search = () => {
     <>
       <Helmet text={PAGE_TITLE} />
       <Container>
-        <Typography variant='h4' sx={{ mb: 5 }}>
+        <Typography variant='h4' sx={{ mb: 3 }}>
           {PAGE_TITLE}
         </Typography>
         <SearchIndex />
