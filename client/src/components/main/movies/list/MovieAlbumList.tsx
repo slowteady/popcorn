@@ -8,6 +8,7 @@ import MovieCard from './MovieCard';
 
 const NODATA_MESSAGE = '데이터가 없습니다.';
 const NODATA_ICON = 'material-symbols:no-sim-outline-rounded';
+const STATUS_SUCCESS = 'success';
 
 interface MovieAlbumListProps {
   status: QueryStatus;
@@ -20,17 +21,18 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
     <>
       <QueryStatusHandler status={status} sx={centerSx}>
         <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
-          {movies && movies.length > 0 ? (
-            movies.map((movie, index) => {
-              return (
-                <Grid key={index} item {...movieCardSx}>
-                  <MovieCard movies={movie} />
-                </Grid>
-              );
-            })
-          ) : (
-            <IconMsg icon={NODATA_ICON} width={128} message={NODATA_MESSAGE} sx={centerSx} />
-          )}
+          {status === STATUS_SUCCESS &&
+            (movies && movies.length > 0 ? (
+              movies.map((movie, index) => {
+                return (
+                  <Grid key={index} item {...movieCardSx}>
+                    <MovieCard movies={movie} />
+                  </Grid>
+                );
+              })
+            ) : (
+              <IconMsg icon={NODATA_ICON} width={128} message={NODATA_MESSAGE} sx={centerSx} />
+            ))}
           {ref && <ObserveDiv ref={ref} />}
         </Grid>
       </QueryStatusHandler>
