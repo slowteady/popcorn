@@ -22,7 +22,7 @@ const SearchBarSlide = forwardRef<HTMLInputElement, SearchBarSlideProps>(({ setO
     if (e.key === 'Enter') {
       const { value } = e.currentTarget;
       if (strValidation(value).isNotEmpty()) {
-        navigate(`${main}${search}`, { state: { query: value } });
+        navigate(`${main}${search}?query=${value}`);
         setOpen(false);
       }
     }
