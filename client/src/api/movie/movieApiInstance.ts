@@ -11,6 +11,11 @@ const defaultOptions = {
   params: { language: 'ko-KR' }
 };
 
+export const movieBasedRequest = axios.create({
+  baseURL: BASE_URL,
+  ...defaultOptions
+});
+
 export const movieDataRequest = axios.create({
   baseURL: MOVIE_URL,
   ...defaultOptions
