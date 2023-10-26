@@ -26,7 +26,7 @@ const TableBody = ({ collections }: TableBodyProps) => {
   const navigate = useNavigate();
 
   const clickTitle = (id: string) => {
-    navigate(`${main}${index}${detail}/${id}`);
+    navigate(`${main}${index}${detail}?id=${id}`);
   };
 
   return (
