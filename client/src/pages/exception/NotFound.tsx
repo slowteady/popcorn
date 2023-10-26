@@ -1,8 +1,8 @@
 import { Box, Button, Container, Typography, styled } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import Helmet from '../../../components/common/Helmet';
-import paths from '../../../config/routes/paths';
-import img404 from '../../../img/illustration_404.svg';
+import Helmet from '../../components/common/Helmet';
+import paths from '../../config/routes/paths';
+import img404 from '../../img/illustration_404.svg';
 
 const PAGE_TITLE = '404 Page Not Found';
 

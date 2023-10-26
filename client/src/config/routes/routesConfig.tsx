@@ -1,8 +1,8 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import ExceptionLayout from '../../components/layouts/main/exception/ExceptionLayout';
+import NotFound from '../../pages/exception/NotFound';
 import Main from '../../pages/main/Main';
 import Collection from '../../pages/main/collection/Collection';
-import NotFound from '../../pages/main/exception/NotFound';
 import Movies from '../../pages/main/movies/Movies';
 import Search from '../../pages/main/search/Search';
 import Profile from '../../pages/main/users/Profile';
