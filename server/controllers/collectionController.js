@@ -68,7 +68,7 @@ const getDetailCollection = async (req, res) => {
       return { ...m, release_date };
     });
 
-    res.status(200).json({ isSuccess: true, collection: obj, totalPages });
+    res.status(200).json({ isSuccess: true, collection: obj, page: parseInt(req.query.page), totalPages });
   } catch (err) {
     console.error('err: ', err, 'code: ', err.code);
     res.json({ isSuccess: false, msg: '오류가 발생했어요' });
