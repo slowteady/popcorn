@@ -17,6 +17,7 @@ const { signin, signup } = paths.sign;
 const { main, movies, search, collection } = paths.main;
 const { index, add, detail } = collection;
 const { users, profile } = paths.users;
+const ID_PATH = '/:id';
 
 const routesConfig: RouteObject[] = [
   { path: root, element: <Navigate to={signin} replace /> },
@@ -34,7 +35,7 @@ const routesConfig: RouteObject[] = [
         children: [
           { path: all, element: <Collection />, index: true },
           { path: add.slice(1), element: <CollectionAdd /> },
-          { path: detail.slice(1), element: <CollectionDetail /> }
+          { path: `${detail.slice(1)}${ID_PATH}`, element: <CollectionDetail /> }
         ]
       },
       { path: users.slice(1), children: [{ path: profile.slice(1), element: <Profile /> }] }
