@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 import { useQuery } from 'react-query';
-import { IMAGE_URL } from '../../api/movie/movieApiInstance';
-import { MOVIE_PATH } from '../../api/movie/movieApiPaths';
+import { IMAGE_URL } from '../../api/apiInstance';
+import { MOVIE_PATH } from '../../api/path/movieApiPaths';
 import { getMovie } from '../../service/movieService';
 import { Movie } from '../../types/movie';
 import QueryStatusHandler from '../hoc/QueryStatusHandler';

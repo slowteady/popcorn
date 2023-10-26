@@ -1,5 +1,5 @@
-import { movieBasedRequest, movieDataRequest } from '../api/movie/movieApiInstance';
-import { MOVIE_PATH } from '../api/movie/movieApiPaths';
+import { movieBasedRequest, movieDataRequest } from '../api/apiInstance';
+import { MOVIE_PATH } from '../api/path/movieApiPaths';
 
 export const getMovie = (path: string, page?: number) => {
   return page ? movieDataRequest.get(path, { params: { page } }) : movieDataRequest.get(path);

@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import { MOVIE_PATH } from '../api/movie/movieApiPaths';
+import { MOVIE_PATH } from '../api/path/movieApiPaths';
 import { FILTER_OPTION } from '../config/movie/movieConfig';
 import { FilterOption } from '../types/movie';
 

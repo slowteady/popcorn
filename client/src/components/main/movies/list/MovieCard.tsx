@@ -1,6 +1,6 @@
 import { Box, Card, Stack, SxProps, Typography, styled } from '@mui/material';
 import { memo, useState } from 'react';
-import { MOVIE_PATH } from '../../../../api/movie/movieApiPaths';
+import { MOVIE_PATH } from '../../../../api/path/movieApiPaths';
 import { MoviesData } from '../../../../types/movie';
 import MovieModal from '../modal/MovieModal';
 import MovieImgBox from '../utils/MovieImgBox';

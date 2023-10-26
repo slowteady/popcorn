@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { userRequest } from '../api/user/userApiInstance';
+import { userRequest } from '../api/apiInstance';
 import { BasicForm, SignUpForm } from '../types/sign';
 
 interface userDataType {
