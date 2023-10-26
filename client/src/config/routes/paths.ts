@@ -10,7 +10,11 @@ export default {
     main: '/main',
     movies: '/movies',
     search: '/search',
-    collection: '/collection'
+    collection: {
+      index: '/collection',
+      add: '/add',
+      detail: '/detail'
+    }
   },
   users: {
     users: '/users',
