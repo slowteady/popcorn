@@ -1,10 +1,10 @@
 import { Stack, styled } from '@mui/material';
-import { AxiosResponse } from 'axios';
-import { InfiniteData, useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import { useRecoilValue } from 'recoil';
 import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
 import { getMovie } from '../../../service/movieService';
 import { filteredPath } from '../../../state/moviesState';
+import { transformMovieData } from '../../../utils/dataTransForm';
 import MovieAlbumList from './list/MovieAlbumList';
 import MovieFilterLayer from './utils/MovieFilterLayer';
 
@@ -26,6 +26,7 @@ const MoviesIndex = () => {
     },
     staleTime: STALE_TIME
   });
+
   const observeRef = useInfiniteScroll({ fetchNextPage, hasNextPage });
 
   return (
@@ -35,13 +36,9 @@ const MoviesIndex = () => {
           <MovieFilterLayer />
         </Stack>
       </WrapStack>
-      <MovieAlbumList status={status} ref={observeRef} movies={movies ? transformMovieData(movies) : []} />
+      <MovieAlbumList status={status} ref={observeRef} movies={transformMovieData(movies)} />
     </>
   );
-};
-
-const transformMovieData = (movies: InfiniteData<AxiosResponse<any, any>>) => {
-  return movies.pages.flatMap(({ data }) => data.results);
 };
 
 const WrapStack = styled(Stack)(({ theme }) => ({

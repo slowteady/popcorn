@@ -1,8 +1,8 @@
-import { Box, Button, InputAdornment, SxProps, TextField, styled } from '@mui/material';
+import { Box, Button, SxProps, TextField, styled } from '@mui/material';
 import { ChangeEvent, KeyboardEvent, memo, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { strValidation } from '../../../utils/validation';
-import Icon from '../../common/icon/Icon';
+import { InputProps } from '../../theme/common/commonSx';
 
 interface SearchInputProps {
   keyword: string;
@@ -44,7 +44,7 @@ const SearchInput = ({ keyword, sx }: SearchInputProps) => {
         onKeyDown={doEnter}
         value={localKeyword}
         sx={{ width: 280 }}
-        InputProps={InputProps()}
+        InputProps={InputProps({ icon: SEARCH_ICON, sx: iconSx })}
       />
       <Button onClick={doSearch} variant='contained' sx={{ m: 2.5 }}>
         Search
@@ -52,14 +52,6 @@ const SearchInput = ({ keyword, sx }: SearchInputProps) => {
     </InputBox>
   );
 };
-
-const InputProps = () => ({
-  startAdornment: (
-    <InputAdornment position='start'>
-      <Icon icon={SEARCH_ICON} sx={iconSx} />
-    </InputAdornment>
-  )
-});
 
 const InputBox = styled(Box)(() => ({
   display: 'flex',

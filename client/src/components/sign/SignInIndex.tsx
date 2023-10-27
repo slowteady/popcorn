@@ -1,6 +1,6 @@
 import FaceIcon from '@mui/icons-material/Face';
 import { Typography } from '@mui/material';
-import { StyledBox } from '../theme/commonStyles';
+import { StyledBox } from '../theme/common/commonStyles';
 import SignInForm from './SignInForm';
 
 const HEADER_LABEL = '로그인';

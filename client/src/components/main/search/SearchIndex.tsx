@@ -1,10 +1,10 @@
 import { Container } from '@mui/material';
-import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
-import { InfiniteData, useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
 import { getSearchedMovie } from '../../../service/movieService';
+import { transformMovieData } from '../../../utils/dataTransForm';
 import { strValidation } from '../../../utils/validation';
 import MovieAlbumList from '../movies/list/MovieAlbumList';
 import SearchInput from './SearchInput';
@@ -49,13 +49,9 @@ const SearchIndex = () => {
   return (
     <Container sx={{ pl: '0 !important' }}>
       <SearchInput keyword={keyword} sx={{ mb: 4 }} />
-      <MovieAlbumList status={status} ref={observeRef} movies={movies ? transformMovieData(movies) : []} />
+      <MovieAlbumList status={status} ref={observeRef} movies={transformMovieData(movies)} />
     </Container>
   );
-};
-
-const transformMovieData = (movies: InfiniteData<AxiosResponse<any, any>>) => {
-  return movies.pages.flatMap(({ data }) => data.results);
 };
 
 export default SearchIndex;

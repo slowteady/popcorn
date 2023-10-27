@@ -1,6 +1,6 @@
 import FaceIcon from '@mui/icons-material/Face';
 import { Typography } from '@mui/material';
-import { StyledBox } from '../theme/commonStyles';
+import { StyledBox } from '../theme/common/commonStyles';
 import SignUpform from './SignUpForm';
 
 const HEADER_LABEL = '회원가입';
