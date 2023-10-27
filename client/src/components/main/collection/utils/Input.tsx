@@ -1,7 +1,7 @@
 import { SxProps, TextField } from '@mui/material';
-import { ChangeEvent, KeyboardEvent, RefObject, forwardRef, useState } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef, KeyboardEvent, RefObject, forwardRef, useState } from 'react';
 
-type TextFieldProps = React.ComponentPropsWithoutRef<typeof TextField>;
+type TextFieldProps = ComponentPropsWithoutRef<typeof TextField>;
 
 interface InputProps extends TextFieldProps {
   sx?: SxProps;
