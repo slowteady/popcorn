@@ -7,3 +7,7 @@ export const getCollection = (page: number, limit: number) => {
 export const getCollectionDetail = (id: string, page: number, limit: number) => {
   return collectionDetailRequest.get(`/${id}`, { params: { page, limit } });
 };
+
+export const deleteCollection = (id: string) => {
+  return collectionBasedRequest.delete('', { params: { id } });
+};
