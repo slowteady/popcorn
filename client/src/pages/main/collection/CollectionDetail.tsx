@@ -2,11 +2,11 @@ import { Box, Container, Typography } from '@mui/material';
 import { AxiosResponse } from 'axios';
 import { InfiniteData, useInfiniteQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
+import DetailButtons from '../../../components/main/collection/utils/DetailButtons';
 import MovieAlbumList from '../../../components/main/movies/list/MovieAlbumList';
 import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
 import { getCollectionDetail } from '../../../service/collectionService';
 import { getCookie } from '../../../utils/cookieManager';
-import DetailButtons from './DetailButtons';
 
 const LIST_COUNT = 20;
 const FIRST_PAGE = 1;

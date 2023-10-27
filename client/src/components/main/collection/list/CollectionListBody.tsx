@@ -10,7 +10,7 @@ import TableHead from '../../../layouts/table/TableHead';
 const { ROWSPERPAGE, TABLE_HEADER } = LIST_TABLE_CONF;
 const FIRST_PAGE = 1;
 
-const CollectionBoard = () => {
+const CollectionListBody = () => {
   const [page, setPage] = useState(FIRST_PAGE);
   const { data, status } = useQuery(['getCollection', page], () => getCollection(page, ROWSPERPAGE));
 
@@ -57,4 +57,4 @@ const tableHeadSx = {
   fontWeight: 'bold'
 };
 
-export default CollectionBoard;
+export default CollectionListBody;

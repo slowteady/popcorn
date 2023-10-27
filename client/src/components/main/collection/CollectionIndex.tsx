@@ -2,7 +2,7 @@ import { Button, Container, Stack, styled } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import paths from '../../../config/routes/paths';
 import Icon from '../../common/icon/Icon';
-import CollectionBoard from './list/CollectionBoard';
+import CollectionListBody from './list/CollectionListBody';
 
 const ADD_BUTTON_ICON = 'eva:plus-fill';
 
@@ -23,7 +23,7 @@ const CollectionIndex = () => {
           New Collection
         </Button>
       </FlexStack>
-      <CollectionBoard />
+      <CollectionListBody />
     </Container>
   );
 };
