@@ -1,6 +1,8 @@
 import { Checkbox, Grid, styled } from '@mui/material';
-import { RefObject, forwardRef } from 'react';
+import { ChangeEvent, RefObject, forwardRef, useState } from 'react';
 import { QueryStatus } from 'react-query';
+import { useRecoilState } from 'recoil';
+import { checkedMoviesState } from '../../../../state/collectionState';
 import { MoviesData } from '../../../../types/movie';
 import Icon from '../../../common/icon/Icon';
 import { IconMsg } from '../../../common/icon/IconMsg';
@@ -12,6 +14,7 @@ const NODATA_ICON = 'material-symbols:no-sim-outline-rounded';
 const CHECK_ICON = 'ri:checkbox-circle-line';
 const CHECKED_ICON = 'ri:checkbox-circle-fill';
 const STATUS_SUCCESS = 'success';
+const ICON_WIDTH = 25;
 
 interface MovieAlbumListProps {
   status: QueryStatus;
@@ -21,6 +24,18 @@ interface MovieAlbumListProps {
 }
 
 const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies, status, readonly }, ref) => {
+  const [dummyState, setDummyState] = useState<MoviesData[]>([]);
+  const [globalState, setGlobalState] = useRecoilState(checkedMoviesState);
+  const checkedMovies = readonly ? dummyState : globalState;
+  const setCheckedMovies = readonly ? setDummyState : setGlobalState;
+
+  const changeCheck = ({ currentTarget }: ChangeEvent<HTMLInputElement>, movie: MoviesData) => {
+    const isChecked = currentTarget.checked;
+    isChecked
+      ? setCheckedMovies((prevCheckedMovie) => [...prevCheckedMovie, movie])
+      : setCheckedMovies(checkedMovies.filter((chkMovie) => chkMovie.id !== movie.id));
+  };
+
   return (
     <>
       <QueryStatusHandler status={status} sx={centerSx}>
@@ -31,7 +46,11 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
                 return (
                   <Grid key={index} item sx={{ position: 'relative' }} {...relativeSx}>
                     {!readonly && (
-                      <CheckCircle icon={<Icon icon={CHECK_ICON} />} checkedIcon={<Icon icon={CHECKED_ICON} />} />
+                      <CheckCircle
+                        onChange={(e) => changeCheck(e, movie)}
+                        icon={<Icon icon={CHECK_ICON} width={ICON_WIDTH} />}
+                        checkedIcon={<Icon icon={CHECKED_ICON} width={ICON_WIDTH} />}
+                      />
                     )}
                     <MovieCard movies={movie} />
                   </Grid>
