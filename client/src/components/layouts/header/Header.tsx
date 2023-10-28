@@ -1,7 +1,12 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box, IconButton, Stack, Toolbar, styled } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { HEADER_DESKTOP, HEADER_MOBILE, NAV_WIDTH } from '../../../config/layout/headerConfig';
+import paths from '../../../config/routes/paths';
 import { bgBlur } from '../../../utils/styleUtils';
+import CollectionListBody from '../../main/collection/list/CollectionListBody';
+import IconLayerButton from '../button/IconLayerButton';
 import HeaderUserButton from './HeaderUserButton';
 import SearchBar from './search/SearchBar';
 
@@ -9,7 +14,22 @@ export interface HeaderProps {
   onOpenNav: () => void;
 }
 
+const CART_ICON = 'el:shopping-cart-sign';
+
+const { main } = paths.main;
+const { index, add } = paths.main.collection;
+
 const Header = ({ onOpenNav }: HeaderProps) => {
+  const [onCart, setOnCart] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const { pathname } = location;
+    if (pathname === `${main}${index}${add}`) {
+      setOnCart(true);
+    }
+  }, [location]);
+
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -19,6 +39,17 @@ const Header = ({ onOpenNav }: HeaderProps) => {
         <SearchBar />
         <Box sx={{ flexGrow: 1 }} />
         <Stack direction='row' alignItems='center' spacing={{ xs: 0.5, sm: 1 }}>
+          {onCart && (
+            <IconLayerButton
+              icon={CART_ICON}
+              width={40}
+              anchorOrigin={{ vertical: 'bottom', horizontal: -200 }}
+              transformOrigin={{ vertical: 'top', horizontal: 200 }}
+              sx={{ mr: 2 }}
+            >
+              <CollectionListBody />
+            </IconLayerButton>
+          )}
           <HeaderUserButton />
         </Stack>
       </StyledToolbar>
