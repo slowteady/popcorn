@@ -38,13 +38,7 @@ const Header = ({ onOpenNav }: HeaderProps) => {
         <Box sx={{ flexGrow: 1 }} />
         <Stack direction='row' alignItems='center' spacing={{ xs: 0.5, sm: 1 }}>
           {onCart && (
-            <IconLayerButton
-              icon={CART_ICON}
-              width={40}
-              // anchorOrigin={{ vertical: 'bottom', horizontal: -200 }}
-              // transformOrigin={{ vertical: 'top', horizontal: 200 }}
-              sx={{ mr: 2 }}
-            >
+            <IconLayerButton icon={CART_ICON} width={40} sx={{ mr: 2 }}>
               <CollectionCart />
             </IconLayerButton>
           )}
