@@ -8,9 +8,9 @@ interface Config {
 export const ADD_TABLE_CONF: Config = {
   ROWSPERPAGE: 5,
   TABLE_HEADER: [
-    { id: 'dummy', label: '', width: '15%', align: 'left' },
+    { id: 'dummy', label: '', width: '5%', align: 'left' },
     { id: 'title', label: '제목', width: '55%', align: 'left' },
-    { id: 'release_date', label: '릴리즈', width: '30%', align: 'left' }
+    { id: 'release_date', label: '릴리즈', width: '40%', align: 'left' }
   ]
 };
 
