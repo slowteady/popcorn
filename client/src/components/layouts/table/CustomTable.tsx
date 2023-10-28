@@ -5,13 +5,14 @@ import CustomTableHead from './CustomTableHead';
 
 interface CustomTableProps extends ReactNodeProps {
   tableHeader: TableHeaderConfig[];
+  size?: 'small' | 'medium';
   sx?: SxProps;
 }
 
-const CustomTable = ({ children, tableHeader, sx }: CustomTableProps) => {
+const CustomTable = ({ children, size = 'medium', tableHeader, sx }: CustomTableProps) => {
   return (
     <TableContainer>
-      <Table size='medium'>
+      <Table size={size}>
         <CustomTableHead header={tableHeader} sx={{ ...tableHeadSx, ...sx }} />
         {children}
       </Table>
