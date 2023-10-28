@@ -1,14 +1,14 @@
-import { TableHead as MUITableHead, SxProps, TableCell, TableRow } from '@mui/material';
+import { SxProps, TableCell, TableHead, TableRow } from '@mui/material';
 import { TableHeaderConfig } from '../../../types/layout';
 
-interface TableHeadProps {
+interface CustomTableHeadProps {
   header: TableHeaderConfig[];
   sx?: SxProps;
 }
 
-const TableHead = ({ header, sx }: TableHeadProps) => {
+const CustomTableHead = ({ header, sx }: CustomTableHeadProps) => {
   return (
-    <MUITableHead>
+    <TableHead>
       <TableRow>
         {header.map((head) => {
           const { id, label, width, align = 'center' } = head;
@@ -20,8 +20,8 @@ const TableHead = ({ header, sx }: TableHeadProps) => {
           );
         })}
       </TableRow>
-    </MUITableHead>
+    </TableHead>
   );
 };
 
-export default TableHead;
+export default CustomTableHead;

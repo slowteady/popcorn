@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { HEADER_DESKTOP, HEADER_MOBILE, NAV_WIDTH } from '../../../config/layout/headerConfig';
 import paths from '../../../config/routes/paths';
 import { bgBlur } from '../../../utils/styleUtils';
-import CollectionListBody from '../../main/collection/list/CollectionListBody';
+import CollectionCartBoard from '../../main/collection/add/CollectionCartBoard';
 import IconLayerButton from '../button/IconLayerButton';
 import HeaderUserButton from './HeaderUserButton';
 import SearchBar from './search/SearchBar';
@@ -47,7 +47,7 @@ const Header = ({ onOpenNav }: HeaderProps) => {
               transformOrigin={{ vertical: 'top', horizontal: 200 }}
               sx={{ mr: 2 }}
             >
-              <CollectionListBody />
+              <CollectionCartBoard />
             </IconLayerButton>
           )}
           <HeaderUserButton />

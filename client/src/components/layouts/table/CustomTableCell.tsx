@@ -1,13 +1,13 @@
-import { TableCell as MUITableCell, SxProps, Typography, styled } from '@mui/material';
+import { SxProps, TableCell, Typography, styled } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { ReactNodeProps } from '../../../types/global';
 
-interface TableCellProps extends ReactNodeProps {
+interface CustomTableCellProps extends ReactNodeProps {
   sx?: SxProps;
   onClick?: MouseEventHandler;
 }
 
-const TableCell = ({ children, sx, onClick }: TableCellProps) => {
+const CustomTableCell = ({ children, sx, onClick }: CustomTableCellProps) => {
   return (
     <CenterTableCell>
       <Typography variant='subtitle2' noWrap sx={{ ...sx }} onClick={onClick}>
@@ -17,8 +17,8 @@ const TableCell = ({ children, sx, onClick }: TableCellProps) => {
   );
 };
 
-const CenterTableCell = styled(MUITableCell)(() => ({
+const CenterTableCell = styled(TableCell)(() => ({
   textAlign: 'center'
 }));
 
-export default TableCell;
+export default CustomTableCell;

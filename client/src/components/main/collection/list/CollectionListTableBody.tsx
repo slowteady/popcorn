@@ -1,10 +1,10 @@
-import { TableBody as MuiTableBody, TableRow } from '@mui/material';
+import { TableBody, TableRow } from '@mui/material';
 import { AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
-import paths from '../../../config/routes/paths';
-import TableCell from './TableCell';
+import paths from '../../../../config/routes/paths';
+import CustomTableCell from '../../../layouts/table/CustomTableCell';
 
-interface TableBodyProps {
+interface CollectionListTableBodyProps {
   collections: AxiosResponse<any, any>;
 }
 
@@ -21,7 +21,7 @@ interface Collection {
 const { main } = paths.main;
 const { index, detail } = paths.main.collection;
 
-const TableBody = ({ collections }: TableBodyProps) => {
+const CollectionListTableBody = ({ collections }: CollectionListTableBodyProps) => {
   const { collection } = collections.data;
   const navigate = useNavigate();
 
@@ -30,21 +30,21 @@ const TableBody = ({ collections }: TableBodyProps) => {
   };
 
   return (
-    <MuiTableBody>
+    <TableBody>
       {collection.map((col: Collection, idx: number) => {
         const { id, user, collectionTitle: title, rgstDate } = col;
 
         return (
           <TableRow key={idx} hover tabIndex={-1} role='row'>
-            <TableCell onClick={() => clickTitle(id)} sx={{ cursor: 'pointer' }}>
+            <CustomTableCell onClick={() => clickTitle(id)} sx={{ cursor: 'pointer' }}>
               {title}
-            </TableCell>
-            <TableCell>{user.userName}</TableCell>
-            <TableCell>{changeDate(rgstDate)}</TableCell>
+            </CustomTableCell>
+            <CustomTableCell>{user.userName}</CustomTableCell>
+            <CustomTableCell>{changeDate(rgstDate)}</CustomTableCell>
           </TableRow>
         );
       })}
-    </MuiTableBody>
+    </TableBody>
   );
 };
 
@@ -52,4 +52,4 @@ const changeDate = (date: Date) => {
   return date.toString().substring(0, 10);
 };
 
-export default TableBody;
+export default CollectionListTableBody;
