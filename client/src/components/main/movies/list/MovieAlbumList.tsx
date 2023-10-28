@@ -1,31 +1,38 @@
-import { Grid, styled } from '@mui/material';
+import { Checkbox, Grid, styled } from '@mui/material';
 import { RefObject, forwardRef } from 'react';
 import { QueryStatus } from 'react-query';
 import { MoviesData } from '../../../../types/movie';
+import Icon from '../../../common/icon/Icon';
 import { IconMsg } from '../../../common/icon/IconMsg';
 import QueryStatusHandler from '../../../hoc/QueryStatusHandler';
 import MovieCard from './MovieCard';
 
 const NODATA_MESSAGE = '데이터가 없습니다.';
 const NODATA_ICON = 'material-symbols:no-sim-outline-rounded';
+const CHECK_ICON = 'ri:checkbox-circle-line';
+const CHECKED_ICON = 'ri:checkbox-circle-fill';
 const STATUS_SUCCESS = 'success';
 
 interface MovieAlbumListProps {
   status: QueryStatus;
   movies: MoviesData[];
+  readonly: boolean;
   ref?: RefObject<HTMLDivElement>;
 }
 
-const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies, status }, ref) => {
+const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies, status, readonly }, ref) => {
   return (
     <>
       <QueryStatusHandler status={status} sx={centerSx}>
-        <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+        <Grid container spacing={2} sx={gridSx}>
           {status === STATUS_SUCCESS &&
             (movies && movies.length > 0 ? (
               movies.map((movie, index) => {
                 return (
-                  <Grid key={index} item {...movieCardSx}>
+                  <Grid key={index} item sx={{ position: 'relative' }} {...relativeSx}>
+                    {!readonly && (
+                      <CheckCircle icon={<Icon icon={CHECK_ICON} />} checkedIcon={<Icon icon={CHECKED_ICON} />} />
+                    )}
                     <MovieCard movies={movie} />
                   </Grid>
                 );
@@ -40,11 +47,24 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
   );
 });
 
-const movieCardSx = {
+const CheckCircle = styled(Checkbox)(({ theme }) => ({
+  position: 'absolute',
+  zIndex: 2,
+  padding: 0,
+  margin: theme.spacing(1),
+  backgroundColor: 'white',
+  cursor: 'pointer'
+}));
+
+const relativeSx = {
   xs: 8,
   sm: 6,
   md: 3,
   lg: 3
+};
+
+const gridSx = {
+  justifyContent: 'center'
 };
 
 const centerSx = {
