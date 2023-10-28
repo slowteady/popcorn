@@ -49,7 +49,7 @@ const SearchIndex = () => {
   return (
     <Container sx={{ pl: '0 !important' }}>
       <SearchInput keyword={keyword} sx={{ mb: 4 }} />
-      <MovieAlbumList status={status} ref={observeRef} movies={transformMovieData(movies)} />
+      <MovieAlbumList status={status} ref={observeRef} movies={transformMovieData(movies)} readonly />
     </Container>
   );
 };

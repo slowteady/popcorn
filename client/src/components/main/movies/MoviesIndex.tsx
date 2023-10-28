@@ -36,7 +36,7 @@ const MoviesIndex = () => {
           <MovieFilterLayer />
         </Stack>
       </WrapStack>
-      <MovieAlbumList status={status} ref={observeRef} movies={transformMovieData(movies)} />
+      <MovieAlbumList status={status} ref={observeRef} movies={transformMovieData(movies)} readonly />
     </>
   );
 };

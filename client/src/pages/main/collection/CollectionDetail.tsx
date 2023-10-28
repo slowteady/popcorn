@@ -54,7 +54,7 @@ const CollectionDetail = () => {
           const movies = transformMovieData(collection);
           return (
             <Box sx={{ my: 2 }}>
-              <MovieAlbumList status={status} movies={movies} ref={observeRef} />
+              <MovieAlbumList status={status} movies={movies} ref={observeRef} readonly />
             </Box>
           );
         })()}
