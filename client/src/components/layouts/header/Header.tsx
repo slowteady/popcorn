@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { HEADER_DESKTOP, HEADER_MOBILE, NAV_WIDTH } from '../../../config/layout/headerConfig';
 import paths from '../../../config/routes/paths';
 import { bgBlur } from '../../../utils/styleUtils';
-import CollectionCartBoard from '../../main/collection/add/CollectionCartBoard';
+import CollectionCart from '../../main/collection/add/CollectionCart';
 import IconLayerButton from '../button/IconLayerButton';
 import HeaderUserButton from './HeaderUserButton';
 import SearchBar from './search/SearchBar';
@@ -25,9 +25,7 @@ const Header = ({ onOpenNav }: HeaderProps) => {
 
   useEffect(() => {
     const { pathname } = location;
-    if (pathname === `${main}${index}${add}`) {
-      setOnCart(true);
-    }
+    pathname === `${main}${index}${add}` ? setOnCart(true) : setOnCart(false);
   }, [location]);
 
   return (
@@ -43,11 +41,11 @@ const Header = ({ onOpenNav }: HeaderProps) => {
             <IconLayerButton
               icon={CART_ICON}
               width={40}
-              anchorOrigin={{ vertical: 'bottom', horizontal: -200 }}
-              transformOrigin={{ vertical: 'top', horizontal: 200 }}
+              // anchorOrigin={{ vertical: 'bottom', horizontal: -200 }}
+              // transformOrigin={{ vertical: 'top', horizontal: 200 }}
               sx={{ mr: 2 }}
             >
-              <CollectionCartBoard />
+              <CollectionCart />
             </IconLayerButton>
           )}
           <HeaderUserButton />
