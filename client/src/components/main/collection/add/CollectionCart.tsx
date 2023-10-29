@@ -35,7 +35,7 @@ const CollectionCart = () => {
           page={page}
           count={pageCount()}
           boundaryCount={1}
-          siblingCount={2}
+          siblingCount={1}
           size='medium'
           color='primary'
           sx={pagiNationSx}
