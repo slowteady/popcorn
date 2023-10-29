@@ -36,6 +36,10 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
       : setCheckedMovies(checkedMovies.filter((chkMovie) => chkMovie.id !== movie.id));
   };
 
+  const isChecked = (id: number) => {
+    return checkedMovies.some((checkedMovies) => checkedMovies.id === id);
+  };
+
   return (
     <>
       <QueryStatusHandler status={status} sx={centerSx}>
@@ -47,6 +51,7 @@ const MovieAlbumList = forwardRef<HTMLDivElement, MovieAlbumListProps>(({ movies
                   <Grid key={index} item sx={{ position: 'relative' }} {...relativeSx}>
                     {!readonly && (
                       <CheckCircle
+                        checked={isChecked(movie.id)}
                         onChange={(e) => changeCheck(e, movie)}
                         icon={<Icon icon={CHECK_ICON} width={ICON_WIDTH} />}
                         checkedIcon={<Icon icon={CHECKED_ICON} width={ICON_WIDTH} />}
