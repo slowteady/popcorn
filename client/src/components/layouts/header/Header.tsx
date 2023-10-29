@@ -6,6 +6,7 @@ import { HEADER_DESKTOP, HEADER_MOBILE, NAV_WIDTH } from '../../../config/layout
 import paths from '../../../config/routes/paths';
 import { bgBlur } from '../../../utils/styleUtils';
 import CollectionCart from '../../main/collection/add/CollectionCart';
+import CollectionEditCart from '../../main/collection/edit/CollectionEditCart';
 import IconLayerButton from '../button/IconLayerButton';
 import HeaderUserButton from './HeaderUserButton';
 import SearchBar from './search/SearchBar';
@@ -21,6 +22,7 @@ const { index, add, edit } = paths.main.collection;
 
 const Header = ({ onOpenNav }: HeaderProps) => {
   const [onCart, setOnCart] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -28,7 +30,15 @@ const Header = ({ onOpenNav }: HeaderProps) => {
     const addPath = `${main}${index}${add}`;
     const editPath = `${main}${index}${edit}`;
 
-    pathname === addPath || pathname === editPath ? setOnCart(true) : setOnCart(false);
+    if (pathname === addPath) {
+      setOnCart(true);
+    } else if (pathname === editPath) {
+      setOnCart(true);
+      setIsEdit(true);
+    } else {
+      setOnCart(false);
+      setIsEdit(false);
+    }
   }, [location]);
 
   return (
@@ -42,7 +52,7 @@ const Header = ({ onOpenNav }: HeaderProps) => {
         <Stack direction='row' alignItems='center' spacing={{ xs: 0.5, sm: 1 }}>
           {onCart && (
             <IconLayerButton icon={CART_ICON} width={40} sx={{ mr: 2 }}>
-              <CollectionCart />
+              {isEdit ? <CollectionEditCart /> : <CollectionCart />}
             </IconLayerButton>
           )}
           <HeaderUserButton />
