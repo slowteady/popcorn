@@ -5,3 +5,8 @@ export const checkedMoviesState = atom<MoviesData[]>({
   key: 'checkedMoviesState',
   default: []
 });
+
+export const collectionTitle = atom({
+  key: 'collectionTitle',
+  default: ''
+});

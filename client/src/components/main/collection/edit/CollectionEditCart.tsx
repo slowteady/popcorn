@@ -7,7 +7,7 @@ import { SUCCESS_CODE } from '../../../../api/code';
 import { ADD_TABLE_CONF } from '../../../../config/layout/tableConfig';
 import paths from '../../../../config/routes/paths';
 import { editCollection } from '../../../../service/collectionService';
-import { checkedMoviesState } from '../../../../state/collectionState';
+import { checkedMoviesState, collectionTitle } from '../../../../state/collectionState';
 import { customAlert } from '../../../../utils/customAlert';
 import { errorHandler } from '../../../../utils/exceptionHandler';
 import { strValidation } from '../../../../utils/validation';
@@ -26,7 +26,8 @@ const SUCCESS_STATUS = 'success';
 const CollectionEditCart = () => {
   const checkedMovies = useRecoilValue(checkedMoviesState);
   const resetCheckedMovies = useResetRecoilState(checkedMoviesState);
-  const [title, setTitle] = useState('');
+  const preTitle = useRecoilValue(collectionTitle);
+  const [title, setTitle] = useState(preTitle);
   const [page, setPage] = useState(FIRST_PAGE);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -45,7 +46,6 @@ const CollectionEditCart = () => {
       errorHandler(error);
     }
   });
-
   const changePage = (e: ChangeEvent<unknown>, page: number) => {
     setPage(page);
   };
