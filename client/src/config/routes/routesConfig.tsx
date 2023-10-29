@@ -34,7 +34,7 @@ const routesConfig: RouteObject[] = [
         children: [
           { path: all, element: <Collection />, index: true },
           { path: add.slice(1), element: <CollectionAdd /> },
-          { path: edit.slice(1), element: <CollectionAdd /> },
+          { path: edit.slice(1), element: <CollectionAdd isEdit /> },
           { path: `${detail.slice(1)}`, element: <CollectionDetail /> }
         ]
       },
