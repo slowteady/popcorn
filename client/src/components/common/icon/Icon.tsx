@@ -1,7 +1,10 @@
 import { IconifyIcon, Icon as iconComponent } from '@iconify/react';
 import { Box, SxProps } from '@mui/material';
+import { ComponentPropsWithoutRef } from 'react';
 
-interface IconProps {
+type BoxProps = ComponentPropsWithoutRef<typeof Box>;
+
+interface IconProps extends BoxProps {
   icon: string | IconifyIcon;
   width?: number;
   sx?: SxProps;
