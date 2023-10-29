@@ -1,4 +1,4 @@
-import { collectionBasedRequest, collectionDetailRequest } from '../api/apiInstance';
+import { collectionBasedRequest } from '../api/apiInstance';
 import { MoviesData } from '../types/movie';
 
 interface RegisterCollecionBody {
@@ -11,7 +11,7 @@ export const getCollection = (page: number, limit: number) => {
 };
 
 export const getCollectionDetail = (id: string, page: number, limit: number) => {
-  return collectionDetailRequest.get(`/${id}`, { params: { page, limit } });
+  return collectionBasedRequest.get(`/detail/${id}`, { params: { page, limit } });
 };
 
 export const deleteCollection = (id: string) => {
@@ -20,4 +20,8 @@ export const deleteCollection = (id: string) => {
 
 export const registerCollection = (body: RegisterCollecionBody) => {
   return collectionBasedRequest.post('/register', body);
+};
+
+export const getPreCollection = (id: string) => {
+  return collectionBasedRequest.get(`/pre/${id}`);
 };
