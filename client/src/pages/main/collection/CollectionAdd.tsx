@@ -7,8 +7,8 @@ import paths from '../../../config/routes/paths';
 const LIST_ICON = 'ph:list-fill';
 const PAGE_TITLE = 'Collection';
 
-const { main } = paths;
-const { index } = main.collection;
+const { main } = paths.main;
+const { index } = paths.main.collection;
 
 const CollectionAdd = () => {
   const navigate = useNavigate();
