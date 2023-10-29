@@ -2,7 +2,7 @@ import { Button, Grid, Pagination, TableContainer, TextField, Typography, styled
 import { ChangeEvent, useRef, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { SUCCESS_CODE } from '../../../../api/code';
 import { ADD_TABLE_CONF } from '../../../../config/layout/tableConfig';
 import paths from '../../../../config/routes/paths';
@@ -20,9 +20,12 @@ const { ROWSPERPAGE, TABLE_HEADER } = ADD_TABLE_CONF;
 const FIRST_PAGE = 1;
 const EMPTY_TITLE_MESSAGE = '제목을 입력해주세요';
 const EMPTY_MOVIES_MESSAGE = '목록을 한 개 이상 추가해주세요';
+const SUCCESS_REGISTER_MESSAGE = '등록에 성공하였습니다';
+const SUCCESS_STATUS = 'success';
 
 const CollectionCart = () => {
   const checkedMovies = useRecoilValue(checkedMoviesState);
+  const resetCheckedMovies = useResetRecoilState(checkedMoviesState);
   const [page, setPage] = useState(FIRST_PAGE);
   const titleRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
@@ -31,6 +34,8 @@ const CollectionCart = () => {
     onSuccess: (response) => {
       const { data, status } = response;
       if (status === SUCCESS_CODE && data.isSuccess) {
+        customAlert(SUCCESS_REGISTER_MESSAGE, SUCCESS_STATUS);
+        resetCheckedMovies();
         navigate(`${main}${index}`);
       } else {
         throw new Error();
