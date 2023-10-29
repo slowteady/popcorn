@@ -15,7 +15,7 @@ import paths from './paths';
 const { all, root, notFound } = paths;
 const { signin, signup } = paths.sign;
 const { main, movies, search, collection } = paths.main;
-const { index, add, detail } = collection;
+const { index, add, detail, edit } = collection;
 const { users, profile } = paths.users;
 
 const routesConfig: RouteObject[] = [
@@ -34,6 +34,7 @@ const routesConfig: RouteObject[] = [
         children: [
           { path: all, element: <Collection />, index: true },
           { path: add.slice(1), element: <CollectionAdd /> },
+          { path: edit.slice(1), element: <CollectionAdd /> },
           { path: `${detail.slice(1)}`, element: <CollectionDetail /> }
         ]
       },

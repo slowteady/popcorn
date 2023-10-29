@@ -13,7 +13,8 @@ export default {
     collection: {
       index: '/collection',
       add: '/add',
-      detail: '/detail'
+      detail: '/detail',
+      edit: '/edit'
     }
   },
   users: {

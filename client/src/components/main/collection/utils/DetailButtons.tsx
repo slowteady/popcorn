@@ -13,7 +13,7 @@ const DELETE_MESSAGE = '정말 삭제하시겠습니까?';
 const SUCCESS_MESSAGE = '삭제가 완료됐어요';
 
 const { main } = paths.main;
-const { index } = paths.main.collection;
+const { index, edit } = paths.main.collection;
 
 interface DetailButtonProps {
   isOwner: boolean;
@@ -23,7 +23,9 @@ interface DetailButtonProps {
 const DetailButtons = ({ isOwner = false, collectionId: id }: DetailButtonProps) => {
   const navigate = useNavigate();
 
-  const doEdit = () => {};
+  const doEdit = () => {
+    navigate(`${main}${index}${edit}?id=${id}`);
+  };
 
   const doDelete = async () => {
     const { isConfirmed } = await customConfirmAlert({ title: DELETE_MESSAGE, text: '' });
