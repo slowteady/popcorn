@@ -1,7 +1,7 @@
 import { Box, Card, Stack, SxProps, Typography, styled } from '@mui/material';
 import { memo, useState } from 'react';
-import { MOVIE_PATH } from '../../../../api/path/movieApiPaths';
 import { MoviesData } from '../../../../types/movie';
+import { changePosterPath } from '../../../../utils/dataTransForm';
 import MovieModal from '../modal/MovieModal';
 import MovieImgBox from '../utils/MovieImgBox';
 
@@ -12,13 +12,6 @@ interface MovieCardProps {
 
 const changeVoteAvg = (value: number) => {
   return (Math.round(value * 10) / 10).toFixed(1);
-};
-
-const changePosterPath = (path: string) => {
-  const baseUrl = process.env.REACT_APP_IMAGE_BASE_URL;
-  const imagePath = MOVIE_PATH.IMAGE_SIZE_780;
-
-  return `${baseUrl}${imagePath}${path}`;
 };
 
 const MovieCard = ({ movies, sx }: MovieCardProps) => {
