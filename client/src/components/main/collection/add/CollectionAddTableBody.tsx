@@ -1,5 +1,5 @@
 import { TableBody, TableCell, TableRow, Typography } from '@mui/material';
-import { MouseEvent, useRef, useState } from 'react';
+import { Fragment, MouseEvent, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { ADD_TABLE_CONF } from '../../../../config/layout/tableConfig';
 import { checkedMoviesState } from '../../../../state/collectionState';
@@ -45,12 +45,12 @@ const CollectionAddTableBody = ({ page }: CollectionAddTableBodyProps) => {
     <>
       <TableBody>
         {checkedMovies.length > 0 &&
-          checkedMovies.slice(startIndex, endIndex).map((movie) => {
+          checkedMovies.slice(startIndex, endIndex).map((movie, idx) => {
             const { id, title, release_date, poster_path } = movie;
 
             return (
-              <>
-                <TableRow hover key={id} tabIndex={-1} role='checkbox'>
+              <Fragment key={idx}>
+                <TableRow hover tabIndex={-1} role='checkbox'>
                   <TableCell align='left'>
                     <Icon onClick={(e) => doDelete(e, id)} icon={DELETE_ICON} sx={deleteIconSx} />
                   </TableCell>
@@ -65,7 +65,7 @@ const CollectionAddTableBody = ({ page }: CollectionAddTableBodyProps) => {
                     </Typography>
                   </TableCell>
                 </TableRow>
-              </>
+              </Fragment>
             );
           })}
       </TableBody>
