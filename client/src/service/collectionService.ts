@@ -25,3 +25,7 @@ export const registerCollection = (body: RegisterCollecionBody) => {
 export const getPreCollection = (id: string) => {
   return collectionBasedRequest.get(`/pre/${id}`);
 };
+
+export const editCollection = (id: string, body: RegisterCollecionBody) => {
+  return collectionBasedRequest.patch(`/edit/${id}`, body);
+};
