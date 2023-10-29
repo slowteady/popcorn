@@ -17,7 +17,7 @@ export interface HeaderProps {
 const CART_ICON = 'el:shopping-cart-sign';
 
 const { main } = paths.main;
-const { index, add } = paths.main.collection;
+const { index, add, edit } = paths.main.collection;
 
 const Header = ({ onOpenNav }: HeaderProps) => {
   const [onCart, setOnCart] = useState(false);
@@ -25,7 +25,10 @@ const Header = ({ onOpenNav }: HeaderProps) => {
 
   useEffect(() => {
     const { pathname } = location;
-    pathname === `${main}${index}${add}` ? setOnCart(true) : setOnCart(false);
+    const addPath = `${main}${index}${add}`;
+    const editPath = `${main}${index}${edit}`;
+
+    pathname === addPath || pathname === editPath ? setOnCart(true) : setOnCart(false);
   }, [location]);
 
   return (
