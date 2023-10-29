@@ -6,6 +6,10 @@ interface RegisterCollecionBody {
   movie: MoviesData[];
 }
 
+interface EditCollectionBody extends RegisterCollecionBody {
+  id: string;
+}
+
 export const getCollection = (page: number, limit: number) => {
   return collectionBasedRequest.get(`/${page}`, { params: { limit } });
 };
@@ -26,6 +30,9 @@ export const getPreCollection = (id: string) => {
   return collectionBasedRequest.get(`/pre/${id}`);
 };
 
-export const editCollection = (id: string, body: RegisterCollecionBody) => {
-  return collectionBasedRequest.patch(`/edit/${id}`, body);
+export const editCollection = (body: EditCollectionBody) => {
+  const { id, collectionTitle, movie } = body;
+  const reqBody = { collectionTitle, movie };
+
+  return collectionBasedRequest.patch(`/edit/${id}`, reqBody);
 };
