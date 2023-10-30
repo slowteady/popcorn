@@ -64,19 +64,19 @@ const CollectionDetail = () => {
 
 const transformMovieData = (collection: InfiniteData<AxiosResponse<any, any>>) => {
   return collection.pages.flatMap(({ data }) => {
-    const { movie = [] } = data.collection;
+    const { movie } = data.collection || [];
     return movie;
   });
 };
 
 const getCollectionTitle = (collection: InfiniteData<AxiosResponse<any, any>>) => {
-  const { collectionTitle: title = '-' } = collection.pages[0].data.collection;
+  const title = collection.pages[0].data.collection?.collectionTitle || '-';
   return title;
 };
 
 const isOwner = (collection: InfiniteData<AxiosResponse<any, any>>) => {
-  const { user } = collection.pages[0].data.collection;
-  const userId = user.userId;
+  const { user } = collection.pages[0].data.collection || '-';
+  const userId = user?.userId;
   const id = getCookie('AUTH_TOKEN')._id;
 
   return userId && id ? userId === id : false;
