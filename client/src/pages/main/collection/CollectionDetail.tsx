@@ -22,7 +22,7 @@ const CollectionDetail = () => {
     hasNextPage,
     status
   } = useInfiniteQuery(
-    ['getCollectionDetail', id],
+    ['getCollectionDetail', id, LIST_COUNT],
     ({ pageParam = FIRST_PAGE }) => getCollectionDetail(id, pageParam, LIST_COUNT),
     {
       getNextPageParam: ({ data }) => {

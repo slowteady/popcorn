@@ -1,6 +1,6 @@
 import { Button, Grid, Pagination, TableContainer, TextField, Typography, styled } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { SUCCESS_CODE } from '../../../../api/code';
@@ -22,6 +22,7 @@ const EMPTY_TITLE_MESSAGE = '제목을 입력해주세요';
 const EMPTY_MOVIES_MESSAGE = '목록을 한 개 이상 추가해주세요';
 const SUCCESS_EDIT_MESSAGE = '수정에 성공하였습니다';
 const SUCCESS_STATUS = 'success';
+const NO_CACHE_KEY = 'getCollectionDetail';
 
 const CollectionEditCart = () => {
   const checkedMovies = useRecoilValue(checkedMoviesState);
@@ -30,6 +31,7 @@ const CollectionEditCart = () => {
   const [title, setTitle] = useState(preTitle);
   const [page, setPage] = useState(FIRST_PAGE);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id') || '';
 
@@ -39,6 +41,7 @@ const CollectionEditCart = () => {
       if (status === SUCCESS_CODE && data.isSuccess) {
         customAlert(SUCCESS_EDIT_MESSAGE, SUCCESS_STATUS);
         resetCheckedMovies();
+        queryClient.invalidateQueries(NO_CACHE_KEY);
         navigate(`${main}${index}`);
       }
     },
