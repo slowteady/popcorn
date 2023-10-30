@@ -4,7 +4,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "webpack-dev-server --hot --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack --mode production --config webpack.config.prod.js"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
