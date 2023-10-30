@@ -1,5 +1,5 @@
 import { Checkbox, Grid, styled } from '@mui/material';
-import { ChangeEvent, RefObject, forwardRef, useState } from 'react';
+import { ChangeEvent, RefObject, forwardRef, memo, useState } from 'react';
 import { QueryStatus } from 'react-query';
 import { useRecoilState } from 'recoil';
 import { checkedMoviesState } from '../../../../state/collectionState';
@@ -99,4 +99,4 @@ const ObserveDiv = styled('div')(() => ({
   height: '40px'
 }));
 
-export default MovieAlbumList;
+export default memo(MovieAlbumList);

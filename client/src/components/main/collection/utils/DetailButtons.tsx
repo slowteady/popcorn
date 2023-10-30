@@ -1,8 +1,12 @@
 import { Button, Stack, styled } from '@mui/material';
+import { memo } from 'react';
+import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { SUCCESS_CODE } from '../../../../api/code';
 import paths from '../../../../config/routes/paths';
 import { deleteCollection } from '../../../../service/collectionService';
 import { customAlert, customConfirmAlert } from '../../../../utils/customAlert';
+import { errorHandler } from '../../../../utils/exceptionHandler';
 import Icon from '../../../common/icon/Icon';
 
 const EDIT_ICON = 'eva:edit-fill';
@@ -23,6 +27,20 @@ interface DetailButtonProps {
 const DetailButtons = ({ isOwner = false, collectionId: id }: DetailButtonProps) => {
   const navigate = useNavigate();
 
+  const deleteMutation = useMutation(deleteCollection, {
+    onSuccess: (response) => {
+      const { data, status } = response;
+
+      if (status === SUCCESS_CODE && data.isSuccess) {
+        customAlert(SUCCESS_MESSAGE, SUCCESS);
+        naviToList();
+      }
+    },
+    onError: (error: Error) => {
+      errorHandler(error);
+    }
+  });
+
   const doEdit = () => {
     navigate(`${main}${index}${edit}?id=${id}`);
   };
@@ -30,11 +48,7 @@ const DetailButtons = ({ isOwner = false, collectionId: id }: DetailButtonProps)
   const doDelete = async () => {
     const { isConfirmed } = await customConfirmAlert({ title: DELETE_MESSAGE, text: '' });
     if (isConfirmed) {
-      const { data } = await deleteCollection(id);
-      if (data && data.isSuccess) {
-        customAlert(SUCCESS_MESSAGE, SUCCESS);
-        naviToList();
-      }
+      deleteMutation.mutate(id);
     }
   };
 
@@ -78,4 +92,4 @@ const GroupStack = styled(Stack)(({ theme }) => ({
   marginBottom: theme.spacing(3)
 }));
 
-export default DetailButtons;
+export default memo(DetailButtons);
