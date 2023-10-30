@@ -1,26 +1,10 @@
-import { MoviesObj } from "./state/movies/moviesTypes";
-
-// ----------------------------------------------------------------------
-// 전역 타입 선언
-// ----------------------------------------------------------------------
-
-declare global {
-  declare module "*.png";
-  declare module "*.jpg";
-  declare module "*.jpeg";
-  declare module "*.svg";
-
-  interface Payload {
-    payload: {
-      isSuccess: boolean;
-      msg: string | unknown;
-      code?: number;
-      isExpire?: boolean;
-      user?: object | boolean;
-      movie?: MoviesObj[];
-    };
-  }
+export declare global {
+  declare module '*.png';
+  declare module '*.jpg';
+  declare module '*.jpeg';
+  declare module '*.svg';
 }
 
-export { };
-
+export interface ReactNodeProps {
+  children: ReactNode;
+}

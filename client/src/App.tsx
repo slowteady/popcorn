@@ -1,39 +1,37 @@
-import React from "react";
-import { HelmetProvider } from "react-helmet-async";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter } from "react-router-dom";
-import { RecoilRoot } from "recoil";
-import Router from "./Router";
-import ScrollToTop from "./components/layouts/scroll/ScrollToTop";
-import ThemeProvider from "./theme";
-
-// 리액트 쿼리 객체 생성
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // 다시 포커싱 받을 시 재요청 할지 여부
-      refetchOnWindowFocus: false,
-      // 실패시 재요청 횟수
-      retry: 1,
-    },
-  },
-});
+import { Suspense } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import Loading from './components/common/Loading';
+import ThemeProvider from './components/theme/Index';
+import Router from './router/Router';
 
 const App = () => {
   return (
     <HelmetProvider>
-      <BrowserRouter>
-        <ThemeProvider>
-          <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
             <RecoilRoot>
-              <ScrollToTop />
-              <Router />
+              <Suspense fallback={<Loading />}>
+                <Router />
+              </Suspense>
             </RecoilRoot>
-          </QueryClientProvider>
-        </ThemeProvider>
-      </BrowserRouter>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </ThemeProvider>
     </HelmetProvider>
   );
 };
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1
+    }
+  }
+});
 
 export default App;

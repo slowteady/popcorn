@@ -6,11 +6,24 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fslowteady%2Fpopcorn&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 </div>
 
-## POPCORN v1.0
+## POPCORN v1.1
 
 > **개발기간: 2023.05 ~ 2023.08**  
-> ❗️2023.09.20~ - [브랜치](<https://github.com/slowteady/popcorn/tree/refactor>)를 분리하여 리팩토링 진행중입니다.
+> **리팩토링: ~2023.10**
 ---
+
+## 릴리즈
+
+### v1.0
+
+- 기능 구현 완료, 배포 완료
+
+### v1.1
+
+- 기능 안정화  
+- 리팩토링, 최적화 진행
+
+--
 
 ## 주소
 
@@ -47,11 +60,18 @@ cd popcorn
 ### 2. Config
 
 ```bash
-// .env.development를 root 디렉토리에 추가
+# 1. root 디렉토리에 .env.development 추가
 
-SERVER_PORT=${PORT_NUMBER} // 필수는 아니나 미지정시 8080으로 ON
-MONGO_URI=${MONGO_DB_URI} // MongoDB Atlas의 주소 입력
-UPLOAD_PATH=${REPOSITORY_PATH} // 첨부파일 저장할 레포지토리 경로 
+SERVER_PORT=${PORT_NUMBER} # DEFAULT: 8080
+MONGO_URI=${MONGO_DB_URI} # MongoDB Atlas URI
+UPLOAD_PATH=${REPOSITORY_PATH} # REPOSITORY_PATH
+
+# 2. client 디렉토리에 .env 추가
+
+REACT_APP_API_KEY=${TMDB_API_KEY}
+REACT_APP_ACCESS_TOKEN=${TMDB_ACCESS_TOKEN}
+REACT_APP_BASE_URL=${TMDB_API_BASE_URL}
+REACT_APP_IMAGE_BASE_URL=${TMDB_API_IMAGE_BASE_URL}
 ```
 
 ### 3. 실행
@@ -84,17 +104,5 @@ popcorn> yarn run once
 ### 배포
 
 ![Google Cloud](https://img.shields.io/badge/GoogleCloud-4285F4?style=for-the-badge&logo=GoogleCloud&logoColor=white)
-
----
-
-## 주요 화면
-
-| 메인 페이지  |  영화 페이지   |
-| :-------------------------------------------: | :------------: |
-|  <img width="329" src="https://github.com/slowteady/popcorn/assets/68311202/f63a4d90-038c-4987-a701-a8eb70290baf"/> |  <img width="329" src="https://github.com/slowteady/popcorn/assets/68311202/d1565697-689d-4ea2-8627-decc8f023942"/>|  
-| 영화 검색 페이지   |  컬렉션 페이지   |  
-| <img width="329" src="https://github.com/slowteady/popcorn/assets/68311202/29ea9aca-9284-4c2d-912c-74e454c35b82"/>   |  <img width="329" src="https://github.com/slowteady/popcorn/assets/68311202/ea3f6405-b0ad-415b-8097-628c850a27d1"/>     |
-| 영화 상세 페이지 |
-| <img width="329" src="https://github.com/slowteady/popcorn/assets/68311202/c62d96d3-f1c6-4960-b6d4-0734e36cf2b7"/>   |
 
 ---

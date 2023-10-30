@@ -1,10 +1,11 @@
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useResponsiveProps } from "../types/layout/layoutTypes";
+import { Breakpoint, useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-// ----------------------------------------------------------------------
-// 반응형 구현을 위한 hooks
-// ----------------------------------------------------------------------
+interface useResponsiveProps {
+  query: 'up' | 'down' | 'between';
+  start: Breakpoint;
+  end?: number | Breakpoint;
+}
 
 export const useResponsive = ({ query, start, end }: useResponsiveProps) => {
   const theme = useTheme();
@@ -15,19 +16,18 @@ export const useResponsive = ({ query, start, end }: useResponsiveProps) => {
 
   const mediaOnly = useMediaQuery(theme.breakpoints.only(start));
 
-  if (query === "up") {
+  if (query === 'up') {
     return mediaUp;
   }
 
-  if (query === "down") {
+  if (query === 'down') {
     return mediaDown;
   }
 
-  if (query === "between" && end) {
+  if (query === 'between' && end) {
     mediaBetween = useMediaQuery(theme.breakpoints.between(start, end));
     return mediaBetween;
   }
 
   return mediaOnly;
 };
-

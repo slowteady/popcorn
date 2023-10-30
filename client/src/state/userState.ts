@@ -1,12 +1,37 @@
-import { atom } from "recoil";
-import { userDataType } from "../types/state/users/userDataTypes";
+import { atom, selector, selectorFamily } from 'recoil';
+import { authCheck } from '../service/userService';
 
-// ----------------------------------------------------------------------
-// 사용자 관련 전역 STATE
-// ----------------------------------------------------------------------
+type FilterOption = 'MAIN' | 'PROFILE';
 
-// 사용자 데이터 전역 STATE
-export const userData = atom<userDataType>({
-  key: "userData",
-  default: { email: "", image: "", intro: "", name: "", id: "" },
+export const USER_MAIN_OPTION = 'MAIN';
+export const USER_PROFILE_OPTION = 'PROFILE';
+
+const userAuthSelector = selector({
+  key: 'userAuthSelector',
+  get: async () => {
+    const response = await authCheck();
+    return response.data.user;
+  }
+});
+
+export const userAtom = atom({
+  key: 'userAtom',
+  default: userAuthSelector
+});
+
+export const userSelector = selectorFamily({
+  key: 'userSelector',
+  get:
+    (option: FilterOption) =>
+    async ({ get }) => {
+      const user = get(userAtom);
+      const { email, image, intro, name } = user;
+
+      switch (option) {
+        case USER_MAIN_OPTION:
+          return { image, name };
+        case USER_PROFILE_OPTION:
+          return { email, image, intro, name };
+      }
+    }
 });

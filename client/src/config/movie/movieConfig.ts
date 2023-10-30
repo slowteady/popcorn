@@ -1,9 +1,7 @@
-// ----------------------------------------------------------------------
-// 영화 출력 설정
-// ----------------------------------------------------------------------
+import { FilterOption } from '../../types/movie';
 
-export const SORT_TYPE_OPTION = [
-  { value: "POPULAR", label: "Popular" },
-  { value: "NOWPLAYING", label: "Now Playing" },
-  { value: "TOPRATED", label: "Top Rated" },
+export const FILTER_OPTION: FilterOption[] = [
+  { value: 'NOWPLAYING', label: 'Now Playing' },
+  { value: 'POPULAR', label: 'Popular' },
+  { value: 'TOPRATED', label: 'Top Rated' }
 ];

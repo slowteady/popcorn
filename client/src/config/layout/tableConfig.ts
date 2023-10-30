@@ -1,26 +1,24 @@
-// ----------------------------------------------------------------------
-// 테이블 설정
-// ----------------------------------------------------------------------
+import { TableHeaderConfig } from '../../types/layout';
 
-export const ADD_TABLE_CONF = {
-  // 한 페이지 행 갯수
+interface Config {
+  ROWSPERPAGE: number;
+  TABLE_HEADER: TableHeaderConfig[];
+}
+
+export const ADD_TABLE_CONF: Config = {
   ROWSPERPAGE: 5,
-
-  // 테이블 헤더 Config
-  TABLE_HEAD: [
-    { id: "title", label: "제목", alignRight: false },
-    { id: "release_date", label: "릴리즈", alignRight: false },
-  ],
+  TABLE_HEADER: [
+    { id: 'dummy', label: '', width: '5%', align: 'left' },
+    { id: 'title', label: '제목', width: '55%', align: 'left' },
+    { id: 'release_date', label: '릴리즈', width: '40%', align: 'left' }
+  ]
 };
 
-export const LIST_TABLE_CONF = {
-  // 한 페이지 행 갯수
-  ROWSPERPAGE: 10,
-
-  // 테이블 헤더 Config
-  TABLE_HEAD: [
-    { id: "collection", label: "컬렉션", alignRight: false },
-    { id: "author", label: "큐레이터", alignRight: false },
-    { id: "rgstDate", label: "등록일자", alignRight: false },
-  ],
+export const LIST_TABLE_CONF: Config = {
+  ROWSPERPAGE: 5,
+  TABLE_HEADER: [
+    { id: 'collection', label: '컬렉션', width: '60%' },
+    { id: 'author', label: '큐레이터', width: '20%' },
+    { id: 'rgstDate', label: '등록일자', width: '20%' }
+  ]
 };
