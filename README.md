@@ -3,13 +3,13 @@
 <div align="center">
 <img width="329" alt="image" src="https://github.com/slowteady/popcorn/assets/68311202/d8a97db6-0829-4d5e-9282-4a8bd31d248f">
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fslowteady%2Fpopcorn&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 </div>
 
 ## POPCORN v1.1
 
-> **개발기간: 2023.05 ~ 2023.08**  
-> **리팩토링: ~2023.10**
+> **개발기간: 2023.05 ~ 2023.10**  
+> **비용문제로 인하여 현재는 서버를 내린 상태입니다.**
+
 ---
 
 ## 릴리즈
@@ -22,15 +22,6 @@
 
 - 기능 안정화  
 - 리팩토링, 최적화 진행
-  
-**비용문제로 인하여 현재는 서버를 내린 상태입니다.**
-
---
-
-## 주소
-
-> **배포 주소**: [https://slowteady.com/](https://slowteady.com/)  
-> **개발 회고**: [https://slowteady.github.io/](https://slowteady.github.io/story/project-popcorn-01/)
 
 ---
 
